@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>User_nom</th>
+                <td>{{ user.user_nom }}</td>
+            </tr>
+            <tr>
+                <th>User_prenom</th>
+                <td>{{ user.user_prenom }}</td>
+            </tr>
+            <tr>
+                <th>User_adresse</th>
+                <td>{{ user.user_adresse }}</td>
+            </tr>
+            <tr>
+                <th>User_complement_adresse</th>
+                <td>{{ user.user_complement_adresse }}</td>
+            </tr>
+            <tr>
+                <th>User_postal_code</th>
+                <td>{{ user.user_postal_code }}</td>
+            </tr>
+            <tr>
+                <th>User_commune</th>
+                <td>{{ user.user_commune }}</td>
+            </tr>
+            <tr>
+                <th>User_pays</th>
+                <td>{{ user.user_pays }}</td>
+            </tr>
+            <tr>
+                <th>User_telephone</th>
+                <td>{{ user.user_telephone }}</td>
+            </tr>
+            <tr>
+                <th>User_email</th>
+                <td>{{ user.user_email }}</td>
+            </tr>
+            <tr>
+                <th>User_date_inscription</th>
+                <td>{{ user.user_date_inscription ? user.user_date_inscription|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>User_role</th>
+                <td>{{ user.user_role }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_index') }}">back to list</a>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

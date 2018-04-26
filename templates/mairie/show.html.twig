@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mairie{% endblock %}
+
+{% block body %}
+    <h1>Mairie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mairie.id }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_nom_touristique</th>
+                <td>{{ mairie.mairie_nom_touristique }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_descriptif_1</th>
+                <td>{{ mairie.mairie_descriptif_1 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_descriptif_2</th>
+                <td>{{ mairie.mairie_descriptif_2 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_epci_rattachement</th>
+                <td>{{ mairie.mairie_epci_rattachement }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_maire_nom</th>
+                <td>{{ mairie.mairie_maire_nom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_maire_prenom</th>
+                <td>{{ mairie.mairie_maire_prenom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_adjoint_nom</th>
+                <td>{{ mairie.mairie_adjoint_nom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_adjoint_prenom</th>
+                <td>{{ mairie.mairie_adjoint_prenom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_contact_nom</th>
+                <td>{{ mairie.mairie_contact_nom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_contact_prenom</th>
+                <td>{{ mairie.mairie_contact_prenom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_telephone_contact</th>
+                <td>{{ mairie.mairie_telephone_contact }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_email_contact</th>
+                <td>{{ mairie.mairie_email_contact }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_latitude</th>
+                <td>{{ mairie.mairie_latitude }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_longitude</th>
+                <td>{{ mairie.mairie_longitude }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_photo_1</th>
+                <td>{{ mairie.mairie_photo_1 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_photo_2</th>
+                <td>{{ mairie.mairie_photo_2 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_photo_3</th>
+                <td>{{ mairie.mairie_photo_3 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_photo_4</th>
+                <td>{{ mairie.mairie_photo_4 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_taxe_sejour_gestionnaire</th>
+                <td>{{ mairie.mairie_taxe_sejour_gestionnaire }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_taxe_sejour_bareme</th>
+                <td>{{ mairie.mairie_taxe_sejour_bareme }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_sejour_lien</th>
+                <td>{{ mairie.mairie_sejour_lien }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_contact_nom_prenom</th>
+                <td>{{ mairie.mairie_contact_nom_prenom }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_de_telephone</th>
+                <td>{{ mairie.mairie_de_telephone }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_sejour_email</th>
+                <td>{{ mairie.mairie_sejour_email }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_rappel_texte</th>
+                <td>{{ mairie.mairie_rappel_texte }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_rappel_lien</th>
+                <td>{{ mairie.mairie_rappel_lien }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_logo</th>
+                <td>{{ mairie.mairie_logo }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_logo_2</th>
+                <td>{{ mairie.mairie_logo_2 }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_date_inscription</th>
+                <td>{{ mairie.mairie_date_inscription ? mairie.mairie_date_inscription|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_tampon</th>
+                <td>{{ mairie.mairie_tampon }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_maire_signature</th>
+                <td>{{ mairie.mairie_maire_signature }}</td>
+            </tr>
+            <tr>
+                <th>Mairie_slug</th>
+                <td>{{ mairie.mairie_slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('mairie_index') }}">back to list</a>
+
+    <a href="{{ path('mairie_edit', {'id': mairie.id}) }}">edit</a>
+
+    {{ include('mairie/_delete_form.html.twig') }}
+{% endblock %}

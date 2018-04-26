@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ville{% endblock %}
+
+{% block body %}
+    <h1>Ville</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ville.id }}</td>
+            </tr>
+            <tr>
+                <th>Ville_departement</th>
+                <td>{{ ville.ville_departement }}</td>
+            </tr>
+            <tr>
+                <th>Ville_slug</th>
+                <td>{{ ville.ville_slug }}</td>
+            </tr>
+            <tr>
+                <th>Ville_nom</th>
+                <td>{{ ville.ville_nom }}</td>
+            </tr>
+            <tr>
+                <th>Ville_nom_simple</th>
+                <td>{{ ville.ville_nom_simple }}</td>
+            </tr>
+            <tr>
+                <th>Ville_nom_reel</th>
+                <td>{{ ville.ville_nom_reel }}</td>
+            </tr>
+            <tr>
+                <th>Ville_nom_soundex</th>
+                <td>{{ ville.ville_nom_soundex }}</td>
+            </tr>
+            <tr>
+                <th>Ville_nom_metaphone  1</th>
+                <td>{{ ville.ville_nom_metaphone  1 }}</td>
+            </tr>
+            <tr>
+                <th>Ville_code_postal</th>
+                <td>{{ ville.ville_code_postal }}</td>
+            </tr>
+            <tr>
+                <th>Ville_commune</th>
+                <td>{{ ville.ville_commune }}</td>
+            </tr>
+            <tr>
+                <th>Ville_ville</th>
+                <td>{{ ville.ville_ville }}</td>
+            </tr>
+            <tr>
+                <th>Ville_arrondissement</th>
+                <td>{{ ville.ville_arrondissement }}</td>
+            </tr>
+            <tr>
+                <th>Ville_canton</th>
+                <td>{{ ville.ville_canton }}</td>
+            </tr>
+            <tr>
+                <th>Ville_amdi</th>
+                <td>{{ ville.ville_amdi }}</td>
+            </tr>
+            <tr>
+                <th>Ville_population_2010</th>
+                <td>{{ ville.ville_population_2010 }}</td>
+            </tr>
+            <tr>
+                <th>Ville_population_1999</th>
+                <td>{{ ville.ville_population_1999 }}</td>
+            </tr>
+            <tr>
+                <th>Ville_population_2012approximatif</th>
+                <td>{{ ville.ville_population_2012approximatif }}</td>
+            </tr>
+            <tr>
+                <th>Ville_densite_2010</th>
+                <td>{{ ville.ville_densite_2010 }}</td>
+            </tr>
+            <tr>
+                <th>Ville_surface</th>
+                <td>{{ ville.ville_surface }}</td>
+            </tr>
+            <tr>
+                <th>Ville_longitude_deg</th>
+                <td>{{ ville.ville_longitude_deg }}</td>
+            </tr>
+            <tr>
+                <th>Ville_latitude_deg</th>
+                <td>{{ ville.ville_latitude_deg }}</td>
+            </tr>
+            <tr>
+                <th>Ville_longitude_grd</th>
+                <td>{{ ville.ville_longitude_grd }}</td>
+            </tr>
+            <tr>
+                <th>Ville_latitude_grd</th>
+                <td>{{ ville.ville_latitude_grd }}</td>
+            </tr>
+            <tr>
+                <th>Ville_longitude_dms</th>
+                <td>{{ ville.ville_longitude_dms }}</td>
+            </tr>
+            <tr>
+                <th>Ville_latitude_dms</th>
+                <td>{{ ville.ville_latitude_dms }}</td>
+            </tr>
+            <tr>
+                <th>Ville_zmin</th>
+                <td>{{ ville.ville_zmin }}</td>
+            </tr>
+            <tr>
+                <th>Ville_zmax</th>
+                <td>{{ ville.ville_zmax }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('ville_index') }}">back to list</a>
+
+    <a href="{{ path('ville_edit', {'id': ville.id}) }}">edit</a>
+
+    {{ include('ville/_delete_form.html.twig') }}
+{% endblock %}

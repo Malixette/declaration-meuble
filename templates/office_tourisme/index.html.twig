@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OfficeTourisme index{% endblock %}
+
+{% block body %}
+    <h1>OfficeTourisme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ot_referent_nom</th>
+                <th>Ot_referent_prénom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for office_tourisme in office_tourismes %}
+            <tr>
+                <td>{{ office_tourisme.id }}</td>
+                <td>{{ office_tourisme.ot_referent_nom }}</td>
+                <td>{{ office_tourisme.ot_referent_prénom }}</td>
+                <td>
+                    <a href="{{ path('office_tourisme_show', {'id': office_tourisme.id}) }}">show</a>
+                    <a href="{{ path('office_tourisme_edit', {'id': office_tourisme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('office_tourisme_new') }}">Create new</a>
+{% endblock %}

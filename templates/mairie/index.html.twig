@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mairie index{% endblock %}
+
+{% block body %}
+    <h1>Mairie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Mairie_nom_touristique</th>
+                <th>Mairie_descriptif_1</th>
+                <th>Mairie_descriptif_2</th>
+                <th>Mairie_epci_rattachement</th>
+                <th>Mairie_maire_nom</th>
+                <th>Mairie_maire_prenom</th>
+                <th>Mairie_adjoint_nom</th>
+                <th>Mairie_adjoint_prenom</th>
+                <th>Mairie_contact_nom</th>
+                <th>Mairie_contact_prenom</th>
+                <th>Mairie_telephone_contact</th>
+                <th>Mairie_email_contact</th>
+                <th>Mairie_latitude</th>
+                <th>Mairie_longitude</th>
+                <th>Mairie_photo_1</th>
+                <th>Mairie_photo_2</th>
+                <th>Mairie_photo_3</th>
+                <th>Mairie_photo_4</th>
+                <th>Mairie_taxe_sejour_gestionnaire</th>
+                <th>Mairie_taxe_sejour_bareme</th>
+                <th>Mairie_sejour_lien</th>
+                <th>Mairie_contact_nom_prenom</th>
+                <th>Mairie_de_telephone</th>
+                <th>Mairie_sejour_email</th>
+                <th>Mairie_rappel_texte</th>
+                <th>Mairie_rappel_lien</th>
+                <th>Mairie_logo</th>
+                <th>Mairie_logo_2</th>
+                <th>Mairie_date_inscription</th>
+                <th>Mairie_tampon</th>
+                <th>Mairie_maire_signature</th>
+                <th>Mairie_slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mairie in mairies %}
+            <tr>
+                <td>{{ mairie.id }}</td>
+                <td>{{ mairie.mairie_nom_touristique }}</td>
+                <td>{{ mairie.mairie_descriptif_1 }}</td>
+                <td>{{ mairie.mairie_descriptif_2 }}</td>
+                <td>{{ mairie.mairie_epci_rattachement }}</td>
+                <td>{{ mairie.mairie_maire_nom }}</td>
+                <td>{{ mairie.mairie_maire_prenom }}</td>
+                <td>{{ mairie.mairie_adjoint_nom }}</td>
+                <td>{{ mairie.mairie_adjoint_prenom }}</td>
+                <td>{{ mairie.mairie_contact_nom }}</td>
+                <td>{{ mairie.mairie_contact_prenom }}</td>
+                <td>{{ mairie.mairie_telephone_contact }}</td>
+                <td>{{ mairie.mairie_email_contact }}</td>
+                <td>{{ mairie.mairie_latitude }}</td>
+                <td>{{ mairie.mairie_longitude }}</td>
+                <td>{{ mairie.mairie_photo_1 }}</td>
+                <td>{{ mairie.mairie_photo_2 }}</td>
+                <td>{{ mairie.mairie_photo_3 }}</td>
+                <td>{{ mairie.mairie_photo_4 }}</td>
+                <td>{{ mairie.mairie_taxe_sejour_gestionnaire }}</td>
+                <td>{{ mairie.mairie_taxe_sejour_bareme }}</td>
+                <td>{{ mairie.mairie_sejour_lien }}</td>
+                <td>{{ mairie.mairie_contact_nom_prenom }}</td>
+                <td>{{ mairie.mairie_de_telephone }}</td>
+                <td>{{ mairie.mairie_sejour_email }}</td>
+                <td>{{ mairie.mairie_rappel_texte }}</td>
+                <td>{{ mairie.mairie_rappel_lien }}</td>
+                <td>{{ mairie.mairie_logo }}</td>
+                <td>{{ mairie.mairie_logo_2 }}</td>
+                <td>{{ mairie.mairie_date_inscription ? mairie.mairie_date_inscription|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mairie.mairie_tampon }}</td>
+                <td>{{ mairie.mairie_maire_signature }}</td>
+                <td>{{ mairie.mairie_slug }}</td>
+                <td>
+                    <a href="{{ path('mairie_show', {'id': mairie.id}) }}">show</a>
+                    <a href="{{ path('mairie_edit', {'id': mairie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="34">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('mairie_new') }}">Create new</a>
+{% endblock %}

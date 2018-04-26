@@ -1,0 +1,567 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\HebergementRepository")
+ */
+class Hebergement
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_adresse_complement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_batiment;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $heb_etage;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $heb_code_postal;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_commune;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $heb_lat;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $heb_long;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_type;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $heb_nbr_pieces;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $heb_couchages_max;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_classement;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $heb_date_classement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_periodes_location;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_date_declaration;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $heb_numero_enregistrement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_descriptif_court;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_photo_1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_photo_2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_photo_3;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_site_web;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_site_resa;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_contact_resa;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $heb_email_resa;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $heb_tel_resa;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $heb_date_creation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_statut;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $heb_date_suppression;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="hebergements")
+     */
+    private $heb_user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="hebergements")
+     */
+    private $heb_mairie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="hebergements")
+     */
+    private $heb_ot;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="hebergements")
+     */
+    private $heb_ville;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getHebAdresse(): ?string
+    {
+        return $this->heb_adresse;
+    }
+
+    public function setHebAdresse(string $heb_adresse): self
+    {
+        $this->heb_adresse = $heb_adresse;
+
+        return $this;
+    }
+
+    public function getHebAdresseComplement(): ?string
+    {
+        return $this->heb_adresse_complement;
+    }
+
+    public function setHebAdresseComplement(?string $heb_adresse_complement): self
+    {
+        $this->heb_adresse_complement = $heb_adresse_complement;
+
+        return $this;
+    }
+
+    public function getHebBatiment(): ?string
+    {
+        return $this->heb_batiment;
+    }
+
+    public function setHebBatiment(?string $heb_batiment): self
+    {
+        $this->heb_batiment = $heb_batiment;
+
+        return $this;
+    }
+
+    public function getHebEtage(): ?int
+    {
+        return $this->heb_etage;
+    }
+
+    public function setHebEtage(?int $heb_etage): self
+    {
+        $this->heb_etage = $heb_etage;
+
+        return $this;
+    }
+
+    public function getHebCodePostal(): ?int
+    {
+        return $this->heb_code_postal;
+    }
+
+    public function setHebCodePostal(int $heb_code_postal): self
+    {
+        $this->heb_code_postal = $heb_code_postal;
+
+        return $this;
+    }
+
+    public function getHebCommune(): ?string
+    {
+        return $this->heb_commune;
+    }
+
+    public function setHebCommune(string $heb_commune): self
+    {
+        $this->heb_commune = $heb_commune;
+
+        return $this;
+    }
+
+    public function getHebLat(): ?int
+    {
+        return $this->heb_lat;
+    }
+
+    public function setHebLat(int $heb_lat): self
+    {
+        $this->heb_lat = $heb_lat;
+
+        return $this;
+    }
+
+    public function getHebLong(): ?float
+    {
+        return $this->heb_long;
+    }
+
+    public function setHebLong(float $heb_long): self
+    {
+        $this->heb_long = $heb_long;
+
+        return $this;
+    }
+
+    public function getHebType(): ?string
+    {
+        return $this->heb_type;
+    }
+
+    public function setHebType(string $heb_type): self
+    {
+        $this->heb_type = $heb_type;
+
+        return $this;
+    }
+
+    public function getHebNbrPieces(): ?int
+    {
+        return $this->heb_nbr_pieces;
+    }
+
+    public function setHebNbrPieces(int $heb_nbr_pieces): self
+    {
+        $this->heb_nbr_pieces = $heb_nbr_pieces;
+
+        return $this;
+    }
+
+    public function getHebCouchagesMax(): ?int
+    {
+        return $this->heb_couchages_max;
+    }
+
+    public function setHebCouchagesMax(int $heb_couchages_max): self
+    {
+        $this->heb_couchages_max = $heb_couchages_max;
+
+        return $this;
+    }
+
+    public function getHebClassement(): ?string
+    {
+        return $this->heb_classement;
+    }
+
+    public function setHebClassement(string $heb_classement): self
+    {
+        $this->heb_classement = $heb_classement;
+
+        return $this;
+    }
+
+    public function getHebDateClassement(): ?\DateTimeInterface
+    {
+        return $this->heb_date_classement;
+    }
+
+    public function setHebDateClassement(?\DateTimeInterface $heb_date_classement): self
+    {
+        $this->heb_date_classement = $heb_date_classement;
+
+        return $this;
+    }
+
+    public function getHebPeriodesLocation(): ?string
+    {
+        return $this->heb_periodes_location;
+    }
+
+    public function setHebPeriodesLocation(?string $heb_periodes_location): self
+    {
+        $this->heb_periodes_location = $heb_periodes_location;
+
+        return $this;
+    }
+
+    public function getHebDateDeclaration(): ?string
+    {
+        return $this->heb_date_declaration;
+    }
+
+    public function setHebDateDeclaration(string $heb_date_declaration): self
+    {
+        $this->heb_date_declaration = $heb_date_declaration;
+
+        return $this;
+    }
+
+    public function getHebNumeroEnregistrement(): ?int
+    {
+        return $this->heb_numero_enregistrement;
+    }
+
+    public function setHebNumeroEnregistrement(int $heb_numero_enregistrement): self
+    {
+        $this->heb_numero_enregistrement = $heb_numero_enregistrement;
+
+        return $this;
+    }
+
+    public function getHebDescriptifCourt(): ?string
+    {
+        return $this->heb_descriptif_court;
+    }
+
+    public function setHebDescriptifCourt(?string $heb_descriptif_court): self
+    {
+        $this->heb_descriptif_court = $heb_descriptif_court;
+
+        return $this;
+    }
+
+    public function getHebPhoto1(): ?string
+    {
+        return $this->heb_photo_1;
+    }
+
+    public function setHebPhoto1(?string $heb_photo_1): self
+    {
+        $this->heb_photo_1 = $heb_photo_1;
+
+        return $this;
+    }
+
+    public function getHebPhoto2(): ?string
+    {
+        return $this->heb_photo_2;
+    }
+
+    public function setHebPhoto2(?string $heb_photo_2): self
+    {
+        $this->heb_photo_2 = $heb_photo_2;
+
+        return $this;
+    }
+
+    public function getHebPhoto3(): ?string
+    {
+        return $this->heb_photo_3;
+    }
+
+    public function setHebPhoto3(?string $heb_photo_3): self
+    {
+        $this->heb_photo_3 = $heb_photo_3;
+
+        return $this;
+    }
+
+    public function getHebSiteWeb(): ?string
+    {
+        return $this->heb_site_web;
+    }
+
+    public function setHebSiteWeb(?string $heb_site_web): self
+    {
+        $this->heb_site_web = $heb_site_web;
+
+        return $this;
+    }
+
+    public function getHebSiteResa(): ?string
+    {
+        return $this->heb_site_resa;
+    }
+
+    public function setHebSiteResa(?string $heb_site_resa): self
+    {
+        $this->heb_site_resa = $heb_site_resa;
+
+        return $this;
+    }
+
+    public function getHebContactResa(): ?string
+    {
+        return $this->heb_contact_resa;
+    }
+
+    public function setHebContactResa(?string $heb_contact_resa): self
+    {
+        $this->heb_contact_resa = $heb_contact_resa;
+
+        return $this;
+    }
+
+    public function getHebEmailResa(): ?string
+    {
+        return $this->heb_email_resa;
+    }
+
+    public function setHebEmailResa(?string $heb_email_resa): self
+    {
+        $this->heb_email_resa = $heb_email_resa;
+
+        return $this;
+    }
+
+    public function getHebTelResa(): ?int
+    {
+        return $this->heb_tel_resa;
+    }
+
+    public function setHebTelResa(?int $heb_tel_resa): self
+    {
+        $this->heb_tel_resa = $heb_tel_resa;
+
+        return $this;
+    }
+
+    public function getHebDateCreation(): ?\DateTimeInterface
+    {
+        return $this->heb_date_creation;
+    }
+
+    public function setHebDateCreation(\DateTimeInterface $heb_date_creation): self
+    {
+        $this->heb_date_creation = $heb_date_creation;
+
+        return $this;
+    }
+
+    public function getHebStatut(): ?string
+    {
+        return $this->heb_statut;
+    }
+
+    public function setHebStatut(string $heb_statut): self
+    {
+        $this->heb_statut = $heb_statut;
+
+        return $this;
+    }
+
+    public function getHebDateSuppression(): ?\DateTimeInterface
+    {
+        return $this->heb_date_suppression;
+    }
+
+    public function setHebDateSuppression(?\DateTimeInterface $heb_date_suppression): self
+    {
+        $this->heb_date_suppression = $heb_date_suppression;
+
+        return $this;
+    }
+
+    public function getHebIdUser(): ?User
+    {
+        return $this->heb_id_user;
+    }
+
+    public function setHebIdUser(?User $heb_id_user): self
+    {
+        $this->heb_id_user = $heb_id_user;
+
+        return $this;
+    }
+
+    public function getHebIdMairie(): ?int
+    {
+        return $this->heb_id_mairie;
+    }
+
+    public function setHebIdMairie(int $heb_id_mairie): self
+    {
+        $this->heb_id_mairie = $heb_id_mairie;
+
+        return $this;
+    }
+
+    public function getHebIdOt(): ?OfficeTourisme
+    {
+        return $this->heb_id_ot;
+    }
+
+    public function setHebIdOt(?OfficeTourisme $heb_id_ot): self
+    {
+        $this->heb_id_ot = $heb_id_ot;
+
+        return $this;
+    }
+
+    public function getHebIdVille(): ?Ville
+    {
+        return $this->heb_id_ville;
+    }
+
+    public function setHebIdVille(?Ville $heb_id_ville): self
+    {
+        $this->heb_id_ville = $heb_id_ville;
+
+        return $this;
+    }
+}
