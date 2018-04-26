@@ -1,4 +1,46 @@
-h1 {
-    color: blue;
+* {
+    box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding : 0;
+    margin: 0;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+header {
+    background: url(../img/barcelonnette.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 920px;
+    position: relative;
+}
+
+.navbar {
+    background:rgba(255,255,255, 0.7);
+}
+
+#homeblock {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+
+#demarche, #commune, #contact{
+    height: 934px;
+}
+#titre-commune {
+    height: 40%;
+    background: url(../img/barcelonnette2.jpg) no-repeat center center;
+    background-size: 100%; 
+}
