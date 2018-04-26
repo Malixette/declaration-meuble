@@ -179,30 +179,37 @@ class Mairie
     private $mairie_slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="heb_id_mairie")
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="mairie")
      */
     private $hebergements;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="mairie")
      */
-    private $mairie_user;
+    private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Ville", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Ville", inversedBy="mairie", cascade={"persist", "remove"})
      */
-    private $mairie_ville;
+    private $ville;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="mairies")
      */
-    private $mairie_ot;
+    private $officeTourisme;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="coucou")
+     */
+    private $hebergement;
 
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
         $this->hebergements = new ArrayCollection();
         $this->mairie_id_user = new ArrayCollection();
+        $this->user = new ArrayCollection();
+        $this->hebergement = new ArrayCollection();
     }
 
     public function getId()
@@ -597,37 +604,6 @@ class Mairie
     /**
      * @return Collection|Hebergement[]
      */
-    public function getUserIdHeb(): Collection
-    {
-        return $this->user_id_heb;
-    }
-
-    public function addUserIdHeb(Hebergement $userIdHeb): self
-    {
-        if (!$this->user_id_heb->contains($userIdHeb)) {
-            $this->user_id_heb[] = $userIdHeb;
-            $userIdHeb->setHebIdMairie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserIdHeb(Hebergement $userIdHeb): self
-    {
-        if ($this->user_id_heb->contains($userIdHeb)) {
-            $this->user_id_heb->removeElement($userIdHeb);
-            // set the owning side to null (unless already changed)
-            if ($userIdHeb->getHebIdMairie() === $this) {
-                $userIdHeb->setHebIdMairie(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Hebergement[]
-     */
     public function getHebergements(): Collection
     {
         return $this->hebergements;
@@ -637,7 +613,7 @@ class Mairie
     {
         if (!$this->hebergements->contains($hebergement)) {
             $this->hebergements[] = $hebergement;
-            $hebergement->setHebIdMairie($this);
+            $hebergement->setMairie($this);
         }
 
         return $this;
@@ -648,8 +624,8 @@ class Mairie
         if ($this->hebergements->contains($hebergement)) {
             $this->hebergements->removeElement($hebergement);
             // set the owning side to null (unless already changed)
-            if ($hebergement->getHebIdMairie() === $this) {
-                $hebergement->setHebIdMairie(null);
+            if ($hebergement->getMairie() === $this) {
+                $hebergement->setMairie(null);
             }
         }
 
@@ -659,55 +635,63 @@ class Mairie
     /**
      * @return Collection|User[]
      */
-    public function getMairieIdUser(): Collection
+    public function getUser(): Collection
     {
-        return $this->mairie_id_user;
+        return $this->user;
     }
 
-    public function addMairieIdUser(User $mairieIdUser): self
+    public function addUser(User $user): self
     {
-        if (!$this->mairie_id_user->contains($mairieIdUser)) {
-            $this->mairie_id_user[] = $mairieIdUser;
-            $mairieIdUser->setMairie($this);
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setMairie($this);
         }
 
         return $this;
     }
 
-    public function removeMairieIdUser(User $mairieIdUser): self
+    public function removeUser(User $user): self
     {
-        if ($this->mairie_id_user->contains($mairieIdUser)) {
-            $this->mairie_id_user->removeElement($mairieIdUser);
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
             // set the owning side to null (unless already changed)
-            if ($mairieIdUser->getMairie() === $this) {
-                $mairieIdUser->setMairie(null);
+            if ($user->getMairie() === $this) {
+                $user->setMairie(null);
             }
         }
 
         return $this;
     }
 
-    public function getMairieVille(): ?Ville
+    public function getVille(): ?Ville
     {
-        return $this->mairie_ville;
+        return $this->ville;
     }
 
-    public function setMairieVille(?Ville $mairie_ville): self
+    public function setVille(?Ville $ville): self
     {
-        $this->mairie_ville = $mairie_ville;
+        $this->ville = $ville;
 
         return $this;
     }
 
-    public function getMairieOt(): ?OfficeTourisme
+    public function getOfficeTourisme(): ?OfficeTourisme
     {
-        return $this->mairie_ot;
+        return $this->officeTourisme;
     }
 
-    public function setMairieOt(?OfficeTourisme $mairie_ot): self
+    public function setOfficeTourisme(?OfficeTourisme $officeTourisme): self
     {
-        $this->mairie_ot = $mairie_ot;
+        $this->officeTourisme = $officeTourisme;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Hebergement[]
+     */
+    public function getHebergement(): Collection
+    {
+        return $this->hebergement;
     }
 }

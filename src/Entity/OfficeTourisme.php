@@ -29,12 +29,12 @@ class OfficeTourisme
     private $ot_referent_prénom;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="heb_id_ot")
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="officeTourisme")
      */
-    private $hebergements;
+    private $ville;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Mairie", mappedBy="mairie_ot")
+     * @ORM\OneToMany(targetEntity="App\Entity\Mairie", mappedBy="officeTourisme")
      */
     private $mairies;
 
@@ -43,6 +43,7 @@ class OfficeTourisme
         $this->ot_id_hebergement = new ArrayCollection();
         $this->hebergements = new ArrayCollection();
         $this->mairies = new ArrayCollection();
+        $this->ville = new ArrayCollection();
     }
 
     public function getId()
@@ -77,59 +78,28 @@ class OfficeTourisme
     /**
      * @return Collection|Hebergement[]
      */
-    public function getOtIdHebergement(): Collection
+    public function getVille(): Collection
     {
-        return $this->ot_id_hebergement;
+        return $this->ville;
     }
 
-    public function addOtIdHebergement(Hebergement $otIdHebergement): self
+    public function addVille(Hebergement $ville): self
     {
-        if (!$this->ot_id_hebergement->contains($otIdHebergement)) {
-            $this->ot_id_hebergement[] = $otIdHebergement;
-            $otIdHebergement->setHebIdOt($this);
+        if (!$this->ville->contains($ville)) {
+            $this->ville[] = $ville;
+            $ville->setOfficeTourisme($this);
         }
 
         return $this;
     }
 
-    public function removeOtIdHebergement(Hebergement $otIdHebergement): self
+    public function removeVille(Hebergement $ville): self
     {
-        if ($this->ot_id_hebergement->contains($otIdHebergement)) {
-            $this->ot_id_hebergement->removeElement($otIdHebergement);
+        if ($this->ville->contains($ville)) {
+            $this->ville->removeElement($ville);
             // set the owning side to null (unless already changed)
-            if ($otIdHebergement->getHebIdOt() === $this) {
-                $otIdHebergement->setHebIdOt(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Hebergement[]
-     */
-    public function getHebergements(): Collection
-    {
-        return $this->hebergements;
-    }
-
-    public function addHebergement(Hebergement $hebergement): self
-    {
-        if (!$this->hebergements->contains($hebergement)) {
-            $this->hebergements[] = $hebergement;
-            $hebergement->setHebIdOt($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHebergement(Hebergement $hebergement): self
-    {
-        if ($this->hebergements->contains($hebergement)) {
-            $this->hebergements->removeElement($hebergement);
-            // set the owning side to null (unless already changed)
-            if ($hebergement->getHebIdOt() === $this) {
-                $hebergement->setHebIdOt(null);
+            if ($ville->getOfficeTourisme() === $this) {
+                $ville->setOfficeTourisme(null);
             }
         }
 
@@ -148,7 +118,7 @@ class OfficeTourisme
     {
         if (!$this->mairies->contains($mairy)) {
             $this->mairies[] = $mairy;
-            $mairy->setMairieOt($this);
+            $mairy->setOfficeTourisme($this);
         }
 
         return $this;
@@ -159,11 +129,12 @@ class OfficeTourisme
         if ($this->mairies->contains($mairy)) {
             $this->mairies->removeElement($mairy);
             // set the owning side to null (unless already changed)
-            if ($mairy->getMairieOt() === $this) {
-                $mairy->setMairieOt(null);
+            if ($mairy->getOfficeTourisme() === $this) {
+                $mairy->setOfficeTourisme(null);
             }
         }
 
         return $this;
     }
+
 }

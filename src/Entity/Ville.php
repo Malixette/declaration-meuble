@@ -149,9 +149,14 @@ class Ville
     private $ville_zmax;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="heb_ville")
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="ville")
      */
     private $hebergements;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Mairie", mappedBy="ville", cascade={"persist", "remove"})
+     */
+    private $mairie;
 
     public function __construct()
     {
@@ -479,37 +484,6 @@ class Ville
     /**
      * @return Collection|Hebergement[]
      */
-    public function getVilleIdHeb(): Collection
-    {
-        return $this->ville_id_heb;
-    }
-
-    public function addVilleIdHeb(Hebergement $villeIdHeb): self
-    {
-        if (!$this->ville_id_heb->contains($villeIdHeb)) {
-            $this->ville_id_heb[] = $villeIdHeb;
-            $villeIdHeb->setHebIdInsee($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVilleIdHeb(Hebergement $villeIdHeb): self
-    {
-        if ($this->ville_id_heb->contains($villeIdHeb)) {
-            $this->ville_id_heb->removeElement($villeIdHeb);
-            // set the owning side to null (unless already changed)
-            if ($villeIdHeb->getHebIdInsee() === $this) {
-                $villeIdHeb->setHebIdInsee(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Hebergement[]
-     */
     public function getHebergements(): Collection
     {
         return $this->hebergements;
@@ -519,7 +493,7 @@ class Ville
     {
         if (!$this->hebergements->contains($hebergement)) {
             $this->hebergements[] = $hebergement;
-            $hebergement->setHebIdVille($this);
+            $hebergement->setVille($this);
         }
 
         return $this;
@@ -530,11 +504,30 @@ class Ville
         if ($this->hebergements->contains($hebergement)) {
             $this->hebergements->removeElement($hebergement);
             // set the owning side to null (unless already changed)
-            if ($hebergement->getHebIdVille() === $this) {
-                $hebergement->setHebIdVille(null);
+            if ($hebergement->getVille() === $this) {
+                $hebergement->setVille(null);
             }
         }
 
         return $this;
     }
+
+    public function getMairie(): ?Mairie
+    {
+        return $this->mairie;
+    }
+
+    public function setMairie(?Mairie $mairie): self
+    {
+        $this->mairie = $mairie;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newVille = $mairie === null ? null : $this;
+        if ($newVille !== $mairie->getVille()) {
+            $mairie->setVille($newVille);
+        }
+
+        return $this;
+    }
+
 }

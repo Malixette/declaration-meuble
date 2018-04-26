@@ -74,17 +74,12 @@ class User
     private $user_role;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="heb_id_user")
-     */
-    private $user_id_heb;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="heb_id_user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="user")
      */
     private $hebergements;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="mairie_user")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="user")
      */
     private $mairie;
 
@@ -234,37 +229,6 @@ class User
     /**
      * @return Collection|Hebergement[]
      */
-    public function getUserIdHeb(): Collection
-    {
-        return $this->user_id_heb;
-    }
-
-    public function addUserIdHeb(Hebergement $userIdHeb): self
-    {
-        if (!$this->user_id_heb->contains($userIdHeb)) {
-            $this->user_id_heb[] = $userIdHeb;
-            $userIdHeb->setHebIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserIdHeb(Hebergement $userIdHeb): self
-    {
-        if ($this->user_id_heb->contains($userIdHeb)) {
-            $this->user_id_heb->removeElement($userIdHeb);
-            // set the owning side to null (unless already changed)
-            if ($userIdHeb->getHebIdUser() === $this) {
-                $userIdHeb->setHebIdUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Hebergement[]
-     */
     public function getHebergements(): Collection
     {
         return $this->hebergements;
@@ -274,7 +238,7 @@ class User
     {
         if (!$this->hebergements->contains($hebergement)) {
             $this->hebergements[] = $hebergement;
-            $hebergement->setHebIdUser($this);
+            $hebergement->setUser($this);
         }
 
         return $this;
@@ -285,8 +249,8 @@ class User
         if ($this->hebergements->contains($hebergement)) {
             $this->hebergements->removeElement($hebergement);
             // set the owning side to null (unless already changed)
-            if ($hebergement->getHebIdUser() === $this) {
-                $hebergement->setHebIdUser(null);
+            if ($hebergement->getUser() === $this) {
+                $hebergement->setUser(null);
             }
         }
 
@@ -304,4 +268,5 @@ class User
 
         return $this;
     }
+
 }

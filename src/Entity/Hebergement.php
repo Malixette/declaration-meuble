@@ -159,22 +159,22 @@ class Hebergement
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="hebergements")
      */
-    private $heb_user;
+    private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="hebergements")
      */
-    private $heb_mairie;
+    private $mairie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="hebergements")
+     * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="ville")
      */
-    private $heb_ot;
+    private $officeTourisme;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="hebergements")
      */
-    private $heb_ville;
+    private $ville;
 
     public function getId()
     {
@@ -517,51 +517,52 @@ class Hebergement
         return $this;
     }
 
-    public function getHebIdUser(): ?User
+    public function getUser(): ?User
     {
-        return $this->heb_id_user;
+        return $this->user;
     }
 
-    public function setHebIdUser(?User $heb_id_user): self
+    public function setUser(?User $user): self
     {
-        $this->heb_id_user = $heb_id_user;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getHebIdMairie(): ?int
+    public function getMairie(): ?Mairie
     {
-        return $this->heb_id_mairie;
+        return $this->mairie;
     }
 
-    public function setHebIdMairie(int $heb_id_mairie): self
+    public function setMairie(?Mairie $mairie): self
     {
-        $this->heb_id_mairie = $heb_id_mairie;
+        $this->mairie = $mairie;
 
         return $this;
     }
 
-    public function getHebIdOt(): ?OfficeTourisme
+    public function getOfficeTourisme(): ?OfficeTourisme
     {
-        return $this->heb_id_ot;
+        return $this->officeTourisme;
     }
 
-    public function setHebIdOt(?OfficeTourisme $heb_id_ot): self
+    public function setOfficeTourisme(?OfficeTourisme $officeTourisme): self
     {
-        $this->heb_id_ot = $heb_id_ot;
+        $this->officeTourisme = $officeTourisme;
 
         return $this;
     }
 
-    public function getHebIdVille(): ?Ville
+    public function getVille(): ?Ville
     {
-        return $this->heb_id_ville;
+        return $this->ville;
     }
 
-    public function setHebIdVille(?Ville $heb_id_ville): self
+    public function setVille(?Ville $ville): self
     {
-        $this->heb_id_ville = $heb_id_ville;
+        $this->ville = $ville;
 
         return $this;
     }
+
 }
