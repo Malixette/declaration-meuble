@@ -15,25 +15,31 @@ body {
 }
 
 header {
-    background: url(../img/barcelonnette.jpg) no-repeat center center fixed; 
+    background: url(../img/communes/barcelonnette/barcelonnette.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: 100%;
     display: flex;
     flex-direction: column;
-    height: 920px;
+    height: 944px;
     position: relative;
 }
 
+.btn.outline {
+	border: 2px solid white;
+	background: none;
+	border-radius: 24px;
+}
+
 .navbar {
-    background:rgba(255,255,255, 0.7);
+    background:rgba(255,255,255, 0.9);
 }
 
 #homeblock {
     width: 100%;
     position: absolute;
-    top: 50%;
+    top: 40%;
 }
 
 #demarche, #commune, #contact{
@@ -41,6 +47,10 @@ header {
 }
 #titre-commune {
     height: 40%;
-    background: url(../img/barcelonnette2.jpg) no-repeat center center;
+    background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center;
     background-size: 100%; 
+}
+
+#contenu-commune {
+    height: 60%;
 }
