@@ -1,0 +1,26 @@
+# .htaccess EST SEULEMENT POUR LE SERVEUR WEB APACHE
+
+# BEGIN WordPress
+# ON VA UTILISER UN MODULE OPTIONNEL DE APACHE
+# mod_rewrite
+# (SUR CERTAINS SERVEUR WEB, IL FAUT ALLER L'ACTIVER...)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# SUR UN SITE NORMAL https://monsite.fr/
+# RewriteBase /
+
+# DANS MON CAS (A CHANGER A CHAQUE PROJET...)
+# https://htdocs-applekokonut.c9users.io/declaration-meuble/public/
+# ON NE DONNE QUE LE CHEMIN (SANS LE NOM DE DOMAINE)
+RewriteBase /declaration-meuble/public/
+
+# si l'url demandée est index.php alors on prend le fichier index.php
+RewriteRule ^index\.php$ - [L]
+# si l'url demandée ne correspond pas à un fichier
+RewriteCond %{REQUEST_FILENAME} !-f
+# si l'url demandée ne correspond pas à un dossier
+RewriteCond %{REQUEST_FILENAME} !-d
+# alors on delegue quand meme à index.php
+RewriteRule . ./index.php [L]
+</IfModule>
+# END WordPress
