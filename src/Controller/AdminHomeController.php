@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AdminHomeController extends Controller
 {
     /**
-     * @Route("/proprietaire", name="dashboard_declarant")
+     * @Route("/admin/proprietaire", name="dashboard_declarant")
      */
     public function index()
     {

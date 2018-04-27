@@ -5,16 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <table id="listeHebergement" class="listeHebergement table table-striped text-center">
+    <table id="listeHebergement" class="listeHebergement table table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
       <thead>
         <tr>
-          <th scope="col">Photo</th>
-          <th scope="col">Nom de l'hébergement</th>
-          <th scope="col">Capacité</th>
-          <th scope="col">Classement</th>
-          <th scope="col">Etat déclaration</th>
-          <th scope="col">Détail meublé</th>
-          <th scope="col">Supprimer</th>
+          <th data-orderable="false" scope="col">Photo</th>
+          <th data-orderable="true" scope="col">Nom de l'hébergement</th>
+          <th data-orderable="true" scope="col">Capacité</th>
+          <th data-orderable="true" scope="col">Classement</th>
+          <th data-orderable="true" scope="col">Saison d'ouverture</th>
+          <th data-orderable="true" scope="col">Etat déclaration</th>
+          <th data-orderable="false" scope="col">Détail meublé</th>
+          <th data-orderable="false" scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,7 @@
           <td class="align-middle">Petite Guinguette</td>
           <td class="align-middle">4</td>
           <td class="align-middle">3</td>
+          <td class="align-middle">Printemps, Ete</td>
           <td class="align-middle"><i class="fas fa-check text-success"></i></td>
           <td class="align-middle"><i class="fas fa-search"></td>
           <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
@@ -32,6 +34,7 @@
           <td class="align-middle">Grande Maisonnée</td>
           <td class="align-middle">12</td>
           <td class="align-middle">2</td>
+          <td class="align-middle">Printemps, Ete, Hiver</td>
           <td class="align-middle"><i class="fas fa-check text-warning"></i></td>
           <td class="align-middle"><i class="fas fa-search"></td>
           <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
@@ -41,6 +44,7 @@
           <td class="align-middle">Studio des Montagnes</td>
           <td class="align-middle">2</td>
           <td class="align-middle">3</td>
+          <td class="align-middle">Automne, Hiver</td>
           <td class="align-middle"><i class="fas fa-check text-danger"></i></td>
           <td class="align-middle"><i class="fas fa-search"></td>
           <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
@@ -54,6 +58,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#listeHebergement').dataTable( {
