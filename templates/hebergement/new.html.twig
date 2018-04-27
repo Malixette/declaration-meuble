@@ -1,11 +1,74 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
+{% block stylesheets %}
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+{% endblock %}
 
 {% block title %}Déclaration{% endblock %}
 
-{% block main %}
-    <h1>Déclarer un nouvel hébergement</h1>
+{% block header %}
+    <h1 class="mt-5 mb-4 p-3 text-center">Déclarer un nouvel hébergement</h1>
+{% endblock %}
 
+{% block body %}
+    <h2>Test Carte</h2>
+        <div id="map"></div>
+        
     {{ include('hebergement/_form.html.twig') }}
 
     <a href="{{ path('hebergement_index') }}">back to list</a>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+    var ville;
+        
+    function initMap() {
+        var ville = {lat: 43.404811, lng: 5.053728};
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: ville
+        });
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Nom hébergement</h1>'+
+            'Lat = '+
+            'Longitude = '
+            '</div>'+
+            '</div>';
+
+        console.log(contentString);
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        
+
+        var marker = new google.maps.Marker({
+        position: ville,
+        map: map,
+        draggable: true,
+        title: 'Nom de l\'hébergement'
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+
+    }
+    </script>
+        
+<script> async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVHTurRNPGNOsAA6Nuocp_nz9jN2APhck&callback=initMap">
+</script>
+
 {% endblock %}

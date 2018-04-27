@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class HebergementType extends AbstractType
 {
@@ -20,9 +21,18 @@ class HebergementType extends AbstractType
         $builder
             ->add('heb_adresse', TextType::class, [
                 'required'  => true,
-                'label'     => false,
+                'label'     => "Adresse: ",
                 'attr'      => [
-                    'placeholder'   => "Adresse de l'hébergement",
+                    'placeholder'   => "25 rue de la gare",
+                    'class'         => "input"
+                ]    
+            ])
+            
+            ->add('heb_name', TextType::class, [
+                'required'  => true,
+                'label'     => "Nom de votre hébergement: ",
+                'attr'      => [
+                    'placeholder'   => "Ex : Gîte des sapins...",
                     'class'         => "input"
                 ]    
             ])
@@ -38,7 +48,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_batiment', TextType::class, [
                 'required'  => true,
-                'label'     => false,
+                'label'     => "Bâtiment",
                 'attr'      => [
                     'placeholder'   => "Bâtiment",
                     'class'         => "input"
@@ -46,10 +56,12 @@ class HebergementType extends AbstractType
             ])
             ->add('heb_etage', IntegerType::class, [
                 'required'  => false,
-                'label'     => false,
+                'label'     => "A quel étage se situe votre hébergement",
                 'attr'      => [
-                    'placeholder'   => "Numéro d'étage",
-                    'class'         => "input"
+                    'placeholder'   => "0 pour Rez-de-chaussée",
+                    'class'         => "input",
+                    'min'           => 0,
+                    'max'           => 200,
                 ]    
             ])
             
@@ -125,7 +137,6 @@ class HebergementType extends AbstractType
             
             ->add('heb_descriptif_court',TextareaType::class, [
                 'required'  => false,
-                'label'     => false,
                 'attr'      => [
                     'placeholder' => "Descriptif de votre article",
                     'class' => "textarea"
@@ -134,12 +145,53 @@ class HebergementType extends AbstractType
             ->add('heb_photo_1')
             ->add('heb_photo_2')
             ->add('heb_photo_3')
-            ->add('heb_site_web')
-            ->add('heb_site_resa')
-            ->add('heb_contact_resa')
-            ->add('heb_email_resa')
-            ->add('heb_tel_resa')
-            ->add('heb_date_creation')
+            
+            ->add('heb_site_web', TextType::class, [
+                'required'  => false,
+                'label'     => 'Adresse web www. de votre hébergement',
+                'attr'      => [
+                    'placeholder'   => "www.",
+                    'class'         => "input"
+                ]    
+            ])
+            
+            ->add('heb_site_resa', TextType::class, [
+                'required'  => false,
+                'label'     => "Si vous disposez d'une réservation en ligne, renseignez votre lien de réservation",
+                'attr'      => [
+                    'placeholder'   => "Adresse web www. de réservation de votre hébergement",
+                    'class'         => "input"
+                ]    
+            ])
+            
+            ->add('heb_contact_resa', TextType::class, [
+                'required'  => false,
+                'label'     => "Contact de réservation",
+                'attr'      => [
+                    'placeholder'   => "Contact ou nom de l'organisme de gestion de réservation de votre hébergement",
+                    'class'         => "input"
+                ]    
+            ])
+            
+            ->add('heb_email_resa', TextType::class, [
+                'required'  => false,
+                'label'     => "Email de réservation",
+                'attr'      => [
+                    'placeholder'   => "Email",
+                    'class'         => "input"
+                ]    
+            ])
+            
+            ->add('heb_tel_resa', NumberType::class, [
+                'required'  => false,
+                'label'     => "Numéro de téléphone de réservation",
+                'attr'      => [
+                    'placeholder'   => "06 xx xx xx xx / 01 xx xx xx xx",
+                    'class'         => "input"
+                ]    
+            ])
+            
+            // ->add('heb_date_creation')
             // ->add('heb_statut')
             // ->add('heb_date_suppression')
             // ->add('user')
