@@ -178,6 +178,11 @@ class Hebergement
      */
     private $ville;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $heb_name;
+
     public function getId()
     {
         return $this->id;
@@ -563,6 +568,18 @@ class Hebergement
     public function setVille(?Ville $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getHebName(): ?string
+    {
+        return $this->heb_name;
+    }
+
+    public function setHebName(string $heb_name): self
+    {
+        $this->heb_name = $heb_name;
 
         return $this;
     }
