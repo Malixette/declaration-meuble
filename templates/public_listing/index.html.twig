@@ -2,6 +2,8 @@
 
 {% block title %}Listing des meublés{% endblock %}
 {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/public_listing.css')}}">
 {% endblock %}
 
@@ -11,151 +13,83 @@
 
 {% block main %}
 
-<div class="container-fluid" id="titrelisting">
-    <div class="row">
-        <div class="col-sm-12 text-center align-items-end">
-            <h1 class="display-3 text-light">Les meublés déclarés à Barcelonnette</h1>
-        </div>
-    </div>
-</div>
-
+<h1 class="mt-5 mb-4 text-center display-3 text-light" id="titrelisting">Les meublés déclarés à Barcelonnette</h1>
+        
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <table id="listeHebergement" class="listeHebergement table table-striped text-center">
-                <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+  <div class="row">
+      <table id="listeHebergement" class="listeHebergement table table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
+        <thead>
+          <tr>
+            <th data-orderable="false" scope="col">Photo</th>
+            <th data-orderable="true" scope="col">Nom de l'hébergement</th>
+            <th data-orderable="true" scope="col">Description</th>
+            <th data-orderable="true" scope="col">Capacité</th>
+            <th data-orderable="true" scope="col">Classement</th>
+            <th data-orderable="true" scope="col">Saison d'ouverture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{asset('assets/img/illustration-hebergement/petite-guinguette.jpeg')}}" alt="La Petite Guiguette"></th>
+            <td class="align-middle">Petite Guinguette</td>
+            <td class="align-middle">Un logement sympathique idéal pour couple avec enfant. Agréable panorama sur la montagne en été.</td>
+            <td class="align-middle">4</td>
+            <td class="align-middle">3</td>
+            <td class="align-middle">Printemps, Ete</td>
+          </tr>
+          <tr>
+            <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{asset('assets/img/illustration-hebergement/grande-maisonnee.jpeg')}}" alt="La Grande Maisonnée"></th>
+            <td class="align-middle">Grande Maisonnée</td>
+            <td class="align-middle">Maison alpine type chalet moderne, sur les hauteurs de la ville.</i></td>
+            <td class="align-middle">12</td>
+            <td class="align-middle">2</td>
+            <td class="align-middle">Printemps, Ete, Hiver</td>
+          </tr>
+          <tr>
+            <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{asset('assets/img/illustration-hebergement/studio-montagne.jpeg')}}" alt="Le Studio des Montagnes"></th>
+            <td class="align-middle">Studio des Montagnes</td>
+            <td class="align-middle">Petit studio adapté aux séjours courts, entièrement équipé, au pied des sentiers de randonnée.</td>
+            <td class="align-middle">2</td>
+            <td class="align-middle">3</td>
+            <td class="align-middle">Automne, Hiver</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#listeHebergement').dataTable( {
+                "language": {
+                    "sProcessing": "Traitement en cours ...",
+                    "sLengthMenu": "Afficher _MENU_ lignes",
+                    "sZeroRecords": "Aucun résultat trouvé",
+                    "sEmptyTable": "Aucune donnée disponible",
+                    "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                    "sInfoEmpty": "Aucune ligne affichée",
+                    "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Chercher:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Chargement...",
+                    "oPaginate": {
+                      "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                    },
+                    "oAria": {
+                      "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                    }
+                  }
+            });
+        });
+    </script>
 {% endblock %}

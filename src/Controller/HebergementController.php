@@ -55,7 +55,7 @@ class HebergementController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="hebergement_edit", methods="GET|POST")
+     * @Route("/edit/{id}", name="hebergement_edit", methods="GET|POST")
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {

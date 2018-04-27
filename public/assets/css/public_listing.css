@@ -18,13 +18,11 @@ body {
     /*background-color : white;*/
     height: 350px;
     background: url(../img/illustration-public/farmhouse.jpeg) fixed; 
+    padding-top : 10%;
+    text-shadow : 0.2px 0.2px 0.2px black;
 }
 
 .navbar {
     background:rgba(255,255,255, 1);
 }
 
-#titrelisting h1{
-    display : inline;
-    vertical-align: text-bottom;
-}
