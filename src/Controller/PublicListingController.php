@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PublicListingController extends Controller
 {
     /**
-     * @Route("/commune/listing", name="public_listing")
+     * @Route("/commune/listing", name="commune_listing")
      */
     public function index()
     {
