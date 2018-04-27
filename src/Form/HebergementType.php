@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class HebergementType extends AbstractType
 {
@@ -24,6 +26,7 @@ class HebergementType extends AbstractType
                     'class'         => "input"
                 ]    
             ])
+            
             ->add('heb_adresse_complement', TextType::class, [
                 'required'  => true,
                 'label'     => false,
@@ -32,6 +35,7 @@ class HebergementType extends AbstractType
                     'class'         => "input"
                 ]    
             ])
+            
             ->add('heb_batiment', TextType::class, [
                 'required'  => true,
                 'label'     => false,
@@ -48,6 +52,7 @@ class HebergementType extends AbstractType
                     'class'         => "input"
                 ]    
             ])
+            
             ->add('heb_code_postal', IntegerType::class, [
                 'required'  => true,
                 'label'     => false,
@@ -56,6 +61,7 @@ class HebergementType extends AbstractType
                     'class'         => "input"
                 ]    
             ])
+            
             ->add('heb_commune', TextType::class, [
                 'required'  => true,
                 'label'     => false,
@@ -76,22 +82,50 @@ class HebergementType extends AbstractType
                 'label' => 'Type d\'hébergement',
                 'required'  => true,
             ))
+            
             ->add('heb_nbr_pieces', IntegerType::class, [
                 'required'  => true,
-                'label'     => false,
+                'label'     => 'Nombre de pièces de votre hébergement:',
                 'attr'      => [
-                    'placeholder'   => "Nombre de pièce de l'hébergement",
-                    'class'         => "input",
+                    'min' => 0,
+                    'max' => 50
                 ]    
             ])
-            ->add('heb_couchages_max')
-            ->add('heb_classement')
-            ->add('heb_date_classement')
+            
+            ->add('heb_couchages_max', IntegerType::class, [
+                'required'  => true,
+                'label'     => "Nombre de couchages maximal",
+                'attr'      => [
+                    'placeholder'   => "Nombre de couchages maximal",
+                    'class'         => "input",
+                    'min' => 0,
+                    'max' => 50
+                ]    
+            ])
+            
+            ->add('heb_classement', ChoiceType::class, array(
+                'choices'  => array(
+                    'En cours'   => null,
+                    'Oui'       => true,
+                    'Non'       => false,
+                ),
+                'label' => 'Votre logement est-il classé?',
+                'required'  => true,
+            ))
+            
+            ->add('heb_date_classement', DateType::class, array(
+                'widget' => 'choice',
+            ))
+            
             ->add('heb_periodes_location')
-            ->add('heb_date_declaration')
-            ->add('heb_cerfa')
+            
+            // ->add('heb_date_declaration')
+            
+            // ->add('heb_cerfa')
+            
             ->add('heb_descriptif_court',TextareaType::class, [
                 'required'  => false,
+                'label'     => false,
                 'attr'      => [
                     'placeholder' => "Descriptif de votre article",
                     'class' => "textarea"
