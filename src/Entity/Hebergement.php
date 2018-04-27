@@ -64,7 +64,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Range(min = 0)
+     * @Assert\GreaterThan(0)
      */
     private $heb_nbr_pieces;
 
@@ -177,6 +177,11 @@ class Hebergement
      * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="hebergements")
      */
     private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $heb_name;
 
     public function getId()
     {
@@ -563,6 +568,18 @@ class Hebergement
     public function setVille(?Ville $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getHebName(): ?string
+    {
+        return $this->heb_name;
+    }
+
+    public function setHebName(string $heb_name): self
+    {
+        $this->heb_name = $heb_name;
 
         return $this;
     }
