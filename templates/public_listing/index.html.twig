@@ -2,6 +2,8 @@
 
 {% block title %}Listing des meublés{% endblock %}
 {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/public_listing.css')}}">
 {% endblock %}
 
@@ -11,17 +13,10 @@
 
 {% block main %}
 
-<div class="container-fluid" id="titrelisting">
-    <div class="row">
-        <div class="col-sm-12 text-center align-items-end">
-            <h1 class="display-3 text-light">Les meublés déclarés à Barcelonnette</h1>
-        </div>
-    </div>
-</div>
-
+<h1 class="mt-5 mb-4 text-center display-3 text-light" id="titrelisting">Les meublés déclarés à Barcelonnette</h1>
+        
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
       <table id="listeHebergement" class="listeHebergement table table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
         <thead>
           <tr>
@@ -60,7 +55,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
 </div>
 
