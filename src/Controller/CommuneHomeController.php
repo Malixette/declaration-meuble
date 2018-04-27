@@ -12,7 +12,7 @@ class CommuneHomeController extends Controller
      */
     public function index()
     {
-        return $this->render('commune_home/index.html.twig', [
+        return $this->render('commune.html.twig', [
             'controller_name' => 'CommuneHomeController',
         ]);
     }

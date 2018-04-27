@@ -4,7 +4,8 @@
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
 {% endblock %}
-{% block header %}
+
+{% block nav %}
 <header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <a class="navbar-brand" href="#">Logo</a>
@@ -20,7 +21,7 @@
                         <a class="nav-link" href="#commune">La commune</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Les meublés</a>
+                        <a class="nav-link" href="{{path('public_listing')}}">Les meublés</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a></a>
@@ -37,12 +38,14 @@
                         <a class="nav-link" href="#">Déconnexion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('admin_home')}}">Tableau de bord</a>
+                        <a class="nav-link" href="{{path('dashboard_declarant')}}">Tableau de bord</a>
                     </li>
             </ul>
         </div>
     </nav>
 <!-- *******************************************************************FIN NAV********************************************************************* -->
+{% endblock %}
+{% block header %}
         <div class="row d-flex flex-column" id="homeblock">
             <div class="col-md-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
                 <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
@@ -75,8 +78,9 @@
             </div>
         </div>
     </section>
-    
+</div>
     <!--**********************************************BLOC PRESENTATION COMMUNE **********************************************-->
+<div class="container-fluid">
     <section id="commune">
         <div class="row d-flex justify-content-center" id="titre-commune">
             <div class="col-md-12 text-center d-flex align-items-end">
@@ -103,8 +107,9 @@
             </div>
         </div>
     </section>
+</div>
     <!--********************************************************BLOC CONTACT ***************************************************-->
-    
+<div class="container-fluid">
     <section id="contact">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 text-center mt-5">
@@ -112,11 +117,9 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <!-- carte à gérer...
             <div class="embed-responsive embed-responsive-16by9">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2851.280825584107!2d6.6480755157509!3d44.386356712729764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc919affa75b03%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1524755265006"></iframe>
             </div>
-            -->
         </div>
     </section>
 </div>
@@ -124,7 +127,7 @@
 
 {% block footer %}
 <footer class="bg-info p-3">
-        <div class="container-fluid">
+    <div class="container-fluid">
             <div class="row">
                 <div class="col-md-7">
                     <h4>Espace publicitaire</h4>
@@ -143,6 +146,6 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 {% endblock %}
