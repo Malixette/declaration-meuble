@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\HebergementRepository")
@@ -63,7 +64,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Range(min = 0)
+     * @Assert\GreaterThan(0)
      */
     private $heb_nbr_pieces;
 
