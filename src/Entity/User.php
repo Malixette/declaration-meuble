@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -59,7 +60,11 @@ class User
     private $user_telephone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=123)
+     * @Assert\Email(
+     *   message = "The email '{{ value }}' is not a valid email.",
+     *   checkMX = true
+     * )
      */
     private $user_email;
 
@@ -82,6 +87,11 @@ class User
      * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="user")
      */
     private $mairie;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
 
     public function __construct()
     {
@@ -265,6 +275,18 @@ class User
     public function setMairie(?Mairie $mairie): self
     {
         $this->mairie = $mairie;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }

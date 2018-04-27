@@ -63,6 +63,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min = 0)
      */
     private $heb_nbr_pieces;
 
@@ -92,9 +93,9 @@ class Hebergement
     private $heb_date_declaration;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
-    private $heb_numero_enregistrement;
+    private $heb_cerfa;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -361,14 +362,14 @@ class Hebergement
         return $this;
     }
 
-    public function getHebNumeroEnregistrement(): ?int
+    public function getHebCerfa(): ?int
     {
-        return $this->heb_numero_enregistrement;
+        return $this->heb_cerfa;
     }
 
-    public function setHebNumeroEnregistrement(int $heb_numero_enregistrement): self
+    public function setHebCerfa(int $heb_cerfa): self
     {
-        $this->heb_numero_enregistrement = $heb_numero_enregistrement;
+        $this->heb_cerfa = $heb_cerfa;
 
         return $this;
     }

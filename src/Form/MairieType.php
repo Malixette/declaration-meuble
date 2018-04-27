@@ -44,8 +44,8 @@ class MairieType extends AbstractType
             ->add('mairie_tampon')
             ->add('mairie_maire_signature')
             ->add('mairie_slug')
-            ->add('mairie_ville')
-            ->add('mairie_ot')
+            ->add('ville')
+            ->add('officeTourisme')
         ;
     }
 

@@ -1,0 +1,1 @@
+[27-Apr-2018 10:26:23 UTC] PHP Fatal error:  Cannot use Symfony\Component\OptionsResolver\OptionsResolver as OptionsResolver because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Form/HebergementType.php on line 9
