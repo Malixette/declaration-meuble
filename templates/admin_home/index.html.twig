@@ -10,42 +10,33 @@
 {% endblock %}
 
 {% block body %}
-    <table id="listeHebergement" class="listeHebergement table table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
+    <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
+      <caption>Liste des hébergements déclarés</caption>
       <thead>
         <tr>
+          <th data-orderable="true" scope="col">Nom hébergement</th>
           <th data-orderable="false" scope="col">Photo</th>
-          <th data-orderable="true" scope="col">Nom de l'hébergement</th>
-          <th data-orderable="true" scope="col">Capacité</th>
+          <th data-orderable="true" scope="col">Couchages</th>
           <th data-orderable="true" scope="col">Classement</th>
           <th data-orderable="true" scope="col">Saison d'ouverture</th>
-          <th data-orderable="true" scope="col">Description</th>
+          <th data-orderable="true" scope="col">Etat déclaration</th>
+          <th data-orderable="false" scope="col">Détails</th>
+          <th data-orderable="false" scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{ asset("assets/img/illustration-hebergement/petite-guinguette.jpeg") }}" alt="La Petite Guiguette"></th>
-          <td class="align-middle">Petite Guinguette</td>
-          <td class="align-middle">4</td>
-          <td class="align-middle">3</td>
-          <td class="align-middle">Printemps, Ete</td>
-          <td class="align-middle"><i class="fas fa-check text-success"></i></td>
-        </tr>
-        <tr>
-          <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{ asset("assets/img/illustration-hebergement/grande-maisonnee.jpeg") }}" alt="La Grande Maisonnée"></th>
-          <td class="align-middle">Grande Maisonnée</td>
-          <td class="align-middle">12</td>
-          <td class="align-middle">2</td>
-          <td class="align-middle">Printemps, Ete, Hiver</td>
-          <td class="align-middle"><i class="fas fa-check text-warning"></i></td>
-        </tr>
-        <tr>
-          <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{ asset("assets/img/illustration-hebergement/studio-montagne.jpeg") }}" alt="Le Studio des Montagnes"></th>
-          <td class="align-middle">Studio des Montagnes</td>
-          <td class="align-middle">2</td>
-          <td class="align-middle">3</td>
-          <td class="align-middle">Automne, Hiver</td>
-          <td class="align-middle"><i class="fas fa-check text-danger"></i></td>
-        </tr>
+        {% for hebergement in hebergements %}
+          <tr>
+            <td class="align-middle">{{ hebergement.hebName }}</td>
+            <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ hebergement.hebPhoto1 }}" alt="La Petite Guiguette"></td>
+            <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
+            <td class="align-middle">{{ hebergement.hebClassement }}</td>
+            <td class="align-middle">{{ hebergement.hebPeriodesLocation }}</td>
+            <td class="align-middle">{{ hebergement.hebStatut }}</td>
+            <td class="align-middle"><i class="fas fa-search"></i></td>
+            <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
 

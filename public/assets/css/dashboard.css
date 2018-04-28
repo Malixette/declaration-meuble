@@ -10,6 +10,23 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
 }
 
+h1 {
+    color: #9F877C;
+}
+
+header nav {
+    background-color: #C1AEA5;
+}
+
+footer {
+    background-color: #C1AEA5;
+}
+
 .listeHebergement td, .listeHebergement th {
     border: none; 
+}
+
+.page-item.active .page-link {
+    background-color: #C1AEA5;
+    border-color: #C1AEA5;
 }

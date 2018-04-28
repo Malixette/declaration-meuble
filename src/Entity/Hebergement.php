@@ -64,7 +64,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\GreaterThan(0)
+     * @Assert\Range(min = 0)
      */
     private $heb_nbr_pieces;
 
