@@ -21,7 +21,7 @@
             <p><strong>Descriptif:</strong> {{ hebergement.hebDescriptifCourt }}</p>
             <p><strong>Adresse:</strong> {{ hebergement.hebAdresse }} <br>
             {% if hebergement.hebAdresseComplement != '' %}
-                <strong>Complément d'adresse:</strong>{{ hebergement.hebAdresseComplement }} <br>
+                <strong>Complément d'adresse:</strong> {{ hebergement.hebAdresseComplement }} <br>
             {% endif %}
             {% if hebergement.hebType == 'appartement' %}
                 <strong>Bâtiment:</strong> {{ hebergement.hebBatiment }} <strong>Etage:</strong> {{ hebergement.hebEtage }}<br>
