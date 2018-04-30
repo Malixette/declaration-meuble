@@ -26,7 +26,7 @@ class UserController extends Controller
     /**
      * @Route("/inscription", name="inscription_declarant")
      */
-    public function inscription(Request $request): Response
+    public function new(Request $request): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -37,7 +37,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/new-declarant.html.twig', [
