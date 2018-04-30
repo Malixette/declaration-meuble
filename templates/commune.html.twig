@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block nav %}
-<header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <a class="navbar-brand" href="#">Logo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,15 +45,18 @@
 <!-- *******************************************************************FIN NAV********************************************************************* -->
 {% endblock %}
 {% block header %}
+<header>
+    <div class="container-fluid">
         <div class="row d-flex flex-column" id="homeblock">
-            <div class="col-md-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
+            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
                 <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
                 <h4 class="display-6">Un seul espace pour déclarer tous vos meublés en France !</h4>
                 <button type="button" class="outline btn btn-lg pl-5 pr-5 pt-2 pb-2" >
-                    <p class="display-3 text-white">Je déclare</p>
+                    <p class="display-3 text-white"><a href="{{path('connexion')}}" class="text-white">Je déclare</a></p>
                 </button>
             </div>
         </div>
+    </div>
 </header>
 {% endblock %}
 
@@ -80,13 +82,15 @@
     </section>
 </div>
     <!--**********************************************BLOC PRESENTATION COMMUNE **********************************************-->
-<div class="container-fluid">
-    <section id="commune">
+<section id="commune">
+    <div class="container-fluid" id="header-commune">
         <div class="row d-flex justify-content-center" id="titre-commune">
             <div class="col-md-12 text-center d-flex align-items-end">
                 <h1 class="display-3 text-light">Barcelonnette</h1>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div class="row d-flex justify-content-center" id="contenu-commune">
             <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
                 <img class="img-fluid" src="{{asset('assets/img/vecteurs/cityhall.png')}}">
@@ -106,13 +110,13 @@
                 <p>BLABLA hébergements classés + incitation à classer lien vers la page listing?</p>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
     <!--********************************************************BLOC CONTACT ***************************************************-->
 <div class="container-fluid">
     <section id="contact">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-12 text-center mt-5">
+            <div class="col-md-12 text-center">
                 <h1 class="display-3">Contact</h1>
             </div>
         </div>

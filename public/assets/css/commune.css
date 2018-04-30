@@ -15,9 +15,9 @@ body {
     margin: 0;
 }
 
-.container-fluid {
-    height: 100%;
-}
+/*.container-fluid {*/
+/*    height: 100%;*/
+/*}*/
 
 header {
     background: url(../img/communes/barcelonnette/barcelonnette.jpg) no-repeat center center fixed; 
@@ -50,6 +50,10 @@ header {
 #demarche, #commune, #contact{
     height: 934px;
 }
+
+#header-commune{
+    height : 30%;
+}
 #titre-commune {
     height: 40%;
     background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center;
@@ -58,4 +62,8 @@ header {
 
 #contenu-commune {
     height: 60%;
+}
+
+a{
+    text-decoration:none;
 }
