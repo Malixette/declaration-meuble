@@ -37,12 +37,26 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/new-declarant.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+        ]);
+    }
+    
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexion(Request $request): Response
+    {
+        $form = $this->createForm(UserType::class);
+        
+        $form->handleRequest($request);
+        
+        return $this->render('user/connexion.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 

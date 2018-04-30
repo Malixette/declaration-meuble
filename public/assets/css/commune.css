@@ -15,9 +15,9 @@ body {
     margin: 0;
 }
 
-.container-fluid {
-    height: 100%;
-}
+/*.container-fluid {*/
+/*    height: 100%;*/
+/*}*/
 
 header {
     background: url(../img/communes/barcelonnette/barcelonnette.jpg) no-repeat center center fixed; 
@@ -41,21 +41,43 @@ header {
     background:rgba(255,255,255, 0.9);
 }
 
-#homeblock {
-    width: 100%;
-    position: absolute;
-    top: 40%;
+section {
+    height:934px;
 }
 
-#demarche, #commune, #contact{
-    height: 934px;
-}
-#titre-commune {
-    height: 40%;
-    background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center;
-    background-size: 100%; 
+.bloc-header {
+    height : 30%;
 }
 
-#contenu-commune {
-    height: 60%;
+#commune-header {
+    background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center fixed;
 }
+
+
+
+/*#homeblock {*/
+/*    width: 100%;*/
+/*    position: absolute;*/
+/*    top: 40%;*/
+/*}*/
+
+/*#demarche, #commune, #contact{*/
+/*    height: 934px;*/
+/*}*/
+
+/*#header-commune{*/
+/*    height : 30%;*/
+/*}*/
+/*#titre-commune {*/
+/*    height: 40%;*/
+/*    background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center;*/
+/*    background-size: 100%; */
+/*}*/
+
+/*#contenu-commune {*/
+/*    height: 60%;*/
+/*}*/
+
+/*a{*/
+/*    text-decoration:none;*/
+/*}*/

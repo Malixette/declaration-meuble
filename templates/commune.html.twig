@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block nav %}
-<header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <a class="navbar-brand" href="#">Logo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,16 +14,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_home')}}#demarche">La démarche</a>
+                    <a class="nav-link" href="{{path('commune_home')}}#section-demarche">La démarche</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_home')}}#commune">Barcelonnette</a>
+                    <a class="nav-link" href="{{path('commune_home')}}#section-commune">Barcelonnette</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('commune_listing')}}">Les meublés</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_home')}}#contact">Contact</a>
+                    <a class="nav-link" href="{{path('commune_home')}}#section-contact">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -46,106 +45,160 @@
 <!-- *******************************************************************FIN NAV********************************************************************* -->
 {% endblock %}
 {% block header %}
+<header>
+    <div class="container-fluid">
         <div class="row d-flex flex-column" id="homeblock">
-            <div class="col-md-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
+            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
                 <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
                 <h4 class="display-6">Un seul espace pour déclarer tous vos meublés en France !</h4>
                 <button type="button" class="outline btn btn-lg pl-5 pr-5 pt-2 pb-2" >
-                    <p class="display-3 text-white">Je déclare</p>
+                    <p class="display-3 text-white"><a href="{{path('connexion')}}" class="text-white">Je déclare</a></p>
                 </button>
             </div>
         </div>
+    </div>
 </header>
 {% endblock %}
 
 {% block main %}
     <!--***********************************************************BLOC DEMARCHE *************************************************************************-->
-<div class="container-fluid">
-    <section id="demarche">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 mt-5 text-center">
-                <h1 class="display-3">La démarche</h1>
+<section id="section-demarche">
+    <div class="container-fluid bloc-header p-0" id="demarche-header">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-3 text-center">La démarche</h1>
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 col-lg-6 bg-warning m-1">
-                <h2>Pourquoi déclarer votre meublé de tourisme</h2>
+    </div>
+    <div class="container bloc-content" id="demarche-content">
+        <div class="col-md-12 col-lg-6 bg-warning m-1">
+            <h2>Pourquoi déclarer votre meublé de tourisme</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>
-                </div>
-            <div class="col-md-12 col-lg-5 bg-info m-1">
-                <h2>La réglementation en vigueur</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>
-            </div>
         </div>
-    </section>
-</div>
+        <div class="col-md-12 col-lg-5 bg-info m-1">
+            <h2>La réglementation en vigueur</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>
+        </div>
+    </div>
+</section>
     <!--**********************************************BLOC PRESENTATION COMMUNE **********************************************-->
-<div class="container-fluid">
-    <section id="commune">
-        <div class="row d-flex justify-content-center" id="titre-commune">
-            <div class="col-md-12 text-center d-flex align-items-end">
-                <h1 class="display-3 text-light">Barcelonnette</h1>
+<section id="section-commune">
+    <div class="container-fluid bloc-header p-0" id="commune-header">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-3 text-center">Barcelonnette</h1>
             </div>
         </div>
-        <div class="row d-flex justify-content-center" id="contenu-commune">
-            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
-                <img class="img-fluid" src="{{asset('assets/img/vecteurs/cityhall.png')}}">
-                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou à vélo !</div>
-            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">
-                <img class="img-fluid" src="{{asset('assets/img/vecteurs/signs.png')}}">
-                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle aussi à partir à la rencontre de la Vallée de l’Ubaye Serre-Ponçon.</div>
-            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
-                <img class="img-fluid" src="{{asset('assets/img/vecteurs/backpack.png')}}">
-                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye). C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</div>
-            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">
-                <img class="img-fluid" src="{{asset('assets/img/vecteurs/house.png')}}">
-                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                <p>BLABLA hébergements classés + incitation à classer lien vers la page listing?</p>
-            </div>
-        </div>
-    </section>
-</div>
+    </div>
+    <div class="container bloc-content" id="commune-content">
+        
+    </div>
+</section>
     <!--********************************************************BLOC CONTACT ***************************************************-->
-<div class="container-fluid">
-    <section id="contact">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 text-center mt-5">
-                <h1 class="display-3">Contact</h1>
+<section id="section-contact">
+    <div class="container-fluid bloc-header p-0" id="contact-header">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-3 text-center">Contact</h1>
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2851.280825584107!2d6.6480755157509!3d44.386356712729764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc919affa75b03%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1524755265006"></iframe>
+    </div>
+    <div class="container bloc-content" id="contact-content">
+        <div class="row d-flex flex-column">
+            <div class="col-12 embed-responsive">
+                <h3>Où nous trouver?</h3>
+                <iframe class="embed-responsive-item" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2851.280825584107!2d6.6480755157509!3d44.386356712729764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc919affa75b03%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1524755265006"></iframe>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 {% endblock %}
 
 {% block footer %}
-<footer class="bg-info p-3">
-    <div class="container-fluid">
+<div class="container-fluid p-0">
+    <footer class="bg-info p-3">
             <div class="row">
-                <div class="col-md-7">
-                    <h4>Espace publicitaire</h4>
-                </div>
-                <div class="col-md-3">
-                    <h4>Votre référent Mairie</h4>
-                    <p>
-                        <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                        <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
-                    </p>
-                </div>
-                <div class="col-md-2">
-                    <p class="d-flex flex-column align-items-end">
+                <div class="col-6">
+                    <span class="d-flex flex-column align-items-end m-0">
                         <a class="text-dark" href="">Déclarer son meublé</a><br>
+                    </span>
+                </div>
+                <div class="col-6">
+                    <span class="d-flex flex-column align-items-start m-0">
                         <a class="text-dark" href="">Mentions légales</a><br>
-                    </p>
+                    </span>
                 </div>
             </div>
-    </div>
-</footer>
+    </footer>
+</div>
 {% endblock %}
+
+
+{#    <!--***********************************************************BLOC DEMARCHE *************************************************************************-->#}
+{#<div class="container-fluid">#}
+{#    <section id="demarche">#}
+{#        <div class="row d-flex justify-content-center">#}
+{#            <div class="col-md-12 mt-5 text-center">#}
+{#                <h1 class="display-3">La démarche</h1>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row d-flex justify-content-center">#}
+{#            <div class="col-md-12 col-lg-6 bg-warning m-1">#}
+{#                <h2>Pourquoi déclarer votre meublé de tourisme</h2>#}
+{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>#}
+{#                </div>#}
+{#            <div class="col-md-12 col-lg-5 bg-info m-1">#}
+{#                <h2>La réglementation en vigueur</h2>#}
+{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#</div>#}
+{#    <!--**********************************************BLOC PRESENTATION COMMUNE **********************************************-->#}
+{#<section id="commune">#}
+{#    <div class="container-fluid" id="header-commune">#}
+{#        <div class="row d-flex justify-content-center" id="titre-commune">#}
+{#            <div class="col-md-12 text-center d-flex align-items-end">#}
+{#                <h1 class="display-3 text-light">Barcelonnette</h1>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="container">#}
+{#        <div class="row d-flex justify-content-center" id="contenu-commune">#}
+{#            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">#}
+{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/cityhall.png')}}">#}
+{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
+{#                <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou à vélo !</div>#}
+{#            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">#}
+{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/signs.png')}}">#}
+{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
+{#                <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle aussi à partir à la rencontre de la Vallée de l’Ubaye Serre-Ponçon.</div>#}
+{#            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">#}
+{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/backpack.png')}}">#}
+{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
+{#                <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye). C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</div>#}
+{#            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">#}
+{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/house.png')}}">#}
+{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
+{#                <p>BLABLA hébergements classés + incitation à classer lien vers la page listing?</p>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+{#    <!--********************************************************BLOC CONTACT ***************************************************-->#}
+{#<div class="container-fluid">#}
+{#    <section id="contact">#}
+{#        <div class="row d-flex justify-content-center">#}
+{#            <div class="col-md-12 text-center">#}
+{#                <h1 class="display-3">Contact</h1>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row d-flex justify-content-center">#}
+{#            <div >#}
+{#              <iframe style="z-index:-1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2851.280825584107!2d6.6480755157509!3d44.386356712729764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc919affa75b03%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1524755265006"></iframe>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#</div>#}
+{#{% endblock %}#}
