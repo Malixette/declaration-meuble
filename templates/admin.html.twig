@@ -28,7 +28,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php"></i>Tableau de bord</a>
+                        <a class="nav-link" href="{{ path ('dashboard_declarant') }}"></i>Tableau de bord</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php"></i>Déconnexion</a>
@@ -38,47 +38,61 @@
         </nav>
         {% block header %}{% endblock %}
     </header> 
-    <div class="container-fluid border-top">
+    <div class="container-fluid mx-lg-3">
         <div class="row">
-            <aside class="col-lg-3 text-center border-right">
+            <aside class="col-lg-3 text-center order-2 order-lg-1">
                 <div class="row">
-                    <div class="p-3 w-100 d-flex flex-column">
-                        <h4>Bonjour M. Martin</h4>
-                        <p>Vous avez actuellement 3 meublés déclarés en ligne</p>
-                        <div class="pb-4">
-                            <a href="#" type="button" class="btn btn-secondary">Déclarer un nouveau meublé</a>
+                    <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-3">
+                        <div class="card-header">
+                            <h4>Bonjour M. Martin</h4>
                         </div>
-                        <h4>Vos informations</h4> 
-                        <p>
-                            <i class="fas fa-phone"></i> 06 11 12 54 75<br>
-                            <i class="fas fa-envelope"></i> mail@me.com<br>
-                            <i class="fas fa-address-card"></i> Impasse des Lilas, 13100 Aix
-                        </p class="d-flex flex-column">
-                        <div class="pb-4">
-    					    <a href="#" type="button" class="btn btn-secondary">Modifier mes coordonnées</a>
+                        <div class="card-body">
+                            <p>Vous avez actuellement 3 meublés déclarés en ligne</p>
+                            <div class="pb-4">
+                                <a href="#" type="button" class="btn btn-secondary">Déclarer un meublé</a>
+                            </div>
+                            <h4>Vos informations</h4> 
+                            <p>
+                                <i class="fas fa-phone"></i> 06 11 12 54 75<br>
+                                <i class="fas fa-envelope"></i> mail@me.com<br>
+                                <i class="fas fa-address-card"></i> Impasse des Lilas, 13100 Aix
+                            </p class="d-flex flex-column">
+                            <div class="pb-4">
+        					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
+        					</div>
     					</div>
                     </div>
-                    <div class="p-3 w-100 d-flex flex-column bg-secondary text-light">
-                        <h4>Votre Mairie</h4>
-                        <p>
-                            <i class="fas fa-phone"></i> 04 12 34 56 78<br>
-                            <i class="fas fa-envelope"></i> mairie@me.com<br>
-                            <i class="fas fa-address-card"></i> Place de la Mairie, 13100 Aix
-                        </p>
-                        <h4>Votre Office de Tourisme</h4>
-                        <p>
-                            <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                            <i class="fas fa-envelope"></i> ot@me.com<br>
-                            <i class="fas fa-address-card"></i> Traverse Longue, 13100 Aix
-                        </p>
+                    <div class="w-100 d-flex flex-column">
+                        <div class="encartMairie card text-white bg-secondary mb-3">
+                            <div class="card-header">
+                                <h4>Votre Mairie</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <i class="fas fa-phone"></i> 04 12 34 56 78<br>
+                                    <i class="fas fa-envelope"></i> mairie@me.com<br>
+                                    <i class="fas fa-address-card"></i> Place de la Mairie, 04400 Barcelonnette
+                                </p>   
+                            </div>
+                        </div>
+                        <div class="encartOffice card text-white bg-dark mb-3">
+                            <div class="card-header">
+                                <h4>Votre Office de Tourisme</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
+                                    <i class="fas fa-envelope"></i> ot@me.com<br>
+                                    <i class="fas fa-address-card"></i> Traverse Longue, 04400 Barcelonnette
+                                </p>   
+                            </div>
+                        </div>
                     </div>   
                 </div>
             </aside>
-            <main class="col-lg-9 mt-3">
+            <main class="col-lg-9 mt-3 order-1 order-lg-2">
                 <div class="container-fluid">
-                    <div class="row">
                         {% block body %}{% endblock %}    
-                    </div>
                 </div>
             </main> 
         </div>
@@ -105,8 +119,9 @@
             </div>
         </div>
     </footer>
-
-   
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

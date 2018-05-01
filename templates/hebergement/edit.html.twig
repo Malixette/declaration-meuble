@@ -7,13 +7,23 @@
 {% endblock %}
 
 {% block body %}
+   
+    <div class="row">
+        {{ form_start(form) }}
 
-     <h3 class="title">{{heb_name}}</h3
+        <div class="field">
+            <div class="control">
+                {{ form_widget(form) }}
+            </div>
+        </div>
 
-
-    <!-- {{ include('hebergement/_form.html.twig', {'button_label': 'Mettre à jour'}) }} -->
-
-    <a href="{{ path('hebergement_index') }}">retour à la liste</a>
-
-    {{ include('hebergement/_delete_form.html.twig') }}
+        <div class="d-flex my-3">
+            <button class="btn mr-2">{{ button_label|default('Valider mes informations') }}</button>  
+        {{ form_end(form) }}
+            {{ include('hebergement/_delete_form.html.twig') }}   
+        </div>
+    </div>
+    <div class="row mb-4">
+        <a href="{{ path('hebergement_show', {'id': hebergement.id}) }}">< retourner à la fiche de l'hébergement</a>
+    </div>
 {% endblock %}

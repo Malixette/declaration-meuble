@@ -22,6 +22,10 @@ footer {
     background-color: #C1AEA5;
 }
 
+.encartDeclarant, .encartMairie, .encartOffice {
+    box-shadow: 3px 3px 8px #adadad;
+}
+
 .listeHebergement td, .listeHebergement th {
     border: none; 
 }
@@ -29,4 +33,13 @@ footer {
 .page-item.active .page-link {
     background-color: #C1AEA5;
     border-color: #C1AEA5;
+}
+
+a {
+    color: #C1AEA5;
+}
+
+a:hover {
+    color: #9F877C;
+    text-decoration: none;
 }

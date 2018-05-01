@@ -10,8 +10,9 @@
 {% endblock %}
 
 {% block body %}
+  <div class="row">
     <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
-      <caption>Liste des hébergements déclarés</caption>
+      <h3 class="ml-3 mb-3">Liste de vos hébergements déclarés</h3>
       <thead>
         <tr>
           <th data-orderable="true" scope="col">Nom hébergement</th>
@@ -28,22 +29,22 @@
         {% for hebergement in hebergements %}
           <tr>
             <td class="align-middle">{{ hebergement.hebName }}</td>
-            <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ hebergement.hebPhoto1 }}" alt="La Petite Guiguette"></td>
+            <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}"></td>
             <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
             <td class="align-middle">{{ hebergement.hebClassement }}</td>
             <td class="align-middle">{{ hebergement.hebPeriodesLocation }}</td>
             <td class="align-middle">{{ hebergement.hebStatut }}</td>
-            <td class="align-middle"><i class="fas fa-search"></i></td>
+            <td class="align-middle"><a href="{{ path('hebergement_show', {'id': hebergement.id}) }}"><i class="fas fa-search"></i></a></td>
             <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+  </div>
 
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>

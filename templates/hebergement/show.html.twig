@@ -1,134 +1,55 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Hebergement{% endblock %}
+{% block title %}Détail de l'hebergement{% endblock %}
+
+{% block header %}
+    <h1 class="mt-5 mb-4 p-3 text-center">Détail de l'hébergement</h1>
+{% endblock %}
 
 {% block body %}
-    <h1>Hebergement</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ hebergement.id }}</td>
-            </tr>
-            <tr>
-                <th>Heb_adresse</th>
-                <td>{{ hebergement.heb_adresse }}</td>
-            </tr>
-            <tr>
-                <th>Heb_adresse_complement</th>
-                <td>{{ hebergement.heb_adresse_complement }}</td>
-            </tr>
-            <tr>
-                <th>Heb_batiment</th>
-                <td>{{ hebergement.heb_batiment }}</td>
-            </tr>
-            <tr>
-                <th>Heb_etage</th>
-                <td>{{ hebergement.heb_etage }}</td>
-            </tr>
-            <tr>
-                <th>Heb_code_postal</th>
-                <td>{{ hebergement.heb_code_postal }}</td>
-            </tr>
-            <tr>
-                <th>Heb_commune</th>
-                <td>{{ hebergement.heb_commune }}</td>
-            </tr>
-            <tr>
-                <th>Heb_lat</th>
-                <td>{{ hebergement.heb_lat }}</td>
-            </tr>
-            <tr>
-                <th>Heb_long</th>
-                <td>{{ hebergement.heb_long }}</td>
-            </tr>
-            <tr>
-                <th>Heb_type</th>
-                <td>{{ hebergement.heb_type }}</td>
-            </tr>
-            <tr>
-                <th>Heb_nbr_pieces</th>
-                <td>{{ hebergement.heb_nbr_pieces }}</td>
-            </tr>
-            <tr>
-                <th>Heb_couchages_max</th>
-                <td>{{ hebergement.heb_couchages_max }}</td>
-            </tr>
-            <tr>
-                <th>Heb_classement</th>
-                <td>{{ hebergement.heb_classement }}</td>
-            </tr>
-            <tr>
-                <th>Heb_date_classement</th>
-                <td>{{ hebergement.heb_date_classement ? hebergement.heb_date_classement|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Heb_periodes_location</th>
-                <td>{{ hebergement.heb_periodes_location }}</td>
-            </tr>
-            <tr>
-                <th>Heb_date_declaration</th>
-                <td>{{ hebergement.heb_date_declaration }}</td>
-            </tr>
-            <tr>
-                <th>Heb_cerfa</th>
-                <td>{{ hebergement.heb_cerfa }}</td>
-            </tr>
-            <tr>
-                <th>Heb_descriptif_court</th>
-                <td>{{ hebergement.heb_descriptif_court }}</td>
-            </tr>
-            <tr>
-                <th>Heb_photo_1</th>
-                <td>{{ hebergement.heb_photo_1 }}</td>
-            </tr>
-            <tr>
-                <th>Heb_photo_2</th>
-                <td>{{ hebergement.heb_photo_2 }}</td>
-            </tr>
-            <tr>
-                <th>Heb_photo_3</th>
-                <td>{{ hebergement.heb_photo_3 }}</td>
-            </tr>
-            <tr>
-                <th>Heb_site_web</th>
-                <td>{{ hebergement.heb_site_web }}</td>
-            </tr>
-            <tr>
-                <th>Heb_site_resa</th>
-                <td>{{ hebergement.heb_site_resa }}</td>
-            </tr>
-            <tr>
-                <th>Heb_contact_resa</th>
-                <td>{{ hebergement.heb_contact_resa }}</td>
-            </tr>
-            <tr>
-                <th>Heb_email_resa</th>
-                <td>{{ hebergement.heb_email_resa }}</td>
-            </tr>
-            <tr>
-                <th>Heb_tel_resa</th>
-                <td>{{ hebergement.heb_tel_resa }}</td>
-            </tr>
-            <tr>
-                <th>Heb_date_creation</th>
-                <td>{{ hebergement.heb_date_creation ? hebergement.heb_date_creation|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Heb_statut</th>
-                <td>{{ hebergement.heb_statut }}</td>
-            </tr>
-            <tr>
-                <th>Heb_date_suppression</th>
-                <td>{{ hebergement.heb_date_suppression ? hebergement.heb_date_suppression|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('hebergement_index') }}">back to list</a>
-
-    <a href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">edit</a>
-
-    {{ include('hebergement/_delete_form.html.twig') }}
+    <div class="row ml-2 mb-4">
+        <a href="{{ path('dashboard_declarant') }}">< retour à la liste</a>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-2 d-flex flex-column">
+            <img class="img-fluid my-2"  src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}">  
+            <img class="img-fluid my-2"  src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}">
+            <img class="img-fluid my-2" src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}">
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <h2>{{ hebergement.hebName }}</h2> 
+            <p><strong>Descriptif:</strong> {{ hebergement.hebDescriptifCourt }}</p>
+            <p><strong>Adresse:</strong> {{ hebergement.hebAdresse }} <br>
+            {% if hebergement.hebAdresseComplement != '' %}
+                <strong>Complément d'adresse:</strong> {{ hebergement.hebAdresseComplement }} <br>
+            {% endif %}
+            {% if hebergement.hebType == 'appartement' %}
+                <strong>Bâtiment:</strong> {{ hebergement.hebBatiment }} <strong>Etage:</strong> {{ hebergement.hebEtage }}<br>
+            {% endif %}
+            <strong>Code Postal:</strong> {{ hebergement.hebCodePostal }}<br>
+            <strong>Ville:</strong> {{ hebergement.hebCommune }}</p>
+            <p><strong>Nombre de pièces:</strong> {{ hebergement.hebNbrPieces }}</p>
+            <p><strong>Classement:</strong> {{ hebergement.hebClassement }} <br>
+            <strong>Date de classement:</strong> {{ hebergement.hebDateClassement | date('d-m-Y') }}</p>
+            <p><strong>Saison d'ouverture:</strong> {{ hebergement.hebPeriodesLocation }}</p>
+            <p><strong>Nombre de couchages maximum:</strong> {{ hebergement.hebCouchagesMax }}</p>
+            {% if hebergement.hebSiteWeb != '' %}
+                <p><strong>Site web:</strong> <a href="{{ hebergement.hebSiteWeb }}">{{ hebergement.hebName }}</a></p>
+            {% endif %}
+            {% if hebergement.hebSiteResa != '' %}
+                <p><strong>Site de réservation:</strong> <a href="{{ hebergement.hebSiteResa }}">Réservation {{ hebergement.hebName }}</a></p>
+            {% endif %}
+            <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
+            <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
+            <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
+            <div class="d-flex">
+                <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a> {{ include('hebergement/_delete_form.html.twig') }}    
+            </div>
+            
+        </div>
+        <div class="col-lg-4 d-flex my-3">
+            <iframe style="max-height:350px; width:100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2016.307578456493!2d6.653097699606109!3d44.38207201241344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc918e367ff1eb%3A0x87808d0f17f225c8!2s36+Chemin+des+Alpages%2C+04400+Barcelonnette!5e0!3m2!1sfr!2sfr!4v1525080876666" frameborder="0" allowfullscreen></iframe>    
+        </div>
+    </div>
+   
 {% endblock %}

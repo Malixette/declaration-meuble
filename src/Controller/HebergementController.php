@@ -59,7 +59,7 @@ class HebergementController extends Controller
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
-        $form = $this->createForm(HebergementType::class, $hebergement);
+        $form = $this->createForm(HebergementType::class, $hebergement,array('is_edit' => true));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
