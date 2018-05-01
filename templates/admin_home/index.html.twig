@@ -35,7 +35,7 @@
             <td class="align-middle">{{ hebergement.hebPeriodesLocation }}</td>
             <td class="align-middle">{{ hebergement.hebStatut }}</td>
             <td class="align-middle"><a href="{{ path('hebergement_show', {'id': hebergement.id}) }}"><i class="fas fa-search"></i></a></td>
-            <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
+            <td class="align-middle"><a href="{{ path('hebergement_delete', {'id': hebergement.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
           </tr>
         {% endfor %}
       </tbody>

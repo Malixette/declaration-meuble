@@ -37,7 +37,16 @@
                 <p><strong>Site web:</strong> <a href="{{ hebergement.hebSiteWeb }}">{{ hebergement.hebName }}</a></p>
             {% endif %}
             {% if hebergement.hebSiteResa != '' %}
-                <p><strong>Site de réservation:</strong> <a href="{{ hebergement.hebSiteResa }}">Réservation {{ hebergement.hebName }}</a></p>
+                <p><strong>Site web de réservation:</strong> <a href="{{ hebergement.hebSiteResa }}">Réservation {{ hebergement.hebName }}</a><br>
+            {% endif %}
+            {% if hebergement.hebContactResa != '' %}
+                <strong>Contact de réservation:</strong> {{ hebergement.hebContactResa }}<br>
+            {% endif %}
+            {% if hebergement.hebEmailResa != '' %}
+                <strong>Email de réservation:</strong> {{ hebergement.hebEmailResa }}<br>
+            {% endif %}
+            {% if hebergement.hebTelResa != '' %}
+                <strong>Téléphone de réservation:</strong> {{ hebergement.hebTelResa }}</p>
             {% endif %}
             <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
             <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
