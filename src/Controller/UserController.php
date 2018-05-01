@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\LoginType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/")
@@ -25,18 +28,25 @@ class UserController extends Controller
 
     /**
      * @Route("/inscription", name="new_user")
+     * @Route("/admin/propietaire/edit", name="edit_user")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ObjectManager $manager, $id = null): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
+        if($form->isSubmitted() && $form->isValid())
+        {
+                $user->setUserTelephone(0);
+                $user->setMairieId(0);
+                $user->setUserRole('propriétaire');
+                $user->setUserPays('france');
+                $user->setUserDateInscription(new \DateTime());
+            
+            $manager->persist($user);
+            $manager->flush();
+            
             return $this->redirectToRoute('connexion');
         }
 
@@ -48,11 +58,42 @@ class UserController extends Controller
     /**
      * @Route("/connexion", name="connexion")
      */
-    public function connexion(Request $request): Response
+    public function login(Request $request, UserRepository $repo, SessionInterface $session): Response
     {
-        $form = $this->createForm(UserType::class);
+        $form = $this->createForm(LoginType::class);
         
         $form->handleRequest($request);
+        
+         if($form->isSubmitted() && $form->isValid())
+        {
+            $data = $form->getData();
+            dump($data);
+            
+            $email = $data['email'];
+            $password = $data['password'];
+            
+            $user = $repo->findOneByEmail($email);
+            
+            if($user)
+            {
+                    $session->set('connected', true);
+                    $session->set('user', $user);
+                    
+                    $this->addFlash(
+                        'success', "bravo, vous êtes bien connecté"
+                        );
+                    
+                    return $this->redirectToRoute('dashboard_declarant');
+            }
+            else
+            {
+              $this->addFlash(
+                        'danger', 
+                        'Nous n\'avons pas trouvé de compte utilisateur avec cet email.'
+                    );
+            }
+            
+        }
         
         return $this->render('user/connexion.html.twig', [
             'form' => $form->createView()

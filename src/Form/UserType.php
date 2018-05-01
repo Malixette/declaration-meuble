@@ -11,11 +11,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class UserType extends AbstractType
@@ -118,12 +118,6 @@ class UserType extends AbstractType
             ])
             ->add('valider', SubmitType::class, [
                 'label' => 'S\'inscrire',
-                'attr' => [
-                    'class' => 'btn btn-lg btn-success'    
-                ]
-            ])
-            ->add('connecter', SubmitType::class, [
-                'label' => 'Se connecter',
                 'attr' => [
                     'class' => 'btn btn-lg btn-success'    
                 ]
