@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 class HebergementType extends AbstractType
@@ -162,9 +163,13 @@ class HebergementType extends AbstractType
                     'rows' => '3'
                 ]
             ])
-            ->add('heb_photo_1')
+            ->add('heb_photo_1', FileType::class, array(
+                'data_class' => null,
+                'label' => 'Photo mise en avant',   
+            ))
             ->add('heb_photo_2')
             ->add('heb_photo_3')
+
             
             ->add('heb_site_web', TextType::class, [
                 'required'  => false,

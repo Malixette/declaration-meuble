@@ -105,6 +105,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $heb_photo_1;
 
@@ -117,7 +118,7 @@ class Hebergement
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $heb_photo_3;
-
+    
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -392,12 +393,12 @@ class Hebergement
         return $this;
     }
 
-    public function getHebPhoto1(): ?string
+    public function getHebPhoto1()
     {
         return $this->heb_photo_1;
     }
 
-    public function setHebPhoto1(?string $heb_photo_1): self
+    public function setHebPhoto1($heb_photo_1): self
     {
         $this->heb_photo_1 = $heb_photo_1;
 
