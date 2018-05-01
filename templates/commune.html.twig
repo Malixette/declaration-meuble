@@ -46,8 +46,8 @@
 {% endblock %}
 {% block header %}
 <header>
-    <div class="container-fluid position-relative h-100">
-        <div class="row d-flex flex-column position-absolute" style="top : 350px; left:450px;" id="homeblock">
+    <div class="container-fluid h-100">
+        <div class="row d-flex flex-column h-100" id="homeblock">
             <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
                 <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
                 <h4 class="display-6" >Un seul espace pour déclarer tous vos meublés en France !</h4>
@@ -153,4 +153,21 @@
             </div>
     </footer>
 </div>
+
+{#{% block header %}#}
+{#<header>#}
+{#    <div class="container-fluid">#}
+{#        <div class="row d-flex flex-column position-absolute" style="top : 35%; left:25%;" id="homeblock">#}
+{#            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">#}
+{#                <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>#}
+{#                <h4 class="display-6" >Un seul espace pour déclarer tous vos meublés en France !</h4>#}
+{#                <button type="button" class="outline btn btn-lg pl-5 pr-5 pt-2 pb-2" >#}
+{#                    <p class="display-3 text-white"><a style="font-family: 'Open Sans', sans-serif; text-decoration:none;" href="{{path('connexion')}}" class="text-white">Je déclare</a></p>#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</header>#}
+{#{% endblock %}#}
+
 {% endblock %}
