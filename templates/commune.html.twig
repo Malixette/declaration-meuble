@@ -7,7 +7,7 @@
 
 {% block nav %}
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="{{path('commune_home')}}">Logo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,10 +28,10 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('inscription_declarant')}}">Inscription</a>
+                    <a class="nav-link" href="{{path('new_user')}}">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Connexion</a>
+                    <a class="nav-link" href="{{path('connexion')}}">Conexion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Déconnexion</a>
@@ -46,8 +46,8 @@
 {% endblock %}
 {% block header %}
 <header>
-    <div class="container-fluid">
-        <div class="row d-flex flex-column" id="homeblock">
+    <div class="container-fluid position-relative h-100">
+        <div class="row d-flex flex-column position-absolute" style="top : 400px; left:450px;" id="homeblock">
             <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
                 <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
                 <h4 class="display-6">Un seul espace pour déclarer tous vos meublés en France !</h4>
@@ -66,7 +66,7 @@
     <div class="container-fluid bloc-header p-0" id="demarche-header">
         <div class="row">
             <div class="col-12">
-                <h1 class="display-3 text-center">La démarche</h1>
+                <h1 class="display-3 text-center mt-5">La démarche</h1>
             </div>
         </div>
     </div>
@@ -86,12 +86,30 @@
     <div class="container-fluid bloc-header p-0" id="commune-header">
         <div class="row">
             <div class="col-12">
-                <h1 class="display-3 text-center">Barcelonnette</h1>
+                <h1 class="display-3 text-center text-white mt-5">Barcelonnette</h1>
             </div>
         </div>
     </div>
     <div class="container bloc-content" id="commune-content">
-        
+        <div class="row d-flex justify-content-center" id="contenu-commune">
+            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
+                <img class="img-fluid" src="{{asset('assets/img/vecteurs/cityhall.png')}}">
+                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
+                <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou à vélo !</div>
+            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">
+                <img class="img-fluid" src="{{asset('assets/img/vecteurs/signs.png')}}">
+                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
+                <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle aussi à partir à la rencontre de la Vallée de l’Ubaye Serre-Ponçon.</div>
+            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
+                <img class="img-fluid" src="{{asset('assets/img/vecteurs/backpack.png')}}">
+                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
+                <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye). C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</div>
+            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">
+                <img class="img-fluid" src="{{asset('assets/img/vecteurs/house.png')}}">
+                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
+                <p>BLABLA hébergements classés + incitation à classer lien vers la page listing?</p>
+            </div>
+        </div>
     </div>
 </section>
     <!--********************************************************BLOC CONTACT ***************************************************-->
@@ -99,7 +117,7 @@
     <div class="container-fluid bloc-header p-0" id="contact-header">
         <div class="row">
             <div class="col-12">
-                <h1 class="display-3 text-center">Contact</h1>
+                <h1 class="display-3 text-center mt-5">Contact</h1>
             </div>
         </div>
     </div>
@@ -165,25 +183,7 @@
 {#        </div>#}
 {#    </div>#}
 {#    <div class="container">#}
-{#        <div class="row d-flex justify-content-center" id="contenu-commune">#}
-{#            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">#}
-{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/cityhall.png')}}">#}
-{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
-{#                <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou à vélo !</div>#}
-{#            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">#}
-{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/signs.png')}}">#}
-{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
-{#                <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle aussi à partir à la rencontre de la Vallée de l’Ubaye Serre-Ponçon.</div>#}
-{#            <div class="col-md-12 col-lg-3 bg-light text-center pt-4">#}
-{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/backpack.png')}}">#}
-{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
-{#                <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye). C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</div>#}
-{#            <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">#}
-{#                <img class="img-fluid" src="{{asset('assets/img/vecteurs/house.png')}}">#}
-{#                <h2 class="display-4">Lorem ipsum dolor sit amet</h2>#}
-{#                <p>BLABLA hébergements classés + incitation à classer lien vers la page listing?</p>#}
-{#            </div>#}
-{#        </div>#}
+        
 {#    </div>#}
 {#</section>#}
 {#    <!--********************************************************BLOC CONTACT ***************************************************-->#}

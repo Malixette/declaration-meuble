@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/inscription", name="inscription_declarant")
+     * @Route("/inscription", name="new_user")
      */
     public function new(Request $request): Response
     {
@@ -40,8 +40,7 @@ class UserController extends Controller
             return $this->redirectToRoute('connexion');
         }
 
-        return $this->render('user/new-declarant.html.twig', [
-            'user' => $user,
+        return $this->render('user/new-user.html.twig', [
             'form' => $form->createView(),
         ]);
     }
