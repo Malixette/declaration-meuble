@@ -43,39 +43,14 @@ section {
     height:100%;
 }
 
-.bloc-header {
-    height : 30%;
-}
+/*.bloc-header {*/
+/*    height : 30%;*/
+/*}*/
 
 #commune-header {
     background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center fixed;
 }
 
-/*.container-fluid{*/
-/*    height: 100%;*/
-/*}*/
-
-/*#homeblock {*/
-/*    top: 400px;*/
-/*}*/
-
-#section-demarche, #section-commune, #section-contact{
-    height: 934px;
-}
-
-/*#header-commune{*/
-/*    height : 30%;*/
-/*}*/
-/*#titre-commune {*/
-/*    height: 40%;*/
-/*    background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center;*/
-/*    background-size: 100%; */
-/*}*/
-
-/*#contenu-commune {*/
-/*    height: 60%;*/
-/*}*/
-
-/*a{*/
-/*    text-decoration:none;*/
+/*#section-demarche, #section-commune, #section-contact{*/
+/*    height: 934px;*/
 /*}*/

@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{{path('new_user')}}">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('connexion')}}">Conexion</a>
+                    <a class="nav-link" href="{{path('connexion')}}">Connexion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Déconnexion</a>
@@ -44,15 +44,17 @@
     </nav>
 <!-- *******************************************************************FIN NAV********************************************************************* -->
 {% endblock %}
+
 {% block header %}
-<header>
-    <div class="container-fluid h-100">
-        <div class="row d-flex flex-column h-100" id="homeblock">
-            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">
+
+<header style="height: 100%">
+    <div class="container-fluid" style="height: 934px">
+        <div class="row d-flex flex-column"  id="homeblock">
+            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" style="margin-top: 20%;" id="btn-declaration">
                 <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
                 <h4 class="display-6" >Un seul espace pour déclarer tous vos meublés en France !</h4>
                 <button type="button" class="outline btn btn-lg pl-5 pr-5 pt-2 pb-2" >
-                    <p class="display-3 text-white"><a style="font-family: 'Open Sans', sans-serif; text-decoration:none;" href="{{path('connexion')}}" class="text-white">Je déclare</a></p>
+                    <p class="display-3 text-white"><a style="font-family: 'Open Sans', sans-serif; text-decoration:none;" href="{{path('dashboard_declarant')}}" class="text-white">Je déclare</a></p>
                 </button>
             </div>
         </div>
@@ -63,17 +65,17 @@
 {% block main %}
     <!--***********************************************************BLOC DEMARCHE *************************************************************************-->
 
-<div class="container-fluid" style="height: 100%">
+<div class="container-fluid p-0" style="height: 100%">
     <section id="section-demarche" style="max-height: 100%">
         <div class="container-fluid bloc-header p-0" id="demarche-header">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <h1 class="display-3 text-center mt-5">La démarche</h1>
                 </div>
             </div>
         </div>
         <div class="container bloc-content" id="demarche-content">
-            <div class="col-md-12 col-lg-6 bg-warning m-1">
+            <div class="col-md-12 col-lg-6 bg-warning m-1 p-0">
                 <h2>Pourquoi déclarer votre meublé de tourisme</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>
             </div>
@@ -84,10 +86,10 @@
         </div>
     </section>
     <!--**********************************************BLOC PRESENTATION COMMUNE **********************************************-->
-    <section id="section-commune" style="height: 100%">
+    <section class="p-0" id="section-commune" style="height: 100%">
         <div class="container-fluid bloc-header p-0" id="commune-header">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <h1 class="display-3 text-center text-white mt-5">Barcelonnette</h1>
                 </div>
             </div>
@@ -118,7 +120,7 @@
     <section id="section-contact" style="max-height: 100%">
         <div class="container-fluid bloc-header mt-3 p-0" id="contact-header">
             <div class="row">
-                <div class="col-12">
+                <div class="p-0 col-12">
                     <h1 class="display-3 text-center mt-5">Contact</h1>
                 </div>
             </div>
@@ -138,36 +140,18 @@
 
 {% block footer %}
 <div class="container-fluid p-0">
-    <footer class="bg-info p-3">
-            <div class="row">
-                <div class="col-6">
-                    <span class="d-flex flex-column align-items-end m-0">
-                        <a class="text-dark" href="">Déclarer son meublé</a><br>
-                    </span>
-                </div>
-                <div class="col-6">
-                    <span class="d-flex flex-column align-items-start m-0">
-                        <a class="text-dark" href="">Mentions légales</a><br>
-                    </span>
-                </div>
-            </div>
-    </footer>
+    <div class="row ">
+        <div class="col-12">
+            <footer class="bg-info p-3">
+                        <span class="d-flex flex-column align-items-center m-0">
+                            <a class="text-dark" href="">Déclarer son meublé</a>
+                            <a class="text-dark" href="">Mentions légales</a>
+                        </span>
+            </footer>
+        </div>
+    </div>
 </div>
 
-{#{% block header %}#}
-{#<header>#}
-{#    <div class="container-fluid">#}
-{#        <div class="row d-flex flex-column position-absolute" style="top : 35%; left:25%;" id="homeblock">#}
-{#            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" id="btn-declaration">#}
-{#                <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>#}
-{#                <h4 class="display-6" >Un seul espace pour déclarer tous vos meublés en France !</h4>#}
-{#                <button type="button" class="outline btn btn-lg pl-5 pr-5 pt-2 pb-2" >#}
-{#                    <p class="display-3 text-white"><a style="font-family: 'Open Sans', sans-serif; text-decoration:none;" href="{{path('connexion')}}" class="text-white">Je déclare</a></p>#}
-{#                </button>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</header>#}
-{#{% endblock %}#}
+
 
 {% endblock %}
