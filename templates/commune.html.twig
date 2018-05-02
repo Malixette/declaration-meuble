@@ -3,6 +3,21 @@
 {% block title %}Barcelonnette - Déclarer son meublé{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
+    <style>
+        body {
+              display: flex;
+              flex-direction: column;
+              min-height: 100vh;
+            }
+        footer {
+          display: flex!important;
+          justify-content: center;
+          align-items: center;
+          height :5vh;
+          padding-bottom: .5rem;
+          margin-top: 1rem;
+        }
+    </style>
 {% endblock %}
 
 {% block nav %}
@@ -63,7 +78,7 @@
 {% endblock %}
 
 {% block main %}
-    <!--***********************************************************BLOC DEMARCHE *************************************************************************-->
+<!--***********************************************************BLOC DEMARCHE *************************************************************************-->
 
 <div class="container-fluid p-0" style="height: 100%">
     <section id="section-demarche" style="max-height: 100%">
@@ -142,11 +157,9 @@
 <div class="container-fluid p-0">
     <div class="row ">
         <div class="col-12">
-            <footer class="bg-info p-3">
-                        <span class="d-flex flex-column align-items-center m-0">
-                            <a class="text-dark" href="">Déclarer son meublé</a>
-                            <a class="text-dark" href="">Mentions légales</a>
-                        </span>
+            <footer class="bg-info p-3 text-center mb-0">
+                <a class="text-dark mr-5" href="">Déclarer son meublé</a>
+                <a class="text-dark ml-5" href="">Mentions légales</a>
             </footer>
         </div>
     </div>

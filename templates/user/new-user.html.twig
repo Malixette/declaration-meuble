@@ -3,7 +3,38 @@
 {% block title %}Inscription{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/inscription.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/inscription.css')}}">
+    <style>
+        html {
+            height : 100%;
+        }
+        body{
+            height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+        }
+        
+        .navbar {
+            background:rgba(255,255,255, 1);
+        }
+        
+        footer {
+          display: flex!important;
+          justify-content: center;
+          align-items: center;
+          height :5vh;
+          padding-bottom: .5rem;
+          margin-top: 1rem;
+        }
+}
+    </style>
 {% endblock %}
 
 {% block header %}
@@ -13,53 +44,76 @@
 
 <h1 class="mt-5 mb-4 text-center display-3 text-dark" id="titreinscription">Inscription</h1>
 
-<div class="container">
-    <h2>Vous êtes :</h2>
-    <form>
-        <div class="form-group">
-            {{ form_start(form) }}
-            {{ form_widget(form.user_role)}}
-        </div>
-    </form>
-</div>
-<div class="container-fluid h-100">
-    <div class="row justify-content-center align-items-center h-100">
-        <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+<div class="container" style="width : 40%">
+    {#<div class="row justify-content-center align-items-center h-100">#}
+        {#<div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">#}
             <form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
                 <p class="text-center">Vous êtes propriétaire. Inscrivez-vous avec ce formulaire pour gérer la déclaration de vos meublés partout en France.</p>
-                <div class="form-group">
-                    {{ form_widget(form.user_nom)}}
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form_label(form.user_nom)}}
+                            {{ form_widget(form.user_nom)}}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form_label(form.user_prenom)}}
+                            {{ form_widget(form.user_prenom)}}
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_label(form.user_email)}} 
+                        {{ form_widget(form.user_email)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form_row(form.password.first)}}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            {{ form_row(form.password.second)}}
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    {{ form_widget(form.user_prenom)}}
-                </div>
-                <div class="form-group">
-                    {{ form_widget(form.user_email)}}
-                </div>
-                <div class="form-group">
-                    {{ form_widget(form.password)}}
-                </div>
-                <div class="form-group">
+                    {{ form_label(form.user_adresse)}}
                     {{ form_widget(form.user_adresse)}}
                 </div>
                 <div class="form-group">
+                    {{ form_label(form.user_complement_adresse)}}
                     {{ form_widget(form.user_complement_adresse)}}
                 </div>
-                <div class="form-group">
-                    {{ form_widget(form.user_postal_code)}}
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            {{ form_label(form.user_postal_code)}}
+                            {{ form_widget(form.user_postal_code)}}
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            {{ form_label(form.user_commune)}}
+                            {{ form_widget(form.user_commune)}}
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            {{ form_label(form.user_pays)}}
+                            {{ form_widget(form.user_pays)}}
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    {{ form_widget(form.user_commune)}}
-                </div>
-                {#<div class="form-group">#}
-                {#    <p class="mb-1">Pays de résidence :</p>#}
-                {#    {{ form_widget(form.user_pays)}}#}
-                {#</div>#}
                 <div class="form-group text-center">
                     {{ form_widget(form.valider)}}
                 </div>
             </form>
-        </div>
-    </div>
+        {#</div>#}
+    {#</div>#}
 </div>
 {% endblock %}

@@ -38,11 +38,10 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-                $user->setUserTelephone(0);
-                $user->setMairieId(0);
-                $user->setUserRole('propriétaire');
-                $user->setUserPays('france');
-                $user->setUserDateInscription(new \DateTime());
+            $user->setUserTelephone(0);
+            $user->setMairieId(0);
+            $user->setUserDateInscription(new \DateTime());
+            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
             
             $manager->persist($user);
             $manager->flush();

@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+
 
 
 class UserType extends AbstractType
@@ -25,40 +27,45 @@ class UserType extends AbstractType
         $builder
             ->add('user_nom', TextType::class,  [
                 'required' => true,
+                'label' => 'Nom :',
                 'attr' => [
-                    'placeholder' => "Votre nom",
+                    'placeholder' => "Dupont",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])
             ->add('user_prenom', TextType::class, [
                 'required' => true,
+                'label' => 'Prénom :',
                 'attr' => [
-                    'placeholder' => "Votre prénom",
+                    'placeholder' => "Géraldine",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])
             ->add('user_adresse', TextType::class, [
                 'required' => false,
+                'label' => 'Adresse :',
                 'attr' => [
-                    'placeholder' => "Votre adresse",
+                    'placeholder' => "317 rue des pieds paquets",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])
             ->add('user_complement_adresse', TextareaType::class, [
                 'required' => false,
+                'label' => 'Complément d\'adresse :',
                 'attr' => [
-                    'placeholder' => "Complément d'adresse",
+                    'placeholder' => "Bât B, étage 2",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "textarea"
                 ]
             ])
             ->add('user_postal_code', TextType::class, [
                 'required' => false,
+                'label' => 'Code postal :',
                 'attr' => [
-                    'placeholder' => "Code postal",
+                    'placeholder' => "04400",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
@@ -66,14 +73,19 @@ class UserType extends AbstractType
             ->add('user_commune', TextType::class,
             [
                 'required' => false,
+                'label' => 'Commune de résidence :',
                 'attr' => [
-                    'placeholder' => "Ville de résidence",
+                    'placeholder' => "Barcelonnette",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])
             ->add('user_pays', CountryType::class,
                 [
+                'label' => 'Pays de résidence :',
+                'preferred_choices' => [
+                    'FR', 'CA', 'BE', 'LU', 'CH'
+                ],
                 'required' => false,
                 'attr' => [
                     'class' => "form-control form-control-lg mb-3",
@@ -82,6 +94,7 @@ class UserType extends AbstractType
             ])
             ->add('user_telephone', IntegerType::class, [
                 'required' => false,
+                'label' => 'N° de téléphone :',
                 'attr' => [
                     'placeholder' => "061122334455",
                     'class' => "form-control form-control-lg mb-3",
@@ -90,6 +103,7 @@ class UserType extends AbstractType
             ])
             ->add('user_email', EmailType::class, [
                 'required' => true,
+                'label' => 'Email :',
                 'attr' => [
                     'placeholder' => "votre@email.com",
                     'class' => "form-control form-control-lg mb-3",
@@ -97,23 +111,35 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_date_inscription', DateTimeType::class)
-            ->add('user_role', EntityType::class, [
-                'required' => true,
-                'class' => User::class,
-                'choice_label'=>'user_role',
+            
+            ->add('user_role', ChoiceType::class, [
+                'choices' => [
+                    'Propiétaire' => 'proprietaire',
+                    'Office de tourisme' => 'ot',
+                    'Mairie' => 'mairie'
+                    ],
                 'attr' => [
                     'class' => "form-control form-control mb-3",
                     'type' => "select"
                 ]
             ])
             ->add('mairie', TextType::class)
-            ->add('password', PasswordType::class,[
+            
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe entrés sont différents',
                 'required' => true,
-                'attr' => [
-                    'placeholder' => "Mot de passe",
-                    'class' => "form-control form-control mb-3",
-                    'type' => "password"
-                    
+                'first_options'  => [
+                    'label' => 'Mot de passe :',
+                    'attr' => [
+                        'class'=> 'form-control form-control mb-3'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Vérifiez le mot de passe :',
+                    'attr' => [
+                        'class'=> 'form-control form-control mb-3'
+                    ]
                 ]
             ])
             ->add('valider', SubmitType::class, [
@@ -132,13 +158,3 @@ class UserType extends AbstractType
         ]);
     }
 }
-
-
-// ->add('user_pays', CountryType::class, array(
-//                 'preferred_choices' => 'france'),
-//                 [
-//                 'required' => false,
-//                 'attr' => [
-//                     'class' => "form-control"
-//                     ]   
-//             ])
