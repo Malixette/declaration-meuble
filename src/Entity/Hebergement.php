@@ -184,6 +184,16 @@ class Hebergement
      */
     private $heb_name;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $heb_num_declaration;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $heb_num_voie;
+
     public function getId()
     {
         return $this->id;
@@ -581,6 +591,30 @@ class Hebergement
     public function setHebName(string $heb_name): self
     {
         $this->heb_name = $heb_name;
+
+        return $this;
+    }
+
+    public function getHebNumDeclaration(): ?string
+    {
+        return $this->heb_num_declaration;
+    }
+
+    public function setHebNumDeclaration(string $heb_num_declaration): self
+    {
+        $this->heb_num_declaration = $heb_num_declaration;
+
+        return $this;
+    }
+
+    public function getHebNumVoie(): ?int
+    {
+        return $this->heb_num_voie;
+    }
+
+    public function setHebNumVoie(?int $heb_num_voie): self
+    {
+        $this->heb_num_voie = $heb_num_voie;
 
         return $this;
     }
