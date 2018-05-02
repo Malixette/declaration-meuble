@@ -105,7 +105,11 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes={ "image/jpeg" })
+     * @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $heb_photo_1;
 
