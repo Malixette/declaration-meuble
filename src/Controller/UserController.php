@@ -27,10 +27,9 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/inscription", name="new_user")
-     * @Route("/admin/propietaire/edit", name="edit_user")
+     * @Route("/inscription", name="new_user", methods="GET|POST")
      */
-    public function new(Request $request, ObjectManager $manager, $id = null): Response
+    public function new(Request $request): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -43,13 +42,15 @@ class UserController extends Controller
             $user->setUserDateInscription(new \DateTime());
             $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
             
-            $manager->persist($user);
-            $manager->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
             
-            return $this->redirectToRoute('connexion');
+            return $this->redirectToRoute('commune_home');
         }
 
         return $this->render('user/new-user.html.twig', [
+            'user' => $user,
             'form' => $form->createView(),
         ]);
     }
