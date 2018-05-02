@@ -1,89 +1,89 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block title %}Hebergement index{% endblock %}
+{#{% block title %}Hebergement index{% endblock %}#}
 
-{% block main %}
-    <h1>Hebergement index</h1>
+{#{% block main %}#}
+{#    <h1>Hebergement index</h1>#}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Heb_adresse</th>
-                <th>Heb_adresse_complement</th>
-                <th>Heb_batiment</th>
-                <th>Heb_etage</th>
-                <th>Heb_code_postal</th>
-                <th>Heb_commune</th>
-                <th>Heb_lat</th>
-                <th>Heb_long</th>
-                <th>Heb_type</th>
-                <th>Heb_nbr_pieces</th>
-                <th>Heb_couchages_max</th>
-                <th>Heb_classement</th>
-                <th>Heb_date_classement</th>
-                <th>Heb_periodes_location</th>
-                <th>Heb_date_declaration</th>
-                <th>Heb_cerfa</th>
-                <th>Heb_descriptif_court</th>
-                <th>Heb_photo_1</th>
-                <th>Heb_photo_2</th>
-                <th>Heb_photo_3</th>
-                <th>Heb_site_web</th>
-                <th>Heb_site_resa</th>
-                <th>Heb_contact_resa</th>
-                <th>Heb_email_resa</th>
-                <th>Heb_tel_resa</th>
-                <th>Heb_date_creation</th>
-                <th>Heb_statut</th>
-                <th>Heb_date_suppression</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for hebergement in hebergements %}
-            <tr>
-                <td>{{ hebergement.id }}</td>
-                <td>{{ hebergement.heb_adresse }}</td>
-                <td>{{ hebergement.heb_adresse_complement }}</td>
-                <td>{{ hebergement.heb_batiment }}</td>
-                <td>{{ hebergement.heb_etage }}</td>
-                <td>{{ hebergement.heb_code_postal }}</td>
-                <td>{{ hebergement.heb_commune }}</td>
-                <td>{{ hebergement.heb_lat }}</td>
-                <td>{{ hebergement.heb_long }}</td>
-                <td>{{ hebergement.heb_type }}</td>
-                <td>{{ hebergement.heb_nbr_pieces }}</td>
-                <td>{{ hebergement.heb_couchages_max }}</td>
-                <td>{{ hebergement.heb_classement }}</td>
-                <td>{{ hebergement.heb_date_classement ? hebergement.heb_date_classement|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ hebergement.heb_periodes_location }}</td>
-                <td>{{ hebergement.heb_date_declaration }}</td>
-                <td>{{ hebergement.heb_cerfa }}</td>
-                <td>{{ hebergement.heb_descriptif_court }}</td>
-                <td>{{ hebergement.heb_photo_1 }}</td>
-                <td>{{ hebergement.heb_photo_2 }}</td>
-                <td>{{ hebergement.heb_photo_3 }}</td>
-                <td>{{ hebergement.heb_site_web }}</td>
-                <td>{{ hebergement.heb_site_resa }}</td>
-                <td>{{ hebergement.heb_contact_resa }}</td>
-                <td>{{ hebergement.heb_email_resa }}</td>
-                <td>{{ hebergement.heb_tel_resa }}</td>
-                <td>{{ hebergement.heb_date_creation ? hebergement.heb_date_creation|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ hebergement.heb_statut }}</td>
-                <td>{{ hebergement.heb_date_suppression ? hebergement.heb_date_suppression|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('hebergement_show', {'id': hebergement.id}) }}">show</a>
-                    <a href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="30">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{#    <table class="table">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <th>Heb_adresse</th>#}
+{#                <th>Heb_adresse_complement</th>#}
+{#                <th>Heb_batiment</th>#}
+{#                <th>Heb_etage</th>#}
+{#                <th>Heb_code_postal</th>#}
+{#                <th>Heb_commune</th>#}
+{#                <th>Heb_lat</th>#}
+{#                <th>Heb_long</th>#}
+{#                <th>Heb_type</th>#}
+{#                <th>Heb_nbr_pieces</th>#}
+{#                <th>Heb_couchages_max</th>#}
+{#                <th>Heb_classement</th>#}
+{#                <th>Heb_date_classement</th>#}
+{#                <th>Heb_periodes_location</th>#}
+{#                <th>Heb_date_declaration</th>#}
+{#                <th>Heb_cerfa</th>#}
+{#                <th>Heb_descriptif_court</th>#}
+{#                <th>Heb_photo_1</th>#}
+{#                <th>Heb_photo_2</th>#}
+{#                <th>Heb_photo_3</th>#}
+{#                <th>Heb_site_web</th>#}
+{#                <th>Heb_site_resa</th>#}
+{#                <th>Heb_contact_resa</th>#}
+{#                <th>Heb_email_resa</th>#}
+{#                <th>Heb_tel_resa</th>#}
+{#                <th>Heb_date_creation</th>#}
+{#                <th>Heb_statut</th>#}
+{#                <th>Heb_date_suppression</th>#}
+{#                <th>actions</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for hebergement in hebergements %}#}
+{#            <tr>#}
+{#                <td>{{ hebergement.id }}</td>#}
+{#                <td>{{ hebergement.heb_adresse }}</td>#}
+{#                <td>{{ hebergement.heb_adresse_complement }}</td>#}
+{#                <td>{{ hebergement.heb_batiment }}</td>#}
+{#                <td>{{ hebergement.heb_etage }}</td>#}
+{#                <td>{{ hebergement.heb_code_postal }}</td>#}
+{#                <td>{{ hebergement.heb_commune }}</td>#}
+{#                <td>{{ hebergement.heb_lat }}</td>#}
+{#                <td>{{ hebergement.heb_long }}</td>#}
+{#                <td>{{ hebergement.heb_type }}</td>#}
+{#                <td>{{ hebergement.heb_nbr_pieces }}</td>#}
+{#                <td>{{ hebergement.heb_couchages_max }}</td>#}
+{#                <td>{{ hebergement.heb_classement }}</td>#}
+{#                <td>{{ hebergement.heb_date_classement ? hebergement.heb_date_classement|date('Y-m-d H:i:s') : '' }}</td>#}
+{#                <td>{{ hebergement.heb_periodes_location }}</td>#}
+{#                <td>{{ hebergement.heb_date_declaration }}</td>#}
+{#                <td>{{ hebergement.heb_cerfa }}</td>#}
+{#                <td>{{ hebergement.heb_descriptif_court }}</td>#}
+{#                <td>{{ hebergement.heb_photo_1 }}</td>#}
+{#                <td>{{ hebergement.heb_photo_2 }}</td>#}
+{#                <td>{{ hebergement.heb_photo_3 }}</td>#}
+{#                <td>{{ hebergement.heb_site_web }}</td>#}
+{#                <td>{{ hebergement.heb_site_resa }}</td>#}
+{#                <td>{{ hebergement.heb_contact_resa }}</td>#}
+{#                <td>{{ hebergement.heb_email_resa }}</td>#}
+{#                <td>{{ hebergement.heb_tel_resa }}</td>#}
+{#                <td>{{ hebergement.heb_date_creation ? hebergement.heb_date_creation|date('Y-m-d H:i:s') : '' }}</td>#}
+{#                <td>{{ hebergement.heb_statut }}</td>#}
+{#                <td>{{ hebergement.heb_date_suppression ? hebergement.heb_date_suppression|date('Y-m-d H:i:s') : '' }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('hebergement_show', {'id': hebergement.id}) }}">show</a>#}
+{#                    <a href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="30">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
 
-    <a href="{{ path('hebergement_new') }}">Create new</a>
-{% endblock %}
+{#    <a href="{{ path('hebergement_new') }}">Create new</a>#}
+{#{% endblock %}#}

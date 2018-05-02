@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\HebergementRepository")
  */
@@ -89,7 +90,8 @@ class Hebergement
     private $heb_periodes_location;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $heb_date_declaration;
 
@@ -105,7 +107,11 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes={ "image/jpeg" })
+     * @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $heb_photo_1;
 
@@ -146,6 +152,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $heb_date_creation;
 
@@ -156,6 +163,7 @@ class Hebergement
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $heb_date_suppression;
 
@@ -372,7 +380,7 @@ class Hebergement
         return $this->heb_date_declaration;
     }
 
-    public function setHebDateDeclaration(string $heb_date_declaration): self
+    public function setHebDateDeclaration($heb_date_declaration): self
     {
         $this->heb_date_declaration = $heb_date_declaration;
 

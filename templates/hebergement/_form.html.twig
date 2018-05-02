@@ -80,6 +80,7 @@
                 </div>
                 <div class="item__description">
                     <div class="form-group">
+                        {{ form_label(form.heb_type) }}
                         {{ form_widget(form.heb_type) }}
                     </div>
                     <div class="form-group">
@@ -110,10 +111,10 @@
                     <h2>Renseignements sur la location</h2>
                 </div>
                 <div class="item__description">
-                    <div class="form-group">
-                        {{form_label(form.heb_periodes_location) }}
-                        {{form_widget(form.heb_periodes_location) }}
-                    </div>        
+                    {#<div class="form-group">#}
+                    {#    {{form_label(form.heb_periodes_location) }}#}
+                    {#    {{form_widget(form.heb_periodes_location) }}#}
+                    {#</div>        #}
                     <div class="form-group">
                         {{ form_label(form.heb_descriptif_court) }}
                         {{ form_widget(form.heb_descriptif_court) }}
@@ -162,16 +163,10 @@
                         {{ form_label(form.heb_email_resa) }}
                         {{ form_widget(form.heb_email_resa) }}
                     </div>
-                    {#<div class="form-group">#}
-                    {#    {{ form_label(form.heb_contact_resa) }}#}
-                    {#    {{ form_widget(form.heb_contact_resa) }}#}
-                    {#</div>#}
                 </div><!-- item description -->
             </div> <!-- item body -->
         </div><!-- item -->
       
 
     <button class="btn">{{ button_label|default('Valider mes informations') }}</button>
-{{ form_end(form) }}
-
 {{ form_end(form) }}

@@ -12,9 +12,9 @@
     </div>
     <div class="row">
         <div class="col-md-4 col-lg-2 d-flex flex-column">
-            <img class="img-fluid my-2"  src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}">  
-            <img class="img-fluid my-2"  src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}">
-            <img class="img-fluid my-2" src="{{ hebergement.hebPhoto1 }}" alt="{{ hebergement.hebName }}">
+            <img class="img-fluid my-2"  src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}">  
+            <img class="img-fluid my-2"  src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}">
+            <img class="img-fluid my-2" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}">
         </div>
         <div class="col-md-8 col-lg-6">
             <h2>{{ hebergement.hebName }}</h2> 
