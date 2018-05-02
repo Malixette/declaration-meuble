@@ -42,7 +42,7 @@ class HebergementType extends AbstractType
             ])
 
             ->add('heb_adresse_complement', TextType::class, [
-                'required'  => true,
+                'required'  => false,
                 'disabled' => $options['is_edit'],
                 'label'     => "Complément d'adresse ",
                 'attr'      => [
@@ -97,9 +97,9 @@ class HebergementType extends AbstractType
             ->add('heb_type', ChoiceType::class, array(
                 'disabled' => $options['is_edit'],
                 'choices'  => array(
-                    'Maison'        => null,
-                    'Appartement'   => true,
-                    'Autre'         => false,
+                    'Maison'        => 'maison',
+                    'Appartement'   => 'appartement',
+                    'Autre'         => 'autre',
                 ),
                 'label' => 'Type d\'hébergement',
                 'required'  => true,
@@ -127,16 +127,19 @@ class HebergementType extends AbstractType
                 ]    
             ])
             
-            ->add('heb_classement', ChoiceType::class, array(
-                'choices'  => array(
-                    'En cours'   => null,
-                    'Oui'       => true,
-                    'Non'       => false,
-                ),
+            ->add('heb_classement', ChoiceType::class, [
+                'choices'  => [
+                    'En cours'   => 'en cours',
+                    'Oui'       => 'oui',
+                    'Non'       => 'non',
+                ],
+                'attr' => [
+                    'type' => 'select'
+                ],
                 'disabled'  => $options['is_edit'],
                 'label'     => 'Votre logement est-il classé?',
                 'required'  => true,
-            ))
+            ])
             
             ->add('heb_date_classement', DateType::class, array(
                 'widget'    => 'choice',
@@ -144,13 +147,13 @@ class HebergementType extends AbstractType
                 'label'     => "Si oui, date de classement",
             ))
             
-            ->add('heb_periodes_location',ChoiceType::class, [
-                'label'         => "Saison(s) de location",
-                'disabled'      => $options['is_edit'],
-                'multiple'      => true,
-                'expanded'      => true,
-                'choices'  => array('Printemps'=> true, 'Eté'=> null, 'Automne'=> null,'Hiver'=> null)
-            ])
+            // ->add('heb_periodes_location',ChoiceType::class, [
+            //     'label'         => "Saison(s) de location",
+            //     'disabled'      => $options['is_edit'],
+            //     'multiple'      => true,
+            //     'expanded'      => true,
+            //     'choices'  => array('Printemps'=> true, 'Eté'=> null, 'Automne'=> null,'Hiver'=> null)
+            // ])
 
             // ->add('heb_date_declaration')
             
@@ -162,23 +165,26 @@ class HebergementType extends AbstractType
                 'attr'      => [
                     'placeholder' => "Descriptif de votre hébergement",
                     'class' => "textarea",
-                    'cols' => '50', 
-                    'rows' => '3'
+                    'cols'  => '50', 
+                    'rows'  => '3'
                 ]
             ])
             ->add('heb_photo_1', FileType::class, array(
-                'data_class' => null,
-                'label' => 'Ajouter une photo principale',   
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Ajouter une photo principale',   
             ))
             
             ->add('heb_photo_2', FileType::class, array(
-                'data_class' => null,
-                'label' => 'Ajouter une autre photo',   
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Ajouter une autre photo',   
             ))
             
             ->add('heb_photo_3', FileType::class, array(
-                'data_class' => null,
-                'label' => 'Ajouter une autre photo',   
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Ajouter une autre photo',   
             ))
 
             

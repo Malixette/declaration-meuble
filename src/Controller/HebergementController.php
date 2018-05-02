@@ -33,11 +33,18 @@ class HebergementController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $hebergement->setHebLat(10);
+            $hebergement->setHebLong(10);
+            $hebergement->setHebDateCreation(new \DateTime());
+            $hebergement->setHebDateDeclaration(new \DateTime());
+            $hebergement->setHebCerfa(123);
+            $hebergement->setHebStatut('en cours');
+            $hebergement->sethebNumDeclaration('Mairie321');
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
             $em->flush();
 
-            return $this->redirectToRoute('hebergement_index');
+            return $this->redirectToRoute('dashboard_declarant');
         }
 
         return $this->render('hebergement/new.html.twig', [
