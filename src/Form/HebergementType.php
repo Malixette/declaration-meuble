@@ -26,7 +26,7 @@ class HebergementType extends AbstractType
                 'required'  => true,
                 'label'     => "Nom de votre hébergement",
                 'attr'      => [
-                    'placeholder'   => "Ex : Gîte des sapins...",
+                    'placeholder'   => "Nom de l'hébergement",
                     'class'         => "input"
                 ]    
             ])
@@ -36,7 +36,7 @@ class HebergementType extends AbstractType
                 'disabled' => $options['is_edit'],
                 'label'     => "Adresse",
                 'attr'      => [
-                    'placeholder'   => "25 rue de la gare",
+                    'placeholder'   => "Adresse",
                     'class'         => "input"
                 ]    
             ])
@@ -99,7 +99,7 @@ class HebergementType extends AbstractType
                 'choices'  => array(
                     'Maison'        => null,
                     'Appartement'   => true,
-                    'Autre' => false,
+                    'Autre'         => false,
                 ),
                 'label' => 'Type d\'hébergement',
                 'required'  => true,
@@ -133,20 +133,23 @@ class HebergementType extends AbstractType
                     'Oui'       => true,
                     'Non'       => false,
                 ),
-                'disabled' => $options['is_edit'],
-                'label' => 'Votre logement est-il classé?',
+                'disabled'  => $options['is_edit'],
+                'label'     => 'Votre logement est-il classé?',
                 'required'  => true,
             ))
             
             ->add('heb_date_classement', DateType::class, array(
-                'widget' => 'choice',
-                'disabled' => $options['is_edit'],
+                'widget'    => 'choice',
+                'disabled'  => $options['is_edit'],
                 'label'     => "Si oui, date de classement",
             ))
             
-            ->add('heb_periodes_location',TextType::class, [
-                'label' => "Saison(s) de location",
-                'disabled' => $options['is_edit'],
+            ->add('heb_periodes_location',ChoiceType::class, [
+                'label'         => "Saison(s) de location",
+                'disabled'      => $options['is_edit'],
+                'multiple'      => true,
+                'expanded'      => true,
+                'choices'  => array('Printemps'=> true, 'Eté'=> null, 'Automne'=> null,'Hiver'=> null)
             ])
 
             // ->add('heb_date_declaration')
@@ -165,17 +168,25 @@ class HebergementType extends AbstractType
             ])
             ->add('heb_photo_1', FileType::class, array(
                 'data_class' => null,
-                'label' => 'Photo mise en avant',   
+                'label' => 'Ajouter une photo principale',   
             ))
-            ->add('heb_photo_2')
-            ->add('heb_photo_3')
+            
+            ->add('heb_photo_2', FileType::class, array(
+                'data_class' => null,
+                'label' => 'Ajouter une autre photo',   
+            ))
+            
+            ->add('heb_photo_3', FileType::class, array(
+                'data_class' => null,
+                'label' => 'Ajouter une autre photo',   
+            ))
 
             
             ->add('heb_site_web', TextType::class, [
                 'required'  => false,
                 'label'     => 'Adresse web de votre hébergement',
                 'attr'      => [
-                    'placeholder'   => "www.",
+                    'placeholder'   => "Site internet de votre hébergement : www.",
                     'class'         => "input"
                 ]    
             ])
@@ -184,16 +195,16 @@ class HebergementType extends AbstractType
                 'required'  => false,
                 'label'     => "Si vous disposez d'une réservation en ligne, renseignez votre lien de réservation",
                 'attr'      => [
-                    'placeholder'   => "Adresse web de réservation",
+                    'placeholder'   => "booking, tripadvisor, etc",
                     'class'         => "input"
                 ]    
             ])
             
             ->add('heb_contact_resa', TextType::class, [
                 'required'  => false,
-                'label'     => "Contact de réservation",
+                'label'     => "Contact ou nom de l'organisme de gestion de réservation de votre hébergement",
                 'attr'      => [
-                    'placeholder'   => "Contact ou nom de l'organisme de gestion de réservation de votre hébergement",
+                    'placeholder'   => "Ex: Matthieu DUPONT ou Agence de location de la Montagne ",
                     'class'         => "input"
                 ]    
             ])
@@ -202,7 +213,7 @@ class HebergementType extends AbstractType
                 'required'  => false,
                 'label'     => "Email de réservation",
                 'attr'      => [
-                    'placeholder'   => "Email",
+                    'placeholder'   => "monemail@mail.com",
                     'class'         => "input"
                 ]    
             ])
@@ -211,10 +222,28 @@ class HebergementType extends AbstractType
                 'required'  => false,
                 'label'     => "Numéro de téléphone de réservation",
                 'attr'      => [
-                    'placeholder'   => "06 xx xx xx xx",
+                    'placeholder'   => "06 01 02 03 04",
                     'class'         => "input"
                 ]    
             ])
+
+            // ->add('heb_num_declaration',TextType::class, [
+            //     'label' => "Numéro de déclaration",
+            //     'attr'      => [
+            //         'placeholder'   => "",
+            //         'class'         => "input"
+            //     ]  
+            // ])
+
+            ->add('heb_num_voie', NumberType::class, [
+                'required'  => false,
+                'label'     => "Numero de voie",
+                'attr'      => [
+                    'placeholder'   => "N° de voie",
+                    'class'         => "input"
+                ]    
+            ])
+            
             
             // ->add('heb_date_creation')
             // ->add('heb_statut')
