@@ -9,7 +9,7 @@
             height : 100%;
         }
         body{
-            height: 100vh;
+            height: 100%;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -19,20 +19,20 @@
         body {
             font-family: 'Open Sans', sans-serif;
             position: relative;
+            padding-bottom : 0;
         }
         
         .navbar {
             background:rgba(255,255,255, 1);
         }
         
-        footer {
-          display: flex!important;
-          justify-content: center;
-          align-items: center;
-          height :5vh;
-          padding-bottom: .5rem;
-          margin-top: 1rem;
+        ul, li {
+            list-style : none;
         }
+        a {
+            text-decoration:none;
+        }
+        
 }
     </style>
 {% endblock %}
@@ -44,11 +44,14 @@
 
 <h1 class="mt-5 mb-4 text-center display-3 text-dark" id="titreinscription">Inscription</h1>
 
-<div class="container" style="width : 40%">
-    {#<div class="row justify-content-center align-items-center h-100">#}
-        {#<div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">#}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
             <form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
-                <p class="text-center">Vous êtes propriétaire. Inscrivez-vous avec ce formulaire pour gérer la déclaration de vos meublés partout en France.</p>
+                <p class="text-center">
+                    <strong>Vous êtes propriétaire.</strong><br>
+                    Inscrivez-vous pour gérer la déclaration de vos meublés partout en France.
+                </p>
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
@@ -113,7 +116,48 @@
                     {{ form_widget(form.valider)}}
                 </div>
             </form>
-        {#</div>#}
-    {#</div>#}
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <aside class="bg-warning  border border-warning border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
+                <p class="text-center">
+                    <strong>Vous êtes une mairie ou un office de tourisme. Bénéficiez du service pour :</strong><br>
+                </p>            
+                    <ul class="list-group">
+                        <div class="row align-items-middle mb-3">
+                            <div class="col-2">
+                                <i class="far fa-check-circle fa-2x mt-2"></i>
+                            </div>
+                            <div class="col-10">
+                                Disposer d'une page personnalisée
+                            </div>
+                        </div>
+                        <div class="row align-items-middle mb-3">
+                            <div class="col-2">
+                                <i class="far fa-check-circle fa-2x  mt-2"></i>
+                            </div>
+                            <div class="col-10">
+                                Faciliter la déclaration pour les administrés
+                            </div>
+                        </div>
+                        <div class="row align-items-middle mb-3">
+                            <div class="col-2">
+                                <i class="far fa-check-circle fa-2x  mt-2"></i>
+                            </div>
+                            <div class="col-10">
+                                Télécharger la liste complète des meublés déclarés sur le territoire
+                            </div>
+                        </div>   
+                    </ul>
+                <p class="text-center">
+                    <strong>
+                        Prenez contact avec l'agence !
+                    </strong>
+                </p>  
+                <p class="text-center">
+                    <a class="btn btn-danger" href="{{path('commune_home')}}#section-contact" role="button">Contact</a>
+                </p>
+            </aside>
+        </div>
+    </div>
 </div>
 {% endblock %}

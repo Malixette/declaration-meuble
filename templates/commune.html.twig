@@ -7,9 +7,10 @@
         body {
               display: flex;
               flex-direction: column;
-              min-height: 100vh;
+              padding-bottom : 0;
             }
         footer {
+        height : 10vh;
           display: flex!important;
           justify-content: center;
           align-items: center;
@@ -155,13 +156,18 @@
 
 {% block footer %}
 <div class="container-fluid p-0">
-    <div class="row ">
-        <div class="col-12">
-            <footer class="bg-info p-3 text-center mb-0">
-                <a class="text-dark mr-5" href="">Déclarer son meublé</a>
-                <a class="text-dark ml-5" href="">Mentions légales</a>
-            </footer>
-        </div>
+    <div class="row">
+        <footer class="bg-info p-3 text-center mb-0 w-100 d-flex justify-content-middle">
+            <div class="col-4">
+                <a class="text-dark" href="">Déclarer son meublé</a>
+            </div>
+            <div class="col-4">
+                &copy; 2018
+            </div>
+            <div class="col-4">
+                <a class="text-dark" href="">Mentions légales</a>
+            </div>
+        </footer>
     </div>
 </div>
 
