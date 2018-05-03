@@ -36,8 +36,9 @@ class HebergementType extends AbstractType
                 'disabled' => $options['is_edit'],
                 'label'     => "Adresse",
                 'attr'      => [
-                    'placeholder'   => "Adresse",
-                    'class'         => "input"
+                    'placeholder'   => "3 rue des Lilas",
+                    'id'            => "autocomplete",
+                    'type'          => "input"
                 ]    
             ])
 
