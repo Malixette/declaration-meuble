@@ -32,7 +32,6 @@
         a {
             text-decoration:none;
         }
-        
 }
     </style>
 {% endblock %}
@@ -47,7 +46,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-            <form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
+            {#<form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
+                                            {{ form_start(form)}}
+
                 <p class="text-center">
                     <strong>Vous êtes propriétaire.</strong><br>
                     Inscrivez-vous pour gérer la déclaration de vos meublés partout en France.
@@ -115,7 +116,8 @@
                 <div class="form-group text-center">
                     {{ form_widget(form.valider)}}
                 </div>
-            </form>
+                {{ form_end(form)}}
+            {#</form>#}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <aside class="bg-warning  border border-warning border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">

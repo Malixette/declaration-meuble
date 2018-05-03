@@ -12,6 +12,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/")
@@ -29,7 +30,7 @@ class UserController extends Controller
     /**
      * @Route("/inscription", name="new_user", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -37,16 +38,23 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $user->setUserTelephone(0);
-            $user->setMairieId(0);
+            $password = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+            
+            $user->setUserRole('propriétaire');
+            $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
-            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            $user->setPassword($password);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             
-            return $this->redirectToRoute('commune_home');
+            $this->addFlash(
+                        'notice', 
+                        "bravo, vous êtes bien inscrit"
+                        );
+            
+            return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/new-user.html.twig', [
@@ -76,14 +84,14 @@ class UserController extends Controller
             
             if($user)
             {
-                    $session->set('connected', true);
-                    $session->set('user', $user);
-                    
-                    $this->addFlash(
-                        'success', "bravo, vous êtes bien connecté"
-                        );
-                    
-                    return $this->redirectToRoute('dashboard_declarant');
+                $session->set('connected', true);
+                $session->set('user', $user);
+                
+                $this->addFlash(
+                    'success', "bravo, vous êtes bien connecté"
+                    );
+                
+                return $this->redirectToRoute('dashboard_declarant');
             }
             else
             {
