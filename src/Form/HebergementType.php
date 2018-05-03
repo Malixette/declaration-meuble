@@ -89,7 +89,8 @@ class HebergementType extends AbstractType
                 'label'     => "Ville",
                 'attr'      => [
                     'placeholder'   => "Commune",
-                    'class'         => "input"
+                    'class'         => "input",
+                    'id'            => "locality",
                 ]    
             ])
             // ->add('heb_lat')
@@ -242,14 +243,15 @@ class HebergementType extends AbstractType
             //     ]  
             // ])
 
-            // ->add('heb_num_voie', NumberType::class, [
-            //     'required'  => false,
-            //     'label'     => "Numero de voie",
-            //     'attr'      => [
-            //         'placeholder'   => "N° de voie",
-            //         'class'         => "input"
-            //     ]    
-            // ])
+            ->add('heb_num_voie', NumberType::class, [
+                'required'  => false,
+                'disabled'  => $options['is_new'],
+                'label'     => "Numero de voie",
+                'attr'      => [
+                    'placeholder'   => "N° de voie",
+                    'class'         => "input"
+                ]    
+            ])
             
             
             // ->add('heb_date_creation')
