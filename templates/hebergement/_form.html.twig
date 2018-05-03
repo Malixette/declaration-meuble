@@ -13,34 +13,35 @@
                 </div>
                 <div class="item__description">
                     <div class="form-group">
+                        {{ form_label(form.heb_name) }}
                         {{ form_widget(form.heb_name) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.heb_num_voie) }}
-                    </div>
-                    <div class="form-group">
+                        {{ form_label(form.heb_adresse) }}
                         {{ form_widget(form.heb_adresse) }}
                     </div>
                     <div class="form-group">
+                        {{ form_label(form.heb_adresse_complement) }}
                         {{ form_widget(form.heb_adresse_complement) }}
                     </div>
                     <div class="form-group">
+                        {{ form_label(form.heb_etage) }}
                         {{ form_widget(form.heb_etage) }}
                     </div>
                     <div class="form-group">
+                        {{ form_label(form.heb_batiment) }}
                         {{ form_widget(form.heb_batiment) }}
                     </div>
                     <div class="form-group">
+                        {{ form_label(form.heb_code_postal) }}
                         {{ form_widget(form.heb_code_postal) }}
                     </div>
                     <div class="form-group">
+                        {{ form_label(form.heb_commune) }}
                         {{ form_widget(form.heb_commune) }}
                     </div>
                     <div class="form-group">
                         {{ form_widget(form.heb_name) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.heb_num_voie) }}
                     </div>
                     <div class="form-group">
                         {{ form_widget(form.heb_adresse) }}
@@ -84,6 +85,7 @@
                         {{ form_widget(form.heb_type) }}
                     </div>
                     <div class="form-group">
+                        {{ form_label(form.heb_couchages_max) }}
                         {{ form_widget(form.heb_couchages_max) }}
                     </div>
                     <div class="form-group">
@@ -145,6 +147,7 @@
                 </div>
                 <div class="item__description">
                     <div class="form-group">
+                        {{ form_label(form.heb_site_web) }}
                         {{ form_widget(form.heb_site_web) }}
                     </div>
                     <div class="form-group">
@@ -169,4 +172,5 @@
       
 
     <button class="btn">{{ button_label|default('Valider mes informations') }}</button>
+    
 {{ form_end(form) }}

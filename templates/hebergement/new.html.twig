@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="map"></div>
+    {#<div id="map"></div>#}
         
     {{ include('hebergement/_form.html.twig') }}
 
@@ -25,49 +25,85 @@
 {% endblock %}
 
 {% block javascripts %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqqDnNMRCo88ogY8b2HlCp1HNMDIzuMG4&libraries=places"></script>
 
 <script>
-        var ville;
-            
-        function initMap() {
-            var ville = {lat: 43.404811, lng: 5.053728};
-            var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: ville
-            });
-
-            var contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">Nom hébergement</h1>'+
-                'Lat = '+
-                'Longitude = '
-                '</div>'+
-                '</div>';
-
-            console.log(contentString);
-
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-            
-
-            var marker = new google.maps.Marker({
-            position: ville,
-            map: map,
-            draggable: true,
-            title: 'Nom de l\'hébergement'
-            });
-
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
-
+    function initializeAutocomplete(id) {
+    var element = document.getElementById(id);
+        if (element) {
+            var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+            google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
         }
+    }
+
+    function onPlaceChanged() {
+    var place = this.getPlace();
+
+    // console.log(place);  // Uncomment this line to view the full object returned by Google API.
+
+        for (var i in place.address_components) {
+            var component = place.address_components[i];google.maps.places.Autocomplete
+            
+            for (var j in component.types) {  // Some types are ["country", "political"]
+            var type_element = document.getElementById(component.types[j]);
+                if (type_element) {
+                type_element.value = component.long_name;
+                }
+            }
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', function() {
+    initializeAutocomplete('hebergement_heb_adresse');
+    });
+
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVHTurRNPGNOsAA6Nuocp_nz9jN2APhck&callback=initMap">
-    </script> 
+    
+    
+    
+{#<script>#}
+{#        var ville;#}
+            
+{#        function initMap() {#}
+{#            var ville = {lat: 43.404811, lng: 5.053728};#}
+{#            var map = new google.maps.Map(document.getElementById('map'), {#}
+{#            zoom: 16,#}
+{#            center: ville#}
+{#            });#}
+
+{#            var contentString = '<div id="content">'+#}
+{#                '<div id="siteNotice">'+#}
+{#                '</div>'+#}
+{#                '<h1 id="firstHeading" class="firstHeading">Nom hébergement</h1>'+#}
+{#                'Lat = '+#}
+{#                'Longitude = '#}
+{#                '</div>'+#}
+{#                '</div>';#}
+
+{#            console.log(contentString);#}
+
+{#            var infowindow = new google.maps.InfoWindow({#}
+{#                content: contentString#}
+{#            });#}
+            
+
+{#            var marker = new google.maps.Marker({#}
+{#            position: ville,#}
+{#            map: map,#}
+{#            draggable: true,#}
+{#            title: 'Nom de l\'hébergement'#}
+{#            });#}
+
+{#            marker.addListener('click', function() {#}
+{#                infowindow.open(map, marker);#}
+{#            });#}
+
+{#        }#}
+{#    </script>#}
+{#    <script async defer#}
+{#    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVHTurRNPGNOsAA6Nuocp_nz9jN2APhck&callback=initMap">#}
+{#    </script> #}
+
 
 {#<script>#}
     

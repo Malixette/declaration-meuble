@@ -30,7 +30,7 @@ class HebergementController extends Controller
     public function new(Request $request): Response
     {
         $hebergement = new Hebergement();
-        $form = $this->createForm(HebergementType::class, $hebergement);
+        $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -41,6 +41,18 @@ class HebergementController extends Controller
             $hebergement->setHebCerfa(123);
             $hebergement->setHebStatut('en cours');
             $hebergement->sethebNumDeclaration('Mairie321');
+            
+            $file = $hebergement->getHebPhoto1();
+
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+            
+            $hebergement->setHebPhoto1($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
             $em->flush();
@@ -73,7 +85,7 @@ class HebergementController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             
             $file = $hebergement->getHebPhoto1();
-            
+
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             
             $file->move(
