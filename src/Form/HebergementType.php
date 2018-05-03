@@ -75,7 +75,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_code_postal', NumberType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit'],
+                'disabled'  => $options['is_edit']||$options['is_new'],
                 'label'     => "Code postal",
                 'attr'      => [
                     'placeholder'   => "Code postal",
@@ -85,7 +85,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_commune', TextType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_edit']||$options['is_new'],
                 'label'     => "Ville",
                 'attr'      => [
                     'placeholder'   => "Commune",
@@ -266,7 +266,8 @@ class HebergementType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Hebergement::class,
-            'is_edit' => false
+            'is_edit' => false,
+            'is_new' => false,
         ]);
     }
 }
