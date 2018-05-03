@@ -375,7 +375,7 @@ class Hebergement
         return $this;
     }
 
-    public function getHebDateDeclaration(): ?string
+    public function getHebDateDeclaration(): ?\DateTimeInterface
     {
         return $this->heb_date_declaration;
     }
