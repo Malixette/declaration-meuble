@@ -26,7 +26,7 @@ class HebergementType extends AbstractType
                 'required'  => true,
                 'label'     => "Nom de votre hébergement",
                 'attr'      => [
-                    'placeholder'   => "Nom de l'hébergement",
+                    'placeholder'   => "Ex: Chalet Bellevue",
                     'class'         => "input"
                 ]    
             ])
@@ -242,14 +242,14 @@ class HebergementType extends AbstractType
             //     ]  
             // ])
 
-            ->add('heb_num_voie', NumberType::class, [
-                'required'  => false,
-                'label'     => "Numero de voie",
-                'attr'      => [
-                    'placeholder'   => "N° de voie",
-                    'class'         => "input"
-                ]    
-            ])
+            // ->add('heb_num_voie', NumberType::class, [
+            //     'required'  => false,
+            //     'label'     => "Numero de voie",
+            //     'attr'      => [
+            //         'placeholder'   => "N° de voie",
+            //         'class'         => "input"
+            //     ]    
+            // ])
             
             
             // ->add('heb_date_creation')
