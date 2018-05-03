@@ -64,9 +64,9 @@ class HebergementType extends AbstractType
             ->add('heb_etage', IntegerType::class, [
                 'required'  => false,
                 'disabled' => $options['is_edit'],
-                'label'     => "Etage",
+                'label'     => "Numéro d'étage",
                 'attr'      => [
-                    'placeholder'   => "0 pour Rez-de-chaussée",
+                    'placeholder'   => "0 pour un rez-de-chaussée",
                     'class'         => "input",
                     'min'           => 0,
                     'max'           => 20,

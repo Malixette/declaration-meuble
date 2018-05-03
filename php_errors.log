@@ -1,0 +1,5 @@
+[27-Apr-2018 10:26:23 UTC] PHP Fatal error:  Cannot use Symfony\Component\OptionsResolver\OptionsResolver as OptionsResolver because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Form/HebergementType.php on line 9
+[02-May-2018 11:04:40 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
+[02-May-2018 11:04:43 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
+[02-May-2018 11:04:52 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
+[03-May-2018 10:31:48 UTC] PHP Fatal error:  Cannot redeclare App\Entity\User::$mairie in /home/ubuntu/workspace/declaration-meuble/src/Entity/User.php on line 94

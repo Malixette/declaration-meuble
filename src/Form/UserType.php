@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\Mairie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -110,21 +111,24 @@ class UserType extends AbstractType
                     'type' => "email"
                 ]
             ])
-            ->add('user_date_inscription', DateTimeType::class)
+            // ->add('user_date_inscription', DateTimeType::class)
             
-            ->add('user_role', ChoiceType::class, [
-                'choices' => [
-                    'Propiétaire' => 'proprietaire',
-                    'Office de tourisme' => 'ot',
-                    'Mairie' => 'mairie'
-                    ],
-                'attr' => [
-                    'class' => "form-control form-control mb-3",
-                    'type' => "select"
-                ]
-            ])
-            ->add('mairie', TextType::class)
-            
+            // ->add('user_role', ChoiceType::class, [
+            //     'choices' => [
+            //         'Propiétaire' => 'proprietaire',
+            //         'Office de tourisme' => 'ot',
+            //         'Mairie' => 'mairie'
+            //         ],
+            //     'attr' => [
+            //         'class' => "form-control form-control mb-3",
+            //         'type' => "select"
+            //     ]
+            // ])
+            // ->add('mairie', EntityType::class, [
+            //     'class' => Mairie::class,
+            //     'choice_label' => 'id'
+            //     ]
+            // )
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe entrés sont différents',

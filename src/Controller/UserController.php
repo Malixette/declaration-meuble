@@ -12,6 +12,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/")
@@ -26,10 +27,11 @@ class UserController extends Controller
         return $this->render('user/index.html.twig', ['users' => $userRepository->findAll()]);
     }
 
+// https://mars13.fr/framework/symfony4/symfony4-ajouter-un-login-et-proteger-un-back-office/
     /**
      * @Route("/inscription", name="new_user", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -37,16 +39,23 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $user->setUserTelephone(0);
-            $user->setMairieId(0);
+            $password = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+            
+            $user->setUserRole('propriétaire');
+            $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
-            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            $user->setPassword($password);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             
-            return $this->redirectToRoute('commune_home');
+            $this->addFlash(
+                        'success', 
+                        "bravo, vous êtes bien inscrit"
+                        );
+            
+            return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/new-user.html.twig', [
@@ -61,38 +70,28 @@ class UserController extends Controller
     public function login(Request $request, UserRepository $repo, SessionInterface $session): Response
     {
         $form = $this->createForm(LoginType::class);
-        
         $form->handleRequest($request);
         
          if($form->isSubmitted() && $form->isValid())
         {
-            $data = $form->getData();
-            dump($data);
+            // $user = $form->getData();
+            // $email = $user->getUserEmail();
+            // $user = $repo->findOneByEmail($email);
             
-            $email = $data['email'];
-            $password = $data['password'];
             
-            $user = $repo->findOneByEmail($email);
+            $email = $form['user_email']->getData();
+
+            $user = $repo->findOneBy(['user_email' => $email]);
             
-            if($user)
-            {
-                    $session->set('connected', true);
-                    $session->set('user', $user);
-                    
-                    $this->addFlash(
-                        'success', "bravo, vous êtes bien connecté"
-                        );
-                    
-                    return $this->redirectToRoute('dashboard_declarant');
+            $userid = $repo->find(3);
+            
+            dump($user);
+            dump($email);
+            dump($userid);
+            
+            if($user) {
+                return $this->redirectToRoute('dashboard_declarant');
             }
-            else
-            {
-              $this->addFlash(
-                        'danger', 
-                        'Nous n\'avons pas trouvé de compte utilisateur avec cet email.'
-                    );
-            }
-            
         }
         
         return $this->render('user/connexion.html.twig', [
