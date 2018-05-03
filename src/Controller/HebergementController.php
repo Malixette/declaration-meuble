@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\FileUploader;
 
 /**
  * @Route("/admin/hebergement")
@@ -77,7 +78,7 @@ class HebergementController extends Controller
     /**
      * @Route("/edit/{id}", name="hebergement_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Hebergement $hebergement): Response
+    public function edit(Request $request, Hebergement $hebergement, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(HebergementType::class, $hebergement,array('is_edit' => true));
         $form->handleRequest($request);
@@ -85,15 +86,9 @@ class HebergementController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             
             $file = $hebergement->getHebPhoto1();
+            $fileName = $fileUploader->upload($file);
 
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-            
-            $file->move(
-                $this->getParameter('images_directory'),
-                $fileName
-            );
-            
-            $hebergement->setHebPhoto1($fileName);
+        $hebergement->setHebPhoto1($fileName);
             
             $this->getDoctrine()->getManager()->flush();
 
