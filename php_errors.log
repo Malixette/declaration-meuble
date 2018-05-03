@@ -2,3 +2,5 @@
 [02-May-2018 11:04:40 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
 [02-May-2018 11:04:43 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
 [02-May-2018 11:04:52 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
+[03-May-2018 09:11:56 UTC] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in /home/ubuntu/workspace/declaration-meuble/src/Controller/HebergementController.php on line 78
+[03-May-2018 09:12:36 UTC] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in /home/ubuntu/workspace/declaration-meuble/src/Controller/HebergementController.php on line 78
