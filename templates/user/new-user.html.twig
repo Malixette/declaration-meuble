@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
             {#<form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
-                                            {{ form_start(form)}}
+                {{ form_start(form)}}
 
                 <p class="text-center">
                     <strong>Vous êtes propriétaire.</strong><br>
@@ -69,6 +69,7 @@
                 </div> 
                 <div class="row">
                     <div class="col-12">
+                        {{ form_errors(form.user_email) }}
                         {{ form_label(form.user_email)}} 
                         {{ form_widget(form.user_email)}}
                     </div>
