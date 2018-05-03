@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\FileUploader;
 
 /**
  * @Route("/admin/hebergement")
@@ -43,6 +42,7 @@ class HebergementController extends Controller
             $hebergement->setHebStatut('en cours');
             $hebergement->sethebNumDeclaration('Mairie321');
             
+            // upload photo
             $file = $hebergement->getHebPhoto1();
 
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -78,17 +78,37 @@ class HebergementController extends Controller
     /**
      * @Route("/edit/{id}", name="hebergement_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Hebergement $hebergement, FileUploader $fileUploader): Response
+    public function edit(Request $request, Hebergement $hebergement): Response
     {
         $form = $this->createForm(HebergementType::class, $hebergement,array('is_edit' => true));
+        
+        // memoriser valeur de la bdd dans variable pour comparer avec l'upload
+        $photo1 = $hebergement->getHebPhoto1();
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             
             $file = $hebergement->getHebPhoto1();
-            $fileName = $fileUploader->upload($file);
+            
+            // si on upload
+            if($file != null) {
+                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+                
+                $hebergement->setHebPhoto1($fileName);    
+            } 
+            // si pas d'upload
+            else
+            {
+                $hebergement->setHebPhoto1($photo1);   
+            }
 
-        $hebergement->setHebPhoto1($fileName);
+            
             
             $this->getDoctrine()->getManager()->flush();
 
