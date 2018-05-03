@@ -2,3 +2,5 @@
 [02-May-2018 11:04:40 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
 [02-May-2018 11:04:43 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
 [02-May-2018 11:04:52 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
+[02-May-2018 19:15:47 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\Kernel because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Kernel.php on line 15
+[02-May-2018 19:16:04 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\Kernel because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Kernel.php on line 14
