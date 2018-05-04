@@ -28,10 +28,20 @@
 {% block javascripts %}
 
   
-################# JS DE LA MAP  #######################
+
 
 
 <script>
+
+################# BLOQUER PARAMETRE BOUTON  #######################
+
+document.querySelector("#hebergement__token").addEventListener("click", function(event) {
+         document.getElementById("output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
+         event.preventDefault();
+}, false);
+
+################# JS DE LA MAP  #######################
+
     var ville = '';
 
     function initMap() {
@@ -68,12 +78,33 @@
             infowindow.open(map, marker);
         });
       }
+      
+      google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(event.latLng);
+      });
+ 
+    var marker;
+    function placeMarker(location) {
+      if(marker){ //on vérifie si le marqueur existe
+        marker.setPosition(location); //on change sa position
+      }else{
+        marker = new google.maps.Marker({ //on créé le marqueur
+          position: location,
+          map: map
+        });
+      }
+      inputLatitude.value=location.lat();
+      inputLongitude.value=location.lng();
+    }
+     
+    alert(location.lat(ville));
+     
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&callback=initMap&libraries=places"></script> 
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{#<script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+{#<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
 
 
 
@@ -183,14 +214,14 @@
     </script>
   
 
-#####################ACCORDEON##########################
-// <script>
+{######################ACCORDEON###########################}
+{#// <script>#}
 //   $( function() {
 //     $( "#accordion" ).accordion({
 //       collapsible: true
 //     });
 //   } );
-//</script>
+{#//</script>#}
 
 {% endblock %}
 
