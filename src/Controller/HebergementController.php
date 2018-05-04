@@ -31,6 +31,7 @@ class HebergementController extends Controller
     {
         $hebergement = new Hebergement();
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,17 +43,24 @@ class HebergementController extends Controller
             $hebergement->setHebStatut('en cours');
             $hebergement->sethebNumDeclaration('Mairie321');
             
-            // upload photo
             $file = $hebergement->getHebPhoto1();
-
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             
-            $file->move(
-                $this->getParameter('images_directory'),
-                $fileName
-            );
+            // si on upload, on set avec nouvelle photo
+            if($file != null) {
+                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             
-            $hebergement->setHebPhoto1($fileName);
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+                
+                $hebergement->setHebPhoto1($fileName);    
+            } 
+            // si pas d'upload, on met photo par defaut
+            else
+            {
+                $hebergement->setHebPhoto1('defaut-image.jpg');   
+            }
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
@@ -108,8 +116,6 @@ class HebergementController extends Controller
                 $hebergement->setHebPhoto1($photo1);   
             }
 
-            
-            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('hebergement_edit', ['id' => $hebergement->getId()]);
