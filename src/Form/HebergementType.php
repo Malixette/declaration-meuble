@@ -64,9 +64,9 @@ class HebergementType extends AbstractType
             ->add('heb_etage', IntegerType::class, [
                 'required'  => false,
                 'disabled' => $options['is_edit'],
-                'label'     => "Etage",
+                'label'     => "Numéro d'étage",
                 'attr'      => [
-                    'placeholder'   => "0 pour Rez-de-chaussée",
+                    'placeholder'   => "0 pour un rez-de-chaussée",
                     'class'         => "input",
                     'min'           => 0,
                     'max'           => 20,
@@ -75,17 +75,20 @@ class HebergementType extends AbstractType
             
             ->add('heb_code_postal', NumberType::class, [
                 'required'  => true,
-                'disabled'  => $options['is_edit']||$options['is_new'],
+                'disabled'  => $options['is_edit'],
+                // ||$options['is_new'],
                 'label'     => "Code postal",
                 'attr'      => [
                     'placeholder'   => "Code postal",
-                    'class'         => "input"
+                    'class'         => "input",
+                    'name'          => "postal_code",
                 ]    
             ])
             
             ->add('heb_commune', TextType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit']||$options['is_new'],
+                'disabled' => $options['is_edit'],
+                // ||$options['is_new'],
                 'label'     => "Ville",
                 'attr'      => [
                     'placeholder'   => "Commune",

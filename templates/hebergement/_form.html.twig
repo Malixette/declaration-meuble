@@ -4,9 +4,8 @@
     <div id="carousel1">
 
         <div class="item">
-            {#<div class="item__image">#}
-            {#    <div id="map"></div>#}
-            {#</div>#}
+            <div class="item__image">
+            </div>
             <div class="item__body">
                 <div class="item__title">
                     <h2>Localisation de votre hébergement</h2>
@@ -15,7 +14,11 @@
                     <div class="form-group">
                         {{ form_label(form.heb_adresse) }}
                         {{ form_widget(form.heb_adresse) }}
+                        {{ form_label(form.heb_adresse) }}
                     </div>
+        {#### MAP ######}
+                    <div id="map"></div>
+        {###############}
                     <div class="form-group">
                         {{ form_label(form.heb_adresse_complement) }}
                         {{ form_widget(form.heb_adresse_complement) }}
@@ -34,14 +37,14 @@
                     </div>
                     <div class="form-group">
                         {{ form_label(form.heb_code_postal) }}
-                        {{ form_widget(form.heb_code_postal, { 'id': 'postal_code' } ) }}
+                        {{ form_widget(form.heb_code_postal, { 
+                            'id': 'postal_code',
+                            'name': 'postal_code',
+                        } ) }}
                     </div>
                     <div class="form-group">
                         {{ form_label(form.heb_commune) }}
                         {{ form_widget(form.heb_commune , { 'id': 'locality' } ) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.heb_name) }}
                     </div>
                     <div class="form-group">
                         {{ form_widget(form.heb_adresse) }}
@@ -61,12 +64,6 @@
                     <div class="form-group">
                         {{ form_widget(form.heb_commune) }}
                     </div>
-                    {#</div>#}
-                    <!-- <div class="form-group">
-                        <label for="user_input_autocomplete_address">Addresse</label>
-                        <input id="user_input_autocomplete_address" class="form-control" placeholder="Adresse de votre hébergement" type="text">
-                    </div> -->
-                   
                 </div><!-- item description -->
             </div> <!-- item body -->
         </div><!-- item -->
@@ -79,11 +76,11 @@
                 <div class="item__title">
                     <h2>Caractéristiques de votre hébergement</h2>
                 </div>
+                <div class="item__description">
                    <div class="form-group">
                         {{ form_label(form.heb_name) }}
                         {{ form_widget(form.heb_name) }}
                     </div>
-                <div class="item__description">
                     <div class="form-group">
                         {{ form_label(form.heb_type) }}
                         {{ form_widget(form.heb_type) }}
@@ -178,3 +175,9 @@
     <button class="btn">{{ button_label|default('Valider mes informations') }}</button>
     
 {{ form_end(form) }}
+
+{% block javascripts %}
+
+
+  
+{% endblock javascripts %}
