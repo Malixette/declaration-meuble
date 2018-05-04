@@ -4,34 +4,22 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Form\LoginType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
-/**
- * @Route("/")
- */
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use App\Controller\SessionInterface;
+// /**
+//  * @Security("has_role('ROLE_PROPRIETAIRE')")
+//  */
 class UserController extends Controller
 {
     /**
-     * @Route("/", name="user_index", methods="GET")
+     * @Route("/inscription", name="inscription", methods="GET|POST")
      */
-    public function index(UserRepository $userRepository): Response
-    {
-        return $this->render('user/index.html.twig', ['users' => $userRepository->findAll()]);
-    }
-
-// https://mars13.fr/framework/symfony4/symfony4-ajouter-un-login-et-proteger-un-back-office/
-    /**
-     * @Route("/inscription", name="new_user", methods="GET|POST")
-     */
-    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function new(Request $request): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -39,9 +27,9 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $password = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+            $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
             
-            $user->setUserRole('propriétaire');
+            $user->setUserRole(2);
             $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
             $user->setPassword($password);
@@ -55,51 +43,16 @@ class UserController extends Controller
                         "bravo, vous êtes bien inscrit"
                         );
             
-            return $this->redirectToRoute('connexion');
+            // return $this->redirectToRoute('connexion');
         }
 
-        return $this->render('user/new-user.html.twig', [
+        return $this->render('user/inscription.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
     
-    /**
-     * @Route("/connexion", name="connexion")
-     */
-    public function login(Request $request, UserRepository $repo, SessionInterface $session): Response
-    {
-        $form = $this->createForm(LoginType::class);
-        $form->handleRequest($request);
-        
-         if($form->isSubmitted() && $form->isValid())
-        {
-            // $user = $form->getData();
-            // $email = $user->getUserEmail();
-            // $user = $repo->findOneByEmail($email);
-            
-            
-            $email = $form['user_email']->getData();
-
-            $user = $repo->findOneBy(['user_email' => $email]);
-            
-            $userid = $repo->find(3);
-            
-            dump($user);
-            dump($email);
-            dump($userid);
-            
-            if($user) {
-                return $this->redirectToRoute('dashboard_declarant');
-            }
-        }
-        
-        return $this->render('user/connexion.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
+   /**
      * @Route("/{id}", name="user_show", methods="GET")
      */
     public function show(User $user): Response

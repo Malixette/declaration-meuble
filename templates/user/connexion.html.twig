@@ -36,6 +36,7 @@
                 <p class="text-center">Connectez-vous pour gérer vos déclarations</p>
                 {{ form_start(form)}}
                 <div class="form-group">
+                    {{ form_errors(form.user_email) }} 
                     {{ form_label(form.user_email) }} 
                     {{ form_widget(form.user_email) }}
                 </div>

@@ -35,6 +35,15 @@ class UserType extends AbstractType
                     'type' => "text"
                 ]
             ])
+            ->add('username', TextType::class,  [
+                'required' => true,
+                'label' => 'Nom d\'utilisateur :',
+                'attr' => [
+                    'placeholder' => "SuperSlip",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])
             ->add('user_prenom', TextType::class, [
                 'required' => true,
                 'label' => 'Prénom :',
@@ -115,9 +124,9 @@ class UserType extends AbstractType
             
             // ->add('user_role', ChoiceType::class, [
             //     'choices' => [
-            //         'Propiétaire' => 'proprietaire',
-            //         'Office de tourisme' => 'ot',
-            //         'Mairie' => 'mairie'
+            //         'Propiétaire' => '2',
+            //         'Office de tourisme' => '3',
+            //         'Mairie' => '4'
             //         ],
             //     'attr' => [
             //         'class' => "form-control form-control mb-3",

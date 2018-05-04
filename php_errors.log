@@ -3,3 +3,4 @@
 [02-May-2018 11:04:43 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
 [02-May-2018 11:04:52 UTC] PHP Fatal error:  Cannot declare class App\DataFixtures\BlogFixtures, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/DataFixtures/UserFixtures.php on line 0
 [03-May-2018 10:31:48 UTC] PHP Fatal error:  Cannot redeclare App\Entity\User::$mairie in /home/ubuntu/workspace/declaration-meuble/src/Entity/User.php on line 94
+[04-May-2018 09:13:10 UTC] PHP Fatal error:  Class App\Entity\User contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Symfony\Component\Security\Core\User\UserInterface::getUsername) in /home/ubuntu/workspace/declaration-meuble/src/Entity/User.php on line 21

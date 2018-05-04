@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 
 /**
@@ -16,7 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     message="Cette adresse email est déjà enregistrée"
  * )
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -24,6 +26,12 @@ class User
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    /**
+     * @ORMColumn(type="string", length=255, unique=true)
+     * @AssertNotBlank()
+     */
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -81,7 +89,7 @@ class User
     private $user_date_inscription;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $user_role;
 
@@ -231,12 +239,12 @@ class User
         return $this;
     }
 
-    public function getUserRole(): ?string
+    public function getUserRole(): ?integer
     {
         return $this->user_role;
     }
 
-    public function setUserRole(string $user_role): self
+    public function setUserRole(int $user_role): self
     {
         $this->user_role = $user_role;
 
@@ -298,4 +306,55 @@ class User
         return $this;
     }
 
+    public function getRoles()
+    {
+        if ($this->user_role = 2)
+            return ['ROLE_DECLARANT'];
+        elseif ($this->user_role = 3)
+            return ['ROLE_OT'];
+        elseif ($this->user_role = 4)
+            return ['ROLE_MAIRIE'];
+        elseif ($this->user_role > 4)
+            return ['ROLE_ADMIN'];
+        else
+            return [];
+    }
+    
+    public function getUsername()
+    {
+    }
+    
+    public function eraseCredentials()
+    {
+    }
+
+    public function getSalt()
+    {
+        // The bcrypt and argon2i algorithms don't require a separate salt.
+        // You *may* need a real salt if you choose a different encoder.
+        return null;
+    }
+    /** @see Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }    
 }
