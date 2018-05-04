@@ -26,82 +26,130 @@
 {% endblock %}
 
 {% block javascripts %}
-
-  
-
-
-
 <script>
 
-################# BLOQUER PARAMETRE BOUTON  #######################
-
-document.querySelector("#hebergement__token").addEventListener("click", function(event) {
-         document.getElementById("output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
-         event.preventDefault();
-}, false);
-
-################# JS DE LA MAP  #######################
-
-    var ville = '';
-
-    function initMap() {
-        var ville = {lat: 43.404811, lng: 5.053728};
-        var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: ville
-        });
-
-        var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Nom hébergement</h1>'+
-            'Lat = '+
-            'Longitude = '
-            '</div>'+
-            '</div>';
-
-        console.log(contentString);
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-        
-
-        var marker = new google.maps.Marker({
-        position: ville,
-        map: map,
-        draggable: true,
-        title: 'Nom de l\'hébergement'
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-      }
-      
-      google.maps.event.addListener(map, 'click', function(event) {
-            placeMarker(event.latLng);
-      });
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 46.3333, lng: 2.6},
+    zoom: 4
+  });
+  var input = /** @type {!HTMLInputElement} */(
+      document.getElementById('hebergement_heb_adresse'));
  
-    var marker;
-    function placeMarker(location) {
-      if(marker){ //on vérifie si le marqueur existe
-        marker.setPosition(location); //on change sa position
-      }else{
-        marker = new google.maps.Marker({ //on créé le marqueur
-          position: location,
-          map: map
-        });
-      }
-      inputLatitude.value=location.lat();
-      inputLongitude.value=location.lng();
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+ 
+  var infowindow = new google.maps.InfoWindow();
+  var marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    anchorPoint: new google.maps.Point(0, -29)
+  });
+ 
+  autocomplete.addListener('place_changed', function() {
+    infowindow.close();
+    marker.setVisible(false);
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("Autocomplete's returned place contains no geometry");
+      return;
     }
-     
-    alert(location.lat(ville));
-     
+ 
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17); 
+    }
+    marker.setIcon(/** @type {google.maps.Icon} */({
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(35, 35)
+    }));
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+ 
+    var address = '';
+    if (place.address_components) {
+      address = [
+        (place.address_components[0] && place.address_components[0].short_name || ''),
+        (place.address_components[1] && place.address_components[1].short_name || ''),
+        (place.address_components[2] && place.address_components[2].short_name || '')
+      ].join(' ');
+    }
+     console.log(adresse);
+    infowindow.setContent('</strong><br>' + address);
+    infowindow.open(map, marker);
+  });
+ 
+  // Sets a listener on a radio button to change the filter type on Places
+  // Autocomplete.
+  function setupClickListener(id, types) {
+    var radioButton = document.getElementById(id);
+    radioButton.addEventListener('click', function() {
+      autocomplete.setTypes(types);
+    });
+  }
+ 
+//   setupClickListener('changetype-all', []);
+  setupClickListener('changetype-address', ['address']);
+//   setupClickListener('changetype-establishment', ['establishment']);
+//   setupClickListener('changetype-geocode', ['geocode']);
+}
+ 
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&signed_in=true&libraries=places&callback=initMap"
+        async defer>
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&callback=initMap&libraries=places"></script> 
+  
+{################## JS DE LA MAP  ########################}
+
+
+{#<script>#}
+{#    function initMap() {#}
+{#        var ville = {lat: 46.3333, lng: 2.6};#}
+{#        var map = new google.maps.Map(document.getElementById('map'), {#}
+{#        zoom: 5,#}
+{#        center: ville#}
+{#        });#}
+
+    var contentString = '<div id="content">'+
+     '<div id="siteNotice">'+
+     '</div>'+
+     '<h1 id="firstHeading" class="firstHeading">Nom hébergement</h1>'+
+     'Lat = '+
+     'Longitude = '
+     '</div>'+
+     '</div>';
+
+        // console.log(contentString);
+
+{#        var infowindow = new google.maps.InfoWindow({#}
+{#            content: contentString#}
+{#        });#}
+        
+{#    if{    #}
+        // var marker = new google.maps.Marker({
+        // position: ville,
+        // map: map,
+        // draggable: true,
+        // title: 'Nom de l\'hébergement'
+        // });
+
+        // marker.addListener('click', function() {
+        //     infowindow.open(map, marker);
+        // });
+{#      }#}
+      
+      
+      
+{#</script>#}
+
+{#<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&callback=initMap&libraries=places"></script> #}
 
 {#<script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
 {#<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
@@ -109,43 +157,43 @@ document.querySelector("#hebergement__token").addEventListener("click", function
 
 
 {######################### JS DE L'AUTOCOMPLETE  #####################}
-<script> 
-    function initializeAutocomplete(id) {
-    var element = document.getElementById(id);
-        if (element) {
-            var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-            google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-        }
-    }
+// <script> 
+//     function initializeAutocomplete(id) {
+//     var element = document.getElementById(id);
+//         if (element) {
+//             var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+//             google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+//         }
+//     }
 
-    function onPlaceChanged() {
-    var place = this.getPlace();
+//     function onPlaceChanged() {
+//     var place = this.getPlace();
 
-    console.log(place);  // Uncomment this line to view the full object returned by Google API.
-        for (var i in place.address_components) {
-            var component = place.address_components[i];
-            // google.maps.places.Autocomplete
+//     console.log(place);  // Uncomment this line to view the full object returned by Google API.
+//         for (var i in place.address_components) {
+//             var component = place.address_components[i];
+//             // google.maps.places.Autocomplete
             
-            for (var j in component.types) {  // Some types are ["country", "political"]
-            var type_element = document.getElementById(component.types[j]);
-            console.log(component.types[j]);
-            var commune = component.types[j];
-            if (commune == 'locality')
-            {
-              ville = component.long_name;
-            }
-                if (type_element) {
-                type_element.value = component.long_name;
-                }
-            }
-        }
-    }
+//             for (var j in component.types) {  // Some types are ["country", "political"]
+//             var type_element = document.getElementById(component.types[j]);
+//             console.log(component.types[j]);
+//             var commune = component.types[j];
+//             if (commune == 'locality')
+//             {
+//               ville = component.long_name;
+//             }
+//                 if (type_element) {
+//                 type_element.value = component.long_name;
+//                 }
+//             }
+//         }
+//     }
 
-    google.maps.event.addDomListener(window, 'load', function() {
-    initializeAutocomplete('hebergement_heb_adresse');
-    });
+//     google.maps.event.addDomListener(window, 'load', function() {
+//     initializeAutocomplete('hebergement_heb_adresse');
+//     });
 
-    </script>
+//     </script>
 
 {################# JS RECCUPERATION DES CHAMPS CP, VILLE, ETC  ######################}
 <script>
