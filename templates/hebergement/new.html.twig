@@ -4,10 +4,20 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block stylesheets %}
     <style>
-       #map {
+    #map {
         height: 250px;
         width: 100%;
-       }
+    }
+    #accordion h4 {
+        padding: 10px;
+        color : white;
+        background-color: rgb(65, 90, 126);
+    }
+    #accordion h4:hover{
+        padding: 10px;
+        color : white;
+        background-color: rgb(34, 64, 95);
+    }
     </style>
 {% endblock %}
 
@@ -26,6 +36,17 @@
 {% endblock %}
 
 {% block javascripts %}
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 
+<script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content"
+    });
+  } );
+</script>
+
 <script>
 
 function initMap() {
