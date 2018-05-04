@@ -108,20 +108,33 @@ class Hebergement
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\File(
-     *     maxSize = "1M",
-     *     mimeTypes = {"image/jpeg", "image/png"},
-     *     mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
      * )
+     * 
      */
     private $heb_photo_1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
+     * 
      */
     private $heb_photo_2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
+     * 
      */
     private $heb_photo_3;
     
@@ -423,24 +436,24 @@ class Hebergement
         return $this;
     }
 
-    public function getHebPhoto2(): ?string
+    public function getHebPhoto2()
     {
         return $this->heb_photo_2;
     }
 
-    public function setHebPhoto2(?string $heb_photo_2): self
+    public function setHebPhoto2($heb_photo_2): self
     {
         $this->heb_photo_2 = $heb_photo_2;
 
         return $this;
     }
 
-    public function getHebPhoto3(): ?string
+    public function getHebPhoto3()
     {
         return $this->heb_photo_3;
     }
 
-    public function setHebPhoto3(?string $heb_photo_3): self
+    public function setHebPhoto3($heb_photo_3): self
     {
         $this->heb_photo_3 = $heb_photo_3;
 
