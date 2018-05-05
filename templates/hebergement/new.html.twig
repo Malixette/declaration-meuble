@@ -50,15 +50,26 @@
 <script>
 
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 46.3333, lng: 2.6},
-    zoom: 4
-  });
-  var input = /** @type {!HTMLInputElement} */(
+    var options = { componentRestrictions: {country: "fr"} };
+    
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 46.3333, lng: 2.6},
+        zoom: 4
+    });
+    
+    var input = /** @type {!HTMLInputElement} */(
       document.getElementById('hebergement_heb_adresse'));
  
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.bindTo('bounds', map);
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.bindTo('bounds', map);
  
   var infowindow = new google.maps.InfoWindow();
   var marker = new google.maps.Marker({

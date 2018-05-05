@@ -376,7 +376,7 @@ class Hebergement
         return $this;
     }
 
-    public function getHebPeriodesLocation(): ?string
+    public function getHebPeriodesLocation():?string
     {
         return $this->heb_periodes_location;
     }

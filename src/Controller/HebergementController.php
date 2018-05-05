@@ -41,7 +41,8 @@ class HebergementController extends Controller
             $hebergement->setHebDateDeclaration(new \DateTime());
             $hebergement->setHebCerfa(123);
             $hebergement->setHebStatut('en cours');
-            $hebergement->sethebNumDeclaration('Mairie321');
+            $hebergement->setHebNumDeclaration('Mairie321');
+            $hebergement->setHebPeriodesLocation('hiver');
             
             $file1 = $hebergement->getHebPhoto1();
             
