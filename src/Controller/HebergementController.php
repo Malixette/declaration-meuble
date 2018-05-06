@@ -41,25 +41,26 @@ class HebergementController extends Controller
             $hebergement->setHebDateDeclaration(new \DateTime());
             $hebergement->setHebCerfa(123);
             $hebergement->setHebStatut('en cours');
-            $hebergement->sethebNumDeclaration('Mairie321');
+            $hebergement->setHebNumDeclaration('Mairie321');
+            $hebergement->setHebPeriodesLocation('hiver');
             
-            $file = $hebergement->getHebPhoto1();
+            $file1 = $hebergement->getHebPhoto1();
             
             // si on upload, on set avec nouvelle photo
-            if($file != null) {
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            if($file1 != null) {
+                $fileName1 = $this->generateUniqueFileName().'.'.$file1->guessExtension();
             
-                $file->move(
+                $file1->move(
                     $this->getParameter('images_directory'),
-                    $fileName
+                    $fileName1
                 );
                 
-                $hebergement->setHebPhoto1($fileName);    
+                $hebergement->setHebPhoto1($fileName1);    
             } 
             // si pas d'upload, on met photo par defaut
             else
             {
-                $hebergement->setHebPhoto1('defaut-image.jpg');   
+                $hebergement->setHebPhoto1('defaut-image.png');   
             }
             
             $em = $this->getDoctrine()->getManager();
@@ -92,29 +93,68 @@ class HebergementController extends Controller
         
         // memoriser valeur de la bdd dans variable pour comparer avec l'upload
         $photo1 = $hebergement->getHebPhoto1();
+        $photo2 = $hebergement->getHebPhoto2();
+        $photo3 = $hebergement->getHebPhoto3();
         
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $file = $hebergement->getHebPhoto1();
+            $file1 = $hebergement->getHebPhoto1();
+            $file2 = $hebergement->getHebPhoto2();
+            $file3 = $hebergement->getHebPhoto3();
             
-            // si on upload
-            if($file != null) {
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            // si on upload photo 1
+            if($file1 != null) {
+                $fileName1 = $this->generateUniqueFileName().'.'.$file1->guessExtension();
             
-                $file->move(
+                $file1->move(
                     $this->getParameter('images_directory'),
-                    $fileName
+                    $fileName1
                 );
                 
-                $hebergement->setHebPhoto1($fileName);    
+                $hebergement->setHebPhoto1($fileName1);    
             } 
-            // si pas d'upload
+            // si pas d'upload photo 1
             else
             {
                 $hebergement->setHebPhoto1($photo1);   
             }
+            
+            // si on upload photo 2
+            if($file2 != null) {
+                $fileName2 = $this->generateUniqueFileName().'.'.$file2->guessExtension();
+            
+                $file2->move(
+                    $this->getParameter('images_directory'),
+                    $fileName2
+                );
+                
+                $hebergement->setHebPhoto2($fileName2);    
+            } 
+            // si pas d'upload photo 2
+            else
+            {
+                $hebergement->setHebPhoto2($photo2);   
+            }
+            
+            // si on upload photo 3
+            if($file3 != null) {
+                $fileName3 = $this->generateUniqueFileName().'.'.$file3->guessExtension();
+            
+                $file3->move(
+                    $this->getParameter('images_directory'),
+                    $fileName3
+                );
+                
+                $hebergement->setHebPhoto3($fileName3);    
+            } 
+            // si pas d'upload photo 2
+            else
+            {
+                $hebergement->setHebPhoto3($photo3);   
+            }
+
 
             $this->getDoctrine()->getManager()->flush();
 
@@ -146,6 +186,6 @@ class HebergementController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('hebergement_index');
+        return $this->redirectToRoute('dashboard_declarant');
     }
 }

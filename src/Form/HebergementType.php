@@ -96,8 +96,18 @@ class HebergementType extends AbstractType
                     'id'            => "locality",
                 ]    
             ])
-            // ->add('heb_lat')
-            // ->add('heb_long')
+            
+            ->add('heb_lat', NumberType::class, [
+            'required'  => true,
+                'disabled' => $options['is_new'],
+                'label'     => "Latitude"
+            ])
+            
+            ->add('heb_long', NumberType::class, [
+            'required'  => true,
+                'disabled' => $options['is_new'],
+                'label'     => "Longitude"
+            ])
             
             ->add('heb_type', ChoiceType::class, array(
                 'disabled' => $options['is_edit'],
@@ -152,13 +162,18 @@ class HebergementType extends AbstractType
                 'label'     => "Si oui, date de classement",
             ))
             
-            // ->add('heb_periodes_location',ChoiceType::class, [
-            //     'label'         => "Saison(s) de location",
-            //     'disabled'      => $options['is_edit'],
-            //     'multiple'      => true,
-            //     'expanded'      => true,
-            //     'choices'  => array('Printemps'=> true, 'Eté'=> null, 'Automne'=> null,'Hiver'=> null)
-            // ])
+            //->add('heb_periodes_location',ChoiceType::class, [
+            //     'label'        => "Période de location",
+            //     'disabled'     => $options['is_edit'],
+            //    'multiple'     => true,
+            //     'expanded'     => true,
+            //   'choices'      => array(
+            //         'Printemps'=> 'Printemps', 
+            //         'Eté'      => 'Eté', 
+            //         'Automne'  => 'Automne',
+            //         'Hiver'    => 'Hiver'
+            //    )
+            //])
 
             // ->add('heb_date_declaration')
             

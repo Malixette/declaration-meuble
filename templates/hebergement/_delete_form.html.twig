@@ -1,5 +1,6 @@
 <form method="post" action="{{ path('hebergement_delete', {'id': hebergement.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cet hébergement?');">
-    <input type="hidden" name="_method" value="supprimer l'hébergement">
+    <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ hebergement.id) }}">
     <button class="btn btn-danger">Supprimer l'hébergement</button>
 </form>
+
