@@ -19,7 +19,7 @@ security:
                 use_referer: true
                 csrf_token_generator: security.csrf.token_manager
             logout:
-                path:   logout
+                path: logout
                 target: login
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

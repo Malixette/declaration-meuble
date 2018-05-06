@@ -28,8 +28,8 @@ class User implements UserInterface, \Serializable
     private $id;
     
     /**
-     * @ORMColumn(type="string", length=255, unique=true)
-     * @AssertNotBlank()
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -117,6 +117,18 @@ class User implements UserInterface, \Serializable
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     public function getUserNom(): ?string
@@ -320,9 +332,6 @@ class User implements UserInterface, \Serializable
             return [];
     }
     
-    public function getUsername()
-    {
-    }
     
     public function eraseCredentials()
     {

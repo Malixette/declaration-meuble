@@ -11,9 +11,9 @@ class SecurityController
     extends Controller
 {
     /**
-     * @Route("/login", name="connexion")
+     * @Route("/connexion", name="connexion")
      */
-    public function login(Request $request, AuthenticationUtils $authenticationUtils)
+    public function connexion(Request $request, AuthenticationUtils $authenticationUtils)
     {
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -21,7 +21,7 @@ class SecurityController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', array(
+        return $this->render('security/connexion.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
         ));
