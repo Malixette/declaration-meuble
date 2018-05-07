@@ -36,9 +36,10 @@
             <p><strong>Classement:</strong> {{ hebergement.hebClassement }} <br>
             <strong>Date de classement:</strong> {{ hebergement.hebDateClassement | date('d-m-Y') }}</p>
             <p><strong>Saisons d'ouverture:</strong> 
-                <span>{% for periode in hebergement.hebPeriodesLocation %}
-                    <i class="far fa-check-square"></i> {{ periode }}
-                </span>
+                {% for periode in hebergement.hebPeriodesLocation %}
+                    <span>
+                        <i class="far fa-check-square"></i> {{ periode }}
+                    </span>
                 {% endfor %}
             </p>
             <p><strong>Nombre de couchages maximum:</strong> {{ hebergement.hebCouchagesMax }}</p>

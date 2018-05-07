@@ -145,16 +145,16 @@ $pdf->SetFont('Times','',14, 'cp1252');
 $pdf->Cell(0,10,utf8_decode('TOUTE L\'ANNÉE'),0,0,'L');
 $pdf->SetY(200);
 $pdf->Cell(0,10,utf8_decode('SI NON, PRÉCISER LA OU LES PÉRIODES PRÉVISIONNELLES DE LOCATION:'),0,1,'L');
-$pdf->Cell(0,10,$hebergement->getHebPeriodesLocation(),0,1,'L');
+$pdf->Cell(0,10,
+'periodes loc'
+
+
+,0,1,'L');
 
 $pdf->SetY(220);
 $pdf->Cell(0,10,utf8_decode('FAIT A'),0,0,'L');
-$pdf->SetX(40);
-$pdf->Cell(0,10,utf8_decode('ville ici'),0,0,'L');
 $pdf->SetX(90);
 $pdf->Cell(0,10,utf8_decode('LE'),0,0,'L');
-$pdf->SetX(110);
-$pdf->Cell(0,10,utf8_decode('date ici'),0,1,'L');
 
 $pdf->SetY(240);
 $pdf->Cell(0,10,utf8_decode('SIGNATURE'),0,0,'L');
@@ -195,7 +195,7 @@ $pdf->Cell(0,10,utf8_decode('[cp ici]'),0,0,'L');
 $pdf->SetX(75);
 $pdf->Cell(0,10,utf8_decode('Commune:'),0,0,'L');
 $pdf->SetX(100);
-$pdf->Cell(0,10,utf8_decode('[villle ici]'),0,1,'L');
+$pdf->Cell(0,10,utf8_decode('[ville ici]'),0,1,'L');
 
 $pdf->SetY(125);
 $pdf->Cell(0,10,utf8_decode('NOM, PRENOM du déclarant:'),0,0,'L');
@@ -220,12 +220,8 @@ $pdf->Cell(0,10,utf8_decode('[mail ici]'),0,1,'L');
 
 $pdf->SetY(190);
 $pdf->Cell(0,10,utf8_decode('Fait à'),0,0,'L');
-$pdf->SetX(30);
-$pdf->Cell(0,10,utf8_decode('[ville ici]'),0,0,'L');
 $pdf->SetX(85);
 $pdf->Cell(0,10,utf8_decode(', le'),0,0,'L');
-$pdf->SetX(100);
-$pdf->Cell(0,10,utf8_decode('[date ici]'),0,1,'L');
 
 $pdf->SetY(215);
 $pdf->Cell(0,10,utf8_decode('Cachet de la mairie'),0,1,'L');

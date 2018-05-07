@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Hebergement;
 use App\Form\HebergementType;
+use App\Form\HebergementEditType;
 use App\Repository\HebergementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,7 +89,7 @@ class HebergementController extends Controller
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
-        $form = $this->createForm(HebergementType::class, $hebergement,array('is_edit' => true));
+        $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
         
         // memoriser valeur de la bdd dans variable pour comparer avec l'upload
         $photo1 = $hebergement->getHebPhoto1();
