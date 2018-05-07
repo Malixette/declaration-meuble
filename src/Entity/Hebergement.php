@@ -85,11 +85,6 @@ class Hebergement
     private $heb_date_classement;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $heb_periodes_location;
-
-    /**
      * @ORM\Column(type="datetime")
      * @Assert\DateTime()
      */
@@ -214,6 +209,11 @@ class Hebergement
      * @ORM\Column(type="integer", nullable=true)
      */
     private $heb_num_voie;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $heb_periodes_location;
 
     public function getId()
     {
@@ -372,18 +372,6 @@ class Hebergement
     public function setHebDateClassement(?\DateTimeInterface $heb_date_classement): self
     {
         $this->heb_date_classement = $heb_date_classement;
-
-        return $this;
-    }
-
-    public function getHebPeriodesLocation():?string
-    {
-        return $this->heb_periodes_location;
-    }
-
-    public function setHebPeriodesLocation(?string $heb_periodes_location): self
-    {
-        $this->heb_periodes_location = $heb_periodes_location;
 
         return $this;
     }
@@ -636,6 +624,18 @@ class Hebergement
     public function setHebNumVoie(?int $heb_num_voie): self
     {
         $this->heb_num_voie = $heb_num_voie;
+
+        return $this;
+    }
+
+    public function getHebPeriodesLocation(): ?array
+    {
+        return $this->heb_periodes_location;
+    }
+
+    public function setHebPeriodesLocation(?array $heb_periodes_location): self
+    {
+        $this->heb_periodes_location = $heb_periodes_location;
 
         return $this;
     }
