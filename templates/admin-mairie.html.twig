@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-        <link href="{{ asset("assets/css/dashboard-proprio.css") }}" rel="stylesheet">
+        <link href="{{ asset("assets/css/dashboard-mairie.css") }}" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
 <body>
@@ -42,20 +42,17 @@
         <div class="row">
             <aside class="col-lg-3 text-center order-2 order-lg-1">
                 <div class="row">
-                    <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
+                    <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-3">
                         <div class="card-header">
-                            <h4>Bonjour M. Martin</h4>
+                            <h4>Mairie de XXX</h4>
                         </div>
                         <div class="card-body">
-                            <p>Vous avez actuellement 3 meublés déclarés en ligne</p>
-                            <div class="pb-4">
-                                <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
-                            </div>
                             <h4>Vos informations</h4> 
                             <p>
                                 <i class="fas fa-phone"></i> 06 11 12 54 75<br>
                                 <i class="fas fa-envelope"></i> mail@me.com<br>
-                                <i class="fas fa-address-card"></i> Impasse des Lilas, 13100 Aix
+                                <i class="fas fa-map-marker"></i> Impasse des Lilas, 13100 Aix<br>
+                                <i class="fas fa-address-card"></i> Basile DUPONT
                             </p class="d-flex flex-column">
                             <div class="pb-4">
         					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
@@ -63,28 +60,14 @@
     					</div>
                     </div>
                     <div class="w-100 d-flex flex-column">
-                        <div class="encartMairie card text-white bg-secondary mb-lg-4">
+                        <div class="encartMairie card text-white bg-secondary mb-lg-3">
                             <div class="card-header">
-                                <h4>Votre Mairie</h4>
+                                <h4>Vous avez actuellement XXX meublés déclarés par YYY propriétaires</h4>
                             </div>
-                            <div class="card-body">
-                                <p>
-                                    <i class="fas fa-phone"></i> 04 12 34 56 78<br>
-                                    <i class="fas fa-envelope"></i> mairie@me.com<br>
-                                    <i class="fas fa-address-card"></i> Place de la Mairie, 04400 Barcelonnette
-                                </p>   
-                            </div>
-                        </div>
-                        <div class="encartOffice card text-white bg-dark mb-lg-4">
-                            <div class="card-header">
-                                <h4>Votre Office de Tourisme</h4>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                                    <i class="fas fa-envelope"></i> ot@me.com<br>
-                                    <i class="fas fa-address-card"></i> Traverse Longue, 04400 Barcelonnette
-                                </p>   
+                            <div class="card-body" style="background: url({{ asset("assets/img/dashboard-mairie/maps.jpg") }})">
+                            <div class="pb-4">
+        					    <a href="#" type="button" class="btn btn-secondary">Carte des hébergements</a>
+        					</div> 
                             </div>
                         </div>
                     </div>   
