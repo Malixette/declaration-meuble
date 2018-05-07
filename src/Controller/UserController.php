@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Controller\SessionInterface;
-// /**
-//  * @Security("has_role('ROLE_PROPRIETAIRE')")
-//  */
+
 class UserController extends Controller
 {
     /**
@@ -27,6 +25,7 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
+            dump($user);
             $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
             
             $user->setUserRole(2);
@@ -42,6 +41,8 @@ class UserController extends Controller
                         'success', 
                         "bravo, vous êtes bien inscrit"
                         );
+                        
+            return $this->redirectToRoute('connexion');
             
             // return $this->redirectToRoute('connexion');
         }

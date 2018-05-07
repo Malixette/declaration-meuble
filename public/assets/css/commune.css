@@ -1,4 +1,115 @@
-* {
+html, body {
+    height: 100%;
+    width:100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0) !important;
+    color:white !important;
+    border-color:white !important;
+    box-shadow :0 0 0.4em black !important;
+}
+    
+.btn-outline-light {
+    border-width : 2px !important;
+    border-radius: 10px;
+}
+
+.flaticon {
+    width: 25%;
+    height: auto;
+}
+
+.full {
+    background: url(img/barcelonnette.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
+
+.header h1, .main h2, #section-commune h1 {
+    text-shadow: 1px 1px 1px black;
+}
+
+.headercommune {
+    background: url(img/barcelonnette2.jpg) no-repeat center center fixed;
+}
+
+.bg-warning {
+    background-color: #FFD470 !important;
+}
+
+.bg-info {
+    background-color: #5070B5 !important;
+}
+
+.btn-danger {
+    background-color: #FF9166 !important;
+    border-color: #FF9166 !important;
+}
+
+.btn-success {
+    background-color: #58CCB6 !important;
+    border-color: #58CCB6 !important;
+}
+
+.btn-warning {
+    background-color: #FFD470 !important;
+    border-color: #FFD470 !important;
+}
+
+#btn-declaration {
+    font-size:4em;
+}
+
+#commune-header {
+    background: url(img/barcelonnette2.jpg) no-repeat center center fixed;
+}
+
+@media screen and (max-width: 375px) {
+  #btn-declaration {
+    font-size : 1em;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #btn-declaration {
+    font-size : 2em;
+  }
+}
+/* body {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    font-family:'Open Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding : 0;
+        margin: 0;
+    }
+
+    footer {
+        height: 10vh;
+        display: flex!important;
+        justify-content: center;
+        align-items: center;
+        height: 5vh;
+        padding-bottom: .5rem;
+        margin-top: 1rem;
+    }
+
+    * {
     box-sizing: border-box;
 }
 
@@ -6,21 +117,12 @@ h1, h2, h3, h4, h5, h6{
     font-family: 'Oswald', sans-serif;
 }
 
-body {
-    font-family:'Open Sans', sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding : 0;
-    margin: 0;
-}
-
 .container-fluid {
     height: 100%;
 }
 
 header {
-    background: url(../img/communes/barcelonnette/barcelonnette.jpg) no-repeat center center fixed; 
+    background: url(img/barcelonnette.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -47,10 +149,58 @@ section {
 /*    height : 30%;*/
 /*}*/
 
-#commune-header {
-    background: url(../img/communes/barcelonnette/barcelonnette2.jpg) no-repeat center center fixed;
+
+
+    /* #dot-nav{    
+	right: 10px;
+	top: 50%;
+	margin-top: -50px;
+	height: 100px;
+	z-index: 999;
 }
+
+#dot-nav ul {
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+#dot-nav li {
+	position: relative;
+	background-color: #bdc3c7;
+	border:3px solid #bdc3c7;
+	border-radius: 15px 15px 15px 15px;
+	cursor: pointer;
+	padding: 5px;
+	height: 10px;
+	margin: 10px 10px 0px 0px;
+	width: 10px;
+	vertical-align:bottom;
+}
+#dot-nav li.active, #dot-nav li:hover {
+	background-color: #8e44ad;
+}
+
+#dot-nav a {
+	outline: 0;
+	vertical-align:top;
+	margin: 0px 0px 0px 25px;
+	position: relative;
+	top:-5px;
+}
+.awesome-tooltip + .tooltip > .tooltip-inner {
+    background-color: #8e44ad; 
+    color: #f5f5f5; 
+    border: 1px solid #8e44ad; 
+}
+.awesome-tooltip + .tooltip.left > .tooltip-arrow{
+    top:50%;
+    right:0;
+    margin-top:-5px;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:5px solid #8e44ad;
+} */
 
 /*#section-demarche, #section-commune, #section-contact{*/
 /*    height: 934px;*/
-/*}*/
+

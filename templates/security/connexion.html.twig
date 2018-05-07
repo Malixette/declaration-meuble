@@ -1,30 +1,83 @@
-{% extends 'base.html.twig' %}
+{% extends 'commune.html.twig' %}
+{% block title %}Connexion{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+        }
+
+    </style>
+{% endblock %}
+{% block header %}
+{% endblock %}
 {% block main %}
 
-<form action="{{ path('connexion') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}">
+<h1 class="mt-5 mb-4 text-center display-3 text-dark" id="titreinscription">Connexion</h1>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password">
+<div class="container-fluid h-100">
+    <div class="row justify-content-center align-items-center h-100" >
+        <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            {#<form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
+                {% for label, messages in app.flashes %}
+                <article>
+                    <div>
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                </article>
+                {% endfor %}
 
-   <input type="hidden" name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}">
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
+                <p class="text-center">Connectez-vous pour gérer vos déclarations</p>
+                <form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4" action="{{ path('connexion') }}" method="post">
+                    <div class="text-center form-group">
+                        <label for="username">Nom d'utilisateur :</label>
+                        <input class="form-control form-control-lg mb-3" type="text" id="username" name="_username" value="{{ last_username }}">
+                    </div>
+                    <div class="text-center form-group">
+                        <label for="password">Mot de passe :</label>
+                        <input class="form-control form-control-lg mb-3" type="password" id="password" name="_password">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <input type="hidden" name="_target_path" value="/admin/proprietaire" />
+                        <button class="btn btn-success" type="submit">connexion</button>
+                    </div>
+                    <p class="text-center"><a href="{{path('inscription')}}">Pas encore inscrit?</a></p>
+                </form> 
+        </div>
+    </div>
+</div>
 
-    <button type="submit">connexion</button>
-
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{#<div class="container">#}
+{#    <form action="{{ path('connexion') }}" method="post">#}
+{#        <label for="username">Nom d'utilisateur :</label>#}
+{#        <input type="text" id="username" name="_username" value="{{ last_username }}">#}
     
-    <input type="hidden" name="_target_path" value="/admin/proprietaire" />
-
-</form>
+{#        <label for="password">Mot de passe :</label>#}
+{#        <input type="password" id="password" name="_password">#}
+    
+{#       <input type="hidden" name="_csrf_token"#}
+{#            value="{{ csrf_token('authenticate') }}">#}
+        
+            {#If you want to control the URL the user#}
+            {#is redirected to on success (more details below)#}
+{#            <input type="hidden" name="_target_path" value="/account" />#}
+    
+    
+{#        <button type="submit">connexion</button>#}
+    
+{#        {% if error %}#}
+{#            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#        {% endif %}#}
+        
+{#        <input type="hidden" name="_target_path" value="/admin/proprietaire" />#}
+{#    </form>#}
+{#</div>#}
 
 {% endblock %}
+
+
+

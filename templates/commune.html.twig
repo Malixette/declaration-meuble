@@ -1,176 +1,482 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Barcelonnette - Déclarer son meublé{% endblock %}
-{% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
-    <style>
-        body {
-              display: flex;
-              flex-direction: column;
-              padding-bottom : 0;
-            }
-        footer {
-        height : 10vh;
-          display: flex!important;
-          justify-content: center;
-          align-items: center;
-          height :5vh;
-          padding-bottom: .5rem;
-          margin-top: 1rem;
-        }
-    </style>
-{% endblock %}
+{%block stylesheets %}
+<style>
+    html, body {
+    height: 100%;
+    width:100%;
+}
 
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0) !important;
+    color:white !important;
+    border-color:white !important;
+    box-shadow :0 0 0.4em black !important;
+}
+    
+.btn-outline-light {
+    border-width : 2px !important;
+    border-radius: 10px;
+}
+
+.flaticon {
+    width: 10%;
+    height: auto;
+}
+
+.full {
+    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
+
+.header h1, .main h2, #section-commune h1 {
+    text-shadow: 1px 1px 1px black;
+}
+
+.headercommune {
+    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
+}
+
+.bg-warning {
+    background-color: #FFD470 !important;
+}
+
+.bg-info {
+    background-color: #5070B5 !important;
+}
+
+.btn-danger {
+    background-color: #FF9166 !important;
+    border-color: #FF9166 !important;
+}
+
+.btn-success {
+    background-color: #58CCB6 !important;
+    border-color: #58CCB6 !important;
+}
+
+.btn-warning {
+    background-color: #FFD470 !important;
+    border-color: #FFD470 !important;
+}
+
+#btn-declaration {
+    font-size:4em;
+}
+
+/*#commune-header {*/
+/*    background: url(img/barcelonnette2.jpg) no-repeat center center fixed;*/
+/*}*/
+
+@media screen and (max-width: 375px) {
+  #btn-declaration {
+    font-size : 1em;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #btn-declaration {
+    font-size : 2em;
+  }
+}
+/* body {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    font-family:'Open Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding : 0;
+        margin: 0;
+    }
+
+    footer {
+        height: 10vh;
+        display: flex!important;
+        justify-content: center;
+        align-items: center;
+        height: 5vh;
+        padding-bottom: .5rem;
+        margin-top: 1rem;
+    }
+
+    * {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Oswald', sans-serif;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+header {
+    background: url(img/barcelonnette.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn.outline {
+	border: 2px solid white;
+	background: none;
+	border-radius: 24px;
+}
+
+.navbar {
+    background:rgba(255,255,255, 0.9);
+}
+
+section {
+    height:100%;
+}
+
+/*.bloc-header {*/
+/*    height : 30%;*/
+/*}*/
+
+
+
+    /* #dot-nav{    
+	right: 10px;
+	top: 50%;
+	margin-top: -50px;
+	height: 100px;
+	z-index: 999;
+}
+
+#dot-nav ul {
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+#dot-nav li {
+	position: relative;
+	background-color: #bdc3c7;
+	border:3px solid #bdc3c7;
+	border-radius: 15px 15px 15px 15px;
+	cursor: pointer;
+	padding: 5px;
+	height: 10px;
+	margin: 10px 10px 0px 0px;
+	width: 10px;
+	vertical-align:bottom;
+}
+#dot-nav li.active, #dot-nav li:hover {
+	background-color: #8e44ad;
+}
+
+#dot-nav a {
+	outline: 0;
+	vertical-align:top;
+	margin: 0px 0px 0px 25px;
+	position: relative;
+	top:-5px;
+}
+.awesome-tooltip + .tooltip > .tooltip-inner {
+    background-color: #8e44ad; 
+    color: #f5f5f5; 
+    border: 1px solid #8e44ad; 
+}
+.awesome-tooltip + .tooltip.left > .tooltip-arrow{
+    top:50%;
+    right:0;
+    margin-top:-5px;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:5px solid #8e44ad;
+} */
+
+/*#section-demarche, #section-commune, #section-contact{*/
+/*    height: 934px;*/
+</style>
+{%endblock%}
 {% block nav %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <a class="navbar-brand" href="{{path('commune_home')}}">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_home')}}#section-demarche">La démarche</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_home')}}#section-commune">Barcelonnette</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_listing')}}">Les meublés</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('commune_home')}}#section-contact">Contact</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('inscription')}}">Inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('connexion')}}">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Déconnexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('dashboard_declarant')}}">Tableau de bord</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-<!-- *******************************************************************FIN NAV********************************************************************* -->
-{% endblock %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top">
+        <a class="navbar-brand" href="{{ path('commune_home') }}">Accueil</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_listing') }}">Les meublés</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_home') }}#section-contact">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('inscription') }}">Inscription</a>
+            </li>
+            {% endif %}
+            {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('connexion') }}">Connexion</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('dashboard_declarant') }}">Tableau de bord</a>
+            </li>
+            {% endif %}
+            
+        </ul>
+    </div>
+</nav>
+<!-- <div data-spy="affix" id="dot-nav">
+    <ul>
+        <li class="awesome-tooltip active" title="Home">
+            <a href="#index">oooooooooooooooooooooohai</a>
+        </li>
+        <li class="awesome-tooltip" title="About">
+            <a href="#section-demarche"></a>
+        </li>
+        <li class="awesome-tooltip" title="Projects">
+            <a href="#section-commune"></a>
+        </li>
+        <li class="awesome-tooltip" title="Contact">
+            <a href="#section-contact"></a>
+        </li>
+    </ul>
+</div> -->
+{% endblock %} 
 
 {% block header %}
-
-<header style="height: 100%">
-    <div class="container-fluid" style="height: 934px">
-        <div class="row d-flex flex-column"  id="homeblock">
-            <div class="col-12 d-flex flex-column align-items-center p-0 text-white" style="margin-top: 20%;" id="btn-declaration">
-                <h3>Bienvenue sur le service de déclaration de vos meublés de tourisme de la mairie de Barcelonnette.</h3>
-                <h4 class="display-6" >Un seul espace pour déclarer tous vos meublés en France !</h4>
-                <button type="button" class="outline btn btn-lg pl-5 pr-5 pt-2 pb-2" >
-                    <p class="display-3 text-white"><a style="font-family: 'Open Sans', sans-serif; text-decoration:none;" href="{{path('dashboard_declarant')}}" class="text-white">Je déclare</a></p>
-                </button>
+<div class="main full">
+    <div class="container-fluid full section position-relative header" id="index">
+        <div class="row w-100 position-absolute" style="top:35%;">
+            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
+                <h1 class="text-white">Bienvenue sur le site de déclaration de meublés de Barcelonnette</h1>
+            </div>
+            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
+                <h2 class="text-white">Un seul espace pour déclarer tous vos meublés en France</h2>
+            </div>
+            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
+                <a href="#" class="btn btn-outline-light btn-md-lg p-4 mt-md-4" role="button" id="btn-declaration">Espace déclaration</a>
             </div>
         </div>
     </div>
-</header>
-{% endblock %}
-
+{% endblock %} 
 {% block main %}
-<!--***********************************************************BLOC DEMARCHE *************************************************************************-->
 
-<div class="container-fluid p-0" style="height: 100%">
-    <section id="section-demarche" style="max-height: 100%">
-        <div class="container-fluid bloc-header p-0" id="demarche-header">
-            <div class="row">
-                <div class="col-12 p-0">
-                    <h1 class="display-3 text-center mt-5">La démarche</h1>
-                </div>
+    <div class="container full pt-md-5 section" style="background : none;" id="section-demarche">
+        <div class="row"> 
+            <div class="col-12">
+                <h1 class="display-3 text-center">La démarche</h1>
             </div>
         </div>
-        <div class="container bloc-content" id="demarche-content">
-            <div class="col-md-12 col-lg-6 bg-warning m-1 p-0">
-                <h2>Pourquoi déclarer votre meublé de tourisme</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>
+        <div class="row">
+            <div class="col-md-8 bg-warning">
+                <h1 class="display-4">En quelques étapes</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
+                </p>
+                <a href="#" class="btn btn-danger" role="button">Suivant</a>
             </div>
-            <div class="col-md-12 col-lg-5 bg-info m-1">
-                <h2>La réglementation en vigueur</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem minus illo mollitia vel harum excepturi eos adipisci ipsum facere quasi rerum ad facilis quaerat et ipsa, quidem ullam amet!</p>
-            </div>
-        </div>
-    </section>
-    <!--**********************************************BLOC PRESENTATION COMMUNE **********************************************-->
-    <section class="p-0" id="section-commune" style="height: 100%">
-        <div class="container-fluid bloc-header p-0" id="commune-header">
-            <div class="row">
-                <div class="col-12 p-0">
-                    <h1 class="display-3 text-center text-white mt-5">Barcelonnette</h1>
-                </div>
-            </div>
-        </div>
-        <div class="container bloc-content" id="commune-content">
-            <div class="row d-flex justify-content-center" id="contenu-commune">
-                <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
-                    <img class="img-fluid" src="{{asset('assets/img/vecteurs/cityhall.png')}}">
-                    <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                    <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou à vélo !</div>
-                <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">
-                    <img class="img-fluid" src="{{asset('assets/img/vecteurs/signs.png')}}">
-                    <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                    <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle aussi à partir à la rencontre de la Vallée de l’Ubaye Serre-Ponçon.</div>
-                <div class="col-md-12 col-lg-3 bg-light text-center pt-4">
-                    <img class="img-fluid" src="{{asset('assets/img/vecteurs/backpack.png')}}">
-                    <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                    <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye). C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</div>
-                <div class="col-md-12 col-lg-3 bg-info text-center text-light pt-4">
-                    <img class="img-fluid" src="{{asset('assets/img/vecteurs/house.png')}}">
-                    <h2 class="display-4">Lorem ipsum dolor sit amet</h2>
-                    <p>BLABLA hébergements classés + incitation à classer lien vers la page listing?</p>
-                </div>
+            <div class="col-md-4 bg-info">
+                <h1 class="display-4">En quelques étapes</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
+                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum dolor
+                    sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque
+                    ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur
+                    rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
+                </p>
+                <a href="#" class="btn btn-danger" role="button">Espace déclaration</a>
             </div>
         </div>
-    </section>
-    <!--********************************************************BLOC CONTACT ***************************************************-->
-    <section id="section-contact" style="max-height: 100%">
-        <div class="container-fluid bloc-header mt-3 p-0" id="contact-header">
-            <div class="row">
-                <div class="p-0 col-12">
-                    <h1 class="display-3 text-center mt-5">Contact</h1>
-                </div>
-            </div>
-        </div>
-        <div class="container bloc-content" id="contact-content">
-            <div class="row d-flex flex-column">
-                <div class="col-12 embed-responsive">
-                    <h3>Où nous trouver?</h3>
-                    <iframe class="embed-responsive-item" 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2851.280825584107!2d6.6480755157509!3d44.386356712729764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc919affa75b03%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1524755265006"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-{% endblock %}
-
-{% block footer %}
-<div class="container-fluid p-0">
-    <div class="row">
-        <footer class="bg-info p-3 text-center mb-0 w-100 d-flex justify-content-middle">
-            <div class="col-4">
-                <a class="text-dark" href="">Déclarer son meublé</a>
-            </div>
-            <div class="col-4">
-                &copy; 2018
-            </div>
-            <div class="col-4">
-                <a class="text-dark" href="">Mentions légales</a>
-            </div>
-        </footer>
     </div>
-</div>
+
+    <div class="container-fluid full section" style="background : none;" id="section-commune">
+        <div class="row headercommune" style="height:30%;">
+            <div class="col-12 d-flex flex-column justify-content-center w-100">
+                <h1 class="display-3 text-center text-white">Barcelonnette</h1>
+            </div>
+        </div>
+        <div class="container" style="height:70%; width:auto;">
+            <div class="row" style="height:auto; width:auto;">
+                <div class="col-md-6 bg-warning p-4 text-center">
+                    <img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">
+                    <h3 class="text-center">A votre service</h3>
+                    <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique
+                        : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels
+                        ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou
+                        à vélo !</p>
+                </div>
+                    <div class="col-md-6 bg-white p-4 text-center">
+                        <img src="{{asset('assets/img/vecteurs/signs.png')}}"  class="fixed flaticon img-fluid m-md-3" alt="des panneaux fléchés indiquant plusieurs destinations possibles">
+                        <h3 class="text-center">Une situation idéale</h3>
+                        <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée
+                        station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle
+                        aussi à partir à la rencontre de la Vallée de l'Ubaye Serre-Ponçon.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 bg-white p-4 text-center">
+                    <img src="{{asset('assets/img/vecteurs/backpack.png')}}" alt="un sac à dos" class="fixed flaticon img-fluid m-md-3">                    
+                    <h3 class="text-center">Une destination prisée</h3>
+                    <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble
+                    de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye).
+                    C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape
+                    réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</p>
+                </div>
+                <div class="col-md-6 bg-info p-4 text-center">
+                    <img src="{{asset('assets/img/vecteurs/house.png')}}" alt="une maison" class="fixed flaticon img-fluid m-md-3">                    
+                    <h3 class="text-center">Classez-vous !</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet natus, ad praesentium repellat, maxime commodi assumenda nihil 
+                        totam aperiam mollitia nobis corrupti, ad praesentium repellat, maxime commodi assumenda nihilquibusdam sed quasi quo ipsum suscipit? 
+                        Expedita, ad praesentium repellat, maxime commodi assumenda nihil iusto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid full pt-5 pr-0 pl-0 section" style="background : none;" id="section-contact">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-3 text-center">Contact</h1>
+            </div>
+        </div>
+        <div class="row d-flex  justify-content-center">
+            <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                
+                    <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>
+            </div>
+            <div class="col-md-4 bg-info">
+                <h1 class="display-4">En quelques étapes</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
+                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
+                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
+                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
+                </p>
+                <a href="#" class="btn btn-danger" role="button">Espace déclaration</a>
+            </div>
+        </div>
+<!-- <script>
+    $(document).ready(function () {
+            $('.awesome-tooltip').tooltip({
+                placement: 'left'
+            });
+
+            $(window).bind('scroll', function (e) {
+                dotnavigation();
+            });
+
+            function dotnavigation() {
+
+                var numSections = $('section').length;
+
+                $('#dot-nav li a').removeClass('active').parent('li').removeClass('active');
+                $('section').each(function (i, item) {
+                    var ele = $(item), nextTop;
+
+                    console.log(ele.next().html());
+
+                    if (typeof ele.next().offset() != "undefined") {
+                        nextTop = ele.next().offset().top;
+                    }
+                    else {
+                        nextTop = $(document).height();
+                    }
+
+                    if (ele.offset() !== null) {
+                        thisTop = ele.offset().top - ((nextTop - ele.offset().top) / numSections);
+                    }
+                    else {
+                        thisTop = 0;
+                    }
+
+                    var docTop = $(document).scrollTop();
+
+                    if (docTop >= thisTop && (docTop < nextTop)) {
+                        $('#dot-nav li').eq(i).addClass('active');
+                    }
+                });
+            }
+
+            /* get clicks working */
+            $('#dot-nav li').click(function () {
+
+                var id = $(this).find('a').attr("href"),
+                    posi,
+                    ele,
+                    padding = 0;
+
+                ele = $(id);
+                posi = ($(ele).offset() || 0).top - padding;
+
+                $('html, body').animate({ scrollTop: posi }, 'slow');
+
+                return false;
+            });
+
+            /* end dot nav */
+        });
+</script> -->
 
 
-
+<!-- <script>
+    $(".main").onepage_scroll({
+            sectionContainer: ".section",     // sectionContainer accepts any kind of selector in case you don't want to use section
+            easing: "ease",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
+            // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
+            animationTime: 1000,             // AnimationTime let you define how long each section takes to animate
+            pagination: false,                // You can either show or hide the pagination. Toggle true for show, false for hide.
+            updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
+            beforeMove: function (index) { },  // This option accepts a callback function. The function will be called before the page moves.
+            afterMove: function (index) { },   // This option accepts a callback function. The function will be called after the page moves.
+            loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
+            keyboard: true,                  // You can activate the keyboard controls
+            responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
+            // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
+            // the browser's width is less than 600, the fallback will kick in.
+            direction: "vertical"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
+        });
+</script> -->
+        {#<div class="container-fluid p-0">#}
+        {#    <div class="row">#}
+                
+        {#    </div>#}
+        {#</div>#}
+    </div>
 {% endblock %}

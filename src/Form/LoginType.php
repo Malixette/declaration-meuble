@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -15,13 +16,12 @@ class LoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('user_email', EmailType::class, [
+            ->add('username', TextType::class, [
                 'required' => true,
-                'label' => 'Email :',
+                'label' => 'Nom d\'utilisateur :',
                 'attr' => [
-                    'placeholder' => "votre@email.com",
-                    'class' => "form-control form-control-lg mb-3",
-                    'type' => "email"
+                    'placeholder' => "SuperSlip",
+                    'class' => "form-control form-control-lg mb-3"
                 ]
             ])
             ->add('password', PasswordType::class,[

@@ -1,7 +1,7 @@
 # config/packages/security.yaml
 security:
     access_control:
-        - { path: ^/admin/proprietaire, roles: ROLE_PROPRIETAIRE }
+        - { path: ^/admin/proprietaire, roles: ROLE_DECLARANT }
     providers:
         mon_login:
             entity:
@@ -20,7 +20,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
             logout:
                 path: logout
-                target: login
+                target: connexion
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false

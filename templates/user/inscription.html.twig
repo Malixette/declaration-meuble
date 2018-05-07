@@ -73,14 +73,21 @@
                         {{ form_label(form.user_email)}} 
                         {{ form_widget(form.user_email)}}
                     </div>
+                </div> 
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_errors(form.username) }}
+                        {{ form_label(form.username)}} 
+                        {{ form_widget(form.username)}}
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ form_row(form.password.first)}}
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ form_row(form.password.second)}}
                         </div>
@@ -95,22 +102,30 @@
                     {{ form_widget(form.user_complement_adresse)}}
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.user_postal_code)}}
                             {{ form_widget(form.user_postal_code)}}
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.user_commune)}}
                             {{ form_widget(form.user_commune)}}
                         </div>
                     </div>
-                    <div class="col-4">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.user_pays)}}
                             {{ form_widget(form.user_pays)}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.user_telephone)}}
+                            {{ form_widget(form.user_telephone)}}
                         </div>
                     </div>
                 </div>
