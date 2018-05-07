@@ -44,19 +44,25 @@
                 <div class="row">
                     <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-3">
                         <div class="card-header">
-                            <h4>Mairie de XXX</h4>
+                            <h4>Mairie de {{ user.UserNom }}</h4>
                         </div>
                         <div class="card-body">
                             <h4>Vos informations</h4> 
                             <p>
-                                <i class="fas fa-phone"></i> 06 11 12 54 75<br>
-                                <i class="fas fa-envelope"></i> mail@me.com<br>
-                                <i class="fas fa-map-marker"></i> Impasse des Lilas, 13100 Aix<br>
-                                <i class="fas fa-address-card"></i> Basile DUPONT
+                                <i class="fas fa-phone"></i> {{ user.UserTelephone }}<br>
+                                <i class="fas fa-envelope"></i> {{ user.UserEmail }} <br>
+                                <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>
+                                <i class="fas fa-address-card"></i> Maire: {{ mairie.MairieMaireNom }} {{ mairie.MairieMairePrenom }}
                             </p class="d-flex flex-column">
                             <div class="pb-4">
         					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
+        					<p>
+                                Contact technique: {{ mairie.MairieContactNom}} 
+                                {{ mairie.MairieTelephoneContact }}<br>
+                                {{ mairie.MairieEmailContact }} <br>
+                                {{ mairie.MairieTelephoneContact }}<br>
+                            </p class="d-flex flex-column">
     					</div>
                     </div>
                     <div class="w-100 d-flex flex-column">
