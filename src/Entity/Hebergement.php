@@ -292,12 +292,12 @@ class Hebergement
         return $this;
     }
 
-    public function getHebLat(): ?int
+    public function getHebLat(): ?float
     {
         return $this->heb_lat;
     }
 
-    public function setHebLat(int $heb_lat): self
+    public function setHebLat(float $heb_lat): self
     {
         $this->heb_lat = $heb_lat;
 
