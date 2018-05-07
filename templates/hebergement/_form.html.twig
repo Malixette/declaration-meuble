@@ -99,10 +99,10 @@
 <h4><i class="fa fa-chevron-down"></i> Renseignements sur la location</h4>
     <div>
         <div class="item__description">
-            {#<div class="form-group">#}
-            {#    {{form_label(form.heb_periodes_location) }}#}
-            {#    {{form_widget(form.heb_periodes_location) }}#}
-            {#</div>#}
+            <div class="form-group">
+                {{form_label(form.heb_periodes_location) }}
+                {{form_widget(form.heb_periodes_location) }}
+            </div>
             <div class="form-group">
                 {{ form_label(form.heb_descriptif_court) }}
                 {{ form_widget(form.heb_descriptif_court) }}
