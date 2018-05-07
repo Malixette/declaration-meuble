@@ -19,8 +19,25 @@ class AdminHomeController extends Controller
         
         $hebergements = $repo->findAll();
         
-        return $this->render('admin_home/index.html.twig', [
+        return $this->render('admin_home/dashboard-proprio.html.twig', [
             'hebergements' => $hebergements
         ]);
     }
+    
+    /**
+     * @Route("/admin/mairie", name="dashboard_mairie")
+     */
+    public function indexMairie()
+    {
+        
+        $repo = $this->getDoctrine()->getRepository(Hebergement::class);
+        
+        $hebergements = $repo->findAll();
+        
+        return $this->render('admin_home/dashboard-mairie.html.twig', [
+            'hebergements' => $hebergements
+        ]);
+    }
+    
+    
 }

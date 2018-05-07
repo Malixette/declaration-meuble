@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+    color: #FFD470;
+}
+
+header nav {
+    background-color: #5070B5;
+}
+
+footer {
+    background-color: #5070B5;
+}
+
+.encartDeclarant, .encartMairie, .encartOffice {
+    box-shadow: 3px 3px 8px #adadad;
+}
+
+.listeHebergement td, .listeHebergement th {
+    border: none; 
+}
+
+.page-item.active .page-link {
+    background-color: #C1AEA5;
+    border-color: #C1AEA5;
+}
+
+a {
+    color: #C1AEA5;
+}
+
+a:hover {
+    color: #9F877C;
+    text-decoration: none;
+}
