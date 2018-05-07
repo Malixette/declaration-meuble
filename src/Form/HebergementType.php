@@ -38,7 +38,7 @@ class HebergementType extends AbstractType
                 'attr'      => [
                     'placeholder'   => "3 rue des Lilas",
                     'id'            => "autocomplete",
-                    'type'          => "input"
+                    'type'          => "input",
                 ]    
             ])
 
@@ -162,18 +162,18 @@ class HebergementType extends AbstractType
                 'label'     => "Si oui, date de classement",
             ))
             
-            //->add('heb_periodes_location',ChoiceType::class, [
-            //     'label'        => "Période de location",
-            //     'disabled'     => $options['is_edit'],
-            //    'multiple'     => true,
-            //     'expanded'     => true,
-            //   'choices'      => array(
-            //         'Printemps'=> 'Printemps', 
-            //         'Eté'      => 'Eté', 
-            //         'Automne'  => 'Automne',
-            //         'Hiver'    => 'Hiver'
-            //    )
-            //])
+            ->add('heb_periodes_location',ChoiceType::class, [
+                'label'        => "Période de location",
+                'disabled'     => $options['is_edit'],
+                'multiple'     => true,
+                'expanded'     => true,
+                'choices'      => array(
+                    'Printemps'=> 'Printemps', 
+                    'Eté'      => 'Eté', 
+                    'Automne'  => 'Automne',
+                    'Hiver'    => 'Hiver'
+                )
+            ])
 
             // ->add('heb_date_declaration')
             

@@ -42,8 +42,7 @@ class HebergementController extends Controller
             $hebergement->setHebCerfa(123);
             $hebergement->setHebStatut('en cours');
             $hebergement->setHebNumDeclaration('Mairie321');
-            $hebergement->setHebPeriodesLocation('hiver');
-            
+
             $file1 = $hebergement->getHebPhoto1();
             
             // si on upload, on set avec nouvelle photo
