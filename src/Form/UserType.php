@@ -39,7 +39,7 @@ class UserType extends AbstractType
                 'required' => true,
                 'label' => 'Nom d\'utilisateur :',
                 'attr' => [
-                    'placeholder' => "SuperSlip",
+                    'placeholder' => "GeraldineDupont93",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
@@ -57,7 +57,7 @@ class UserType extends AbstractType
                 'required' => false,
                 'label' => 'Adresse :',
                 'attr' => [
-                    'placeholder' => "317 rue des pieds paquets",
+                    'placeholder' => "317 chemin des Blés Dorés",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]

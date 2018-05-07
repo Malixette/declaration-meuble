@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +25,6 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            dump($user);
             $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
             
             $user->setUserRole(2);

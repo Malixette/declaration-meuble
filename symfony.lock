@@ -128,6 +128,9 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
+    "setasign/fpdf": {
+        "version": "1.8.1"
+    },
     "swiftmailer/swiftmailer": {
         "version": "v6.0.2"
     },
