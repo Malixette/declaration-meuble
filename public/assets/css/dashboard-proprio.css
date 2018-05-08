@@ -11,15 +11,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    color: #9F877C;
+    background-color: #415A7E;
+    color: white;
 }
 
 header nav {
-    background-color: #C1AEA5;
+    background-color: #22405F;
+}
+
+.nav-link{
+    color:white;
 }
 
 footer {
-    background-color: #C1AEA5;
+    background-color: #EDEBE0;
 }
 
 .encartDeclarant, .encartMairie, .encartOffice {

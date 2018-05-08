@@ -28,7 +28,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path ('dashboard_mairie') }}"></i>Tableau de bord</a>
+                        <a class="nav-link" href="#"></i>Tableau de bord</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('logout') }}"></i>Déconnexion</a>
@@ -49,7 +49,7 @@
                         <div class="card-body">
                             <h4>Vos informations</h4> 
                             <p>
-                                <i class="fas fa-phone"></i> {{ user.UserTelephone }}<br>
+                                <i class="fas fa-phone"></i> 0{{ user.UserTelephone }}<br>
                                 <i class="fas fa-envelope"></i> {{ user.UserEmail }} <br>
                                 <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>
                                 <i class="fas fa-address-card"></i> Maire: {{ mairie.MairieMaireNom }} {{ mairie.MairieMairePrenom }}
@@ -59,7 +59,7 @@
         					</div>
         					<p>
                                 Contact technique: {{ mairie.MairieContactNom}} 
-                                {{ mairie.MairieTelephoneContact }}<br>
+                                0{{ mairie.MairieTelephoneContact }}<br>
                                 {{ mairie.MairieEmailContact }} <br>
                                 {{ mairie.MairieTelephoneContact }}<br>
                             </p class="d-flex flex-column">
@@ -93,10 +93,10 @@
                     <h4>Espace publicitaire</h4>
                 </div>
                 <div class="col-md-3">
-                    <h4>Votre référent Mairie</h4>
+                    <h4>Vous souhaitez contacter Entreprise</h4>
                     <p>
                         <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                        <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
+                        <i class="fas fa-envelope"></i> entreprise@mailme.com<br>
                     </p>
                 </div>
                 <div class="col-md-2">
