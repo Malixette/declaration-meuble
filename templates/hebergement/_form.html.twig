@@ -5,7 +5,7 @@
     <div>
         <div class="item__description">
             <div class="form-group">
-                {{ form_label(form.heb_adresse) }}
+                {{ form_label(form.heb_adresse) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_adresse) }}
             </div>
             <div id="map"></div>
@@ -34,7 +34,7 @@
                 {{ form_widget(form.heb_num_voie, { 'id': 'street_number' } ) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_code_postal) }}
+                {{ form_label(form.heb_code_postal) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_code_postal, { 
                     'id': 'postal_code',
                     'name': 'postal_code',
@@ -42,7 +42,7 @@
 
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_commune) }}
+                {{ form_label(form.heb_commune) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_commune , { 'id': 'locality' } ) }}
             </div>
          </div>
@@ -53,7 +53,7 @@
     <div>
         <div class="item__description">
             <div class="form-group">
-                {{ form_label(form.heb_name) }}
+                {{ form_label(form.heb_name) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_name) }}
             </div>
             <div class="form-group">
@@ -65,11 +65,11 @@
                 {{ form_widget(form.heb_couchages_max) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_nbr_pieces) }}
+                {{ form_label(form.heb_nbr_pieces) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_nbr_pieces) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_classement) }}
+                {{ form_label(form.heb_classement) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_classement) }}
             </div>
             <div class="form-group">
