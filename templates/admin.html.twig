@@ -44,18 +44,18 @@
                 <div class="row">
                     <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
                         <div class="card-header">
-                            <h4>Bonjour M. Martin</h4>
+                            <h4>Bienvenue {{ user.UserNom }} {{ user.UserPrenom }}</h4>
                         </div>
                         <div class="card-body">
-                            <p>Vous avez actuellement 3 meublés déclarés en ligne</p>
+                            <p>Vous avez actuellement XXX meublés déclarés en ligne</p>
                             <div class="pb-4">
                                 <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
                             </div>
                             <h4>Vos informations</h4> 
                             <p>
-                                <i class="fas fa-phone"></i> 06 11 12 54 75<br>
-                                <i class="fas fa-envelope"></i> mail@me.com<br>
-                                <i class="fas fa-map-marker"></i> Impasse des Lilas, 13100 Aix
+                                <i class="fas fa-phone"></i> {{ user.UserTelephone }}<br>
+                                <i class="fas fa-envelope"></i> {{ user.UserEmail }}<br>
+                                <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}
                             </p>
                             <div class="pb-4">
         					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <i class="fas fa-phone"></i> 04 12 34 56 78<br>
+                                    <i class="fas fa-phone"></i> Mairie de barcelonnette<br>
                                     <i class="fas fa-envelope"></i> mairie@me.com<br>
                                     <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
                                 </p>   

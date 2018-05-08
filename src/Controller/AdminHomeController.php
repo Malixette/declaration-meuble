@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Hebergement;
 use App\Entity\User;
 use App\Entity\Mairie;
+use App\Entity\OfficeTourisme;
 use App\Form\HebergementType;
 
 class AdminHomeController extends Controller
@@ -16,13 +17,21 @@ class AdminHomeController extends Controller
      */
     public function index($id)
     {
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
-        $repo = $this->getDoctrine()->getRepository(Hebergement::class);
+        $hebergements = $repoHeb->findAll();
         
-        $hebergements = $repo->findAll();
+        $user = $repo->find($id);
+        $mairie = $user->getMairie();
+        //$ot = $mairie->getOfficeTourisme();
         
         return $this->render('admin_home/dashboard-proprio.html.twig', [
-            'hebergements' => $hebergements
+            'hebergements'  => $hebergements,
+            'mairie'        => $mairie,
+            'user'          => $user,
+            //'officeTourisme'=> $officeTourisme,
         ]);
     }
     
