@@ -12,9 +12,9 @@ use App\Form\HebergementType;
 class AdminHomeController extends Controller
 {
     /**
-     * @Route("/admin/proprietaire", name="dashboard_declarant")
+     * @Route("/admin/proprietaire/{id}", name="dashboard_declarant")
      */
-    public function index()
+    public function index($id)
     {
         
         $repo = $this->getDoctrine()->getRepository(Hebergement::class);
