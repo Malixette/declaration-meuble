@@ -18,3 +18,6 @@
 =======
 [07-May-2018 10:30:56 UTC] PHP Fatal error:  Cannot redeclare App\Controller\PdfController::index() in /home/ubuntu/workspace/declaration-meuble/src/Controller/PdfController.php on line 24
 >>>>>>> b678c2aa8719ace88893b4ead8e197e696803732
+[07-May-2018 14:06:58 UTC] PHP Fatal error:  Cannot use Symfony\Component\Routing\Annotation\Route as Route because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Controller/CreationMairieController.php on line 15
+[07-May-2018 14:07:50 UTC] PHP Fatal error:  Cannot use Symfony\Bundle\FrameworkBundle\Controller\Controller as Controller because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Controller/CreationMairieController.php on line 15
+[07-May-2018 14:22:43 UTC] PHP Fatal error:  Cannot declare class App\Form\UserType, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Form/CommuneType.php on line 0

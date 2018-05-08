@@ -51,22 +51,18 @@ class UserController extends Controller
             'form' => $form->createView(),
         ]);
     }
-    
-   /**
-     * @Route("/{id}", name="user_show", methods="GET")
-     */
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', ['user' => $user]);
-    }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods="GET|POST")
+     * @Route("admin/proprietaire/{id}/edit", name="declarant_edit", methods="GET|POST")
      */
     public function edit(Request $request, User $user): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+    
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -74,7 +70,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('admin_home/declarant-edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);

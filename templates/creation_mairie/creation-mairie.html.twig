@@ -1,0 +1,106 @@
+{% extends 'commune.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/inscription.css')}}">
+    <style>
+        html {
+            height : 100%;
+        }
+        body{
+            height: 100%;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+            padding-bottom : 0;
+        }
+        
+        .navbar {
+            background:rgba(255,255,255, 1);
+        }
+        
+        ul, li {
+            list-style : none;
+        }
+        a {
+            text-decoration:none;
+        }
+}
+    </style>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block main %}
+
+<h1 class="mt-5 mb-4 text-center display-3 text-dark" id="titreinscription">Inscription - Mairie</h1>
+
+{% if formMairie is defined %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {#<form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
+                {{ form_start(formMairie)}}
+                {{ form_end(formMairie)}}
+            {#</form>#}
+        </div>
+    </div>
+</div
+{% endif %}
+
+{% if formUser is defined %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
+                {{ form_start(formUser)}}
+
+                <p class="text-center">
+                    <strong>Vous êtes une mairie.</strong><br>
+                    Inscrivez-vous pour gérer les déclaration de meublés de vos administrés.
+                </p>
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_errors(formUser.username) }}
+                        {{ form_label(formUser.username)}} 
+                        {{ form_widget(formUser.username)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                            {{ form_row(formUser.password.first)}}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                            {{ form_row(formUser.password.second)}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    {{ form_label(formUser.user_adresse)}}
+                    {{ form_widget(formUser.user_adresse)}}
+                </div>
+                <div class="form-group col-sm-12">
+                    {{ form_label(formUser.user_complement_adresse)}}
+                    {{ form_widget(formUser.user_complement_adresse)}}
+                </div>
+                <div class="form-group text-center">
+                    {{ form_widget(formUser.valider)}}
+                </div>
+                {{ form_end(formUser)}}
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

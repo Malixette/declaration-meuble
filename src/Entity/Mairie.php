@@ -199,7 +199,7 @@ class Mairie
     private $officeTourisme;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="coucou")
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="hebergement")
      */
     private $hebergement;
 
@@ -541,14 +541,14 @@ class Mairie
         return $this;
     }
 
-    public function getComuneLogo2(): ?string
+    public function getMairieLogo2(): ?string
     {
-        return $this->comune_logo_2;
+        return $this->mairie_logo_2;
     }
 
-    public function setComuneLogo2(?string $comune_logo_2): self
+    public function setMairieLogo2(?string $mairie_logo_2): self
     {
-        $this->comune_logo_2 = $comune_logo_2;
+        $this->mairie_logo_2 = $mairie_logo_2;
 
         return $this;
     }
