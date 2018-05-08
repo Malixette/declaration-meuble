@@ -31,6 +31,7 @@ class HebergementController extends Controller
     public function new(Request $request): Response
     {
         $hebergement = new Hebergement();
+        $user = $this->getUser();
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         
         $form->handleRequest($request);
@@ -71,8 +72,9 @@ class HebergementController extends Controller
         }
 
         return $this->render('hebergement/new.html.twig', [
-            'hebergement' => $hebergement,
-            'form' => $form->createView(),
+            'hebergement'   => $hebergement,
+            'form'          => $form->createView(),
+            'user'          => $user,
         ]);
     }
 
