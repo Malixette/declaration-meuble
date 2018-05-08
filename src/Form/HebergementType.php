@@ -183,7 +183,7 @@ class HebergementType extends AbstractType
                 'required'  => false,
                 'label'     => "Descriptif de l'hébergement",
                 'attr'      => [
-                    'placeholder' => "Descriptif de votre hébergement",
+                    'placeholder' => "Ex: Charmante maison de pays dans un cadre reposant... ou Appartement moderne en plein coeur du centre de la ville...",
                     'class' => "textarea",
                     'cols'  => '50', 
                     'rows'  => '3'
