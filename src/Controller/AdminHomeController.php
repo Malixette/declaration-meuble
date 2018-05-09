@@ -13,17 +13,17 @@ use App\Form\HebergementType;
 class AdminHomeController extends Controller
 {
     /**
-     * @Route("/admin/proprietaire/{id}", name="dashboard_declarant")
+     * @Route("/admin/proprietaire/", name="dashboard_declarant")
      */
-    public function index($id)
+    public function index()
     {
+        $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
         $hebergements = $repoHeb->findAll();
         
-        $user = $repo->find($id);
         $mairie = $user->getMairie();
         //$ot = $mairie->getOfficeTourisme();
         
@@ -36,7 +36,7 @@ class AdminHomeController extends Controller
     }
     
     /**
-     * @Route("/admin/mairie/{id}", name="dashboard_mairie")
+     * @Route("/admin/mairie/", name="dashboard_mairie")
      */
     public function indexMairie($id)
     {

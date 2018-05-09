@@ -53,12 +53,11 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("admin/proprietaire/{id}/edit", name="declarant_edit", methods="GET|POST")
+     * @Route("admin/proprietaire/edit", name="declarant_edit", methods="GET|POST")
      */
     public function edit(Request $request, User $user): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user = $this->getUser();
     
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
