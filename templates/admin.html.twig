@@ -58,7 +58,7 @@
                                 <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}
                             </p>
                             <div class="pb-4">
-        					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
+        					    <a href="{{ path('declarant_edit', {'id': user.id}) }}" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
     					</div>
                     </div>

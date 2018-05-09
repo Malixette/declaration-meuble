@@ -14,54 +14,38 @@
 {% block main %}
 
 <h1 class="mt-5 mb-4 text-center display-3 text-white" id="titrelisting">Les meublés déclarés à Barcelonnette</h1>
-        
 <div class="container">
   <div class="row">
-      <table id="listeHebergement" class="listeHebergement table table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
-        <thead>
+    <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th data-orderable="true" scope="col">Nom hébergement</th>
+          <th data-orderable="false" scope="col">Photo</th>
+          <th data-orderable="true" scope="col">Commune</th>
+          <th data-orderable="true" scope="col">Couchages</th>
+          <th data-orderable="true" scope="col">Classement</th>
+          <th data-orderable="true" scope="col">Etat déclaration</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hebergement in hebergements %}
           <tr>
-            <th data-orderable="false" scope="col">Photo</th>
-            <th data-orderable="true" scope="col">Nom de l'hébergement</th>
-            <th data-orderable="true" scope="col">Description</th>
-            <th data-orderable="true" scope="col">Capacité</th>
-            <th data-orderable="true" scope="col">Classement</th>
-            <th data-orderable="true" scope="col">Saison d'ouverture</th>
+            <td class="align-middle">{{ hebergement.hebName }}</td>
+            <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}"></td>
+            <td class="align-middle">{{ hebergement.hebCommune }}</td>
+            <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
+            <td class="align-middle">{{ hebergement.hebClassement }}</td>
+            <td class="align-middle">{{ hebergement.hebStatut }}</td>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{asset('assets/img/illustration-hebergement/petite-guinguette.jpeg')}}" alt="La Petite Guiguette"></th>
-            <td class="align-middle">Petite Guinguette</td>
-            <td class="align-middle">Un logement sympathique idéal pour couple avec enfant. Agréable panorama sur la montagne en été.</td>
-            <td class="align-middle">4</td>
-            <td class="align-middle">3</td>
-            <td class="align-middle">Printemps, Ete</td>
-          </tr>
-          <tr>
-            <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{asset('assets/img/illustration-hebergement/grande-maisonnee.jpeg')}}" alt="La Grande Maisonnée"></th>
-            <td class="align-middle">Grande Maisonnée</td>
-            <td class="align-middle">Maison alpine type chalet moderne, sur les hauteurs de la ville.</i></td>
-            <td class="align-middle">12</td>
-            <td class="align-middle">2</td>
-            <td class="align-middle">Printemps, Ete, Hiver</td>
-          </tr>
-          <tr>
-            <th scope="row"><img class="img-fluid" style="max-width:150px;" src="{{asset('assets/img/illustration-hebergement/studio-montagne.jpeg')}}" alt="Le Studio des Montagnes"></th>
-            <td class="align-middle">Studio des Montagnes</td>
-            <td class="align-middle">Petit studio adapté aux séjours courts, entièrement équipé, au pied des sentiers de randonnée.</td>
-            <td class="align-middle">2</td>
-            <td class="align-middle">3</td>
-            <td class="align-middle">Automne, Hiver</td>
-          </tr>
-        </tbody>
-      </table>
-  </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>    
 </div>
 
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>

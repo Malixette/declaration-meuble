@@ -21,7 +21,6 @@ class SecurityController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
         $user = $this->getUser();
-        dump($user);
         
         return $this->render('security/connexion.html.twig', array(
             'last_username' => $lastUsername,

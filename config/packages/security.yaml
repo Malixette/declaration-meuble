@@ -2,6 +2,7 @@
 security:
     access_control:
         - { path: ^/admin/proprietaire, roles: ROLE_DECLARANT }
+        - { path: ^/admin/mairie, roles: ROLE_MAIRIE }
     providers:
         mon_login:
             entity:
