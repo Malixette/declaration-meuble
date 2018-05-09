@@ -51,10 +51,8 @@ class AdminHomeController extends Controller
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
         
         $mairie = $user->getMairie();
-        
-        dump($mairie);
-        
-        $hebergements = $repoHeb->findAll();
+
+        $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
         
         return $this->render('admin_home/dashboard-mairie.html.twig', [
             'hebergements'  => $hebergements,
