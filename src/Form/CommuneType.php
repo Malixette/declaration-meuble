@@ -71,7 +71,7 @@ class CommuneType extends AbstractType
                     ]
                 ]
             ])
-            ->add('mairie', HiddenType::class)
+            // ->add('mairie', HiddenType::class)
             ->add('valider', SubmitType::class, [
                 'label' => 'Continuer',
                 'attr' => [

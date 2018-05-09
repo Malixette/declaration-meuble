@@ -146,9 +146,7 @@
                         {{ form_widget(formUser.user_complement_adresse)}}
                     </div>
                  </div>
-                 <div class="">
-                    {{ form_widget(formUser.mairie)}}
-                </div>
+                <input type="hidden" name="idMairie" value="{{idMairie}}"></input>
                 <div class="form-group text-center">
                     {{ form_widget(formUser.valider)}}
                 </div>
