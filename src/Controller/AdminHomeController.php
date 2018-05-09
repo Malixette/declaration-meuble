@@ -18,12 +18,13 @@ class AdminHomeController extends Controller
     public function index()
     {
         $user = $this->getUser();
+        dump($user);
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
         $hebergements = $repoHeb->findAll();
-        $repoOt = $repoOt->findAll();
+        // $repoOt = $repoOt->findAll();
         
         $mairie = $user->getMairie();
         //$ot = $mairie->getOfficeTourisme();

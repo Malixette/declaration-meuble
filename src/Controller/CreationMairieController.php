@@ -34,10 +34,14 @@ class CreationMairieController extends Controller
     {
         $mairie = new Mairie();
         $formMairie = $this->createForm(MairieType::class, $mairie);
-        
+        $idMairie = 0;
         
         $formMairie->handleRequest($request);
 
+        $user = new User();
+        $formUser = $this->createForm(CommuneType::class, $user);
+        $formUser->handleRequest($request);
+        
         if($formMairie->isSubmitted() && $formMairie->isValid())
         {
             $mairie->setVille(null)
@@ -50,42 +54,37 @@ class CreationMairieController extends Controller
             $em->persist($mairie);
             $em->flush();
             
-            $user = new User();
-            $formUser = $this->createForm(CommuneType::class, $user);
-            $formUser->handleRequest($request);
+            $idMairie = $mairie->getId();
+        }
+        
+        if($formUser->isSubmitted() && $formUser->isValid())
+        {
+            $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
             
-            return $this->render('creation_mairie/creation-mairie.html.twig', [
-            'mairie' => $mairie,
-            'user' => $user,
-            'formUser' => $formUser->createView(),
-            ]);
+            $user->setMairie($mairie);
+            $user->setUserRole(3);
+            $user->setUserNom($mairie->getMairieContactNom());
+            $user->setUserPrenom($mairie->getMairieContactPrenom());
+            $user->setUserCommune($mairie->getMairieNomTouristique());
+            $user->setUserPays('FR');
+            $user->setUserCodePostal(4400);
+            $user->setUserTelephone($mairie->getMairieTelephoneContact());
+            $user->setUserEmail($mairie->getMairieEmailContact());
+            $user->setMairie($mairie->getId());
+            $user->setUserDateInscription($mairie->getMairieDateInscription());
+            $user->setPassword($password);
             
-            if($formUser->isSubmitted() && $formUser->isValid())
-            {
-                dump($user);
-                $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
-            
-                $user->setUserRole(3);
-                $user->setUserPrenom($mairie->getMairieContactPrenom());
-                $user->setUserNom($mairie->getMairieContactNom());
-                $user->setUserCommune($mairie->getMairieNomTouristique());
-                $user->setUserPays('FR');
-                $user->setUserCodePostal(4400);
-                $user->setUserTelephone($mairie->getMairieTelephoneContact);
-                $user->setUserEmail($mairie->getMairieEmailContact);
-                $user->setMairie($mairie->getId());
-                $user->setUserDateInscription($mairie->getMairieDateInscription());
-                $user->setPassword($password);
-            
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
         }
         
         return $this->render('creation_mairie/creation-mairie.html.twig', [
             'mairie' => $mairie,
+            'idMairie' => $idMairie,
+            'user' => $user,
             'formMairie' => $formMairie->createView(),
+            'formUser' => $formUser->createView()
         ]);
     }
 }
