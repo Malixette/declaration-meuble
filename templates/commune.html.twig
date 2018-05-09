@@ -7,15 +7,12 @@
     height: 100%;
     width:100%;
 }
-
 body {
     font-family: 'Open Sans', sans-serif;
 }
-
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
 }
-
 .btn-outline-light:hover {
     background-color: rgba(255,255,255,0) !important;
     color:white !important;
@@ -27,12 +24,10 @@ h1, h2, h3, h4, h5, h6 {
     border-width : 2px !important;
     border-radius: 10px;
 }
-
 .flaticon {
     width: 10%;
     height: auto;
 }
-
 .full {
     background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -41,173 +36,54 @@ h1, h2, h3, h4, h5, h6 {
     -o-background-size: cover;
     height:100%;
 }
-
 .header h1, .main h2, #section-commune h1 {
     text-shadow: 1px 1px 1px black;
 }
-
 .headercommune {
+    padding: 120px 0px;
     background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
 }
-
 .bg-warning {
     background-color: #FFD470 !important;
 }
-
 .bg-info {
     background-color: #5070B5 !important;
 }
-
+.bg-danger {
+    background-color: #FF9166 !important;
+}
 .btn-danger {
     background-color: #FF9166 !important;
     border-color: #FF9166 !important;
 }
-
 .btn-success {
     background-color: #58CCB6 !important;
     border-color: #58CCB6 !important;
 }
-
 .btn-warning {
     background-color: #FFD470 !important;
     border-color: #FFD470 !important;
 }
-
 #btn-declaration {
     font-size:4em;
 }
-
-/*#commune-header {*/
-/*    background: url(img/barcelonnette2.jpg) no-repeat center center fixed;*/
-/*}*/
 
 @media screen and (max-width: 375px) {
   #btn-declaration {
     font-size : 1em;
   }
 }
-
 @media screen and (max-width: 640px) {
   #btn-declaration {
     font-size : 2em;
   }
-}
-/* body {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 0;
-    font-family:'Open Sans', sans-serif;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        padding : 0;
-        margin: 0;
+  .headercommune {
+    padding: 0;
+    background: none;
+    color : black;
     }
-
-    footer {
-        height: 10vh;
-        display: flex!important;
-        justify-content: center;
-        align-items: center;
-        height: 5vh;
-        padding-bottom: .5rem;
-        margin-top: 1rem;
-    }
-
-    * {
-    box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-family: 'Oswald', sans-serif;
-}
-
-.container-fluid {
-    height: 100%;
-}
-
-header {
-    background: url(img/barcelonnette.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.btn.outline {
-	border: 2px solid white;
-	background: none;
-	border-radius: 24px;
-}
-
-.navbar {
-    background:rgba(255,255,255, 0.9);
-}
-
-section {
-    height:100%;
-}
-
-/*.bloc-header {*/
-/*    height : 30%;*/
-/*}*/
-
-
-
-    /* #dot-nav{    
-	right: 10px;
-	top: 50%;
-	margin-top: -50px;
-	height: 100px;
-	z-index: 999;
-}
-
-#dot-nav ul {
-	list-style: none;
-	margin:0;
-	padding: 0;
-}
-#dot-nav li {
-	position: relative;
-	background-color: #bdc3c7;
-	border:3px solid #bdc3c7;
-	border-radius: 15px 15px 15px 15px;
-	cursor: pointer;
-	padding: 5px;
-	height: 10px;
-	margin: 10px 10px 0px 0px;
-	width: 10px;
-	vertical-align:bottom;
-}
-#dot-nav li.active, #dot-nav li:hover {
-	background-color: #8e44ad;
-}
-
-#dot-nav a {
-	outline: 0;
-	vertical-align:top;
-	margin: 0px 0px 0px 25px;
-	position: relative;
-	top:-5px;
-}
-.awesome-tooltip + .tooltip > .tooltip-inner {
-    background-color: #8e44ad; 
-    color: #f5f5f5; 
-    border: 1px solid #8e44ad; 
-}
-.awesome-tooltip + .tooltip.left > .tooltip-arrow{
-    top:50%;
-    right:0;
-    margin-top:-5px;
-    border-top:5px solid transparent;
-    border-bottom:5px solid transparent;
-    border-left:5px solid #8e44ad;
-} */
-
-/*#section-demarche, #section-commune, #section-contact{*/
-/*    height: 934px;*/
 </style>
 {%endblock%}
 {% block nav %}
@@ -245,38 +121,24 @@ section {
             {% endif %}
             {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+                <a class="nav-link" href="{{ path('dashboard_declarant') }}">Tableau de bord</a>
             </li>
             {% endif %}
             {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('dashboard_declarant') }}">Tableau de bord</a>
+                <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
             </li>
             {% endif %}
             
         </ul>
     </div>
 </nav>
-<!-- <div data-spy="affix" id="dot-nav">
-    <ul>
-        <li class="awesome-tooltip active" title="Home">
-            <a href="#index">oooooooooooooooooooooohai</a>
-        </li>
-        <li class="awesome-tooltip" title="About">
-            <a href="#section-demarche"></a>
-        </li>
-        <li class="awesome-tooltip" title="Projects">
-            <a href="#section-commune"></a>
-        </li>
-        <li class="awesome-tooltip" title="Contact">
-            <a href="#section-contact"></a>
-        </li>
-    </ul>
-</div> -->
 {% endblock %} 
 
 {% block header %}
-<div class="main full">
+{# DEBUT MAIN #}
+{#<div class="main full">#}
+    {# DEBUT HEADER #}
     <div class="container-fluid full section position-relative header" id="index">
         <div class="row w-100 position-absolute" style="top:35%;">
             <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
@@ -290,41 +152,69 @@ section {
             </div>
         </div>
     </div>
+    {# FIN HEADER #}
 {% endblock %} 
 {% block main %}
 
-    <div class="container full pt-md-5 section" style="background : none;" id="section-demarche">
+    {# DEBUT DEMARCHE #}
+    <div class="container-fluid pt-md-5 section" style="background : none;" id="section-demarche">
         <div class="row"> 
             <div class="col-12">
                 <h1 class="display-3 text-center">La démarche</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 bg-warning">
-                <h1 class="display-4">En quelques étapes</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
-                </p>
-                <a href="#" class="btn btn-danger" role="button">Suivant</a>
+            <div id="carouselExampleControls" class="carousel slide col-12 bg-danger" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center">
+                        <h3>Etape 1</h3>
+                        {#<img class="d-block w-100" src="..." alt="First slide">#}
+                    </div>
+                    <div class="carousel-item text-center">
+                        <h3>Etape 2</h3>
+                        {#<img class="d-block w-100" src="..." alt="Second slide">#}
+                    </div>                    
+                    <div class="carousel-item text-center">
+                        <h3>Etape 3</h3>
+                        {#<img class="d-block w-100" src="..." alt="Second slide">#}
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
             </div>
-            <div class="col-md-4 bg-info">
-                <h1 class="display-4">En quelques étapes</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
-                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque
-                    ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur
-                    rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
-                </p>
-                <a href="#" class="btn btn-danger" role="button">Espace déclaration</a>
-            </div>
+            {#<div class="col-md-8 bg-warning">#}
+            {#    <h1 class="display-4">En quelques étapes</h1>#}
+            {#    <p>#}
+            {#        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!#}
+            {#        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!#}
+            {#        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!#}
+            {#    </p>#}
+            {#    <a href="#" class="btn btn-danger" role="button">Suivant</a>#}
+            {#</div>#}
+            {#<div class="col-md-4 bg-info">#}
+            {#    <h1 class="display-4">En quelques étapes</h1>#}
+            {#    <p>#}
+            {#        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur#}
+            {#        tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum dolor#}
+            {#        sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque#}
+            {#        ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum dolor sit amet consectetur#}
+            {#        adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur tempora itaque ipsam aspernatur#}
+            {#        rem sint sit optio, temporibus veritatis corporis eos debitis nihil!#}
+            {#    </p>#}
+            {#    <a href="#" class="btn btn-danger" role="button">Espace déclaration</a>#}
+            {#</div>#}
         </div>
     </div>
-
-    <div class="container-fluid full section" style="background : none;" id="section-commune">
+    {# FIN DEMARCHE #}
+    
+    {# DEBUT COMMUNE #}
+    <div class="container-fluid section" style="background : none;" id="section-commune">
         <div class="row headercommune" style="height:30%;">
             <div class="col-12 d-flex flex-column justify-content-center w-100">
                 <h1 class="display-3 text-center text-white">Barcelonnette</h1>
@@ -333,7 +223,7 @@ section {
         <div class="container" style="height:70%; width:auto;">
             <div class="row" style="height:auto; width:auto;">
                 <div class="col-md-6 bg-warning p-4 text-center">
-                    <img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">
+                    {#<img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">#}
                     <h3 class="text-center">A votre service</h3>
                     <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique
                         : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels
@@ -341,7 +231,7 @@ section {
                         à vélo !</p>
                 </div>
                     <div class="col-md-6 bg-white p-4 text-center">
-                        <img src="{{asset('assets/img/vecteurs/signs.png')}}"  class="fixed flaticon img-fluid m-md-3" alt="des panneaux fléchés indiquant plusieurs destinations possibles">
+                        {#<img src="{{asset('assets/img/vecteurs/signs.png')}}"  class="fixed flaticon img-fluid m-md-3" alt="des panneaux fléchés indiquant plusieurs destinations possibles">#}
                         <h3 class="text-center">Une situation idéale</h3>
                         <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée
                         station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle
@@ -350,7 +240,7 @@ section {
             </div>
             <div class="row">
                 <div class="col-md-6 bg-white p-4 text-center">
-                    <img src="{{asset('assets/img/vecteurs/backpack.png')}}" alt="un sac à dos" class="fixed flaticon img-fluid m-md-3">                    
+                    {#<img src="{{asset('assets/img/vecteurs/backpack.png')}}" alt="un sac à dos" class="fixed flaticon img-fluid m-md-3">                    #}
                     <h3 class="text-center">Une destination prisée</h3>
                     <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble
                     de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye).
@@ -358,7 +248,7 @@ section {
                     réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</p>
                 </div>
                 <div class="col-md-6 bg-info p-4 text-center">
-                    <img src="{{asset('assets/img/vecteurs/house.png')}}" alt="une maison" class="fixed flaticon img-fluid m-md-3">                    
+                    {#<img src="{{asset('assets/img/vecteurs/house.png')}}" alt="une maison" class="fixed flaticon img-fluid m-md-3">                    #}
                     <h3 class="text-center">Classez-vous !</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet natus, ad praesentium repellat, maxime commodi assumenda nihil 
                         totam aperiam mollitia nobis corrupti, ad praesentium repellat, maxime commodi assumenda nihilquibusdam sed quasi quo ipsum suscipit? 
@@ -367,116 +257,42 @@ section {
             </div>
         </div>
     </div>
-
-    <div class="container-fluid full pt-5 pr-0 pl-0 section" style="background : none;" id="section-contact">
-        <div class="row">
-            <div class="col-12">
+    {# FIN COMMUNE #}
+    
+    {# DEBUT CONTACT #}
+    <div class="container-fluid pt-5 mt-5 pr-0 pl-0 section w-100" style="background : none;" id="section-contact">
+        <div class="row w-100">
+            <div class="col-12 pr-0">
                 <h1 class="display-3 text-center">Contact</h1>
             </div>
         </div>
-        <div class="row d-flex  justify-content-center">
+        <div class="row w-100 justify-content-center">
             <div class="col-md-6 embed-responsive embed-responsive-16by9">
                 
                     <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>
             </div>
             <div class="col-md-4 bg-info">
-                <h1 class="display-4">En quelques étapes</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
-                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
-                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil! Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Tempore rem libero quod. Mollitia, similique aperiam. Consequuntur
-                    tempora itaque ipsam aspernatur rem sint sit optio, temporibus veritatis corporis eos debitis nihil!
-                </p>
-                <a href="#" class="btn btn-danger" role="button">Espace déclaration</a>
+                <h1 class="display-3">Contactez votre mairie</h1>
+                <h2 class="display-4">pour en savoir plus sur le service</h2>
+                {{ form_start(form)}}
+                
+                {{ form_label(form.name)}}
+                {{ form_widget(form.name)}}
+                
+                {{ form_label(form.email)}}
+                {{ form_widget(form.email)}}
+                
+                {{ form_label(form.subject)}}
+                {{ form_widget(form.subject)}}
+                
+                {{ form_label(form.message)}}
+                {{ form_widget(form.message)}}
+                
+                {{ form_end(form)}}
             </div>
         </div>
-<!-- <script>
-    $(document).ready(function () {
-            $('.awesome-tooltip').tooltip({
-                placement: 'left'
-            });
-
-            $(window).bind('scroll', function (e) {
-                dotnavigation();
-            });
-
-            function dotnavigation() {
-
-                var numSections = $('section').length;
-
-                $('#dot-nav li a').removeClass('active').parent('li').removeClass('active');
-                $('section').each(function (i, item) {
-                    var ele = $(item), nextTop;
-
-                    console.log(ele.next().html());
-
-                    if (typeof ele.next().offset() != "undefined") {
-                        nextTop = ele.next().offset().top;
-                    }
-                    else {
-                        nextTop = $(document).height();
-                    }
-
-                    if (ele.offset() !== null) {
-                        thisTop = ele.offset().top - ((nextTop - ele.offset().top) / numSections);
-                    }
-                    else {
-                        thisTop = 0;
-                    }
-
-                    var docTop = $(document).scrollTop();
-
-                    if (docTop >= thisTop && (docTop < nextTop)) {
-                        $('#dot-nav li').eq(i).addClass('active');
-                    }
-                });
-            }
-
-            /* get clicks working */
-            $('#dot-nav li').click(function () {
-
-                var id = $(this).find('a').attr("href"),
-                    posi,
-                    ele,
-                    padding = 0;
-
-                ele = $(id);
-                posi = ($(ele).offset() || 0).top - padding;
-
-                $('html, body').animate({ scrollTop: posi }, 'slow');
-
-                return false;
-            });
-
-            /* end dot nav */
-        });
-</script> -->
-
-
-<!-- <script>
-    $(".main").onepage_scroll({
-            sectionContainer: ".section",     // sectionContainer accepts any kind of selector in case you don't want to use section
-            easing: "ease",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
-            // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
-            animationTime: 1000,             // AnimationTime let you define how long each section takes to animate
-            pagination: false,                // You can either show or hide the pagination. Toggle true for show, false for hide.
-            updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
-            beforeMove: function (index) { },  // This option accepts a callback function. The function will be called before the page moves.
-            afterMove: function (index) { },   // This option accepts a callback function. The function will be called after the page moves.
-            loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
-            keyboard: true,                  // You can activate the keyboard controls
-            responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
-            // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
-            // the browser's width is less than 600, the fallback will kick in.
-            direction: "vertical"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
-        });
-</script> -->
-        {#<div class="container-fluid p-0">#}
-        {#    <div class="row">#}
-                
-        {#    </div>#}
-        {#</div>#}
     </div>
+    {# FIN CONTACT #}
+{#</div>#}
+{# FIN MAIN #}
 {% endblock %}

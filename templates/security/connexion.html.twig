@@ -16,7 +16,7 @@
 
 <h1 class="mt-5 mb-4 text-center display-3 text-dark" id="titreinscription">Connexion</h1>
 
-<div class="container-fluid h-100">
+<div class="container-fluid">
     <div class="row justify-content-center align-items-center h-100" >
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
             {#<form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group text-center">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                        <input type="hidden" name="_target_path" value="/admin/proprietaire" />
+                        <input type="hidden" name="_target_path" value="/admin/proprietaire"/>
                         <button class="btn btn-success" type="submit">connexion</button>
                     </div>
                     <p class="text-center"><a href="{{path('inscription')}}">Pas encore inscrit?</a></p>

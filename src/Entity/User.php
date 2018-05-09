@@ -9,8 +9,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
@@ -97,6 +95,11 @@ class User implements UserInterface, \Serializable
      * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="user")
      */
     private $hebergements;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     */
+    private $MairieToDeclarant;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="user")
@@ -108,10 +111,16 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     */
+    private $MairieToDeclarant;
+
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
         $this->hebergements = new ArrayCollection();
+        $this->MairieToDeclarant = new ArrayCollection();
     }
 
     public function getId()
@@ -293,6 +302,32 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+    
+     /**
+     * @return Collection|User[]
+     */
+    public function getMairieToDeclarant(): Collection
+    {
+        return $this->MairieToDeclarant;
+    }
+
+    public function addMairieToDeclarant(User $mairieToDeclarant): self
+    {
+        if (!$this->MairieToDeclarant->contains($mairieToDeclarant)) {
+            $this->MairieToDeclarant[] = $mairieToDeclarant;
+        }
+
+        return $this;
+    }
+
+    public function removeMairieToDeclarant(User $mairieToDeclarant): self
+    {
+        if ($this->MairieToDeclarant->contains($mairieToDeclarant)) {
+            $this->MairieToDeclarant->removeElement($mairieToDeclarant);
+        }
+
+        return $this;
+    }    
 
     public function getMairie(): ?Mairie
     {
@@ -365,5 +400,31 @@ class User implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getMairieToDeclarant(): Collection
+    {
+        return $this->MairieToDeclarant;
+    }
+
+    public function addMairieToDeclarant(User $mairieToDeclarant): self
+    {
+        if (!$this->MairieToDeclarant->contains($mairieToDeclarant)) {
+            $this->MairieToDeclarant[] = $mairieToDeclarant;
+        }
+
+        return $this;
+    }
+
+    public function removeMairieToDeclarant(User $mairieToDeclarant): self
+    {
+        if ($this->MairieToDeclarant->contains($mairieToDeclarant)) {
+            $this->MairieToDeclarant->removeElement($mairieToDeclarant);
+        }
+
+        return $this;
     }    
 }

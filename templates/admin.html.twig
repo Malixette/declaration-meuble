@@ -28,7 +28,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path ('dashboard_declarant') }}"></i>Tableau de bord</a>
+                        <a class="nav-link" href="#"></i>Tableau de bord</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('logout') }}"></i>Déconnexion</a>
@@ -44,21 +44,21 @@
                 <div class="row">
                     <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
                         <div class="card-header">
-                            <h4>Bonjour M. Martin</h4>
+                            <h4>Bienvenue {{ user.UserNom }} {{ user.UserPrenom }}</h4>
                         </div>
                         <div class="card-body">
-                            <p>Vous avez actuellement 3 meublés déclarés en ligne</p>
+                            <p>Vous avez actuellement XXX meublés déclarés en ligne</p>
                             <div class="pb-4">
                                 <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
                             </div>
                             <h4>Vos informations</h4> 
                             <p>
-                                <i class="fas fa-phone"></i> 06 11 12 54 75<br>
-                                <i class="fas fa-envelope"></i> mail@me.com<br>
-                                <i class="fas fa-address-card"></i> Impasse des Lilas, 13100 Aix
+                                <i class="fas fa-phone"></i> {{ user.UserTelephone }}<br>
+                                <i class="fas fa-envelope"></i> {{ user.UserEmail }}<br>
+                                <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}
                             </p>
                             <div class="pb-4">
-        					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
+        					    <a href="{{ path('declarant_edit', {'id': user.id}) }}" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
     					</div>
                     </div>
@@ -69,10 +69,18 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <i class="fas fa-phone"></i> 04 12 34 56 78<br>
+                                    <i class="fas fa-phone"></i> Mairie de barcelonnette<br>
                                     <i class="fas fa-envelope"></i> mairie@me.com<br>
-                                    <i class="fas fa-address-card"></i> Place de la Mairie, 04400 Barcelonnette
+                                    <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
                                 </p>   
+                            </div>
+                            <div>
+                                <h5>Votre référent Mairie</h5>
+                                <p>
+                                    <i class="fas fa-address-card"></i> TARTEMPION René<br>
+                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
+                                    <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
+                                </p>
                             </div>
                         </div>
                         <div class="encartOffice card text-white bg-dark mb-lg-4">
@@ -83,7 +91,7 @@
                                 <p>
                                     <i class="fas fa-phone"></i> 04 98 76 54 32<br>
                                     <i class="fas fa-envelope"></i> ot@me.com<br>
-                                    <i class="fas fa-address-card"></i> Traverse Longue, 04400 Barcelonnette
+                                    <i class="fas fa-map-marker"></i> Traverse Longue, 04400 Barcelonnette
                                 </p>   
                             </div>
                         </div>
@@ -104,11 +112,7 @@
                     <h4>Espace publicitaire</h4>
                 </div>
                 <div class="col-md-3">
-                    <h4>Votre référent Mairie</h4>
-                    <p>
-                        <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                        <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
-                    </p>
+                    
                 </div>
                 <div class="col-md-2">
                     <p class="d-flex flex-column align-items-end">

@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,14 +25,13 @@ class UserController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            dump($user);
             $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
             
             $user->setUserRole(2);
             $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
             $user->setPassword($password);
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -58,16 +57,21 @@ class UserController extends Controller
      */
     public function show(User $user): Response
     {
+        $user->getMairie();
+        
         return $this->render('user/show.html.twig', ['user' => $user]);
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods="GET|POST")
+     * @Route("admin/proprietaire/edit", name="declarant_edit", methods="GET|POST")
      */
     public function edit(Request $request, User $user): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -75,7 +79,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('admin_home/declarant-edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
