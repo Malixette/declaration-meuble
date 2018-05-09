@@ -19,6 +19,7 @@ security:
                 check_path: connexion
                 use_referer: true
                 csrf_token_generator: security.csrf.token_manager
+                success_handler: App\Service\LoginListener
             logout:
                 path: logout
                 target: connexion

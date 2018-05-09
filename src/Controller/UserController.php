@@ -67,6 +67,7 @@ class UserController extends Controller
      */
     public function edit(Request $request, User $user): Response
     {
+        $user = $this->getUser();
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
     
         $form = $this->createForm(UserType::class, $user);
@@ -76,7 +77,7 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
+            return $this->redirectToRoute('dashboard_declarant');
         }
 
         return $this->render('admin_home/declarant-edit.html.twig', [

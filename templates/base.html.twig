@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% block title %}<title>Déclarer son Meublé</title>{% endblock %}
+        <title>{% block title %}Déclarer son Meublé{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -38,14 +38,17 @@
             <footer class="p-0">
                 <div class="container-fluid bg-info p-3">
                     <div class="row d-flex text-center">
-                        <div class="col-4">
+                        <div class="col-3">
                             <a class="text-white" href="">Déclarer son meublé</a>
                         </div>
-                        <div class="col-4 text-white">
+                        <div class="col-3 text-white">
                             &copy; 2018
                         </div>
-                        <div class="col-4">
-                            <a class="text-white" href="">Mentions légales</a>
+                        <div class="col-3">
+                            <a class="text-white" href="creation_mairie">Mentions légales</a>
+                        </div>
+                        <div class="col-3">
+                            <a class="text-white" href="{{ path('creation_mairie') }}">Création Mairie</a>
                         </div>
                     </div>
                 </div>
