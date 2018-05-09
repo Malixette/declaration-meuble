@@ -26,7 +26,7 @@ class User implements UserInterface, \Serializable
     private $id;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=190,  unique=true)
      * @Assert\NotBlank()
      */
     private $username;
@@ -110,11 +110,6 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $password;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User")
-     */
-    private $MairieToDeclarant;
 
     public function __construct()
     {
@@ -400,31 +395,5 @@ class User implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getMairieToDeclarant(): Collection
-    {
-        return $this->MairieToDeclarant;
-    }
-
-    public function addMairieToDeclarant(User $mairieToDeclarant): self
-    {
-        if (!$this->MairieToDeclarant->contains($mairieToDeclarant)) {
-            $this->MairieToDeclarant[] = $mairieToDeclarant;
-        }
-
-        return $this;
-    }
-
-    public function removeMairieToDeclarant(User $mairieToDeclarant): self
-    {
-        if ($this->MairieToDeclarant->contains($mairieToDeclarant)) {
-            $this->MairieToDeclarant->removeElement($mairieToDeclarant);
-        }
-
-        return $this;
     }    
 }

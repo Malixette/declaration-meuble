@@ -23,7 +23,7 @@ class AdminHomeController extends Controller
         //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
         $hebergements = $repoHeb->findAll();
-        $repoOt = $repoOt->findAll();
+        //$repoOt = $repoOt->findAll();
         
         $mairie = $user->getMairie();
         //$ot = $mairie->getOfficeTourisme();
