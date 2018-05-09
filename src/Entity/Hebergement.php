@@ -39,7 +39,7 @@ class Hebergement
     private $heb_etage;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     private $heb_code_postal;
 
@@ -268,12 +268,12 @@ class Hebergement
         return $this;
     }
 
-    public function getHebCodePostal(): ?int
+    public function getHebCodePostal(): ?string
     {
         return $this->heb_code_postal;
     }
 
-    public function setHebCodePostal(int $heb_code_postal): self
+    public function setHebCodePostal(string $heb_code_postal): self
     {
         $this->heb_code_postal = $heb_code_postal;
 

@@ -67,8 +67,6 @@
             
         </div>
         <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
-            <!-- <iframe style="max-height:350px; width:100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2016.307578456493!2d6.653097699606109!3d44.38207201241344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc918e367ff1eb%3A0x87808d0f17f225c8!2s36+Chemin+des+Alpages%2C+04400+Barcelonnette!5e0!3m2!1sfr!2sfr!4v1525080876666" frameborder="0" allowfullscreen></iframe>    
-            -->
         </div>
     </div>
    
@@ -87,15 +85,30 @@
             });
             var marker = new google.maps.Marker({
               position: adresse,
+              draggable: true,
               map: map
             });
+
+            var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h4 id="firstHeading" class="firstHeading">{{ hebergement.hebName }}</h4>'+
+              '<div id="bodyContent">'+
+              '<p>{{ hebergement.hebAdresse }}</p>'+
+              '</div>'+
+              '</div>';
+    
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+  
         }
 
-        
-        
-       
-  
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh4_nw-eDxENNqUPpbVuGl029jiIsqDYg&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">
     </script>
 {% endblock %}
