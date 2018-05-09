@@ -20,14 +20,12 @@ class AdminHomeController extends Controller
     public function index(HebergementRepository $repoHeb)
     {
         $user = $this->getUser();
-        dump($user);
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
-        dump($hebergements);
-        
+        $nombre = count($hebergements);
 
         // $hebergements = $repoHeb->findAll();
         // $repoOt = $repoOt->findAll();
@@ -39,13 +37,13 @@ class AdminHomeController extends Controller
 
         $mairie = $user->getMairie();
         //$ot = $mairie->getOfficeTourisme();
-        dump($user);
-        dump($mairie);
+
         
         return $this->render('admin_home/dashboard-proprio.html.twig', [
             'hebergements'  => $hebergements,
             'mairie'        => $mairie,
             'user'          => $user,
+            'nombre'        => $nombre
             //'officeTourisme'=> $officeTourisme,
         ]);
     }
