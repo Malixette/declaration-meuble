@@ -10,10 +10,7 @@
     <div class="row ml-2 mb-4">
         <a href="{{ path('dashboard_declarant') }}">< retour à la liste</a>
     </div>
-    
-    {% if getUser() == hebergement.userId %}
-
- <div class="row" onload="initialize()">
+    <div class="row" onload="initialize()">
         <div class="col-md-4 col-lg-2 d-flex flex-column">
             <img class="img-fluid my-2"  src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}">  
             {% if hebergement.hebPhoto2 != '' %}
@@ -72,9 +69,6 @@
         <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
         </div>
     </div>
-   
-    {% endif %}
-    
    
 {% endblock %}
 {% block javascripts %}
