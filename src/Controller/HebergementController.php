@@ -32,8 +32,10 @@ class HebergementController extends Controller
     {
         $hebergement = new Hebergement();
         $user = $this->getUser();
-        $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
+        $user_id = setUser($id);
+        dump($user_id);
         
+        $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
