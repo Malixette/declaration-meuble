@@ -32,13 +32,13 @@ class HebergementController extends Controller
     {
         $hebergement = new Hebergement();
         $user = $this->getUser();
-        $user_id = setUser($id);
-        dump($user_id);
-        
+        $user_id = $user->getId();
+       
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $hebergement->setUser($user);
             $hebergement->setHebLat(10);
             $hebergement->setHebLong(10);
             $hebergement->setHebDateCreation(new \DateTime());

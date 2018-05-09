@@ -87,7 +87,7 @@ class User implements UserInterface, \Serializable
     private $user_date_inscription;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $user_role;
 
@@ -255,12 +255,12 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getUserRole(): ?integer
+    public function getUserRole(): ?string
     {
         return $this->user_role;
     }
 
-    public function setUserRole(int $user_role): self
+    public function setUserRole(string $user_role): self
     {
         $this->user_role = $user_role;
 

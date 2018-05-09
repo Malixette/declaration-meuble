@@ -10,19 +10,23 @@ use App\Entity\Mairie;
 use App\Entity\OfficeTourisme;
 use App\Form\HebergementType;
 
+use App\Repository\HebergementRepository;
+
 class AdminHomeController extends Controller
 {
     /**
      * @Route("/admin/proprietaire/", name="dashboard_declarant")
      */
-    public function index()
+    public function index(HebergementRepository $repoHeb)
     {
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(User::class);
-        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        //$repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
         $hebergements = $repoHeb->findAll();
+        //$hebergements = $repoHeb->findByTest();
+        //$hebergements = $repoHeb->findBySQL();
         //$repoOt = $repoOt->findAll();
         
         $mairie = $user->getMairie();
