@@ -32,7 +32,7 @@ class UserController extends Controller
             $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
             $user->setPassword($password);
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -58,6 +58,8 @@ class UserController extends Controller
      */
     public function show(User $user): Response
     {
+        $user->getMairie();
+        
         return $this->render('user/show.html.twig', ['user' => $user]);
     }
 
