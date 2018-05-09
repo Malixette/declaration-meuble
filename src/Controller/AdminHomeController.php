@@ -25,14 +25,9 @@ class AdminHomeController extends Controller
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
-<<<<<<< HEAD
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         dump($hebergements);
         
-=======
-        $hebergements = $repoHeb->findAll();
-        // $repoOt = $repoOt->findAll();
->>>>>>> 056423dffd7c8e7a47d7f21cd156f75687ecbeaf
         //$hebergements = $repoHeb->findByTest();
         //$hebergements = $repoHeb->findBySQL();
         //$repoOt = $repoOt->findAll();
