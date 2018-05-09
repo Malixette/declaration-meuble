@@ -22,29 +22,21 @@ class AdminHomeController extends Controller
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
-        //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
-        
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
 
-        // $hebergements = $repoHeb->findAll();
-        // $repoOt = $repoOt->findAll();
 
-
-        //$hebergements = $repoHeb->findByTest();
-        //$hebergements = $repoHeb->findBySQL();
-        //$repoOt = $repoOt->findAll();
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
 
         $mairie = $user->getMairie();
-        //$ot = $mairie->getOfficeTourisme();
 
         
+
         return $this->render('admin_home/dashboard-proprio.html.twig', [
             'hebergements'  => $hebergements,
             'mairie'        => $mairie,
             'user'          => $user,
             'nombre'        => $nombre
-            //'officeTourisme'=> $officeTourisme,
         ]);
     }
     
@@ -56,12 +48,16 @@ class AdminHomeController extends Controller
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+        
+        $mairie = $user->getMairie();
 
-        $hebergements = $repoHeb->findAll();
+        $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
         
         return $this->render('admin_home/dashboard-mairie.html.twig', [
             'hebergements'  => $hebergements,
             'user'          => $user,
+            'mairie'        => $mairie
         ]);
     }
     

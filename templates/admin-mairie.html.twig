@@ -52,13 +52,13 @@
                                 <i class="fas fa-phone"></i> 0{{ user.UserTelephone }}<br>
                                 <i class="fas fa-envelope"></i> {{ user.UserEmail }} <br>
                                 <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>
-                                <i class="fas fa-address-card"></i> Maire: {{ mairie.MairieMaireNom }} {{ mairie.MairieMairePrenom }}
+                                <i class="fas fa-address-card"></i> Maire: {{ mairie.MairieMairePrenom }} {{ mairie.MairieMaireNom }}
                             </p class="d-flex flex-column">
                             <div class="pb-4">
         					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
         					<p>
-                                Contact technique: {{ mairie.MairieContactNom}} 
+                                Contact technique: {{ mairie.MairieContactNom}} {{ mairie.MairieContactPrenom}} 
                                 0{{ mairie.MairieTelephoneContact }}<br>
                                 {{ mairie.MairieEmailContact }} <br>
                                 {{ mairie.MairieTelephoneContact }}<br>
