@@ -52,7 +52,7 @@ class User implements UserInterface, \Serializable
     private $user_complement_adresse;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $user_postal_code;
 
@@ -67,7 +67,7 @@ class User implements UserInterface, \Serializable
     private $user_pays;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $user_telephone;
 
@@ -183,12 +183,12 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getUserPostalCode(): ?int
+    public function getUserPostalCode(): ?string
     {
         return $this->user_postal_code;
     }
 
-    public function setUserPostalCode(int $user_postal_code): self
+    public function setUserPostalCode(string $user_postal_code): self
     {
         $this->user_postal_code = $user_postal_code;
 
@@ -219,12 +219,12 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getUserTelephone(): ?int
+    public function getUserTelephone(): ?string
     {
         return $this->user_telephone;
     }
 
-    public function setUserTelephone(int $user_telephone): self
+    public function setUserTelephone(string $user_telephone): self
     {
         $this->user_telephone = $user_telephone;
 

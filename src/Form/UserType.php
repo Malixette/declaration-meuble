@@ -102,11 +102,11 @@ class UserType extends AbstractType
                     'type' => "select"
                     ]   
             ])
-            ->add('user_telephone', IntegerType::class, [
+            ->add('user_telephone', TextType::class, [
                 'required' => false,
                 'label' => 'N° de téléphone :',
                 'attr' => [
-                    'placeholder' => "061122334455",
+                    'placeholder' => "0611223344",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]

@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 
@@ -53,44 +54,6 @@ class CommuneType extends AbstractType
                     'type' => "textarea"
                 ]
             ])
-            // ->add('user_postal_code', TextType::class, [
-            //     'required' => false,
-            //     'label' => 'Code postal :',
-            //     'attr' => [
-            //         'placeholder' => "04400",
-            //         'class' => "form-control form-control-lg mb-3",
-            //         'type' => "text"
-            //     ]
-            // // ]) 
-            // ->add('user_commune', TextType::class,
-            // [
-            //     'required' => false,
-            //     'label' => 'Nom de la commune :',
-            //     'attr' => [
-            //         'placeholder' => "Barcelonnette",
-            //         'class' => "form-control form-control-lg mb-3",
-            //         'type' => "text"
-            //     ]
-            // ])
-
-            // ->add('user_telephone', IntegerType::class, [
-            //     'required' => false,
-            //     'label' => 'N° de téléphone de la mairie :',
-            //     'attr' => [
-            //         'placeholder' => "061122334455",
-            //         'class' => "form-control form-control-lg mb-3",
-            //         'type' => "text"
-            //     ]
-            // // ])
-            // ->add('user_email', EmailType::class, [
-            //     'required' => true,
-            //     'label' => 'Email de contact (pour vos administrés):',
-            //     'attr' => [
-            //         'placeholder' => "barcelonnette-declaration@mairie.fr",
-            //         'class' => "form-control form-control-lg mb-3",
-            //         'type' => "email"
-            //     ]
-            // ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe entrés sont différents',
@@ -108,6 +71,7 @@ class CommuneType extends AbstractType
                     ]
                 ]
             ])
+            // ->add('mairie', HiddenType::class)
             ->add('valider', SubmitType::class, [
                 'label' => 'Continuer',
                 'attr' => [

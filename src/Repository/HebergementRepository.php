@@ -28,6 +28,17 @@ class HebergementRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    
+    public function findByUser()
+    {
+        return $this->createQueryBuilder('user')
+            ->orderBy('u.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+    
 
     public function findBySQL()
     {
