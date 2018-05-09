@@ -33,7 +33,7 @@ class HebergementController extends Controller
         $hebergement = new Hebergement();
         $user = $this->getUser();
         $user_id = $user->getId();
-       
+        
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
 
@@ -85,13 +85,9 @@ class HebergementController extends Controller
      */
     public function show(Hebergement $hebergement): Response
     {
-        dump($hebergement);
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
-        
-        dump($latitude);
-        dump($longitude);
-        
+
         return $this->render('hebergement/show.html.twig', ['hebergement' => $hebergement]);
     }
 
