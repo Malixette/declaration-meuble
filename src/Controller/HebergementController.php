@@ -87,8 +87,17 @@ class HebergementController extends Controller
     {
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
+        
+        $user = $this->getUser();
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
 
-        return $this->render('hebergement/show.html.twig', ['hebergement' => $hebergement]);
+        return $this->render('hebergement/show.html.twig', [
+            'hebergement'   => $hebergement,
+            'nombre'        => $nombre
+            ]);
     }
 
     /**
@@ -96,6 +105,12 @@ class HebergementController extends Controller
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
+        $user = $this->getUser();
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+        
         $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
         
         // memoriser valeur de la bdd dans variable pour comparer avec l'upload
@@ -170,8 +185,9 @@ class HebergementController extends Controller
         }
 
         return $this->render('hebergement/edit.html.twig', [
-            'hebergement' => $hebergement,
-            'form' => $form->createView(),
+            'hebergement'   => $hebergement,
+            'nombre'        => $nombre,
+            'form'          => $form->createView(),
         ]);
     }
     
