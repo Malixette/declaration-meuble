@@ -47,6 +47,7 @@
   } );
 </script>
 
+
 <script>
 
      function initMap() {
@@ -54,7 +55,7 @@
             center: {lat: 46.3333, lng: 2.6},
             zoom: 4
         });
-        var input = document.getElementById('hebergement_heb_adresse');
+        var input = document.getElementById('autocomplete');
         
         var options = { componentRestrictions: {country: "fr"} };
         
@@ -62,7 +63,6 @@
             street_number: 'short_name',
             route: 'long_name',
             locality: 'long_name',
-            country: 'long_name',
             postal_code: 'short_name'
             };
 
@@ -92,7 +92,11 @@
           document.getElementById("hebergement_heb_lat").value = lat;
           document.getElementById("hebergement_heb_long").value = lng;          
 
+
           for (var component in componentForm) {
+            
+            console.log(component);
+            //faire if pour sécuriser
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
           }
@@ -126,11 +130,12 @@
             address = [
               (place.address_components[0] && place.address_components[0].short_name || ''),
               (place.address_components[1] && place.address_components[1].short_name || ''),
+              (place.address_components[6] && place.address_components[6].short_name || ''),
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
 
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.setContent('<div><strong>' + address + '</strong><br>');
           infowindow.open(map, marker);
         });
 
@@ -148,14 +153,7 @@
         async defer>
 </script>
 
-{######################ACCORDEON###########################}
-{#// <script>#}
-//   $( function() {
-//     $( "#accordion" ).accordion({
-//       collapsible: true
-//     });
-//   } );
-{#//</script>#}
+  
 
 {% endblock %}
 

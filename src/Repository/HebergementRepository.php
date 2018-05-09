@@ -19,6 +19,31 @@ class HebergementRepository extends ServiceEntityRepository
         parent::__construct($registry, Hebergement::class);
     }
 
+
+    public function findByTest()
+    {
+        return $this->createQueryBuilder('h')
+            ->orderBy('h.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findBySQL()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM hebergement h
+            ORDER BY h.id DESC
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+    }
+
 //    /**
 //     * @return Hebergement[] Returns an array of Hebergement objects
 //     */
