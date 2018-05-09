@@ -20,12 +20,15 @@ class AdminHomeController extends Controller
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
-        $repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
+        //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
         $hebergements = $repoHeb->findAll();
+        $repoOt = $repoOt->findAll();
         
         $mairie = $user->getMairie();
         //$ot = $mairie->getOfficeTourisme();
+        dump($user);
+        dump($mairie);
         
         return $this->render('admin_home/dashboard-proprio.html.twig', [
             'hebergements'  => $hebergements,
