@@ -22,11 +22,12 @@ class AdminHomeController extends Controller
         $user = $this->getUser();
         dump($user);
         $repo = $this->getDoctrine()->getRepository(User::class);
-        //$repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         //$repoOt = $this->getDoctrine()->getRepository(OfficeTourisme::class);
         
-        $hebergements = $repoHeb->findAll();
-        // $repoOt = $repoOt->findAll();
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        dump($hebergements);
+        
         //$hebergements = $repoHeb->findByTest();
         //$hebergements = $repoHeb->findBySQL();
         //$repoOt = $repoOt->findAll();
