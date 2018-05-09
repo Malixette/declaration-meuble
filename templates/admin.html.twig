@@ -28,7 +28,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"></i>Tableau de bord</a>
+                        <a class="nav-link" href="{{ path('dashboard_declarant') }}"></i>Tableau de bord</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('logout') }}"></i>Déconnexion</a>
@@ -47,7 +47,7 @@
                             <h4>Bienvenue {{ app.user.UserNom }} {{ app.user.UserPrenom }}</h4>
                         </div>
                         <div class="card-body">
-                            <p>Vous avez actuellement XXX meublés déclarés en ligne</p>
+                            <p>Vous avez actuellement {{ nombre }} meublé(s) déclaré(s) en ligne</p>
                             <div class="pb-4">
                                 <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
                             </div>

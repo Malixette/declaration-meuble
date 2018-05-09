@@ -22,15 +22,21 @@ class AdminHomeController extends Controller
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+
 
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
 
         $mairie = $user->getMairie();
 
+        
+
         return $this->render('admin_home/dashboard-proprio.html.twig', [
             'hebergements'  => $hebergements,
             'mairie'        => $mairie,
             'user'          => $user,
+            'nombre'        => $nombre
         ]);
     }
     
