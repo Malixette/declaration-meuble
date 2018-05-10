@@ -1,0 +1,212 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales{% endblock %}
+{%block stylesheets %}
+<style>
+    html, body {
+    height: 100%;
+    width:100%;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0) !important;
+    color:white !important;
+    border-color:white !important;
+    box-shadow :0 0 0.4em black !important;
+}
+    
+.btn-outline-light {
+    border-width : 2px !important;
+    border-radius: 10px;
+}
+.flaticon {
+    width: 10%;
+    height: auto;
+}
+.full {
+    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
+.header h1, .main h2, #section-commune h1 {
+    text-shadow: 1px 1px 1px black;
+}
+.headercommune {
+    padding: 120px 0px;
+    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
+}
+.bg-warning {
+    background-color: #FFD470 !important;
+}
+.bg-info {
+    background-color: #5070B5 !important;
+}
+.bg-danger {
+    background-color: #FF9166 !important;
+}
+.btn-danger {
+    background-color: #FF9166 !important;
+    border-color: #FF9166 !important;
+}
+.btn-success {
+    background-color: #58CCB6 !important;
+    border-color: #58CCB6 !important;
+}
+.btn-warning {
+    background-color: #FFD470 !important;
+    border-color: #FFD470 !important;
+}
+#btn-declaration {
+    font-size:4em;
+}
+
+@media screen and (max-width: 375px) {
+  #btn-declaration {
+    font-size : 1em;
+  }
+}
+@media screen and (max-width: 640px) {
+  #btn-declaration {
+    font-size : 2em;
+  }
+  .headercommune {
+    padding: 0;
+    background: none;
+    color : black;
+    }
+}
+
+</style>
+{%endblock%}
+{% block nav %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top">
+        <a class="navbar-brand" href="{{ path('commune_home') }}">Accueil</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_listing') }}">Les meublés</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_home') }}#section-contact">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('inscription') }}">Inscription</a>
+            </li>
+            {% endif %}
+            {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('connexion') }}">Connexion</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('dashboard_declarant') }}">Tableau de bord</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+            </li>
+            {% endif %}
+            
+        </ul>
+    </div>
+</nav>
+{% endblock %} 
+
+{% block main %}
+
+    
+    {# DEBUT COMMUNE #}
+    <div class="container-fluid section" style="background : none;" id="section-commune">
+        <div class="row headercommune" style="height:30%;">
+            <div class="col-12 d-flex flex-column justify-content-center w-100">
+                <h1 class="display-3 text-center text-white">Mentions légales</h1>
+            </div>
+        </div>
+        <div class="container" style="height:70%; width:auto;">
+            <div class="row" style="height:auto; width:auto;">
+                <div class="p-4">
+                    <h3>Responsable d'édition</h3>
+                    <p>AlpaConseil
+                        Adresse et nom propriétaire solution
+                    </p>
+                    <h3>Réalisation</h3>
+                    <p>Marie-Alix MAYER, Alexandra THUILLIET, Marine HERRADA.
+                    </p>
+                    <h3>Crédits photos</h3>
+                    <p>Les photographies illustrants les hébergements sont fournis par les propriétaires déclarant. Ces visuels étant non obligatoires et soumis à la bonne foi des déclarants, Alpa Conseils ne pourraient être tenu comme responsable de l'intégration d'un visuel. En cas de réclamation concernant un visuel utilisé sans autorisation, contactez Alpa Conseils <br>
+                    Les autres visuels sont libres de droits (à verifier les mentions).
+                    </p>
+                    <h3>Logo, charte graphique</h3>
+                    <p>Le logo, et la charte graphique de ce site sont propriété du Syndicat de la Montagne Ardéchoise. Toute reproduction totale ou partielle de cette marque sans autorisation préalable et écrite est prohibée. Toute modification des proportions, couleurs, éléments et constituants est strictement interdite.
+                    </p>
+                    <h3>Données personnelles</h3>
+                    <p>
+                        Lors de la consultation de notre site, des informations relatives à la navigation de votre ordinateur sur notre site sont susceptibles d'être enregistrées dans des fichiers dits "cookies" installés sur votre terminal (ordinateur, tablette, smartphone, etc.), sous réserve bien sûr que vous les ayez acceptés, et que vous pouvez modifier à tout moment.
+                    </p>
+                    <h3>Traitement de Données personnelles</h3>
+                    <p>Conformément aux articles 39 et suivants de la loi n° 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, toute personne peut obtenir communication et, le cas échéant, rectification ou suppression des informations la concernant. Ces droits peuvent être exercés sur simple demande en s’adressant au Syndicat de la Montagne Ardéchoise.
+                        Conformément à la loi Règlement Général de la Protection des Données, les données personnelles recueillies sur le site résultent de la communication volontaire d’une adresse de courrier électronique lors du dépôt d’un message électronique. Les courriels ainsi recueillis ne servent qu’à transmettre les éléments d’informations demandés. Les adresses électroniques collectées ne feront l’objet d’aucune cession, ni d’aucun traitement de la part du Syndicat de la Montagne Ardéchoise.
+                        Liens vers d’autres sites Internet
+                        Les liens hypertextes externes mis en place dans le cadre du présent site et les contenus des sites de tiers vers lesquels ils pointent ne sauraient engager la responsabilité d'AlpaConseils.
+                        AlpaConseils permet l’établissement de liens hypertextes vers son site. Ceux-ci doivent être libres de tout jeux de cadres (frame ou iframe) ou fenêtres type "popup". Il est toutefois recommandé de ne pas établir de lien profond et de nous en avertir.               
+                   
+                    </p>
+                    <h3>Qu'est-ce qu'un cookie</h3>
+                    <p>Un cookie est un petit fichier texte contenant diverses informations. Il est déposé dans la mémoire de votre terminal (ordinateur, tablette, smartphone...) par le serveur du site internet visité ou par un serveur tiers (service de web analytique, etc.).
+                        Il va permettre, pendant la durée de validité ou d’enregistrement du cookie, d’identifier votre terminal lors de vos prochaines visites.
+                        Des sociétés tierces peuvent également être amenés, sous réserve de vos choix, à déposer des cookies sur votre ordinateur (Ex : Google Analytics, Facebook, etc.).
+                        Quel que soit le type de cookies, seul l’émetteur d’un cookie est susceptible de lire ou de modifier les informations qui y sont contenues.
+                    </p>
+                    <h3>Quel type de cookie sont utilisé sur www.declaration-meuble.fr</h3>
+                    <p>
+                    <strong>Les cookies essentiels</strong>
+                        Ils sont indispensables à la bonne exécution du site car ils vous permettent d'accéder notamment à des espaces réservés, grâce aux identifiants que vous nous avez préalablement communiqués.
+                        Ils nous permettent de mémoriser les informations relatives aux formulaires que vous êtes susceptibles de remplir sur notre site, et d’adapter la présentation de notre site aux préférences d’affichage de votre terminal.
+                        Sans ces cookies, il ne vous serait pas possible d'utiliser notre site dans des conditions normales.
+                        
+                    <strong>Les cookies analytiques ou de performance :</strong>
+                        Ces cookies nous permettent de connaître l'utilisation et les performances de notre site et d'en améliorer le fonctionnement. Ils mesurent notamment les données de votre navigation (volume de fréquentation, rubriques et contenus visités, etc.).
+                        Ces cookies sont essentiels car ils nous permettent d'améliorer l'intérêt et l'ergonomie de nos services voir même de détecter des problèmes de navigation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    {#<div class="container-fluid pt-5 mt-5 pr-0 pl-0 section w-100" style="background : none;" id="section-contact">#}
+    {#    <div class="row w-100 justify-content-center">#}
+    {#        <div class="col-md-6 embed-responsive embed-responsive-16by9">#}
+                
+    {#                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>#}
+    {#        </div>#}
+    {#        <div class="col-md-4 bg-info">#}
+    {#            <h3 class="display-3">Alpa Conseils</h3>#}
+    {#            <p class="display-4">contact@alpaconseil.com</p>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#</div>#}
+{% endblock %}
