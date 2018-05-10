@@ -108,6 +108,7 @@ class HebergementController extends Controller
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
+            'user'          => $user,
             ]);
     }
     
@@ -120,6 +121,8 @@ class HebergementController extends Controller
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
         
+        $mairie = $hebergement->getMairie();
+        
         $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
@@ -129,6 +132,8 @@ class HebergementController extends Controller
         return $this->render('hebergement/show-mairie.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
+            'user'          => $user,
+            'mairie'        => $mairie,
             ]);
     }
 

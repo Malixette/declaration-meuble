@@ -113,6 +113,7 @@ class UserController extends Controller
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
         $user_id = $user->getId();
+        $mairie = $user->getMairie();
         
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
@@ -133,9 +134,10 @@ class UserController extends Controller
         }
 
         return $this->render('admin_home/declarant-edit-mairie.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-            'nombre' => $nombre
+            'user'      => $user,
+            'form'      => $form->createView(),
+            'nombre'    => $nombre,
+            'mairie'    => $mairie,
         ]);
     }
 
