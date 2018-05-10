@@ -1,0 +1,111 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Détail de l'hebergement{% endblock %}
+
+{% block header %}
+    <h1 class="mt-5 mb-4 p-3 text-center">Détail de l'hébergement</h1>
+{% endblock %}
+
+{% block body %}
+    <div class="row ml-2 mb-4">
+        <a href="{{ path('dashboard_declarant') }}">< retour à la liste</a>
+    </div>
+    <div class="row" onload="initialize()">
+        <div class="col-md-4 col-lg-2 d-flex flex-column">
+            <img class="img-fluid my-2"  src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}">  
+            {% if hebergement.hebPhoto2 != '' %}
+                <img class="img-fluid my-2"  src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto2) }}" alt="{{ hebergement.hebName }}">
+            {% endif %}
+            {% if hebergement.hebPhoto3 != '' %}
+                <img class="img-fluid my-2" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto3) }}" alt="{{ hebergement.hebName }}">
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <h2>{{ hebergement.hebName }}</h2> 
+            <p><strong>Descriptif:</strong> {{ hebergement.hebDescriptifCourt }}</p>
+            <p><strong>Adresse:</strong> {{ hebergement.hebAdresse }} <br>
+            {% if hebergement.hebAdresseComplement != '' %}
+                <strong>Complément d'adresse:</strong> {{ hebergement.hebAdresseComplement }} <br>
+            {% endif %}
+            {% if hebergement.hebType == 'appartement' %}
+                <strong>Bâtiment:</strong> {{ hebergement.hebBatiment }} <strong>Etage:</strong> {{ hebergement.hebEtage }}<br>
+            {% endif %}
+            <strong>Code Postal:</strong> {{ hebergement.hebCodePostal }}<br>
+            <strong>Ville:</strong> {{ hebergement.hebCommune }}</p>
+            <p><strong>Nombre de pièces:</strong> {{ hebergement.hebNbrPieces }}</p>
+            <p><strong>Classement:</strong> {{ hebergement.hebClassement }} <br>
+            <strong>Date de classement:</strong> {{ hebergement.hebDateClassement | date('d-m-Y') }}</p>
+            <p><strong>Saisons d'ouverture:</strong> 
+                {% for periode in hebergement.hebPeriodesLocation %}
+                    <span>
+                        <i class="far fa-check-square"></i> {{ periode }}
+                    </span>
+                {% endfor %}
+            </p>
+            <p><strong>Nombre de couchages maximum:</strong> {{ hebergement.hebCouchagesMax }}</p>
+            {% if hebergement.hebSiteWeb != '' %}
+                <p><strong>Site web:</strong> <a href="{{ hebergement.hebSiteWeb }}">{{ hebergement.hebName }}</a></p>
+            {% endif %}
+            {% if hebergement.hebSiteResa != '' %}
+                <p><strong>Site web de réservation:</strong> <a href="{{ hebergement.hebSiteResa }}">Réservation {{ hebergement.hebName }}</a><br>
+            {% endif %}
+            {% if hebergement.hebContactResa != '' %}
+                <strong>Contact de réservation:</strong> {{ hebergement.hebContactResa }}<br>
+            {% endif %}
+            {% if hebergement.hebEmailResa != '' %}
+                <strong>Email de réservation:</strong> {{ hebergement.hebEmailResa }}<br>
+            {% endif %}
+            {% if hebergement.hebTelResa != '' %}
+                <strong>Téléphone de réservation:</strong> {{ hebergement.hebTelResa }}</p>
+            {% endif %}
+            <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
+            <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
+            <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
+            <div class="d-flex">
+                <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a> {{ include('hebergement/_delete_form.html.twig') }}    
+            </div>
+            
+        </div>
+        <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
+        </div>
+    </div>
+   
+{% endblock %}
+{% block javascripts %}
+    <script>
+    
+        var latitude = "{{ hebergement.hebLat }}";
+        var longitude = "{{ hebergement.hebLong }}";
+        
+        function initMap() {
+            var adresse = {lat: {{ hebergement.hebLat }}, lng: {{ hebergement.hebLong }}};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 14,
+              center: adresse
+            });
+            var marker = new google.maps.Marker({
+              position: adresse,
+              draggable: true,
+              map: map
+            });
+            var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h4 id="firstHeading" class="firstHeading">{{ hebergement.hebName }}</h4>'+
+              '<div id="bodyContent">'+
+              '<p>{{ hebergement.hebAdresse }}</p>'+
+              '</div>'+
+              '</div>';
+    
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+  
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">
+    </script>
+{% endblock %}
