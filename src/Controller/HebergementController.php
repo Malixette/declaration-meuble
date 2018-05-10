@@ -74,6 +74,11 @@ class HebergementController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
             $em->flush();
+            
+            $this->addFlash(
+                'success',
+                'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
+            );
 
             return $this->redirectToRoute('dashboard_declarant');
         }
@@ -185,6 +190,11 @@ class HebergementController extends Controller
 
 
             $this->getDoctrine()->getManager()->flush();
+            
+            $this->addFlash(
+                'success',
+                'Vos modifications ont bien été sauvegardées.'
+            );
 
             return $this->redirectToRoute('hebergement_edit', ['id' => $hebergement->getId()]);
            
@@ -214,6 +224,11 @@ class HebergementController extends Controller
             $em->remove($hebergement);
             $em->flush();
         }
+        
+        $this->addFlash(
+                'success',
+                'Votre hébergement a bien été supprimé.'
+        );
 
         return $this->redirectToRoute('dashboard_declarant');
     }

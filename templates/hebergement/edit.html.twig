@@ -12,6 +12,15 @@
      <div class="row mb-4">
         <a href="{{ path('hebergement_show', {'id': hebergement.id}) }}">< retourner à la fiche de l'hébergement</a>
     </div>
+    <div class="row my-2">
+         {% for label, messages in app.flashes %}
+            <div class="alert alert-{{ label }}">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>  
     <div class="row">
         <div class="col-md-4 col-lg-2 d-flex flex-column">
             <img class="img-fluid my-2"  src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}">  
@@ -49,7 +58,7 @@
         function initMap() {
             var adresse = {lat: {{ hebergement.hebLat }}, lng: {{ hebergement.hebLong }}};
             var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
+              zoom: 14,
               center: adresse
             });
             var marker = new google.maps.Marker({
