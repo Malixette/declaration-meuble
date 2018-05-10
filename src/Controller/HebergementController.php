@@ -91,6 +91,7 @@ class HebergementController extends Controller
 
     /**
      * @Route("/{id}", name="hebergement_show", methods="GET")
+     * @Route("/{id}", name="hebergement_show-mairie", methods="GET")
      */
     public function show(Hebergement $hebergement): Response
     {
