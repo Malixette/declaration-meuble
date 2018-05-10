@@ -74,10 +74,17 @@ class HebergementController extends Controller
             $em->persist($hebergement);
             $em->flush();
             
+<<<<<<< HEAD
             // this->addFlash(
             //     'success',
             //     'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
             // );
+=======
+            $this->addFlash(
+                'success',
+                'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
+            );
+>>>>>>> b5bdbe0e70dc57b7cd3297a8ab5bd0084362df99
 
             return $this->redirectToRoute('dashboard_declarant');
         }
@@ -99,7 +106,6 @@ class HebergementController extends Controller
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
         
-        // récupérer nb hebergement
         $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
