@@ -1,3 +1,10 @@
+/* 
+vert: #58ccb6
+bleu : #5070b5
+jaune : #ffd470
+pêche :#ff9166 
+*/
+
 * {
     box-sizing: border-box;
 }
@@ -11,15 +18,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    color: #FFD470;
+    color: #5070b5;
+    margin-top:2.5em;
 }
 
 header nav {
-    background-color: #5070B5;
+   color: #ff9166;
+   background: linear-gradient(45deg, #58ccb6, #5070b5) center center no-repeat;
+}
+
+.btn-warning {
+    background-color: #58ccb6;
+    border-color: #58ccb6;
+}
+
+.btn-warning:hover {
+    background-color: #4fb7a3;
+    border-color: #4fb7a3;
+}
+
+.btn-danger {
+    background-color: #ff9166;
+    border-color: #ff9166;
+}
+
+.btn-danger:hover {
+    background-color: #e5825b;
+    border-color: #e5825b;
+}
+
+.nav-link{
+    color:white;
 }
 
 footer {
-    background-color: #5070B5;
+    background: linear-gradient(45deg, #ff9166, #ffd470) center center no-repeat;
 }
 
 .encartDeclarant, .encartMairie, .encartOffice {
@@ -31,15 +64,15 @@ footer {
 }
 
 .page-item.active .page-link {
-    background-color: #C1AEA5;
-    border-color: #C1AEA5;
+    background-color: #5070b5;
+    border-color: #5070b5;
 }
 
 a {
-    color: #C1AEA5;
+    color: #5070b5;
 }
 
 a:hover {
-    color: #9F877C;
+    color: #58ccb6;
     text-decoration: none;
 }

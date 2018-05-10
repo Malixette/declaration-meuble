@@ -11,13 +11,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    background-color: #415A7E;
-    color: white;
+    color: #5070b5;
+    margin-top:2.5em;
 }
 
 header nav {
-    background-color: #22405F;
-    color:white !important;
+   color: #ff9166;
+   /* background-color: #58ccb6; */
+ background: linear-gradient(to right, #5070b5, #58ccb6, #ff9166, #ffd470);
+}
+
+.btn-warning {
+    background-color: #58ccb6;
+    border-color: #58ccb6;
+}
+
+.btn-warning:hover {
+    background-color: #4fb7a3;
+    border-color: #4fb7a3;
+}
+
+.btn-danger {
+    background-color: #ff9166;
+    border-color: #ff9166;
+}
+
+.btn-danger:hover {
+    background-color: #e5825b;
+    border-color: #e5825b;
 }
 
 .nav-link{
@@ -25,7 +46,7 @@ header nav {
 }
 
 footer {
-    background-color: #EDEBE0;
+     background: linear-gradient(to left, #5070b5, #58ccb6, #ff9166, #ffd470);
 }
 
 .encartDeclarant, .encartMairie, .encartOffice {
@@ -37,15 +58,15 @@ footer {
 }
 
 .page-item.active .page-link {
-    background-color: #C1AEA5;
-    border-color: #C1AEA5;
+    background-color: #5070b5;
+    border-color: #5070b5;
 }
 
 a {
-    color: #C1AEA5;
+    color: #5070b5;
 }
 
 a:hover {
-    color: #9F877C;
+    color: #58ccb6;
     text-decoration: none;
 }

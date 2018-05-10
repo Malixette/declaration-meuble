@@ -1,93 +1,14 @@
 {% extends 'admin.html.twig' %}
 
 {% block stylesheets %}
-<style>
-
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family:'Open Sans', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Oswald', sans-serif;
-}
-
-h1 {
-    background-color: #415A7E;
-    color: white;
-}
-
-h4 {
-  color:#415A7E;
-}
-
-.main.h3{
-  color:#415A7E;
-}
-
-header nav {
-    background-color: #22405F;
-}
-
-.nav-link{
-    color:white;
-}
-
-footer {
-    background-color: #EDEBE0;
-}
-
-.encartDeclarant, .encartMairie, .encartOffice {
-    box-shadow: 3px 3px 8px #adadad;
-}
-
-.aside.encartMairie {
-  background-color:#EDEBE0;
-}
-
-
-header nav {
-    background-color: #22405F;
-}
-
-
-.listeHebergement td, .listeHebergement th {
-    border: none; 
-}
-
-.page-item.active .page-link {
-    background-color: #C1AEA5;
-    border-color: #C1AEA5;
-}
-
-a {
-    color: #C1AEA5;
-}
-
-a:hover {
-    color: #9F877C;
-    text-decoration: none;
-}
-
-.btn-secondary{
-  background-color:#FF9800;
-  color:black;
-}
-</style>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css"/>
 
-
-
 {% endblock %}
 
 {% block header %}
-    <h1 class="mt-5 mb-4 p-3 text-center">Bienvenue dans votre espace personnel</h1>
+    <h1 class="mb-4 p-3 text-center">Bienvenue dans votre espace personnel</h1>
 {% endblock %}
 
 {% block body %}

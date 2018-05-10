@@ -3,7 +3,7 @@
 {% block title %}Modifier les informations de votre hébergement{% endblock %}
 
 {% block header %}
-    <h1 class="mt-5 mb-4 p-3 text-center">Modifier les informations de votre hébergement</h1>
+    <h1 class="mb-4 p-3 text-center">Modifier les informations de votre hébergement</h1>
 {% endblock %}
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
@@ -39,7 +39,7 @@
             </div>
     
             <div class="d-flex my-3">
-                <button class="btn mr-2">{{ button_label|default('Valider mes informations') }}</button>  
+                <button class="btn btn-warning mr-2">{{ button_label|default('Valider mes informations') }}</button>  
             {{ form_end(form) }}
                 {{ include('hebergement/_delete_form.html.twig') }}   
             </div>

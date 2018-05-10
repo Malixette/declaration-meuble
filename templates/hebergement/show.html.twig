@@ -1,14 +1,14 @@
-{% extends 'admin-mairie.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Détail de l'hebergement{% endblock %}
 
 {% block header %}
-    <h1 class="mt-5 mb-4 p-3 text-center">Détail de l'hébergement</h1>
+    <h1 class="mb-4 p-3 text-center">Détail de l'hébergement</h1>
 {% endblock %}
 
 {% block body %}
     <div class="row ml-2 mb-4">
-        <a href="{{ path('dashboard_declarant-mairie') }}">< retour à la liste</a>
+        <a href="{{ path('dashboard_declarant') }}">< retour à la liste</a>
     </div>
     <div class="row" onload="initialize()">
         <div class="col-md-4 col-lg-2 d-flex flex-column">
@@ -62,7 +62,7 @@
             <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
             <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
             <div class="d-flex">
-                {{ include('hebergement/_delete_form.html.twig') }}    
+                <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a> {{ include('hebergement/_delete_form.html.twig') }}    
             </div>
             
         </div>
@@ -88,7 +88,6 @@
               draggable: true,
               map: map
             });
-
             var contentString = '<div id="content">'+
               '<div id="siteNotice">'+
               '</div>'+
@@ -101,13 +100,11 @@
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
-
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
             });
   
         }
-
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">
     </script>
