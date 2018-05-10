@@ -99,13 +99,13 @@ class HebergementType extends AbstractType
             
             ->add('heb_lat', NumberType::class, [
             'required'  => true,
-                'disabled' => $options['is_new'],
+                // 'disabled' => $options['is_new'],
                 'label'     => "Latitude"
             ])
             
             ->add('heb_long', NumberType::class, [
             'required'  => true,
-                'disabled' => $options['is_new'],
+                // 'disabled' => $options['is_new'],
                 'label'     => "Longitude"
             ])
             

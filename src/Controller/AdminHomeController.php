@@ -49,6 +49,9 @@ class AdminHomeController extends Controller
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+
         
         $mairie = $user->getMairie();
 
@@ -57,7 +60,8 @@ class AdminHomeController extends Controller
         return $this->render('admin_home/dashboard-mairie.html.twig', [
             'hebergements'  => $hebergements,
             'user'          => $user,
-            'mairie'        => $mairie
+            'mairie'        => $mairie,
+            'nombre'        => $nombre
         ]);
     }
     

@@ -44,8 +44,6 @@ class HebergementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $hebergement->setUser($user);
-            $hebergement->setHebLat(10);
-            $hebergement->setHebLong(10);
             $hebergement->setHebDateCreation(new \DateTime());
             $hebergement->setHebDateDeclaration(new \DateTime());
             $hebergement->setHebCerfa(123);
@@ -104,10 +102,12 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
+        $nombreProprio = count($user);
 
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
-            'nombre'        => $nombre
+            'nombre'        => $nombre,
+            'nombreProprio' => $nombreProprio,
             ]);
     }
 
@@ -121,6 +121,7 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
+        $nombreProprio = count($user);
         
         $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
         
@@ -204,6 +205,7 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'form'          => $form->createView(),
+            'nombreProprio' => $nombreProprio,
         ]);
     }
     
