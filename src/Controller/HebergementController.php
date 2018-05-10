@@ -74,17 +74,10 @@ class HebergementController extends Controller
             $em->persist($hebergement);
             $em->flush();
             
-<<<<<<< HEAD
-            // this->addFlash(
-            //     'success',
-            //     'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
-            // );
-=======
             $this->addFlash(
                 'success',
                 'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
             );
->>>>>>> b5bdbe0e70dc57b7cd3297a8ab5bd0084362df99
 
             return $this->redirectToRoute('dashboard_declarant');
         }
@@ -99,7 +92,6 @@ class HebergementController extends Controller
 
     /**
      * @Route("/{id}", name="hebergement_show", methods="GET")
-     * @Route("/{id}", name="hebergement_show-mairie", methods="GET")
      */
     public function show(Hebergement $hebergement): Response
     {
@@ -113,7 +105,7 @@ class HebergementController extends Controller
         $nombre = count($hebergements);
 
 
-        return $this->render('hebergement/show.html.twig', [
+        return $this->render('hebergement/show-mairie.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             ]);
