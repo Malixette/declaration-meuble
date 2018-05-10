@@ -1,4 +1,4 @@
-{% extends 'admin-mairie.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Détail de l'hebergement{% endblock %}
 
@@ -62,7 +62,7 @@
             <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
             <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
             <div class="d-flex">
-                {{ include('hebergement/_delete_form.html.twig') }}    
+                <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a> {{ include('hebergement/_delete_form.html.twig') }}    
             </div>
             
         </div>
