@@ -44,16 +44,15 @@
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center h-100" >
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                {% for label, messages in app.flashes %}
-                <article>
-                    <div>
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
-                    </div>
-                </article>
-                {% endfor %}
-
+                <div class="row my-2 d-flex justify-content-center">
+                     {% for label, messages in app.flashes %}
+                        <div class="alert alert-{{ label }}">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
                 <p class="text-center">Connectez-vous pour gérer vos déclarations</p>
                 <form class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4" action="{{ path('connexion') }}" method="post">
                     <div class="text-center form-group">

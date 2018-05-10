@@ -40,12 +40,17 @@ class UserController extends Controller
             
             $this->addFlash(
                         'success', 
-                        "bravo, vous êtes bien inscrit"
+                        "Votre inscription est enregistrée."
                         );
                         
             return $this->redirectToRoute('connexion');
             
             // return $this->redirectToRoute('connexion');
+        } else {
+            $this->addFlash(
+                        'danger', 
+                        "Un problème est survenu lors de l'envoi du formulaire."
+                        );
         }
 
         return $this->render('user/inscription.html.twig', [
@@ -86,11 +91,13 @@ class UserController extends Controller
             
             $this->getDoctrine()->getManager()->flush();
             
-            dump($user);
+             $this->addFlash(
+                        'success', 
+                        "Les modifications de vos informations personnelles ont été appliquées."
+                        );
 
             return $this->redirectToRoute('dashboard_declarant');
         }
-
         return $this->render('admin_home/declarant-edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),

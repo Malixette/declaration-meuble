@@ -120,24 +120,6 @@ class UserType extends AbstractType
                     'type' => "email"
                 ]
             ])
-            // ->add('user_date_inscription', DateTimeType::class)
-            
-            // ->add('user_role', ChoiceType::class, [
-            //     'choices' => [
-            //         'Propiétaire' => '2',
-            //         'Office de tourisme' => '3',
-            //         'Mairie' => '4'
-            //         ],
-            //     'attr' => [
-            //         'class' => "form-control form-control mb-3",
-            //         'type' => "select"
-            //     ]
-            // ])
-            // ->add('mairie', EntityType::class, [
-            //     'class' => Mairie::class,
-            //     'choice_label' => 'id'
-            //     ]
-            // )
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe entrés sont différents',
