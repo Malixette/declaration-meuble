@@ -102,12 +102,11 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
-        $nombreProprio = count($user);
+
 
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
-            'nombreProprio' => $nombreProprio,
             ]);
     }
 
@@ -121,7 +120,7 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
-        $nombreProprio = count($user);
+
         
         $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
         
@@ -205,7 +204,6 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'form'          => $form->createView(),
-            'nombreProprio' => $nombreProprio,
         ]);
     }
     
