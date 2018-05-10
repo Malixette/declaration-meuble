@@ -88,7 +88,6 @@
               draggable: true,
               map: map
             });
-
             var contentString = '<div id="content">'+
               '<div id="siteNotice">'+
               '</div>'+
@@ -101,13 +100,11 @@
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
-
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
             });
   
         }
-
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">
     </script>
