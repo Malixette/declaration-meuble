@@ -32,7 +32,7 @@
             <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
             <td class="align-middle">{{ hebergement.hebClassement }}</td>
             <td class="align-middle">{{ hebergement.hebStatut }}</td>
-            <td class="align-middle"><a href="{{ path('hebergement_show-mairie', {'id': hebergement.id}) }}"><i class="fas fa-search"></i></a></td>
+            <td class="align-middle"><a href="{{ path('hebergement_show', {'id': hebergement.id}) }}"><i class="fas fa-search"></i></a></td>
           </tr>
         {% endfor %}
       </tbody>
