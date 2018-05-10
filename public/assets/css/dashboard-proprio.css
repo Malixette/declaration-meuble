@@ -17,7 +17,8 @@ h1 {
 
 header nav {
    color: #ff9166;
-   background-color: #58ccb6;
+   /* background-color: #58ccb6; */
+ background: linear-gradient(to right, #5070b5, #58ccb6, #ff9166, #ffd470);
 }
 
 .btn-warning {
@@ -45,7 +46,7 @@ header nav {
 }
 
 footer {
-    background-color: #ffd470;
+     background: linear-gradient(to left, #5070b5, #58ccb6, #ff9166, #ffd470);
 }
 
 .encartDeclarant, .encartMairie, .encartOffice {
