@@ -105,6 +105,27 @@ class HebergementController extends Controller
         $nombre = count($hebergements);
 
 
+        return $this->render('hebergement/show.html.twig', [
+            'hebergement'   => $hebergement,
+            'nombre'        => $nombre,
+            ]);
+    }
+    
+    
+     /**
+     * @Route("/mairie/hebergement/{id}", name="mairie_hebergement_show", methods="GET")
+     */
+    public function showMairie(Hebergement $hebergement): Response
+    {
+        $latitude = $hebergement->getHebLat();
+        $longitude = $hebergement->getHebLong();
+        
+        $user = $this->getUser();
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+
         return $this->render('hebergement/show-mairie.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
