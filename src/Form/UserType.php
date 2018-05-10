@@ -156,7 +156,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('valider', SubmitType::class, [
-                'label' => 'S\'inscrire',
+                'label' => 'Enregistrer',
                 'attr' => [
                     'class' => 'btn btn-lg btn-success'    
                 ]
