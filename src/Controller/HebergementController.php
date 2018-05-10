@@ -74,10 +74,10 @@ class HebergementController extends Controller
             $em->persist($hebergement);
             $em->flush();
             
-            this->addFlash(
-                'success',
-                'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
-            );
+            // this->addFlash(
+            //     'success',
+            //     'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
+            // );
 
             return $this->redirectToRoute('dashboard_declarant');
         }

@@ -49,25 +49,27 @@
                         <div class="card-body">
                             <h4>Vos informations</h4> 
                             <p>
-                                <i class="fas fa-phone"></i>{% if user.UserTelephone %}
-                                                                0{{ user.UserTelephone }}<br>
-                                                            {% endif %}
+                                <i class="fas fa-phone"></i>
+                                    {% if user.UserTelephone %}
+                                        0{{ user.UserTelephone }}<br>
+                                    {% endif %}
                                 <i class="fas fa-envelope"></i> {{ user.UserEmail }} <br>
                                 <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>
-                                <i class="fas fa-address-card"></i><strong> Maire:</strong>  {{ mairie.MairieMairePrenom }} {{ mairie.MairieMaireNom | upper}}
+                                <i class="fas fa-address-card"></i>
+                                <strong> Maire:</strong> 
                             </p class="d-flex flex-column">
                             <div class="pb-4">
-        					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
+        					    <a href="{{ path('infos_mairie_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
         					
-                                {% if mairie.MairieContactNom %}
-                                    <p><strong>Référent technique:<br>
-                                    </strong> {{ mairie.MairieContactPrenom}} {{ mairie.MairieContactNom | upper}}<br>
-                                    {% if mairie.MairieTelephoneContact %}
-                                        0{{ mairie.MairieTelephoneContact }}<br>
-                                    {% endif %}
-                                        {{ mairie.MairieEmailContact }} <br>
-                                {% endif %}
+                                {#{% if mairie.MairieContactNom %}#}
+                                {#    <p><strong>Référent technique:<br>#}
+                                {#    </strong> {{ mairie.MairieContactPrenom}} {{ mairie.MairieContactNom | upper }}<br>#}
+                                {#    {% if mairie.MairieTelephoneContact %}#}
+                                {#        0{{ mairie.MairieTelephoneContact }}<br>#}
+                                {#    {% endif %}#}
+                                {#        {{ mairie.MairieEmailContact }} <br>#}
+                                {#{% endif %}#}
                             </p class="d-flex flex-column">
     					</div>
                     </div>

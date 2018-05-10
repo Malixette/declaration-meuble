@@ -97,6 +97,40 @@ class UserController extends Controller
             'nombre' => $nombre
         ]);
     }
+    /**
+     * @Route("admin/mairie/edit", name="infos_mairie_edit", methods="GET|POST")
+     */
+    
+    public function editInfosMairie(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $user_id = $user->getId();
+        
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+    
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $this->getDoctrine()->getManager()->flush();
+            
+            dump($user);
+
+            return $this->redirectToRoute('dashboard_mairie');
+        }
+
+        return $this->render('admin_home/declarant-edit-mairie.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+            'nombre' => $nombre
+        ]);
+    }
 
     /**
      * @Route("/{id}", name="user_delete", methods="DELETE")
