@@ -34,6 +34,11 @@ class HebergementController extends Controller
         $user = $this->getUser();
         $user_id = $user->getId();
         
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+        
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
 
@@ -77,6 +82,7 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'form'          => $form->createView(),
             'user'          => $user,
+            'nombre'        => $nombre
         ]);
     }
 

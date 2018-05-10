@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Hebergement;
 use App\Repository\UserRepository;
+use App\Repository\HebergementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,17 +67,26 @@ class UserController extends Controller
     /**
      * @Route("admin/proprietaire/edit", name="declarant_edit", methods="GET|POST")
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request): Response
     {
-        $user = $this->getUser();
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $user_id = $user->getId();
+        
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
     
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $this->getDoctrine()->getManager()->flush();
+            
+            dump($user);
 
             return $this->redirectToRoute('dashboard_declarant');
         }
@@ -83,6 +94,7 @@ class UserController extends Controller
         return $this->render('admin_home/declarant-edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'nombre' => $nombre
         ]);
     }
 
