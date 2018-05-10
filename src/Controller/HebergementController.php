@@ -74,7 +74,7 @@ class HebergementController extends Controller
             $em->persist($hebergement);
             $em->flush();
             
-            this->addFlash(
+            $this->addFlash(
                 'success',
                 'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
             );
@@ -99,7 +99,6 @@ class HebergementController extends Controller
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
         
-        // récupérer nb hebergement
         $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
