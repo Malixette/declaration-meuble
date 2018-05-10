@@ -92,6 +92,15 @@ a:hover {
 
 {% block body %}
   <div class="row">
+    {% for label, messages in app.flashes %}
+      <div class="alert alert-{{ label }}">
+          {% for message in messages %}
+              {{ message }}
+          {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="row">
     <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
       <h3 class="ml-3 mb-3">Liste de vos hébergements déclarés</h3>
       <thead>

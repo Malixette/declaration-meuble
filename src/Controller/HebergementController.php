@@ -44,8 +44,6 @@ class HebergementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $hebergement->setUser($user);
-            $hebergement->setHebLat(10);
-            $hebergement->setHebLong(10);
             $hebergement->setHebDateCreation(new \DateTime());
             $hebergement->setHebDateDeclaration(new \DateTime());
             $hebergement->setHebCerfa(123);
@@ -74,6 +72,11 @@ class HebergementController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
             $em->flush();
+            
+            $this->addFlash(
+                'success',
+                'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
+            );
 
             return $this->redirectToRoute('dashboard_declarant');
         }
@@ -88,6 +91,7 @@ class HebergementController extends Controller
 
     /**
      * @Route("/{id}", name="hebergement_show", methods="GET")
+     * @Route("/{id}", name="hebergement_show-mairie", methods="GET")
      */
     public function show(Hebergement $hebergement): Response
     {
@@ -100,9 +104,10 @@ class HebergementController extends Controller
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
 
+
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
-            'nombre'        => $nombre
+            'nombre'        => $nombre,
             ]);
     }
 
@@ -116,6 +121,7 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
+
         
         $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
         
@@ -185,6 +191,11 @@ class HebergementController extends Controller
 
 
             $this->getDoctrine()->getManager()->flush();
+            
+            $this->addFlash(
+                'success',
+                'Vos modifications ont bien été sauvegardées.'
+            );
 
             return $this->redirectToRoute('hebergement_edit', ['id' => $hebergement->getId()]);
            
@@ -214,6 +225,11 @@ class HebergementController extends Controller
             $em->remove($hebergement);
             $em->flush();
         }
+        
+        $this->addFlash(
+                'success',
+                'Votre hébergement a bien été supprimé.'
+        );
 
         return $this->redirectToRoute('dashboard_declarant');
     }

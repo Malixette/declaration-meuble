@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-3">
                         <div class="card-header">
-                            <h4>Mairie de {{ user.UserNom }}</h4>
+                            <h4>Mairie de {{ user.UserCommune }}</h4>
                         </div>
                         <div class="card-body">
                             <h4>Vos informations</h4> 
@@ -57,18 +57,20 @@
                             <div class="pb-4">
         					    <a href="#" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
-        					<p>
-                                Contact technique: {{ mairie.MairieContactNom}} {{ mairie.MairieContactPrenom}} 
-                                0{{ mairie.MairieTelephoneContact }}<br>
-                                {{ mairie.MairieEmailContact }} <br>
-                                {{ mairie.MairieTelephoneContact }}<br>
+        					
+                                {% if mairie.MairieContactNom %}
+                                    <p>Contact technique: {{ mairie.MairieContactNom}} {{ mairie.MairieContactPrenom}} 
+                                    0{{ mairie.MairieTelephoneContact }}<br>
+                                    {{ mairie.MairieEmailContact }} <br>
+                                    {{ mairie.MairieTelephoneContact }}<br>
+                                {% endif %}
                             </p class="d-flex flex-column">
     					</div>
                     </div>
                     <div class="w-100 d-flex flex-column">
                         <div class="encartMairie card text-white bg-secondary mb-lg-3">
                             <div class="card-header">
-                                <h4>Vous avez actuellement XXX meublés déclarés par YYY propriétaires</h4>
+                                <h4>Vous avez actuellement {{ nombre }} meublés déclarés par YYY propriétaires</h4>
                             </div>
                             <div class="card-body" style="background: url({{ asset("assets/img/dashboard-mairie/maps.jpg") }})">
                             <div class="pb-4">

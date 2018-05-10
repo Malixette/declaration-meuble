@@ -62,7 +62,7 @@
             <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
             <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
             <div class="d-flex">
-                <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a> {{ include('hebergement/_delete_form.html.twig') }}    
+                {{ include('hebergement/_delete_form.html.twig') }}    
             </div>
             
         </div>
@@ -80,7 +80,7 @@
         function initMap() {
             var adresse = {lat: {{ hebergement.hebLat }}, lng: {{ hebergement.hebLong }}};
             var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
+              zoom: 14,
               center: adresse
             });
             var marker = new google.maps.Marker({
