@@ -73,7 +73,7 @@ class HebergementType extends AbstractType
                 ]    
             ])
             
-            ->add('heb_code_postal', NumberType::class, [
+            ->add('heb_code_postal', TextType::class, [
                 'required'  => true,
                 'disabled'  => $options['is_edit'],
                 // ||$options['is_new'],
