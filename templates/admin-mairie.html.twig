@@ -42,9 +42,9 @@
         <div class="row">
             <aside class="col-lg-3 text-center order-2 order-lg-1">
                 <div class="row">
-                   {% if app.request.requestUri('/admin/mairie/') == 'current_route' %}
-                     aside avec Mairie de ...
-                   {% else %}
+                    {% if '/admin/mairie/' in url %}
+                        aside avec Mairie de ...
+                    {% else %}
                         aside avec propriétaire du meublé
                    {% endif %}
                    

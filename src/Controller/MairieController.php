@@ -69,8 +69,8 @@ class MairieController extends Controller
         }
 
         return $this->render('mairie/edit.html.twig', [
-            'mairie' => $mairie,
-            'form' => $form->createView(),
+            'mairie'    => $mairie,
+            'form'      => $form->createView(),
         ]);
     }
 

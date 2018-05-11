@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use App\Repository\HebergementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Form\UserType;
+use App\Form\MairieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -123,7 +124,9 @@ class UserController extends Controller
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         
-
+        $formMairie = $this->createForm(MairieType::class, $mairie);
+        $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             
             $this->getDoctrine()->getManager()->flush();
@@ -138,6 +141,8 @@ class UserController extends Controller
             'form'      => $form->createView(),
             'nombre'    => $nombre,
             'mairie'    => $mairie,
+            'formMairie'=> $formMairie->createView(),
+            'url'       => $url,
         ]);
     }
 

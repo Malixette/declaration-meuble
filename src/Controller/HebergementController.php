@@ -123,6 +123,8 @@ class HebergementController extends Controller
         
         $mairie = $hebergement->getMairie();
         
+        $url = $_SERVER['REQUEST_URI'];
+        
         $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
@@ -134,6 +136,7 @@ class HebergementController extends Controller
             'nombre'        => $nombre,
             'user'          => $user,
             'mairie'        => $mairie,
+            'url'           => $url,
             ]);
     }
 

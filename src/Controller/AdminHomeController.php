@@ -36,7 +36,7 @@ class AdminHomeController extends Controller
             'hebergements'  => $hebergements,
             'mairie'        => $mairie,
             'user'          => $user,
-            'nombre'        => $nombre
+            'nombre'        => $nombre,
         ]);
     }
     
@@ -52,6 +52,7 @@ class AdminHomeController extends Controller
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
 
+        $url = $_SERVER['REQUEST_URI'];
         
         $mairie = $user->getMairie();
 
@@ -61,7 +62,8 @@ class AdminHomeController extends Controller
             'hebergements'  => $hebergements,
             'user'          => $user,
             'mairie'        => $mairie,
-            'nombre'        => $nombre
+            'nombre'        => $nombre,
+            'url'           => $url,
         ]);
     }
     
