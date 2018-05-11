@@ -125,8 +125,6 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             
             $this->getDoctrine()->getManager()->flush();
-            
-            dump($user);
 
             return $this->redirectToRoute('dashboard_mairie');
         }

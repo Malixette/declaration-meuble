@@ -22,21 +22,11 @@
     <body>
         {% block nav %}{% endblock %}
         {% block header %}{% endblock %}
-        {% block main %}{% endblock %}
+        <div class="container-fluid p-0" id="main">
+            {% block main %}{% endblock %}
+        </div>
         {% block footer %}
-            {#<footer class="bg-info p-3 text-center mb-0 w-100 d-flex justify-content-middle fixed-bottom">#}
-            {#    <div class="col-4">#}
-            {#        <a class="text-white" href="">Déclarer son meublé</a>#}
-            {#    </div>#}
-            {#    <div class="col-4 text-white">#}
-            {#        &copy; 2018#}
-            {#    </div>#}
-            {#    <div class="col-4">#}
-            {#        <a class="text-white" href="">Mentions légales</a>#}
-            {#    </div>#}
-            {#</footer>#}
-            <footer class="p-0 m-0">
-                <div class="container-fluid bg-info p-3">
+            <footer class="container-fluid bg-info pt-4">
                     <div class="row d-flex text-center">
                         <div class="col-3">
                             <a class="text-white" href="">Déclarer son meublé</a>
@@ -51,7 +41,6 @@
                             <a class="text-white" href="{{ path('creation_mairie') }}">Création Mairie</a>
                         </div>
                     </div>
-                </div>
             </footer>
         {% endblock %}
         {% block javascripts %}{% endblock %}

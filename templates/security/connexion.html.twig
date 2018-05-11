@@ -2,22 +2,25 @@
 {% block title %}Connexion{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
+    {#<link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">#}
     <style>
         html {
-            position:relative; 
+            /*position:relative; */
         }
-        body {
-                padding-bottom:0 !important;   
+       
+        #main {
+            min-height: 85vh;
         }
+        
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Oswald', sans-serif;
         }
         
         footer {
-            position:absolute; 
-            bottom: 0;
-            width:100%;
+            height : 10vh;
+            /*position:absolute; */
+            /*bottom: 0;*/
+            /*width:100%;*/
         }
         
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

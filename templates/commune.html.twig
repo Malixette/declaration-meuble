@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 {%endblock%}
 {% block nav %}
-    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top py-3">
         <a class="navbar-brand" href="{{ path('commune_home') }}">Accueil</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
                 <a class="nav-link" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_listing') }}">Les meublés</a>
+                <a class="nav-link" href="{{ path('commune_listing') }}">Liste des meublés</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('commune_home') }}#section-contact">Contact</a>
@@ -189,7 +189,6 @@ h1, h2, h3, h4, h5, h6 {
     {# FIN HEADER #}
 {% endblock %} 
 {% block main %}
-
     {# DEBUT DEMARCHE #}
     <div class="container-fluid pt-md-5 pb-md-5 section" style="background : none;" id="section-demarche">
         <div class="row"> 

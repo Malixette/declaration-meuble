@@ -79,13 +79,13 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            {{ form_label(form.user_nom)}}
+                            {{ form_label(form.user_nom)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                             {{ form_widget(form.user_nom)}}
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            {{ form_label(form.user_prenom)}}
+                            {{ form_label(form.user_prenom)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                             {{ form_widget(form.user_prenom)}}
                         </div>
                     </div>
@@ -93,14 +93,14 @@
                 <div class="row">
                     <div class="col-12">
                         {{ form_errors(form.user_email) }}
-                        {{ form_label(form.user_email)}} 
+                        {{ form_label(form.user_email)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                         {{ form_widget(form.user_email)}}
                     </div>
                 </div> 
                 <div class="row">
                     <div class="col-12">
-                        {{ form_errors(form.username) }}
-                        {{ form_label(form.username)}} 
+                        {{ form_errors(form.username)}}
+                        {{ form_label(form.username)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                         {{ form_widget(form.username)}}
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                     </strong>
                 </p>  
                 <p class="text-center">
-                    <a class="btn btn-danger" href="{{path('commune_home')}}#section-contact" role="button">Contact</a>
+                    <a class="btn btn-danger" href="mailto:contact@alpaconseil.com" role="button">Contact</a>
                 </p>
             </aside>
         </div>
