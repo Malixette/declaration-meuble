@@ -122,6 +122,8 @@ class UserController extends Controller
         $formMairie = $this->createForm(MairieType::class, $mairie);
         $form->handleRequest($request);
         
+        $url = $_SERVER['REQUEST_URI'];
+        
         if ($form->isSubmitted() && $form->isValid()) {
             
             $this->getDoctrine()->getManager()->flush();

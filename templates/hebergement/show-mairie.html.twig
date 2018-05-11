@@ -8,7 +8,7 @@
 
 {% block body %}
     <div class="row ml-2 mb-4">
-        <a href="#">< retour à la liste</a>
+        <a href="{{ path('dashboard_mairie') }}">< retour à la liste</a>
     </div>
     <div class="row" onload="initialize()">
         <div class="col-md-4 col-lg-2 d-flex flex-column">
@@ -61,9 +61,6 @@
             <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
             <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
             <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
-            <div class="d-flex">
-                {{ include('hebergement/_delete_form.html.twig') }}    
-            </div>
             
         </div>
         <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
