@@ -38,10 +38,10 @@ class CommuneHomeController extends Controller
             
             $this->addFlash(
                         'success', 
-                        "votre message a bien été envoyé"
+                        "votre message a bien été envoyé."
                         );
 
-            // return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
+            return $this->redirectToRoute('commune_home', ['_fragment' => 'section-contact']);
         }
 
         return $this->render('commune.html.twig', [

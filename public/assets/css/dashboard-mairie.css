@@ -18,13 +18,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    color: #5070b5;
+    color: #black;
     margin-top:2.5em;
+    background-color :lightgrey;
 }
 
-header nav {
-   color: #ff9166;
-   background: linear-gradient(45deg, #58ccb6, #5070b5) center center no-repeat;
+header nav{
+    background-color: #5070b5;
+}
+
+header nav ul li a{
+    color: white!important;
 }
 
 .btn-warning {
@@ -40,6 +44,7 @@ header nav {
 .btn-danger {
     background-color: #ff9166;
     border-color: #ff9166;
+    border-radius: 5px;
 }
 
 .btn-danger:hover {
@@ -52,7 +57,8 @@ header nav {
 }
 
 footer {
-    background: linear-gradient(45deg, #ff9166, #ffd470) center center no-repeat;
+    background: linear-gradient(45deg, #5070b5, #58ccb6) center center no-repeat;
+
 }
 
 .encartDeclarant, .encartMairie, .encartOffice {
@@ -75,4 +81,15 @@ a {
 a:hover {
     color: #58ccb6;
     text-decoration: none;
+}
+
+.btn {
+    background: #58ccb6;
+    color:black;
+}
+
+.btn:hover {
+    background-color: #ff9166;
+    color:black;
+
 }

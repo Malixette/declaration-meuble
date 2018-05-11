@@ -40,12 +40,17 @@ class UserController extends Controller
             
             $this->addFlash(
                         'success', 
-                        "bravo, vous êtes bien inscrit"
+                        "Votre inscription est enregistrée."
                         );
                         
             return $this->redirectToRoute('connexion');
             
             // return $this->redirectToRoute('connexion');
+        } else {
+            $this->addFlash(
+                        'danger', 
+                        "Un problème est survenu lors de l'envoi du formulaire."
+                        );
         }
 
         return $this->render('user/inscription.html.twig', [
@@ -86,15 +91,53 @@ class UserController extends Controller
             
             $this->getDoctrine()->getManager()->flush();
             
-            dump($user);
+             $this->addFlash(
+                        'success', 
+                        "Les modifications de vos informations personnelles ont été appliquées."
+                        );
 
             return $this->redirectToRoute('dashboard_declarant');
         }
-
         return $this->render('admin_home/declarant-edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
             'nombre' => $nombre
+        ]);
+    }
+    /**
+     * @Route("admin/mairie/edit", name="infos_mairie_edit", methods="GET|POST")
+     */
+    
+    public function editInfosMairie(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $user_id = $user->getId();
+        $mairie = $user->getMairie();
+        
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+    
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $this->getDoctrine()->getManager()->flush();
+            
+            dump($user);
+
+            return $this->redirectToRoute('dashboard_mairie');
+        }
+
+        return $this->render('admin_home/declarant-edit-mairie.html.twig', [
+            'user'      => $user,
+            'form'      => $form->createView(),
+            'nombre'    => $nombre,
+            'mairie'    => $mairie,
         ]);
     }
 

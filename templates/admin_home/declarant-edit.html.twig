@@ -4,11 +4,101 @@
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
+{% block header %}
+    <h1 class="mt-5 mb-4 p-3 text-center">Modifier vos informations personnelles</h1>
+{% endblock %}
 {% block body %}
-    <h1 class="mt-5">Edit User</h1>
 
 {{form_start(form)}}
-{{form_widget(form)}}
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            {{ form_label(form.user_nom)}}
+            {{ form_widget(form.user_nom)}}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            {{ form_label(form.user_prenom)}}
+            {{ form_widget(form.user_prenom)}}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            {{ form_label(form.username)}}
+            {{ form_widget(form.username)}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            {{ form_label(form.user_adresse)}}
+            {{ form_widget(form.user_adresse)}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            {{ form_label(form.user_complement_adresse)}}
+            {{ form_widget(form.user_complement_adresse)}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            {{ form_label(form.user_commune)}}
+            {{ form_widget(form.user_commune)}}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            {{ form_label(form.user_postal_code)}}
+            {{ form_widget(form.user_postal_code)}}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            {{ form_label(form.user_pays)}}
+            {{ form_widget(form.user_pays)}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_label(form.user_email)}}
+            {{ form_widget(form.user_email)}}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_label(form.user_telephone)}}
+            {{ form_widget(form.user_telephone)}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_row(form.password.first)}}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_row(form.password.second)}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            {{ form_widget(form.valider)}}
+        </div>
+    </div>
+</div>
 {{form_end(form)}}
 
     {#{{ include('user/_form.html.twig', {'button_label': 'Update'}) }}#}

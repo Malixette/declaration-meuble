@@ -1,0 +1,19 @@
+{% extends 'admin-mairie.html.twig' %}
+
+{% block title %}Modifier mes informations{% endblock %}
+
+{% block header %}
+    <h1 class="mt-5 mb-4 p-3 text-center">Modifications de vos informations</h1>
+{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <h3>Vous pouvez à tout moment mettre à jour les informations ci-dessous:</h3>
+
+ {{ include('admin_home/_form.html.twig') }}
+
+    {#{{ include('user/_form.html.twig', {'button_label': 'Update'}) }}#}
+
+    {#{{ include('user/_delete_form.html.twig') }}#}
+{% endblock %}
