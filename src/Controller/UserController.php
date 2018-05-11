@@ -47,11 +47,6 @@ class UserController extends Controller
             return $this->redirectToRoute('connexion');
             
             // return $this->redirectToRoute('connexion');
-        } else {
-            $this->addFlash(
-                        'danger', 
-                        "Un problème est survenu lors de l'envoi du formulaire."
-                        );
         }
 
         return $this->render('user/inscription.html.twig', [

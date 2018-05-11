@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Hebergement;
+use App\Entity\Mairie;
 use App\Form\HebergementType;
 use App\Form\HebergementEditType;
 use App\Repository\HebergementRepository;
+use App\Repository\MairieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +22,7 @@ class HebergementController extends Controller
     /**
      * @Route("/", name="hebergement_index", methods="GET")
      */
-    public function index(HebergementRepository $hebergementRepository): Response
+    public function index(HebergementRepository $hebergementRepository, MairieRepository $repoMairie): Response
     {
         return $this->render('hebergement/index.html.twig', ['hebergements' => $hebergementRepository->findAll()]);
     }
@@ -42,14 +44,20 @@ class HebergementController extends Controller
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $mairieNom = $hebergement->getHebCommune();
+            $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+            $mairie = $repoMairie->findOneBy(['mairie_nom_touristique' => $mairieNom]);
+            
             $hebergement->setUser($user);
             $hebergement->setHebDateCreation(new \DateTime());
             $hebergement->setHebDateDeclaration(new \DateTime());
             $hebergement->setHebCerfa(123);
             $hebergement->setHebStatut('en cours');
             $hebergement->setHebNumDeclaration('Mairie321');
-            
+            $hebergement->setMairie($mairie);
 
             $file1 = $hebergement->getHebPhoto1();
             
