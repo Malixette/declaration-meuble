@@ -37,6 +37,7 @@ class HebergementController extends Controller
         $hebergement = new Hebergement();
         $user = $this->getUser();
         $user_id = $user->getId();
+         $url = $_SERVER['REQUEST_URI'];  
         
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
@@ -96,7 +97,8 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'form'          => $form->createView(),
             'user'          => $user,
-            'nombre'        => $nombre
+            'nombre'        => $nombre,
+             'url'          => $url,
         ]);
     }
 
