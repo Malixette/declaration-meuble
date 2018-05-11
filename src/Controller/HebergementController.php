@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Hebergement;
 use App\Entity\Mairie;
+use App\Entity\User;
 use App\Form\HebergementType;
 use App\Form\HebergementEditType;
 use App\Repository\HebergementRepository;
 use App\Repository\MairieRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -126,25 +128,31 @@ class HebergementController extends Controller
      */
     public function showMairie(Hebergement $hebergement): Response
     {
-        $latitude = $hebergement->getHebLat();
-        $longitude = $hebergement->getHebLong();
-        
+        $latitude   = $hebergement->getHebLat();
+        $longitude  = $hebergement->getHebLong();
         $mairie = $hebergement->getMairie();
         
         $url = $_SERVER['REQUEST_URI'];
         
-        $user = $this->getUser();
+        $user    = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
 
+        $user_id = $hebergement->getUser();
+
+        $repoDeclarant = $this->getDoctrine()->getRepository(User::class);
+        $userDeclarant = $repoDeclarant->findOneBy(['id' => $user_id]);
+        dump($userDeclarant);
+        
         return $this->render('hebergement/show-mairie.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'user'          => $user,
             'mairie'        => $mairie,
             'url'           => $url,
+            'userDeclarant' => $userDeclarant,
             ]);
     }
 
@@ -153,7 +161,7 @@ class HebergementController extends Controller
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
-        $user = $this->getUser();
+        $user    = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));

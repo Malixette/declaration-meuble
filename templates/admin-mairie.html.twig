@@ -74,23 +74,32 @@
                                 </p class="d-flex flex-column">
 				            </div>
                         </div>
+                        <div class="w-100 d-flex flex-column">
+                            <div class="encartMairie card text-white bg-secondary mb-lg-3">
+                                <div class="card-header">
+                                    <h4>Vous avez actuellement {{ nombre }} meublés déclarés par YYY propriétaires</h4>
+                                </div>
+                                <div class="card-body" style="background: url({{ asset("assets/img/dashboard-mairie/maps.jpg") }})">
+                                    <div class="pb-4">
+                					    <a href="{{ path('map') }}" type="button" class="btn btn-secondary">Carte des hébergements</a>
+                					</div> 
+                                </div>
+                            </div>
+                        </div> 
   <!--Affichage bloc gauche Propriétaire -->
                     {% else %}
  
                       <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-3">
                         <div class="card-header">
                             <h4>Propriétaire du bien</br></h4>
-                            <p>Prénom NOM</p>
+                            <p>{{ userDeclarant.userprenom }} {{ userDeclarant.usernom | upper }}</p>
                         </div>
                         <div class="card-body">
                             <h4>Coordonnées</h4> 
                             <p>
-                                <i class="fas fa-phone"></i>
-                                    {% if user.UserTelephone %}
-                                        01 02 03 04 05 06<br>
-                                    {% endif %}
-                                <i class="fas fa-envelope"></i> mail@proprio.fr <br>
-                                <i class="fas fa-map-marker"></i> adresse proprio<br>
+                                <i class="fas fa-phone"></i>{{ userDeclarant.usertelephone }}
+                                <i class="fas fa-envelope"></i> {{ userDeclarant.useremail }} <br>
+                                <i class="fas fa-map-marker"></i> {{ userDeclarant.useremail }}<br>
                             <div class="pb-4">
         					    <a href="{{ path('infos_mairie_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
         					</div>
@@ -101,18 +110,7 @@
   <!--fin du IF -->  
                    
                     
-                    <div class="w-100 d-flex flex-column">
-                        <div class="encartMairie card text-white bg-secondary mb-lg-3">
-                            <div class="card-header">
-                                <h4>Vous avez actuellement {{ nombre }} meublés déclarés par YYY propriétaires</h4>
-                            </div>
-                            <div class="card-body" style="background: url({{ asset("assets/img/dashboard-mairie/maps.jpg") }})">
-                            <div class="pb-4">
-        					    <a href="#" type="button" class="btn btn-secondary">Carte des hébergements</a>
-        					</div> 
-                            </div>
-                        </div>
-                    </div>   
+  
                 </div>
             </aside>
             <main class="col-lg-9 mt-3 order-1 order-lg-2">

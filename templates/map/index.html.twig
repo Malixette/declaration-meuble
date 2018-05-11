@@ -1,0 +1,48 @@
+{% extends 'admin-mairie.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css"/>
+{% endblock %}
+
+{% block header %}
+    <h1 class="mt-5 mb-4 p-3 text-center">Tableau de bord Mairie</h1>
+{% endblock %}
+
+{% block body %}
+  <h2>Google Maps</h2>
+  <div class="row">
+    <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th data-orderable="true" scope="col">Nom hébergement</th>
+          <th data-orderable="false" scope="col">Photo</th>
+          <th data-orderable="true" scope="col">Commune</th>
+          <th data-orderable="true" scope="col">Couchages</th>
+          <th data-orderable="true" scope="col">Classement</th>
+          <th data-orderable="true" scope="col">Etat déclaration</th>
+          <th data-orderable="false" scope="col">Détails</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hebergement in hebergements %}
+          <tr>
+            <td class="align-middle">{{ hebergement.hebName }}</td>
+            <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}"></td>
+            <td class="align-middle">{{ hebergement.hebCommune }}</td>
+            <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
+            <td class="align-middle">{{ hebergement.hebClassement }}</td>
+            <td class="align-middle">{{ hebergement.hebStatut }}</td>
+            <td class="align-middle"><a href="{{ path('mairie_hebergement_show', {'id': hebergement.id}) }}"><i class="fas fa-search"></i></a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script></script>
+{% endblock %}
+
