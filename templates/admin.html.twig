@@ -12,7 +12,7 @@
     </head>
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light py-4">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light py-3">
             <a class="navbar-brand" href="{{ path('commune_home') }}">LogoSociété</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
                         <div class="card-header">
-                            <h4>Bienvenue {{ app.user.UserPrenom }} {{ app.user.UserNom }}</h4>
+                            <h4>Bienvenue {{ app.user.UserPrenom }} {{ app.user.UserNom | upper }}</h4>
                         </div>
                         <div class="card-body">
                             <p>Vous avez actuellement {{ nombre }} meublé(s) déclaré(s) en ligne</p>
@@ -71,7 +71,7 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <i class="fas fa-phone"></i> nom prenom<br>
+                                    <i class="fas fa-phone"></i> 04 12 45 89 54<br>
                                     <i class="fas fa-envelope"></i> mairie@me.com<br>
                                     <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
                                 </p>   
