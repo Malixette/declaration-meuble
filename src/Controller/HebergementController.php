@@ -37,7 +37,7 @@ class HebergementController extends Controller
         $hebergement = new Hebergement();
         $user = $this->getUser();
         $user_id = $user->getId();
-         $url = $_SERVER['REQUEST_URI'];  
+        $url = $_SERVER['REQUEST_URI'];  
         
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
@@ -170,6 +170,8 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
+        $url = $_SERVER['REQUEST_URI'];  
+
 
         
         $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
@@ -254,6 +256,7 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'form'          => $form->createView(),
+            'url'           => $url,
         ]);
     }
     
