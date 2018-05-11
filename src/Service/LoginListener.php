@@ -40,8 +40,6 @@ class LoginListener implements AuthenticationSuccessHandlerInterface
         $rolesTab = array_map(function ($role) {
             return $role->getRole();
         }, $roles);
-        
-        dump($rolesTab);
 
         if (in_array('ROLE_DECLARANT', $rolesTab, true)) {
             // DONNER LA ROUTE POUR LES ROLE_MEMBRE
