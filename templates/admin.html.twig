@@ -42,27 +42,60 @@
         <div class="row">
             <aside class="col-lg-3 text-center order-2 order-lg-1">
                 <div class="row">
+    <!--Affichage bloc gauche Déclarant -->
+                    {% if 'admin/proprietaire' in url %}
+                       Infos personnelles
+                      
+  <!--Affichage bloc gauche mairie-OT -->
+                    {% else %}
+                         Mairie
+                         
+                         Office de Tourisme référent
+                    {% endif %}
+  <!--fin du IF -->   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
-                        <div class="card-header">
-                            <h4>Bienvenue {{ app.user.UserPrenom }} {{ app.user.UserNom | upper }}</h4>
-                        </div>
-                        <div class="card-body">
-                            <p>Vous avez actuellement {{ nombre }} meublé(s) déclaré(s) en ligne</p>
-                            <div class="pb-4">
-                                <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
-                            </div>
-                            <h4>Vos informations</h4> 
-                            <p>
-                                <i class="fas fa-phone"></i> {{ app.user.UserTelephone }}<br>
-                                <i class="fas fa-envelope"></i> {{ app.user.UserEmail }}<br>
-                                <i class="fas fa-map-marker"></i> {{ app.user.UserAdresse }}
-                            </p>
-                            <div class="pb-4">
-
-        					    <a href="{{ path('declarant_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
-
-        					</div>
-    					</div>
+                        
                     </div>
                     <div class="w-100 d-flex flex-column">
                         <div class="encartMairie card text-white bg-secondary mb-lg-4">

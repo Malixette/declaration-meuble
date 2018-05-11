@@ -52,9 +52,7 @@
                             <h4>Vos informations</h4> 
                             <p>
                                 <i class="fas fa-phone"></i>
-                                    {% if user.UserTelephone %}
-                                        0{{ user.UserTelephone }}<br>
-                                    {% endif %}
+                                    {{ user.UserTelephone }}<br>
                                 <i class="fas fa-envelope"></i> {{ user.UserEmail }} <br>
                                 <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>
                                 <i class="fas fa-address-card"></i>
@@ -66,9 +64,7 @@
     					    {% if mairie.MairieContactNom %}
                                 <p><strong>Référent technique:<br>
                                     </strong> {{ mairie.MairieContactPrenom}} {{ mairie.MairieContactNom | upper }}<br>
-                                {% if mairie.MairieTelephoneContact %}
-                                    0{{ mairie.MairieTelephoneContact }}<br>
-                                {% endif %}
+                                    {{ mairie.MairieTelephoneContact }}<br>
                                     {{ mairie.MairieEmailContact }} <br>
                             {% endif %}
                                 </p class="d-flex flex-column">

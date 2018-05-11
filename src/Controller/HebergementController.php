@@ -107,6 +107,9 @@ class HebergementController extends Controller
     {
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
+        $mairie = $hebergement->getMairie();
+   
+        $url = $_SERVER['REQUEST_URI'];   
         
         $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
@@ -114,14 +117,14 @@ class HebergementController extends Controller
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
 
-
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'user'          => $user,
+            'url'           => $url,
+            'mairie'        => $mairie,
             ]);
     }
-    
     
      /**
      * @Route("/mairie/hebergement/{id}", name="mairie_hebergement_show", methods="GET")
@@ -144,8 +147,7 @@ class HebergementController extends Controller
 
         $repoDeclarant = $this->getDoctrine()->getRepository(User::class);
         $userDeclarant = $repoDeclarant->findOneBy(['id' => $user_id]);
-        dump($userDeclarant);
-        
+
         return $this->render('hebergement/show-mairie.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
