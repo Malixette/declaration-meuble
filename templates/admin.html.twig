@@ -50,18 +50,18 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <i class="fas fa-phone"></i> test <br>
-                                    <i class="fas fa-envelope"></i> test<br>
+                                    <i class="fas fa-phone"></i> test<br>
+                                    <i class="fas fa-envelope"></i> test <br>
                                     <i class="fas fa-map-marker"></i> test <br>
-                                    <strong>Maire: testtest</strong> <br>
+                                    <strong>Maire: </strong> {{ mairie.mairieMairePrenom | capitalize}} {{ mairie.mairieMaireNom | upper}} <br>
                                 </p>   
                             </div>
                             <div>
                                 <h5>Votre référent Mairie</h5>
                                 <p>
-                                    <i class="fas fa-address-card"></i> test <br>
-                                    <i class="fas fa-phone"></i> test <br>
-                                    <i class="fas fa-envelope"></i> test<br>
+                                    <i class="fas fa-address-card"></i> {{ mairie.mairieAdjointPrenom | capitalize}} {{ mairie.mairieAdjointNom | upper}}  <br>
+                                    <i class="fas fa-phone"></i> {{ mairie.mairieTelephoneContact }} <br>
+                                    <i class="fas fa-envelope"></i> {{ mairie.mairieEmailContact }} <br>
                                 </p>
                             </div>
                         </div>
