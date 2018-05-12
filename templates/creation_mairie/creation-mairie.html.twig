@@ -32,6 +32,40 @@
         a {
             text-decoration:none;
         }
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: Gainsboro !important;
+            opacity: 1; /* Firefox */
+        }
+        
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: Gainsboro !important;
+        }
+        
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color: Gainsboro !important;
+        }
+        
+        .bg-warning {
+        background-color: #FFD470 !important;
+        }
+        .bg-info {
+            background-color: #5070B5 !important;
+        }
+        .bg-danger {
+            background-color: #FF9166 !important;
+        }
+        .btn-danger {
+            background-color: #FF9166 !important;
+            border-color: #FF9166 !important;
+        }
+        .btn-success {
+            background-color: #58CCB6 !important;
+            border-color: #58CCB6 !important;
+        }
+        .btn-warning {
+            background-color: #FFD470 !important;
+            border-color: #FFD470 !important;
+        }
 }
     </style>
 {% endblock %}

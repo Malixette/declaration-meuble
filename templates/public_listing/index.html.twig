@@ -5,6 +5,30 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/public_listing.css')}}">
+    
+    <style>
+      .display-3 {
+        font-size:5.5em !important;
+        text-shadow: 1px 1px 1px black;
+        line-height: 0%;
+      }
+      
+      /* small desktop*/
+@media screen and (max-width: 1200px) {
+  .display-3 {
+      font-size : 4em!important;
+      line-height:normal;
+  }
+}
+
+/* tablet */
+@media screen and (max-width: 768px) {
+  .display-3 {
+      font-size : 3em!important;
+  }
+}
+
+    </style>
 {% endblock %}
 
 
@@ -15,6 +39,9 @@
 
 <h1 class="mt-5 mb-4 text-center display-3 text-white" id="titrelisting">Les meublés déclarés à Barcelonnette</h1>
 <div class="container">
+  <div class="row text-center pb-4 " style="font-size:1.3em;">
+    Retrouvez ci dessous les meublés qui ont déjà été déclarés à Barcelonnette ainsi que les informations essentielles. Votre meublé apparaît automatiquement sur cette page après que la déclaration ait été validé par la mairie.
+  </div>
   <div class="row">
     <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
       <thead>
@@ -24,7 +51,7 @@
           <th data-orderable="true" scope="col">Commune</th>
           <th data-orderable="true" scope="col">Couchages</th>
           <th data-orderable="true" scope="col">Classement</th>
-          <th data-orderable="true" scope="col">Etat déclaration</th>
+          <th data-orderable="true" scope="col">Type</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +62,7 @@
             <td class="align-middle">{{ hebergement.hebCommune }}</td>
             <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
             <td class="align-middle">{{ hebergement.hebClassement }}</td>
-            <td class="align-middle">{{ hebergement.hebStatut }}</td>
+            <td class="align-middle">{{ hebergement.hebType }}</td>
           </tr>
         {% endfor %}
       </tbody>

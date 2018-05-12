@@ -219,19 +219,24 @@ h1, h2, h3, h4, h5, h6 {
             </li>
         </ul>
         <ul class="navbar-nav">
-            {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            {% if is_granted(expression('"ROLE_ANONYMOUS" in roles')) %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('inscription') }}">Inscription</a>
             </li>
             {% endif %}
-            {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            {% if is_granted(expression('"ROLE_ANONYMOUS" in roles')) %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('connexion') }}">Connexion</a>
             </li>
             {% endif %}
-            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) or is_granted(expression('"ROLE_MAIRIE" in roles')) %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('dashboard_declarant') }}">Tableau de bord</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_MAIRIE" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('dashboard_mairie') }}">Tableau de bord</a>
             </li>
             {% endif %}
             {% if is_granted(expression('"ROLE_DECLARANT" in roles')) or is_granted(expression('"ROLE_MAIRIE" in roles')) %}

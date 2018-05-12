@@ -8,6 +8,27 @@
             /*position:relative; */
         }
        
+       .bg-warning {
+            background-color: #FFD470 !important;
+        }
+        .bg-info {
+            background-color: #5070B5 !important;
+        }
+        .bg-danger {
+            background-color: #FF9166 !important;
+        }
+        .btn-danger {
+            background-color: #FF9166 !important;
+            border-color: #FF9166 !important;
+        }
+        .btn-success {
+            background-color: #58CCB6 !important;
+            border-color: #58CCB6 !important;
+        }
+        .btn-warning {
+            background-color: #FFD470 !important;
+            border-color: #FFD470 !important;
+        }
         #main {
             min-height: 85vh;
         }
@@ -16,7 +37,6 @@
             font-family: 'Oswald', sans-serif;
         }
         
-       
         
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: Gainsboro !important;
@@ -64,7 +84,7 @@
                     <div class="form-group text-center">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                        <button class="btn btn-success" type="submit">connexion</button>
+                        <button class="btn btn-success" type="submit">Connexion</button>
                     </div>
                     <p class="text-center"><a href="{{path('inscription')}}">Pas encore inscrit?</a></p>
                 </form> 
