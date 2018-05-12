@@ -99,6 +99,7 @@ class HebergementController extends Controller
             'user'          => $user,
             'nombre'        => $nombre,
              'url'          => $url,
+             
         ]);
     }
 
