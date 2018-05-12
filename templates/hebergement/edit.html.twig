@@ -42,10 +42,14 @@
                 {{ form_widget(form) }}
             </div>
     
-            <div class="d-flex my-3">
-                <button class="btn btn-warning mr-2">{{ button_label|default('Valider mes informations') }}</button>  
-            {{ form_end(form) }}
-                {{ include('hebergement/_delete_form.html.twig') }}   
+            <div class="d-flex my-3 flex-column flex-sm-row">
+                <div>
+                     <button class="btn btn-warning mr-2">{{ button_label|default('Valider mes informations') }}</button>      
+                </div>
+               <div class="mt-2 mt-sm-0">
+                    {{ form_end(form) }}
+                    {{ include('hebergement/_delete_form.html.twig') }}     
+               </div>
             </div>
         </div>
         <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
