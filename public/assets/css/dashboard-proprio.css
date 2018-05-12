@@ -11,14 +11,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    color: #5070b5;
-    margin-top:2.5em;
+    color: #fff;
+    text-shadow: 1px 1px black;
+    font-size: 3.5em;
+    margin-top:1.8em;
+    margin-bottom:1.8em;
 }
 
 header nav {
-   color: #ff9166;
-   /* background-color: #58ccb6; */
- background: linear-gradient(to right, #5070b5, #58ccb6, #ff9166, #ffd470);
+    background-color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #444;
+    border-bottom: 2px solid #fff;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    border-bottom: 2px solid #58ccb6;
 }
 
 .btn-warning {
@@ -46,7 +56,7 @@ header nav {
 }
 
 footer {
-     background: linear-gradient(to left, #5070b5, #58ccb6, #ff9166, #ffd470);
+    background-color: #58ccb6;
 }
 
 .encartDeclarant, .encartMairie, .encartOffice {
@@ -58,12 +68,12 @@ footer {
 }
 
 .page-item.active .page-link {
-    background-color: #5070b5;
-    border-color: #5070b5;
+    background-color: #ff9166;
+    border-color: #ff9166;
 }
 
 a {
-    color: #5070b5;
+    color: #ff9166;
 }
 
 a:hover {

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Titre de la page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <script src="js/main.js" async></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="title">Projets</div>
+     
+    </div>
+    <div id="carousel1">
+
+        <div class="item">
+            <div class="item__image">
+                <div id="map"></div>
+            </div>
+            <div class="item__body">
+              <div class="item__title">
+                  Localisation de votre hébergement
+              </div>
+              <div class="item__description">
+                <div class="form-group">
+                    <label for="heb_nom">Nom de votre hébergement</label>
+                    <input type="text" id="heb_nom" class="form-control" placeholder="Nom de votre hébergement" required>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="user_input_autocomplete_address">Addresse</label>
+                    <input id="user_input_autocomplete_address" class="form-control" placeholder="Adresse de votre hébergement" type="text">
+                </div> -->
+                <div class="form-group">
+                    <label for="street_number">Numéro de voie</label>
+                    <input type="text" id="street_number" class="form-control" type="number" placeholder="Numéro de voie" >
+                </div>
+                <div class="form-group">
+                    <label for="route">Nom de la voie</label>
+                    <input id="route" class="form-control" type="text" placeholder="ex : rue des lilas" >
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Code postal</label>
+                    <input type="text" id="zipCode" class="form-control" type="number" placeholder="ex : 13500" >
+                </div>            
+                <div class="form-group">
+                    <label for="locality">Commune</label>
+                    <input type="text" id="locality" class="form-control" type="text" placeholder="ex : Aix-en-Provence" >
+                </div>
+                <div class="form-group">
+                    <label for="country">Pays</label>
+                    <input id="country" name="form-control" class="form-control" type="text" value="France" >
+                </div>
+                <div class="form-group">
+                    <label for="adresse_complement">Complément d'adresse</label>
+                    <input type="text" id="adresse_complement" class="form-control" placeholder="Complément d'adresse" >
+                </div>
+                <div class="form-group">
+                    <label for="batiment">Bâtiment</label>
+                    <input type="text" id="batiment" class="form-control" placeholder="batiment">
+                </div>
+                <div class="form-group">
+                    <label for="nombre_etage">Etage</label>
+                    <input type="number" id="nombre_etage" class="form-control" placeholder="Numéro d'étage (0 correspondant à rez-de-chaussée)" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="item">
+            <div class="item__image">
+                <img src="" alt="">
+            </div>
+                <div class="item__body">
+                    <div class="item__title">
+                        Caractéristiques de votre hébergement
+                    </div>
+                    <div class="item__description">
+                        <div class="form-group">
+                        <label>Type de logement</label>
+                            <select name="type_hebergement">
+                                <option value="appartement">Appartement</option> 
+                                <option value="maison">Maison</option>
+                                <option value="autres">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nbr_piece">Nombre de pièces composant votre hébergement</label>
+                            <input type="number" id="nbr_piece" class="form-control" name="nombre_piece" placeholder="" required>
+                        </div>
+                                                <div class="form-check">
+                            <label for="heb_classe">Votre logement est-il classé? 
+                                <small>(préfecture, Gîtes de France, Clévacances, etc)</small></label>                        
+                                <select class="form-control" id="heb_classe">
+                                <option>oui</option>
+                                <option>non</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        </label class="form-control" id="classement">Si oui, quel(s) classement(s)?:</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="prefecture">
+                            <label class="custom-control-label" for="prefecture">Classé préfecture (Etoiles)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="prefecture">
+                            <label class="custom-control-label" for="prefecture">Clévacances (Clés)</label>
+                        </div>                    
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="gitesDeFrance">
+                            <label class="custom-control-label" for="gitesDeFrance">Gîtes de France (Epis)</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateClassement">Quel est la date de votre classement?</label>
+                            <input type="date" id="dateClassement" class="form-control" name="dateClassement">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="item">
+                <div class="item__image">
+                    <img src="" alt="">
+                </div>
+                <div class="item__body">
+                    <div class="item__title">
+                        Renseignements sur la location
+                    </div>
+                    <div class="item__description">
+                        <div class="form-group">
+                            <label>A quelle(s) période(s) votre hébergement est loué?</label>
+                            <input type="checkbox" id="location_hiver" name="location_hiver" value="Hiver">
+                            <label for="location_hiver">Hiver</label>
+                            <input type="checkbox" id="location_printemps" name="location_printemps" value="Printemps">
+                            <label for="location_printemps">Printemps</label>
+                            <input type="checkbox" id="location_ete" name="location_ete" value="Eté">
+                            <label for="location_ete">Eté</label>
+                            <input type="checkbox" id="location_automne" name="location_automne" value="Automne">
+                            <label for="location_automne">Automne</label>
+                        </div>        
+                        <div class="form-group">
+                            <textarea name="textarea" maxlength="200" rows="10" cols="50" class="form-control" placeholder="Descriptif de votre hébergement" id="heb_descriptif"></textarea>
+                            <label for="heb_descriptif" name="descriptif"></label>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="photo1" class="form-control-file" placeholder="Photo principale"/>
+                            <input type="file" name="photo2" class="form-control-file" placeholder="Photo 2"/>
+                            <input type="file" name="photo3" class="form-control-file" placeholder="Photo 3"/>
+                            <input type="file" name="photo4" class="form-control-file" placeholder="Photo 4"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="item">
+              <div class="item__image">
+              <img src="" alt="">
+              </div>
+              <div class="item__body">
+                    <div class="item__body">
+                            <div class="item__title">
+                                <label>Site internet de votre hébergement</label>
+                            </div>
+                            <div class="item__description">
+                                    <div class="form-group">
+                                            <label>Site internet de votre hébergement</label>
+                                            <input type="text" name="heb_site_web" class="form-control" placeholder="www.">
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Si différent, adresse du site internet pour réserver votre hébergement</label>
+                                              <input type="text" class="form-control" name="heb_site_resa" placeholder="ex : booking, gites-de-france, etc.">
+                                          </div>           
+                                          <div class="form-group">
+                                              <label>Nom de la personne ou de la structure à contacter pour réserver votre hébergement</label>
+                                              <input type="text" class="form-control" name="heb_contact_resa">
+                                          </div>           
+                                          <div class="form-group">
+                                              <label>Email de la personne ou de la structure pour réserver votre hébergement</label>
+                                              <input type="text" class="form-control" name="heb_email_resa" placeholder="Email de contact pour réservation">
+                                          </div>           
+                                          <div class="form-group">
+                                              <label>Téléphone de la personne ou de la structure pour réserver votre hébergement</label>
+                                              <input type="text" class="form-control" name="heb_tel_resa" placeholder="Téléphone de contact pour réservation">
+                                          </div>
+                                        </div> 
+                                      </div>                      
+                                      <button type="submit">Valider mes informations</button>
+                                    </div>
+
+
+
+
+
+                <div class="item__title">
+                  <div class="item__description">
+                    
+            </div>
+  </div>
+
+</body>
+
+</html>

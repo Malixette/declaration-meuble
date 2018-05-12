@@ -12,7 +12,7 @@
     </head>
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light py-4">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light py-3">
             <a class="navbar-brand" href="{{ path('commune_home') }}">LogoSociété</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,51 +41,31 @@
     <div class="container-fluid mx-lg-3">
         <div class="row">
             <aside class="col-lg-3 text-center order-2 order-lg-1">
-                <div class="row">
-                    <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
-                        <div class="card-header">
-                            <h4>Bienvenue {{ app.user.UserPrenom }} {{ app.user.UserNom }}</h4>
-                        </div>
-                        <div class="card-body">
-                            <p>Vous avez actuellement {{ nombre }} meublé(s) déclaré(s) en ligne</p>
-                            <div class="pb-4">
-                                <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
-                            </div>
-                            <h4>Vos informations</h4> 
-                            <p>
-                                <i class="fas fa-phone"></i> {{ app.user.UserTelephone }}<br>
-                                <i class="fas fa-envelope"></i> {{ app.user.UserEmail }}<br>
-                                <i class="fas fa-map-marker"></i> {{ app.user.UserAdresse }}
-                            </p>
-                            <div class="pb-4">
-
-        					    <a href="{{ path('declarant_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
-
-        					</div>
-    					</div>
-                    </div>
-                    <div class="w-100 d-flex flex-column">
-                        <div class="encartMairie card text-white bg-secondary mb-lg-4">
+                <div class="row mt-5 mt-lg-0">
+    <!--Affichage bloc gauche Déclarant -->
+                    {% if 'admin/hebergement/' in url %}
+                    <div class="encartMairie w-100 d-flex flex-column card text-white bg-secondary mb-lg-4">
                             <div class="card-header">
                                 <h4>Votre Mairie</h4>
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <i class="fas fa-phone"></i> nom prenom<br>
-                                    <i class="fas fa-envelope"></i> mairie@me.com<br>
-                                    <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
+                                    <i class="fas fa-phone"></i> test <br>
+                                    <i class="fas fa-envelope"></i> test<br>
+                                    <i class="fas fa-map-marker"></i> test <br>
+                                    <strong>Maire: testtest</strong> <br>
                                 </p>   
                             </div>
                             <div>
                                 <h5>Votre référent Mairie</h5>
                                 <p>
-                                    <i class="fas fa-address-card"></i> TARTAMPION René<br>
-                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                                    <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
+                                    <i class="fas fa-address-card"></i> test <br>
+                                    <i class="fas fa-phone"></i> test <br>
+                                    <i class="fas fa-envelope"></i> test<br>
                                 </p>
                             </div>
                         </div>
-                        <div class="encartOffice card text-white bg-dark mb-lg-4">
+                        <div class="encartOffice  w-100 d-flex flex-column  card text-white bg-dark mb-lg-4">
                             <div class="card-header">
                                 <h4>Votre Office de Tourisme</h4>
                             </div>
@@ -97,6 +77,37 @@
                                 </p>   
                             </div>
                         </div>
+                        <div class="w-100 d-flex flex-column">
+  <!--Affichage bloc gauche mairie-OT -->
+                    {% else %}
+                    <div class="encartDeclarant w-100 d-flex flex-column card text-black bg-light mb-lg-4">
+                            <div class="card-header">
+                                <h4>Bienvenue {{ user.userprenom | capitalize }} {{ user.usernom | upper }}</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Vous avez actuellement {{ nombre }} meublé(s) déclaré(s)</p>
+                                <div class="pb-4">
+        					        <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un meublé</a>
+        					    </div>
+                                <p>
+                                <p><strong>Vos informations personnelles</strong><br>
+                                  {% if 'user.usertelephone' %}
+                                    <i class="fas fa-phone"></i> {{ user.usertelephone }}<br>
+                                  {% endif %}
+                                  <i class="fas fa-envelope"></i> {{ user.useremail }}<br>
+                                  <i class="fas fa-map-marker"></i> 
+                                    {{ user.useradresse }}<br>
+                                    {{ user.userpostalcode }} {{ user.usercommune | capitalize }} <br>
+                                </p>
+                                <div class="pb-4">
+        					        <a href="{{ path('declarant_edit') }}" type="button" class="btn btn-secondary">Modifier mes infos</a>
+        					    </div>
+                            </div>
+                        </div>
+                    <div class="w-100 d-flex flex-column">
+                    {% endif %}
+  <!--fin du IF -->   
+             
                     </div>   
                 </div>
             </aside>
@@ -107,21 +118,21 @@
             </main> 
         </div>
     </div>
-    <footer class="p-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-7">
-                    <h4>Espace publicitaire</h4>
+    <footer class="mt-5">
+        <div class="container-fluid" style="background: url({{asset('assets/img/illustration-hebergement/footer.jpg')}}) no-repeat center center">
+            <div class="row py-3">
+                <div class="col-md-8">
+                    <h4 class="text-white">Espace publicitaire</h4>
                 </div>
-                <div class="col-md-3">
-                    
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <p class="d-flex flex-column align-items-end">
-                        <a class="text-dark" href="">Déclarer son meublé</a><br>
-                        <a class="text-dark" href="{{ path('mentions_legales') }}">Mentions légales</a><br>
+                        <a class="text-white pb-2" href="">Déclarer son meublé</a><br>
+                        <a class="text-white" href="{{ path('mentions_legales') }}">Mentions légales</a><br>
                     </p>
                 </div>
+            </div>
+            <div class="row justify-content-center">
+                <small class="text-white text-center">&copy; Copyright 2018</small>
             </div>
         </div>
     </footer>

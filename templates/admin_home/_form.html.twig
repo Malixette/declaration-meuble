@@ -1,6 +1,81 @@
 {{ form_start(form) }}
    <div id="accordion">
-    <h4><i class="fa fa-chevron-down"></i>Login et mot de passe</i></h4>
+    
+    <h4><i class="fa fa-chevron-down"></i> Renseignements de la Mairie</h4>
+    <div>
+        <div class="item__description">
+            <div class="form-group">
+                {{ form_label(form.user_adresse) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.user_adresse) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.user_complement_adresse	) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.user_complement_adresse	) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.user_postal_code) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.user_postal_code) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.user_commune) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.user_commune) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.user_telephone) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.user_telephone) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.user_email) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.user_email) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(formMairie.mairie_maire_prenom) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(formMairie.mairie_maire_prenom) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(formMairie.mairie_maire_nom) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(formMairie.mairie_maire_nom) }}
+            </div>
+        </div>
+    </div>
+                    
+    <h4><i class="fa fa-chevron-down"></i> Renseignements techniques</h4>
+    <div>
+        <div class="item__description">
+            <div class="form-group">
+                {{ form_label(formMairie.mairie_contact_nom) }}
+                {{ form_widget(form.user_nom) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.user_prenom) }}
+                {{ form_widget(form.user_prenom) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(formMairie.mairie_contact_nom) }}
+                {{ form_widget(formMairie.mairie_contact_nom) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(formMairie.mairie_email_contact) }}
+                {{ form_widget(formMairie.mairie_email_contact) }}
+            </div>
+        </div>
+    </div>
+        
+    <h4><i class="fa fa-chevron-down"></i> Taxe de séjour </h4>
+    <div>
+        <div class="item__description">
+            {#<div class="form-group">#}
+            {#    {{ form_label(formMairie.mairie_taxe_sejour_gestionnaire) }}#}
+            {#    {{ form_widget(formMairie.mairie_taxe_sejour_gestionnaire) }}#}
+            {#</div>#}
+            {#<div class="form-group">#}
+            {#    {{ form_label(formMairie.mairie_sejour_lien) }}#}
+            {#    {{ form_widget(formMairie.mairie_sejour_lien) }}#}
+            {#</div>#}
+        </div>
+    </div>
+    
+    <h4><i class="fa fa-chevron-down"></i> Login et mot de passe</i></h4>
     <div>
         <div class="item__description">
             <div class="form-group">
@@ -14,162 +89,6 @@
         </div>
     </div>
 
-
-    <h4><i class="fa fa-chevron-down"></i> Renseignements taxe de séjour</h4>
-        <div>
-            <div class="item__description">
-                <div class="form-group">
-                    {{ form_label(formMairie.mairie_maire_nom) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
-                    {{ form_widget(formMairie.mairie_maire_nom) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.user_nom) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
-                    {{ form_widget(form.user_nom) }}
-                </div>
-                <div class="form-group">
-                     {{ form_label(form.user_prenom) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
-                    {{ form_widget(form.user_prenom) }}
-                </div>
-                <div class="form-group">
-                     {{ form_label(form.user_nom) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
-                    {{ form_widget(form.username) }}
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div><div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-            </div> 
-        </div>
-    
-    <h4><i class="fa fa-chevron-down"></i> Renseignements Commune</h4>
-        <div>
-            <div class="item__description">
-                {#<div class="form-group">#}
-                {#    {{ form_label(form.mairie.mairie_descriptif) }}#}
-                {#    {{ form_widget(form.Mairie.mairie_descriptif) }}#}
-                {#</div>#}
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-            </div>
-        </div>
-    
-    <h4><i class="fa fa-chevron-down"></i> Contact et réservation</h4>
-        <div>
-            <div class="item__description">
-                           <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.username) }}
-                    {{ form_widget(form.username) }}
-                </div>
-            </div>
-        </div>
-    </div>
-          
-
     <button class="btn">{{ button_label|default('Valider mes informations') }}</button>
     
-{{ form_end(form) }}
+{#{{ form_end(form) }}#}

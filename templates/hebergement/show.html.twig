@@ -3,7 +3,11 @@
 {% block title %}Détail de l'hebergement{% endblock %}
 
 {% block header %}
-    <h1 class="mb-4 p-3 text-center">Détail de l'hébergement</h1>
+    <div class="container-fluid mt-5 mb-4 p-3" style="background: url({{asset('assets/img/illustration-hebergement/dashboard.jpg')}}) no-repeat fixed">
+        <div class="row justify-content-center">
+           <h1 class="text-center">Détail de l'hébergement</h1>  
+        </div>
+    </div>
 {% endblock %}
 
 {% block body %}
@@ -60,9 +64,15 @@
             {% endif %}
             <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
             <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
+            <strong>Numéro de la déclaration:</strong> {{ hebergement.hebNumDeclaration }}<br>
             <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
-            <div class="d-flex">
-                <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a> {{ include('hebergement/_delete_form.html.twig') }}    
+            <div class="d-flex flex-column flex-sm-row">
+                <div>
+                    <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a>     
+                </div>
+                <div class="mt-2 mt-sm-0">
+                     {{ include('hebergement/_delete_form.html.twig') }}       
+                </div>
             </div>
             
         </div>

@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Hebergement;
 use App\Entity\Mairie;
+use App\Entity\User;
 use App\Form\HebergementType;
 use App\Form\HebergementEditType;
 use App\Repository\HebergementRepository;
 use App\Repository\MairieRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +37,8 @@ class HebergementController extends Controller
         $hebergement = new Hebergement();
         $user = $this->getUser();
         $user_id = $user->getId();
+        $url = $_SERVER['REQUEST_URI'];
+        $mairie = $hebergement->getMairie();
         
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
@@ -94,7 +98,9 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'form'          => $form->createView(),
             'user'          => $user,
-            'nombre'        => $nombre
+            'nombre'        => $nombre,
+            'url'           => $url,
+            'mairie'        => $mairie,
         ]);
     }
 
@@ -106,38 +112,48 @@ class HebergementController extends Controller
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
         
+        $mairie = $hebergement->getMairie();
+   
+        $url = $_SERVER['REQUEST_URI'];   
+        
         $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
-
-
+       
+ 
+  
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'user'          => $user,
+            'url'           => $url,
+            'mairie'        => $mairie,
             ]);
     }
-    
     
      /**
      * @Route("/mairie/hebergement/{id}", name="mairie_hebergement_show", methods="GET")
      */
     public function showMairie(Hebergement $hebergement): Response
     {
-        $latitude = $hebergement->getHebLat();
-        $longitude = $hebergement->getHebLong();
-        
+        $latitude   = $hebergement->getHebLat();
+        $longitude  = $hebergement->getHebLong();
         $mairie = $hebergement->getMairie();
         
         $url = $_SERVER['REQUEST_URI'];
         
-        $user = $this->getUser();
+        $user    = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
+
+        $user_id = $hebergement->getUser();
+
+        $repoDeclarant = $this->getDoctrine()->getRepository(User::class);
+        $userDeclarant = $repoDeclarant->findOneBy(['id' => $user_id]);
 
         return $this->render('hebergement/show-mairie.html.twig', [
             'hebergement'   => $hebergement,
@@ -145,6 +161,7 @@ class HebergementController extends Controller
             'user'          => $user,
             'mairie'        => $mairie,
             'url'           => $url,
+            'userDeclarant' => $userDeclarant,
             ]);
     }
 
@@ -153,11 +170,13 @@ class HebergementController extends Controller
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
-        $user = $this->getUser();
+        $user    = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
+        $url = $_SERVER['REQUEST_URI'];  
+
 
         
         $form = $this->createForm(HebergementEditType::class, $hebergement,array('is_edit' => true));
@@ -166,6 +185,8 @@ class HebergementController extends Controller
         $photo1 = $hebergement->getHebPhoto1();
         $photo2 = $hebergement->getHebPhoto2();
         $photo3 = $hebergement->getHebPhoto3();
+        
+        $mairie = $hebergement->getMairie();
         
         $form->handleRequest($request);
 
@@ -242,6 +263,8 @@ class HebergementController extends Controller
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'form'          => $form->createView(),
+            'url'           => $url,
+            'mairie'        => $mairie,
         ]);
     }
     
