@@ -43,8 +43,44 @@
             <aside class="col-lg-3 text-center order-2 order-lg-1">
                 <div class="row mt-5 mt-lg-0">
     <!--Affichage bloc gauche Déclarant -->
-                    {% if 'admin/proprietaire' or 'admin/hebergement/new' in url %}
-                      <div class="encartDeclarant w-100 d-flex flex-column card text-black bg-light mb-lg-4">
+                    {% if 'admin/hebergement/' in url %}
+                    <div class="encartMairie w-100 d-flex flex-column card text-white bg-secondary mb-lg-4">
+                            <div class="card-header">
+                                <h4>Votre Mairie</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <i class="fas fa-phone"></i> test <br>
+                                    <i class="fas fa-envelope"></i> test<br>
+                                    <i class="fas fa-map-marker"></i> test <br>
+                                    <strong>Maire: testtest</strong> <br>
+                                </p>   
+                            </div>
+                            <div>
+                                <h5>Votre référent Mairie</h5>
+                                <p>
+                                    <i class="fas fa-address-card"></i> test <br>
+                                    <i class="fas fa-phone"></i> test <br>
+                                    <i class="fas fa-envelope"></i> test<br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="encartOffice  w-100 d-flex flex-column  card text-white bg-dark mb-lg-4">
+                            <div class="card-header">
+                                <h4>Votre Office de Tourisme</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
+                                    <i class="fas fa-envelope"></i> ot@me.com<br>
+                                    <i class="fas fa-map-marker"></i> Traverse Longue, 04400 Barcelonnette
+                                </p>   
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex flex-column">
+  <!--Affichage bloc gauche mairie-OT -->
+                    {% else %}
+                    <div class="encartDeclarant w-100 d-flex flex-column card text-black bg-light mb-lg-4">
                             <div class="card-header">
                                 <h4>Bienvenue {{ user.userprenom | capitalize }} {{ user.usernom | upper }}</h4>
                             </div>
@@ -69,42 +105,6 @@
                             </div>
                         </div>
                     <div class="w-100 d-flex flex-column">
-  <!--Affichage bloc gauche mairie-OT -->
-                    {% else %}
-                        <div class="encartMairie w-100 d-flex flex-column card text-white bg-secondary mb-lg-4">
-                            <div class="card-header">
-                                <h4>Votre Mairie</h4>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    <i class="fas fa-phone"></i> <br>
-                                    <i class="fas fa-envelope"></i> <br>
-                                    <i class="fas fa-map-marker"></i> <br>
-                                    <strong>Maire: </strong> <br>
-                                </p>   
-                            </div>
-                            <div>
-                                <h5>Votre référent Mairie</h5>
-                                <p>
-                                    <i class="fas fa-address-card"></i> <br>
-                                    <i class="fas fa-phone"></i> <br>
-                                    <i class="fas fa-envelope"></i> <br>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="encartOffice  w-100 d-flex flex-column  card text-white bg-dark mb-lg-4">
-                            <div class="card-header">
-                                <h4>Votre Office de Tourisme</h4>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                                    <i class="fas fa-envelope"></i> ot@me.com<br>
-                                    <i class="fas fa-map-marker"></i> Traverse Longue, 04400 Barcelonnette
-                                </p>   
-                            </div>
-                        </div>
-                        <div class="w-100 d-flex flex-column">
                     {% endif %}
   <!--fin du IF -->   
              
