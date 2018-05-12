@@ -54,9 +54,8 @@
                                 <i class="fas fa-phone"></i>
                                     {{ user.UserTelephone }}<br>
                                 <i class="fas fa-envelope"></i> {{ user.UserEmail }} <br>
-                                <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>
-                                <i class="fas fa-address-card"></i>
-                                <strong> Maire:</strong> {{ mairie.MairieMairePrenom }} {{ mairie.MairieMaireNom | upper}} 
+                                <i class="fas fa-map-marker"></i> {{ user.UserAdresse }}<br>{{ user.Userpostalcode }} {{ user.UserCommune | capitalize }}<br>
+                                <i class="fas fa-address-card"></i><strong> Maire:</strong> {{ mairie.MairieMairePrenom }} {{ mairie.MairieMaireNom | upper}} 
                             </p class="d-flex flex-column">
                             <div class="pb-4">
         					    <a href="{{ path('infos_mairie_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
@@ -93,9 +92,10 @@
                         <div class="card-body">
                             <h4>Coordonnées</h4> 
                             <p>
-                                <i class="fas fa-phone"></i>{{ userDeclarant.usertelephone }}
+                                <i class="fas fa-phone"></i> {{ userDeclarant.usertelephone }} <br>
                                 <i class="fas fa-envelope"></i> {{ userDeclarant.useremail }} <br>
-                                <i class="fas fa-map-marker"></i> {{ userDeclarant.useremail }}<br>
+                                <i class="fas fa-map-marker"></i> {{ userDeclarant.useradresse }} <br>
+                                    {{ userDeclarant.userpostalcode }} {{ userDeclarant.userCommune | capitalize }}
                             <div class="pb-4">
         					    <a href="{{ path('infos_mairie_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
         					</div>

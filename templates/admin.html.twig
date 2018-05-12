@@ -48,9 +48,6 @@
                             <div class="card-header">
                                 <h4>Bienvenue {{ user.userprenom | capitalize }} {{ user.usernom | upper }}</h4>
                             </div>
-                            <div style="padding-top:40px;" class="pb-4">
-        					        <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un nouveau meublé</a>
-        					</div>
                             <div class="card-body">
                                 <p><strong>Vos informations personnelles</strong><br>
                                 <p>Vous avez actuellement {{ nombre }} meublé(s) déclaré(s)</p>
