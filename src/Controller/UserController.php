@@ -97,7 +97,7 @@ class UserController extends Controller
         return $this->render('admin_home/declarant-edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-            'nombre' => $nombre
+            'nombre' => $nombre,
         ]);
     }
     /**

@@ -44,13 +44,61 @@
                 <div class="row">
     <!--Affichage bloc gauche Déclarant -->
                     {% if 'admin/proprietaire' in url %}
-                       Infos personnelles
-                      
+                      <div class="encartDeclarant w-100 d-flex flex-column card text-black bg-light mb-lg-4">
+                            <div class="card-header">
+                                <h4>Bienvenue {{ user.userprenom | capitalize }} {{ user.usernom | upper }}</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                  {% if 'user.usertelephone' %}
+                                    <i class="fas fa-phone"></i> {{ user.usertelephone }}<br>
+                                  {% endif %}
+                                  <i class="fas fa-envelope"></i> {{ user.useremail }}<br>
+                                  <i class="fas fa-map-marker"></i> 
+                                    {{ user.useradresse }}<br>
+                                    {{ user.userpostalcode }} {{ user.usercommune | capitalize }} <br>
+                                </p class="d-flex flex-column">
+                                <div class="pb-4">
+        					        <a href="{{ path('declarant_edit') }}" type="button" class="btn btn-secondary">Modifier mes infos</a>
+        					    </div>
+                            </div>
+                        </div>
+                    <div class="w-100 d-flex flex-column">
   <!--Affichage bloc gauche mairie-OT -->
                     {% else %}
-                         Mairie
-                         
-                         Office de Tourisme référent
+                        <div class="encartMairie w-100 d-flex flex-column card text-white bg-secondary mb-lg-4">
+                            <div class="card-header">
+                                <h4>Votre Mairie</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <i class="fas fa-phone"></i> {{ mairie.<br>
+                                    <i class="fas fa-envelope"></i> mairie@me.com<br>
+                                    <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
+                                </p>   
+                            </div>
+                            <div>
+                                <h5>Votre référent Mairie</h5>
+                                <p>
+                                    <i class="fas fa-address-card"></i> TARTAMPION René<br>
+                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
+                                    <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="encartOffice  w-100 d-flex flex-column  card text-white bg-dark mb-lg-4">
+                            <div class="card-header">
+                                <h4>Votre Office de Tourisme</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
+                                    <i class="fas fa-envelope"></i> ot@me.com<br>
+                                    <i class="fas fa-map-marker"></i> Traverse Longue, 04400 Barcelonnette
+                                </p>   
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex flex-column">
                     {% endif %}
   <!--fin du IF -->   
                     
@@ -73,63 +121,29 @@
                     
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div class="encartDeclarant w-100 d-flex flex-column card bg-light mb-lg-4">
                         
-                    </div>
-                    <div class="w-100 d-flex flex-column">
-                        <div class="encartMairie card text-white bg-secondary mb-lg-4">
-                            <div class="card-header">
-                                <h4>Votre Mairie</h4>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    <i class="fas fa-phone"></i> 04 12 45 89 54<br>
-                                    <i class="fas fa-envelope"></i> mairie@me.com<br>
-                                    <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
-                                </p>   
-                            </div>
-                            <div>
-                                <h5>Votre référent Mairie</h5>
-                                <p>
-                                    <i class="fas fa-address-card"></i> TARTAMPION René<br>
-                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                                    <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="encartOffice card text-white bg-dark mb-lg-4">
-                            <div class="card-header">
-                                <h4>Votre Office de Tourisme</h4>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                                    <i class="fas fa-envelope"></i> ot@me.com<br>
-                                    <i class="fas fa-map-marker"></i> Traverse Longue, 04400 Barcelonnette
-                                </p>   
-                            </div>
-                        </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     </div>   
                 </div>
             </aside>
