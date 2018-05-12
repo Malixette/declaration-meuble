@@ -351,9 +351,9 @@ class User implements UserInterface, \Serializable
     public function getRoles()
     {
         if ($this->user_role == 2)
-            return ['ROLE_DECLARANT'];
+            return ['ROLE_DECLARANT', 'ROLE_USER'];
         elseif ($this->user_role == 3)
-            return ['ROLE_MAIRIE'];
+            return ['ROLE_MAIRIE', 'ROLE_USER'];
         elseif ($this->user_role == 4)
             return ['ROLE_OT'];
         elseif ($this->user_role > 4)

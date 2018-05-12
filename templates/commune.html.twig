@@ -219,12 +219,12 @@ h1, h2, h3, h4, h5, h6 {
             </li>
         </ul>
         <ul class="navbar-nav">
-            {% if is_granted(expression('"ROLE_ANONYMOUS" in roles')) %}
+            {% if not is_granted(expression('"ROLE_USER" in roles')) %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('inscription') }}">Inscription</a>
             </li>
             {% endif %}
-            {% if is_granted(expression('"ROLE_ANONYMOUS" in roles')) %}
+            {% if not is_granted(expression('"ROLE_USER" in roles')) %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('connexion') }}">Connexion</a>
             </li>
