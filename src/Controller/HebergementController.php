@@ -109,6 +109,7 @@ class HebergementController extends Controller
     {
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
+        
         $mairie = $hebergement->getMairie();
    
         $url = $_SERVER['REQUEST_URI'];   
@@ -118,7 +119,9 @@ class HebergementController extends Controller
  
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
-
+       
+ 
+  
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
@@ -180,6 +183,8 @@ class HebergementController extends Controller
         $photo1 = $hebergement->getHebPhoto1();
         $photo2 = $hebergement->getHebPhoto2();
         $photo3 = $hebergement->getHebPhoto3();
+        
+        $mairie = $hebergement->getMairie();
         
         $form->handleRequest($request);
 
@@ -257,6 +262,7 @@ class HebergementController extends Controller
             'nombre'        => $nombre,
             'form'          => $form->createView(),
             'url'           => $url,
+            'mairie'        => $mairie,
         ]);
     }
     

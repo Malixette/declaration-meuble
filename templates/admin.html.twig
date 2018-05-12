@@ -72,17 +72,18 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    <i class="fas fa-phone"></i> {{ mairie.<br>
-                                    <i class="fas fa-envelope"></i> mairie@me.com<br>
-                                    <i class="fas fa-map-marker"></i> Place de la Mairie, 04400 Barcelonnette
+                                    <i class="fas fa-phone"></i> <br>
+                                    <i class="fas fa-envelope"></i> <br>
+                                    <i class="fas fa-map-marker"></i> <br>
+                                    <strong>Maire: </strong> {{ mairie.mairieMairePrenom}} {{ mairie.mairieMaireNom | upper }}<br>
                                 </p>   
                             </div>
                             <div>
                                 <h5>Votre référent Mairie</h5>
                                 <p>
-                                    <i class="fas fa-address-card"></i> TARTAMPION René<br>
-                                    <i class="fas fa-phone"></i> 04 98 76 54 32<br>
-                                    <i class="fas fa-envelope"></i> mairie-tech@me.com<br>
+                                    <i class="fas fa-address-card"></i> {{ mairie.mairieContactPrenom | capitalize}} {{ mairie.mairieContactNom | upper}}<br>
+                                    <i class="fas fa-phone"></i> {{ mairie.mairieTelephoneContact }}<br>
+                                    <i class="fas fa-envelope"></i> {{ mairie.mairieEmailContact }}<br>
                                 </p>
                             </div>
                         </div>

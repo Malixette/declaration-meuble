@@ -82,6 +82,7 @@ class UserController extends Controller
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         
+        $url = $_SERVER['REQUEST_URI'];
 
         if ($form->isSubmitted() && $form->isValid()) {
             
@@ -98,6 +99,7 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
             'nombre' => $nombre,
+            'url'       => $url,
         ]);
     }
     /**
