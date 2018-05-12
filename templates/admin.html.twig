@@ -43,13 +43,16 @@
             <aside class="col-lg-3 text-center order-2 order-lg-1">
                 <div class="row">
     <!--Affichage bloc gauche Déclarant -->
-                    {% if 'admin/proprietaire' in url %}
+                    {% if 'admin/proprietaire' or 'admin/hebergement/new' in url %}
                       <div class="encartDeclarant w-100 d-flex flex-column card text-black bg-light mb-lg-4">
                             <div class="card-header">
                                 <h4>Bienvenue {{ user.userprenom | capitalize }} {{ user.usernom | upper }}</h4>
                             </div>
+                            <div style="padding-top:40px;" class="pb-4">
+        					        <a href="{{ path('hebergement_new') }}" type="button" class="btn btn-secondary">Déclarer un nouveau meublé</a>
+        					</div>
                             <div class="card-body">
-                                <p>
+                                <p><strong>Vos informations personnelles</strong><br>
                                   {% if 'user.usertelephone' %}
                                     <i class="fas fa-phone"></i> {{ user.usertelephone }}<br>
                                   {% endif %}
@@ -102,49 +105,7 @@
                         <div class="w-100 d-flex flex-column">
                     {% endif %}
   <!--fin du IF -->   
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                        
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+             
                     </div>   
                 </div>
             </aside>
