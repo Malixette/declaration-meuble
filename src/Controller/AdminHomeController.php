@@ -47,19 +47,18 @@ class AdminHomeController extends Controller
      */
     public function indexMairie()
     {
+        $url = $_SERVER['REQUEST_URI'];
+
         $user = $this->getUser();
+        
+        $mairie = $user->getMairie();
+        
         $repo = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
-        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
         $nombre = count($hebergements);
 
-        $url = $_SERVER['REQUEST_URI'];
-        
-        $mairie = $user->getMairie();
-
-        $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
-        
         return $this->render('admin_home/dashboard-mairie.html.twig', [
             'hebergements'  => $hebergements,
             'user'          => $user,

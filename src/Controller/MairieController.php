@@ -51,6 +51,13 @@ class MairieController extends Controller
      */
     public function show(Mairie $mairie): Response
     {
+        
+        $user = $this->getUser();
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+        
         return $this->render('mairie/show.html.twig', ['mairie' => $mairie]);
     }
 

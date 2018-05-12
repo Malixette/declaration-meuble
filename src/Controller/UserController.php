@@ -114,8 +114,9 @@ class UserController extends Controller
         $mairie = $user->getMairie();
         
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
- 
-        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        
+        // count hebergement
+        $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
         $nombre = count($hebergements);
     
         $form = $this->createForm(UserType::class, $user);
@@ -140,6 +141,7 @@ class UserController extends Controller
             'mairie'    => $mairie,
             'formMairie'=> $formMairie->createView(),
             'url'       => $url,
+            'nombre'    => $nombre
         ]);
     }
 
