@@ -3,7 +3,11 @@
 {% block title %}Modifier les informations de votre hébergement{% endblock %}
 
 {% block header %}
-    <h1 class="mb-4 p-3 text-center">Modifier les informations de votre hébergement</h1>
+    <div class="container-fluid mt-5 mb-4 p-3" style="background: url({{asset('assets/img/illustration-hebergement/dashboard.jpg')}}) no-repeat fixed">
+        <div class="row justify-content-center">
+           <h1 class="text-center">Modifier les informations de votre hébergement</h1>  
+        </div>
+    </div>
 {% endblock %}
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
@@ -38,10 +42,14 @@
                 {{ form_widget(form) }}
             </div>
     
-            <div class="d-flex my-3">
-                <button class="btn btn-warning mr-2">{{ button_label|default('Valider mes informations') }}</button>  
-            {{ form_end(form) }}
-                {{ include('hebergement/_delete_form.html.twig') }}   
+            <div class="d-flex my-3 flex-column flex-sm-row">
+                <div>
+                     <button class="btn btn-warning mr-2">{{ button_label|default('Valider mes informations') }}</button>      
+                </div>
+               <div class="mt-2 mt-sm-0">
+                    {{ form_end(form) }}
+                    {{ include('hebergement/_delete_form.html.twig') }}     
+               </div>
             </div>
         </div>
         <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
