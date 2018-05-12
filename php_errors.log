@@ -28,3 +28,15 @@
 [09-May-2018 09:02:21 UTC] PHP Fatal error:  Cannot redeclare App\Entity\User::getMairieToDeclarant() in /home/ubuntu/workspace/declaration-meuble/src/Entity/User.php on line 403
 [09-May-2018 09:02:24 UTC] PHP Fatal error:  Cannot redeclare App\Entity\User::getMairieToDeclarant() in /home/ubuntu/workspace/declaration-meuble/src/Entity/User.php on line 403
 [09-May-2018 09:03:20 UTC] PHP Fatal error:  Cannot redeclare App\Entity\User::addMairieToDeclarant() in /home/ubuntu/workspace/declaration-meuble/src/Entity/User.php on line 400
+[12-May-2018 15:14:19 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:14:19 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:14:51 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:14:51 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:16:05 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:16:05 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:16:41 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:16:41 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:16:45 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:16:45 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 2
+[12-May-2018 15:17:35 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 3
+[12-May-2018 15:17:35 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 3

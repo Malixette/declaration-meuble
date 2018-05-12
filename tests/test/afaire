@@ -1,0 +1,41 @@
+hebergementcontroller
+
+affichage dynamique
+parametrer le numéro de déclaration
+voir si on peut virer lat et longitude
+faire statut en cours et confirmé
+mettre page error 404
+affichage multiple carte
+mentions legales
+apres connection redirection sur le dashboard adéquat
+trouver le dump ou echo ecrit (cf code source)
+mettre plusieurs hébergement à barcelonnette pour affichage liste
+ajouter bouton valider info cerfa
+
+
+
+
+
+
+Voir avec Long hai:
+
+comment faire apparaitre user.userName d'un autre user sur la même page admin?
+                    <h5>Votre référent Mairie</h5>
+                                <p>
+                                    <i class="fas fa-address-card"></i> {{ mairie.mairieContactPrenom |capitalize }} {{ mairie.mairieContactNom|upper }} <br>
+                                    <i class="fas fa-phone"></i> {{ mairie.mairieTelephoneContact }}<br>
+                                    <i class="fas fa-envelope"></i> {{ mairie.mairieEmailContact }}<br>
+
+l'hébergement controlleur affiche que la mairie n'est pas définie?
+
+{{ tableau|length }} pour avoir le nombre de ligne d'un tableau
+
+Pourquoi la carte ne marche pas alors que le code oui...
+
+
+
+
+
+
+
+
