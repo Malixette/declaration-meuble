@@ -112,8 +112,7 @@ class HebergementController extends Controller
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
         
-        
-        
+    
         $url = $_SERVER['REQUEST_URI'];   
         
         $user = $this->getUser();
@@ -128,9 +127,10 @@ class HebergementController extends Controller
         
         
         $mairie = $hebergement->getMairie(); 
-        $mairieHeb = $repoMairie->findOneBy(array("id" => $mairie->getId()));
+        // dump($mairie);
+        $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
+        // dump($mairieHeb);
         
-  
         return $this->render('hebergement/show.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
