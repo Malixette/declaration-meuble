@@ -21,7 +21,7 @@ class PdfController extends Controller
     }
     
     /**
-     * @Route("/admin/hebergement/{id}/pdf", name="load_pdf")
+     * @Route("/admin/hebergement/show/{id}/pdf", name="load_pdf")
      */
     public function loadPdf(Hebergement $hebergement)
     {
