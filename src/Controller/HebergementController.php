@@ -105,7 +105,7 @@ class HebergementController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="hebergement_show", methods="GET")
+     * @Route("/show/{id}", name="hebergement_show", methods="GET")
      */
     public function show(Hebergement $hebergement): Response
     {
@@ -174,7 +174,7 @@ class HebergementController extends Controller
     }
 
     /**
-     * @Route("/edit/{id}", name="hebergement_edit", methods="GET|POST")
+     * @Route("/show/edit/{id}", name="hebergement_edit", methods="GET|POST")
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
@@ -266,13 +266,19 @@ class HebergementController extends Controller
             return $this->redirectToRoute('hebergement_edit', ['id' => $hebergement->getId()]);
            
         }
-
+        
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
+        $mairie = $hebergement->getMairie(); 
+        // dump($mairie);
+        $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
+        
         return $this->render('hebergement/edit.html.twig', [
             'hebergement'   => $hebergement,
             'nombre'        => $nombre,
             'form'          => $form->createView(),
             'url'           => $url,
             'mairie'        => $mairie,
+            'mairieHeb'     => $mairieHeb
         ]);
     }
     
