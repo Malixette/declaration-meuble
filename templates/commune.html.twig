@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Barcelonnette - Déclarer son meublé{% endblock %}
+
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+        
+{% endblock %}
+
 {%block stylesheets %}
 <style>
     html, body {
@@ -183,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .carousel-item h3, .titre-vignette {
     font-size : 1.2em;
-}
+    }
 }
 
 /* mobile */
@@ -193,12 +200,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 }
-
 </style>
 {%endblock%}
 {% block nav %}
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top py-3">
-        <a class="navbar-brand" href="{{ path('commune_home') }}">Accueil</a>
+        <a class="navbar-brand js-scrollTo" href="{{ path('commune_home') }}">Accueil</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -206,16 +212,16 @@ h1, h2, h3, h4, h5, h6 {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('commune_listing') }}">Liste des meublés</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_home') }}#section-contact">Contact</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-contact">Contact</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -448,7 +454,7 @@ h1, h2, h3, h4, h5, h6 {
                 <h1 class="section-titre text-center text-white">Barcelonnette</h1>
             </div>
         </div>
-        <div class="container" style="height:70%; width:auto;">
+        <div class="container flip-container" ontouchstart="this.classList.toggle('hover');" style="height:70%; width:auto;">
             <div class="row" style="height:auto; width:auto;">
                 <div class="col-md-6 bg-warning p-4 text-center">
                     <img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">
@@ -475,14 +481,18 @@ h1, h2, h3, h4, h5, h6 {
                     C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape
                     réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</p>
                 </div>
-                <div class="col-md-6 bg-info p-4 text-center">
-                    <img src="{{asset('assets/img/vecteurs/house.png')}}" alt="une maison" class="fixed flaticon img-fluid m-md-3">                    
-                    <h3 class="text-center titre-vignette">Classez-vous !</h3>
-                    <p>Le classement est volontaire et est attribué pour 5 ans. Pour être classé, le meublé de tourisme doit répondre à certains critères de contrôle (obligatoires et optionnels) fixant les normes en matière d'accueil et de service aux clients, équipements et enfin accessibilité et développement durable.
-Le classement est un gage de qualité pour rassurer vos clients : location aux normes nationales, règlement possible en chèques-vacances... Et présente aussi des bénéfices pour vous : une fiscalité avantageuse et une meilleure commercialisation de votre bien.</p>
-                <p class="text-center">
-                    <a class="btn btn-light" target="_blank" href="https://www.classement.atout-france.fr/meubles" role="button">En savoir plus</a>
-                </p>
+                <div class="flipper col-md-6 bg-info p-4 text-center">
+                    <div class="front">
+                        <img src="{{asset('assets/img/vecteurs/house.png')}}" alt="une maison" class="fixed flaticon img-fluid m-md-3">                    
+                        <h3 class="text-center titre-vignette">Classez-vous !</h3>
+                    </div>
+                    <div class="back">
+                        <p>Le classement est volontaire et est attribué pour 5 ans. Pour être classé, le meublé de tourisme doit répondre à certains critères de contrôle (obligatoires et optionnels) fixant les normes en matière d'accueil et de service aux clients, équipements et enfin accessibilité et développement durable.
+                            Le classement est un gage de qualité pour rassurer vos clients : location aux normes nationales, règlement possible en chèques-vacances... Et présente aussi des bénéfices pour vous : une fiscalité avantageuse et une meilleure commercialisation de votre bien.</p>
+                        <p class="text-center">
+                        <a class="btn btn-light" target="_blank" href="https://www.classement.atout-france.fr/meubles" role="button">En savoir plus</a>
+                    </div>
+                    </p>
                 </div>
             </div>
         </div>
@@ -552,4 +562,9 @@ Le classement est un gage de qualité pour rassurer vos clients : location aux n
     {# FIN CONTACT #}
 {#</div>#}
 {# FIN MAIN #}
+<script>
+	$(document).ready(function() {
+		
+	});
+</script>
 {% endblock %}

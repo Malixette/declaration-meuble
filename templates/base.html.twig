@@ -13,8 +13,10 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-        {#<script src="{{asset('assets/js/sliderdemarche.js')}}" async></script>#}
+        <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
         <!-- <script src="jquery.onepage-scroll.js"></script> -->
+        {% block head %}
+        {% endblock %}
         {% block stylesheets %}
         {% endblock %}
         
@@ -30,12 +32,17 @@
                 height: 10vh;
             }
         }
+        
+        .scrolling-box {
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            }
         </style>
     </head>
     <body>
         {% block nav %}{% endblock %}
         {% block header %}{% endblock %}
-        <div class="container-fluid p-0" id="main">
+        <div class="container-fluid p-0 scrolling-box" id="main">
             {% block main %}{% endblock %}
         </div>
         {% block footer %}
@@ -57,5 +64,14 @@
             </footer>
         {% endblock %}
         {% block javascripts %}{% endblock %}
+        <script>
+// 	$(document).on('click', 'a[href^="#"]', function (event) {
+//         event.preventDefault();
+    
+//         $('html, body').animate({
+//             scrollTop: $($.attr(this, 'href')).offset().top
+//         }, 5000);
+//     });
+</script>
     </body>
 </html>
