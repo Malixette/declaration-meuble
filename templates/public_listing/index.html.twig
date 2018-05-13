@@ -59,20 +59,21 @@
 {% block main %}
 
 <h1 class="mt-5 mb-4 text-center display-3 text-white" id="titrelisting">Les meublés déclarés à Barcelonnette</h1>
-<div class="container">
+<div class="container-fluid" style=" margin-right : 5%; ">
   <div class="row text-center pb-4 " style="font-size:1.3em;">
     Retrouvez ci dessous les meublés qui ont déjà été déclarés à Barcelonnette ainsi que les informations essentielles. Votre meublé apparaît automatiquement sur cette page après que la déclaration ait été validé par la mairie.
   </div>
-  <div class="row">
+  <div class="row mb-md-5">
     <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
       <thead>
         <tr>
-          <th data-orderable="true" scope="col">Nom hébergement</th>
+          <th data-orderable="true" scope="col">Nom</th>
           <th data-orderable="false" scope="col">Photo</th>
-          <th data-orderable="true" scope="col">Commune</th>
+          <th data-orderable="false" scope="col">Description</th>
           <th data-orderable="true" scope="col">Couchages</th>
           <th data-orderable="true" scope="col">Classement</th>
           <th data-orderable="true" scope="col">Type</th>
+          <th data-orderable="true" scope="col">Réservation</th>
         </tr>
       </thead>
       <tbody>
@@ -80,10 +81,15 @@
           <tr>
             <td class="align-middle">{{ hebergement.hebName }}</td>
             <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}"></td>
-            <td class="align-middle">{{ hebergement.hebCommune }}</td>
+            <td class="align-middle">{{ hebergement.hebDescriptifCourt }}</td>
             <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
             <td class="align-middle">{{ hebergement.hebClassement }}</td>
             <td class="align-middle">{{ hebergement.hebType }}</td>
+            <td class="align-middle">
+              {#{{ if hebergement.hebSiteResa is defined }}#}
+              <a class="btn btn-success" target="_blank" href="{{ hebergement.hebSiteResa }}" role="button">Réserver</a>
+              {#{{ endif }}#}
+            </td>
           </tr>
         {% endfor %}
       </tbody>
