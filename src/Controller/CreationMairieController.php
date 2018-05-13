@@ -85,6 +85,11 @@ class CreationMairieController extends Controller
             $em->persist($user);
             $em->flush();
             
+            $this->addFlash(
+                        'success', 
+                        "Votre inscription est enregistrée."
+                        );
+            
             return $this->redirectToRoute('connexion');
         }
         return $this->render('creation_mairie/creation-mairie.html.twig', [

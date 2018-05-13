@@ -66,6 +66,14 @@
         ::-ms-input-placeholder { /* Microsoft Edge */
             color: Gainsboro !important;
         }
+        .navbar-light .navbar-nav .nav-link {
+            color: #444;
+            border-bottom: 2px solid #fff;
+        }
+        
+        .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #5070B5;
+        }
                 
     </style>
 {% endblock %}
@@ -128,17 +136,19 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form_row(form.password.first)}}
+                            {{ form_row(form.password.first)}} 
+                            <small style="font-style:italic; color:red;"> Obligatoire</small>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form_row(form.password.second)}}
+                            <small style="font-style:italic; color:red;"> Obligatoire</small>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ form_label(form.user_adresse)}}
+                    {{ form_label(form.user_adresse)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                     {{ form_widget(form.user_adresse)}}
                 </div>
                 <div class="form-group">
@@ -162,7 +172,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form_label(form.user_pays)}}
+                            {{ form_label(form.user_pays)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                             {{ form_widget(form.user_pays, { 'id': 'country' })}}
                         </div>
                     </div>
