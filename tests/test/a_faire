@@ -1,0 +1,61 @@
+A FAIRE
+
+GENERAL____________________________________________________________________
+Top priorité : enlever notre travail de github et le mettre sur gitlab pour que personne ne puisse accéder à notre travail.
+Gérer les pages erreurs 404 et erreurs 403
+Hydrater la bdd ville
+
+CONNEXION________________________________________________________
+Mettre en place le token de validation d'inscription
+Mettre en place la réccupération du mot de passe
+Mettre en place la possibilité de supprimer son compte
+
+DASHBOARD DECLARANT_________________________________________________
+Ajouter 3 champs dans la bdd_hebergement:
+    - classement_clevacances
+    - classement_gdf
+    - classement_prefecture
+Faire apparaitre ces 3 champs dans le formulaire new hébergement
+
+Mettre la carte new hébergement en draggable
+Réccupérer coordonnées gps si le marker est déplacé
+
+Générer le numéro de cerfa à la création de l'hébergement
+
+Mise en place d'une page récapitulatif quand formulaire new hebergement soumis
+
+Parcours de génération du cerfa:
+    - page récapitulative validée
+    - génération d'un token auprès de la mairie concernée l'incitant à se connecter sur la plateforme
+    - création d'un bouton dans le dashboard de type: "vous avez 5 demande en attente"
+    - quand clic sur ce bouton liste des hébergement en attente
+    - validation de la demande
+    - generation d'un token au déclarant
+    - génération d'un token à l'Office de Tourisme
+    - changement du statut dans le dashboard mairie
+    - changement de statut dans le dashboard déclarant
+
+Mettre en place le motif de suppression d'un hébergement:
+    - vente du bien
+    - continuer à le louer mais plus en tant que meublé tourisme
+    - autre
+
+Exclure de l'autocomplete les communes qui n'ont pas adhéré (n'autoriser que les codes postaux ou codes insee de la base de données
+
+DASHBOARD MAIRIE___________________________________________________________
+Ajouter champ Insee dans bdd mairie
+Affichage d'une googlemaps avec plusieurs markers
+Mise en place de la procédure de validation des demandes en cours
+
+DASHBOARD OFFICE DE TOURISME________________________________________________
+voir les fonctionnalités qui doivent être présente pour ce dashboard
+
+DASHBOARD SUPER ADMINISTRATEUR_________________________________________________
+voir les fonctionnalités qui doivent êtres présentes pour ce dashboard
+
+SITE GENERAL____________________________________________________________________
+A faire quand la partie privée est OK
+
+RGPD____________________________________________________________________________
+Mise en place du mécanisme de consultation, modification, suppression des données.
+

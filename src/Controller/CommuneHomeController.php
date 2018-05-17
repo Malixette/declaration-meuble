@@ -24,7 +24,7 @@ class CommuneHomeController extends Controller
     /**
      * @Route("/commune", name="commune_home", methods="GET|POST")
      */
-    public function contact (Request $request): Response
+    public function contact (Request $request, \Swift_Mailer $mailer): Response
     {
         $contact = new Contact;
         $form = $this->createForm(ContactType::class, $contact);
@@ -36,9 +36,20 @@ class CommuneHomeController extends Controller
             $em->persist($contact);
             $em->flush();
             
+            $contactFormData = $form->getData();
+            dump($contactFormData);
+            
+            $message = (new \Swift_Message('Vous avez une demande de renseignements'))
+                ->setFrom($contactFormData->getEmail())
+                ->setTo($contactFormData->getEmail())
+                ->setBody($contactFormData->getMessage())
+            ;
+                
+            $mailer->send($message);
+            
             $this->addFlash(
                         'success', 
-                        "votre message a bien été envoyé."
+                        "Votre message a bien été envoyé."
                         );
 
             return $this->redirectToRoute('commune_home', ['_fragment' => 'section-contact']);

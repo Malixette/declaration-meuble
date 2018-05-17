@@ -55,6 +55,17 @@ class HebergementController extends Controller
             $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
             $mairie = $repoMairie->findOneBy(['mairie_nom_touristique' => $mairieNom]);
             
+
+            /////////////////////////////
+            $id = $hebergement->getId();
+            $lastId = 
+            $date = new \DateTime;
+            $dateFormat = $date->format('Ymd');
+            $insee = "CodeInsee";
+            $numCerfa= $insee . "/" . $dateFormat . "/" . $id;
+            /////////////////////////////
+        
+
             $hebergement->setUser($user);
             $hebergement->setHebDateCreation(new \DateTime());
             $hebergement->setHebDateDeclaration(new \DateTime());
