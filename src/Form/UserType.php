@@ -122,6 +122,7 @@ class UserType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'disabled'     => $options['is_edit'],
                 'invalid_message' => 'Les mots de passe entrés sont différents',
                 'required' => true,
                 'first_options'  => [
@@ -150,7 +151,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'isEdit'    => false
+            'is_edit'    => false
         ]);
     }
 }

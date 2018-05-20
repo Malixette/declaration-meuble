@@ -29,11 +29,14 @@ class UserController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
+            $token = base64_encode(random_bytes(30));
             
             $user->setUserRole(2);
             $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
             $user->setPassword($password);
+            $user->setToken($token);
+            $user->setIsActivated(false);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
@@ -45,8 +48,6 @@ class UserController extends Controller
                         );
                         
             return $this->redirectToRoute('connexion');
-            
-            // return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/inscription.html.twig', [
@@ -79,7 +80,7 @@ class UserController extends Controller
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
         $nombre = count($hebergements);
     
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $user,array('is_edit' => true));
         $form->handleRequest($request);
         
         $url = $_SERVER['REQUEST_URI'];

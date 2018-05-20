@@ -5,216 +5,37 @@
 {% block head %}
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-        
 {% endblock %}
 
 {%block stylesheets %}
-<style>
-    html, body {
-    height: 100%;
-    width:100%;
-}
-body {
-    font-family: 'Open Sans', sans-serif;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Oswald', sans-serif;
-}
-.btn-outline-light:hover {
-    background-color: rgba(255,255,255,0) !important;
-    color:white !important;
-    border-color:white !important;
-    box-shadow :0 0 0.4em black !important;
-}
-  
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: Gainsboro !important;
-    opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: Gainsboro !important;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: Gainsboro !important;
-}
-
-.btn-outline-light {
-    border-width : 2px !important;
-    border-radius: 10px;
-}
-.flaticon {
-    width: 20%;
-    height: auto;
-}
-.full {
-    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    height:100%;
-}
-.header h1, .main h2, #section-commune h1 {
-    text-shadow: 1px 1px 1px black;
-}
-.headercommune {
-    padding: 120px 0px;
-    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
-}
-.bg-warning {
-    background-color: #FFD470 !important;
-}
-.bg-info {
-    background-color: #5070B5 !important;
-}
-.bg-danger {
-    background-color: #FF9166 !important;
-}
-.btn-danger {
-    background-color: #FF9166 !important;
-    border-color: #FF9166 !important;
-}
-.btn-success {
-    background-color: #58CCB6 !important;
-    border-color: #58CCB6 !important;
-}
-.btn-warning {
-    background-color: #FFD470 !important;
-    border-color: #FFD470 !important;
-}
-
-.carousel-item h3, .titre-vignette {
-    font-size : 2.5em;
-}
-
-.p-slider{
-    font-size : 1.4em;
-}
-
-.p-slider-big{
-    font-size : 2em;
-    font-family : 'Oswald', sans-serif;
-}
-.p-slider-number{
-    font-size : 2em;
-    font-family : 'Oswald', sans-serif;
-    color : #FF9166 !important ;
-}
-.p-slider-icon{
-    font-size : 1.5em;
-    color: #FF9166;
-}
-#btn-declaration {
-    font-size:4em;
-}
-
-.section-titre {
-    font-size:5.5em;
-}
-
-#carouselExampleControls{
-    background-color:rgba(255, 212, 112, 0.1);
-}
-
-.carousel-control-prev-icon {
- background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
-}
-
-.carousel-control-next-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
-}
-
-
-.navbar-light .navbar-nav .nav-link {
-    color: #444;
-    border-bottom: 2px solid #fff;
-}
-
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    border-bottom: 2px solid #5070B5;
-}
-
-.activelink {
-    border-bottom: 2px solid #5070B5 !important;
-}
-
-/* small desktop*/
-@media screen and (max-width: 1200px) {
-  .section-titre {
-      font-size : 4em;
-  }
-}
-
-/* tablet */
-@media screen and (max-width: 768px) {
-  #btn-declaration {
-    font-size : 2em;
-  }
-  .section-titre {
-      font-size : 3em;
-  }
-  
-  .titre-vignette {
-    font-size : 1.8em;
-    }
-  
-  .headercommune {
-    padding: 5%;
-    background: none;
-    }
-    
-    #section-commune h1 {
-        color : black !important;
-        text-shadow : unset;
-    }
-    
-    .p-slider {
-        font-size : 1em;
-    }
-    
-    .p-slider-icon{
-    font-size : 1em;
-    }
-    
-    .slider-img{
-        display: none !important;
-    }
-    
-    .carousel-item h3 {
-    font-size : 1.5em;
-    }
-}
-
-/* small tablet */
-@media screen and (max-width: 600px) {
-    .p-slider-icon{
-    font-size : 0.8em;
-    }
-}
-
-/* large mobile */
-@media screen and (max-width: 414px) {
-  #btn-declaration {
-    font-size : 1.4em;
-  }
-  .p-slider-icon{
-    font-size : 0.5em;
-    }
-    .carousel-item h3, .titre-vignette {
-    font-size : 1.2em;
-    }
-}
-
-/* mobile */
-@media screen and (max-width: 320px) {
-  #btn-declaration {
-    font-size : 1em;
-  }
-
-}
-</style>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
+    <style>
+        .full {
+            background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+            height:100%;
+        }  
+        .headercommune {
+            padding: 120px 0px;
+            background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
+            height:400px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .headercommune {
+                height : auto;
+                padding: 5%;
+                background: none;
+            }
+            #section-commune h1 {
+                color : black !important;
+                text-shadow : unset;
+            }
+        }
+    </style>
 {%endblock%}
 {% block nav %}
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top py-3">
@@ -294,7 +115,7 @@ h1, h2, h3, h4, h5, h6 {
 {% endblock %} 
 {% block main %}
     {# DEBUT DEMARCHE #}
-    <div class="container-fluid pt-md-5 pb-md-5 section" style="background : none;" id="section-demarche">
+    <div class="container-fluid pt-md-5 pb-md-5 section" id="section-demarche">
         <div class="row"> 
             <div class="col-12">
                 <h1 class="section-titre text-center pt-3">La démarche</h1>
@@ -317,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div>
                                 <div class="row mb-3 pt-md-5 pb-mb-5 pr-md-5">
                                     <div class="col-2 p-slider-icon d-flex justify-content-end">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2"></i>
                                     </div>
                                     <div class="col-10 p-slider">
                                          C'est d'abord un devoir légal. L’enregistrement du meublé est une obligation d’après L.324-4 du code du tourisme.
@@ -325,7 +146,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div>
                                 <div class="row mb-3 pt-md-5 pb-mb-5 pr-md-5">
                                     <div class="col-2 p-slider-icon">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
                                     </div>
                                     <div class="col-10 p-slider">
                                          Pour faire des économies : l’absence d’enregistrement est passible d’une amende de 450€
@@ -333,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div>
                                 <div class="row mb-3 pt-md-5 pb-mb-5 pr-md-5">
                                     <div class="col-2 p-slider-icon">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
                                     </div>
                                     <div class="col-10 p-slider">
                                          Déclarer par internet, c'est bon pour vos affaires ! En l'enregistrant sur ce site, vous contribuerez à la visibilité et au référencement de votre meublé de tourisme sur les moteurs de recherche.
@@ -357,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div>
                                 <div class="row mb-3 pt-md-2 pr-md-5">
                                     <div class="col-2 p-slider-icon d-flex justify-content-end">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2"></i>
                                     </div>
                                     <div class="pt-md-2 col-10 p-slider">
                                          {#<span class="p-slider-number">1.</span> #}
@@ -366,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div>
                                 <div class="row mb-3 pt-md-2 pr-md-5">
                                     <div class="col-2 p-slider-icon">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
                                     </div>
                                     <div class="col-10 p-slider">
                                          {#<span class="p-slider-number">2.</span>  #}
@@ -375,7 +196,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div>
                                 <div class="row mb-3 pt-md-2 pr-md-5">
                                     <div class="col-2 p-slider-icon">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
                                     </div>
                                     <div class="col-10 p-slider">
                                          {#<span class="p-slider-number">3.</span>  #}
@@ -384,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div> 
                                 <div class="row mb-3 pt-md-2 pr-md-5">
                                     <div class="col-2 p-slider-icon">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
                                     </div>
                                     <div class="col-10 p-slider">
                                          {#<span class="p-slider-number">4.</span>  #}
@@ -393,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
                                 </div> 
                                 <div class="row pt-md-2 pr-md-5">
                                     <div class="col-2 p-slider-icon">
-                                        <i class="orange-icon far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
                                     </div>
                                     <div class="col-10 pt-md-3 p-slider">
                                         {#<span class="p-slider-number">5.</span>  #}
@@ -446,7 +267,7 @@ h1, h2, h3, h4, h5, h6 {
                 </a>
             </div>
             <div class="col-12 col-lg-3 bg-warning p-5">
-                <h2 class="titre-vignette text-center" style="color: #5070B5;">Meublé de tourisme ?</h2>
+                <h2 class="titre-info titre-vignette text-center">Meublé de tourisme ?</h2>
                 <p>
                     Les meublés de tourisme sont des villas, appartements, ou studios meublés offerts en location à une clientèle de passage qui y effectue un séjour caractérisé par une location à la journée, à la semaine ou au mois, et qui n'y élit pas domicile. Ils se distinguent des autres types d’hébergement en ce qu’ils sont réservés à l’usage exclusif du locataire, ne comportant ni accueil ou hall de réception ni services et équipements communs. Ils se distinguent de la chambre d’hôte où l’habitant est présent pendant la location.
                 </p>
@@ -454,10 +275,10 @@ h1, h2, h3, h4, h5, h6 {
                     La location saisonnière ou touristique se distingue du bail d’habitation selon 2 critères :
                 </h5>
                 <p>
-                    <i class="far fa-check-circle" style="color: #5070B5"></i> <strong> Le locataire n’y élit pas domicile,</strong> il y réside principalement pour les vacances.
+                    <i class="far icon-info fa-check-circle"></i> <strong> Le locataire n’y élit pas domicile,</strong> il y réside principalement pour les vacances.
                 </p>
                 <p>
-                    <i class="far fa-check-circle" style="color: #5070B5"></i>  La location saisonnière doit être conclue pour <strong>une durée maximale de 90 jours</strong> à la même personne.
+                    <i class="far icon-info fa-check-circle"></i>  La location saisonnière doit être conclue pour <strong>une durée maximale de 90 jours</strong> à la même personne.
                 </p>                
             </div>
         </div>
@@ -465,14 +286,14 @@ h1, h2, h3, h4, h5, h6 {
     {# FIN DEMARCHE #}
     
     {# DEBUT COMMUNE #}
-    <div class="container-fluid section pt-1" style="background : none;" id="section-commune">
-        <div class="row headercommune" style="height:30%;">
+    <div class="container-fluid section pt-1" id="section-commune">
+        <div class="row headercommune">
             <div class="col-12 d-flex flex-column justify-content-center w-100">
                 <h1 class="section-titre text-center text-white">Barcelonnette</h1>
             </div>
         </div>
-        <div class="container flip-container" ontouchstart="this.classList.toggle('hover');" style="height:70%; width:auto;">
-            <div class="row" style="height:auto; width:auto;">
+        <div class="container">
+            <div class="row">
                 <div class="col-md-6 bg-warning p-4 text-center">
                     <img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">
                     <h3 class="text-center titre-vignette">A votre service</h3>
@@ -517,7 +338,7 @@ h1, h2, h3, h4, h5, h6 {
     {# FIN COMMUNE #}
     
     {# DEBUT CONTACT #}
-    <div class="container-fluid pt-5 mt-2 pr-0 pl-0 section w-100" style="background : none;" id="section-contact">
+    <div class="container-fluid pt-5 mt-2 pr-0 pl-0 section w-100" id="section-contact">
         <div class="row w-100">
             <div class="col-12 pr-0">
                 <h1 class="section-titre text-center">Contact</h1>
@@ -576,21 +397,4 @@ h1, h2, h3, h4, h5, h6 {
             </div>
         </div>
     </div>
-    {# FIN CONTACT #}
-{#</div>#}
-{# FIN MAIN #}
-{#<script>#}
-{#    var btnContainer = document.getElementById("navbarSupportedContent");#}
-    
-{#    var btns = btnContainer.getElementsByClassName("nav-link");#}
-    
-{#    for (var i = 0; i < btns.length; i++) {#}
-{#      btns[i].addEventListener("click", function() {#}
-          
-{#        var current = document.getElementsByClassName(" activelink");#}
-{#        current[0].className = current[0].className.replace(" activelink", "");#}
-{#        this.className += " activelink";#}
-{#    });#}
-{#}#}
-{#</script>#}
 {% endblock %}

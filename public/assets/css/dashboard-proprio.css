@@ -10,6 +10,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
 }
 
+input[disabled], label[for="user_password_first"], label[for="user_password_second"] {
+            display: none;
+        }
+
 h1 {
     color: #fff;
     text-shadow: 1px 1px black;

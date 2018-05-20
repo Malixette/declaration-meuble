@@ -37,24 +37,6 @@
         #main {
             min-height: 85vh;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Oswald', sans-serif;
-        }
-        
-        
-        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: Gainsboro !important;
-        opacity: 1; /* Firefox */
-        }
-    
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: Gainsboro !important;
-        }
-        
-        ::-ms-input-placeholder { /* Microsoft Edge */
-            color: Gainsboro !important;
-        }
 
     </style>
 {% endblock %}
@@ -68,7 +50,7 @@
     <div class="row justify-content-center align-items-center h-100" >
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
                 <div class="row my-2 d-flex justify-content-center">
-                     {% for label, messages in app.flashes %}
+                    {% for label, messages in app.flashes %}
                         <div class="alert alert-{{ label }}">
                             {% for message in messages %}
                                 {{ message }}
@@ -90,6 +72,10 @@
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                         <button class="btn btn-success" type="submit">Connexion</button>
+                    </div>
+                    <div class="form-group text-center">
+                         <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                        <label for="remember_me">Se souvenir de moi</label>
                     </div>
                     <p class="text-center"><a href="{{path('inscription')}}">Pas encore inscrit?</a></p>
                 </form> 

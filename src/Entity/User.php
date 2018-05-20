@@ -28,6 +28,12 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=190,  unique=true)
      * @Assert\NotBlank()
+     * @Assert\Length(
+     * min = 3,
+     * max = 25,
+     * minMessage = "Votre nom d'utilisateur est trop court.",
+     * maxMessage = "Votre nom d'utilisateur est trop long."
+     * )
      */
     private $username;
 
@@ -62,12 +68,12 @@ class User implements UserInterface, \Serializable
     private $user_commune;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user_pays;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user_telephone;
 
@@ -108,8 +114,24 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 8,
+     * max = 255,
+     * minMessage = "Le mot de passe choisi est trop court.",
+     * maxMessage = "Le mot de passe choisi est trop long."
+     * )
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_activated;
 
     public function __construct()
     {
@@ -395,5 +417,29 @@ class User implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getIsActivated(): ?bool
+    {
+        return $this->is_activated;
+    }
+
+    public function setIsActivated(bool $is_activated): self
+    {
+        $this->is_activated = $is_activated;
+
+        return $this;
     }    
 }

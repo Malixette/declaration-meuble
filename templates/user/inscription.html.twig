@@ -106,6 +106,9 @@
                     Inscrivez-vous pour gérer la déclaration de vos meublés partout en France.
                 </p>
                 <div class="row">
+                    {{ form_errors(form) }}
+                </div>
+                <div class="row">
                     <div class="col-6">
                         <div class="form-group">
                             {{ form_label(form.user_nom)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
@@ -121,7 +124,7 @@
                 </div> 
                 <div class="row">
                     <div class="col-12">
-                        {{ form_errors(form.user_email) }}
+                        {#{{ form_errors(form.user_email) }}#}
                         {{ form_label(form.user_email)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                         {{ form_widget(form.user_email)}}
                     </div>
@@ -172,7 +175,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form_label(form.user_pays)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
+                            {{ form_label(form.user_pays)}}
                             {{ form_widget(form.user_pays, { 'id': 'country' })}}
                         </div>
                     </div>
