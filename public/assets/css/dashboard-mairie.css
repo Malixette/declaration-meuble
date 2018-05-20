@@ -17,39 +17,46 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
 }
 
-h1 {
-    color: #black;
-    margin-top:2.5em;
-    background-color :lightgrey;
+.section-titre {
+    font-size:3em !important;
+    color: white !important;
+    background : linear-gradient(#6486c5, #4CC4D5) center center no-repeat !important;
+    /* en fonction de la taille de la navbar, adapter le margin-top pour corriger le dégradé*/
+    margin-top:1.46rem;
 }
 
 header nav{
-    background-color: #5070b5;
+    background-color: #6486c5;
+    /*height: 5.36vh;*/
 }
 
 header nav ul li a{
     color: white!important;
 }
 
-.btn-warning {
-    background-color: #58ccb6;
-    border-color: #58ccb6;
+/* button colors */
+.bg-warning {
+    background-color: #EF3C25 !important;
+    color: white;
 }
-
-.btn-warning:hover {
-    background-color: #4fb7a3;
-    border-color: #4fb7a3;
+.bg-info {
+    background-color: #6486C5 !important;
 }
-
+.bg-danger {
+    background-color: #DC2075 !important;
+}
 .btn-danger {
-    background-color: #ff9166;
-    border-color: #ff9166;
-    border-radius: 5px;
+    background-color: #DC2075 !important;
+    border-color: #DC2075 !important;
 }
-
-.btn-danger:hover {
-    background-color: #e5825b;
-    border-color: #e5825b;
+.btn-success {
+    background-color: #47B749 !important;
+    border-color: #47B749 !important;
+}
+.btn-warning {
+    background-color: #EF3C25 !important;
+    border-color: #EF3C25 !important;
+    color: white;
 }
 
 .nav-link{
@@ -57,7 +64,7 @@ header nav ul li a{
 }
 
 footer {
-    background: linear-gradient(45deg, #5070b5, #58ccb6) center center no-repeat;
+    background: linear-gradient(#4CC4D5, #6486C5) center center no-repeat;
 
 }
 
@@ -69,27 +76,27 @@ footer {
     border: none; 
 }
 
-.page-item.active .page-link {
-    background-color: #5070b5;
-    border-color: #5070b5;
-}
+/*.page-item.active .page-link {*/
+/*    background-color: #5070b5;*/
+/*    border-color: #5070b5;*/
+/*}*/
 
 a {
     color: #5070b5;
 }
 
-a:hover {
-    color: #58ccb6;
-    text-decoration: none;
-}
+/*a:hover {*/
+/*    color: #58ccb6;*/
+/*    text-decoration: none;*/
+/*}*/
 
-.btn {
-    background: #58ccb6;
-    color:black;
-}
+/*.btn {*/
+/*    background: #58ccb6;*/
+/*    color:black;*/
+/*}*/
 
-.btn:hover {
-    background-color: #ff9166;
-    color:black;
+/*.btn:hover {*/
+/*    background-color: #ff9166;*/
+/*    color:black;*/
 
-}
+/*}*/

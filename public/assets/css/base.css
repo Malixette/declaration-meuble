@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 1px 1px 1px black;
 }
 .section-titre {
-    font-size:5em;
+    font-size:4em !important;
 }
 .titre-info {
     color: #5070B5;
@@ -45,25 +45,29 @@ h1, h2, h3, h4, h5, h6 {
 
 /* button colors */
 .bg-warning {
-    background-color: #FFD470 !important;
+    background-color: #EF3C25 !important;
+    color: white;
 }
 .bg-info {
-    background-color: #5070B5 !important;
+    background-color: #6486C5 !important;
+    color: white;
 }
 .bg-danger {
-    background-color: #FF9166 !important;
+    background-color: #DC2075 !important;
+    color: white;
 }
 .btn-danger {
-    background-color: #FF9166 !important;
-    border-color: #FF9166 !important;
+    background-color: #DC2075 !important;
+    border-color: #DC2075 !important;
 }
 .btn-success {
-    background-color: #58CCB6 !important;
-    border-color: #58CCB6 !important;
+    background-color: #47B749 !important;
+    border-color: #47B749 !important;
 }
 .btn-warning {
-    background-color: #FFD470 !important;
-    border-color: #FFD470 !important;
+    background-color: #EF3C25 !important;
+    border-color: #EF3C25 !important;
+    color: white;
 }
 
 /* icon colors */

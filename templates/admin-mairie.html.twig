@@ -12,8 +12,8 @@
     </head>
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{{ path('commune_home') }}">LogoSociété</a>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light py-0">
+            <a class="navbar-brand" href="{{ path('commune_home') }}"><img src="{{asset('assets/img/logo-small.png')}} " style="max-width:70px; height:auto;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -58,7 +58,7 @@
                                 <i class="fas fa-address-card"></i><strong> Maire:</strong> {{ mairie.MairieMairePrenom }} {{ mairie.MairieMaireNom | upper}} 
                             </p class="d-flex flex-column">
                             <div class="pb-4">
-        					    <a href="{{ path('infos_mairie_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
+        					    <a href="{{ path('infos_mairie_edit') }}" class="btn btn-warning" role="button">Modifier</a>
         					</div>
     					    {% if mairie.MairieContactNom %}
                                 <p><strong>Référent technique:<br>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="card-body" style="background: url({{ asset("assets/img/dashboard-mairie/maps.jpg") }})">
                                     <div class="pb-4">
-                					    <a href="{{ path('map') }}" type="button" class="btn btn-secondary">Carte des hébergements</a>
+                					    <a href="{{ path('map') }}" class="btn btn-secondary">Carte des hébergements</a>
                 					</div> 
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 <i class="fas fa-map-marker"></i> {{ userDeclarant.useradresse }} <br>
                                     {{ userDeclarant.userpostalcode }} {{ userDeclarant.userCommune | capitalize }}
                             <div class="pb-4">
-        					    <a href="{{ path('infos_mairie_edit') }}" type="button" class="btn btn-secondary">Modifier</a>
+        					    <a href="{{ path('infos_mairie_edit') }}" class="btn btn-secondary">Modifier</a>
         					</div>
     					       </p class="d-flex flex-column">
 				            </div>
