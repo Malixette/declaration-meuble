@@ -124,6 +124,7 @@ class MairieType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Mairie::class,
+            'is_edit' => false
         ]);
     }
 }
