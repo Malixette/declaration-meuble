@@ -7,28 +7,30 @@ Hydrater la bdd ville
 
 CONNEXION________________________________________________________
 Mettre en place le token de validation d'inscription
-Mettre en place la réccupération du mot de passe
-Mettre en place la possibilité de supprimer son compte
+Mettre en place la récupération du mot de passe
+Mettre en place la possibilité de supprimer son compte (envoi d’un mail mairie et OT qui prévient de la suppression)
+Souhait d’avoir le mail plutôt qu’un nom utilisateur
+Mettre adresse de contact plutôt que adresse tout court
+Mettre autocompletion également pour le pays
+
+INSCRIPTION MAIRIE________________________________________________________
+Revoir l’inscription des mairies pour plus de clarté
+Ajouter dans formulaire d’inscription le champ Numéro Insee
 
 DASHBOARD DECLARANT_________________________________________________
-Ajouter 3 champs dans la bdd_hebergement:
-    - classement_clevacances
-    - classement_gdf
-    - classement_prefecture
-Faire apparaitre ces 3 champs dans le formulaire new hébergement
-
-Mettre la carte new hébergement en draggable
+Mettre la carte new hébergement en draggable - fait
 Réccupérer coordonnées gps si le marker est déplacé
-
+Mettre lien site internet OT - fait
 Générer le numéro de cerfa à la création de l'hébergement
+Vérifier que tous les numéros de téléphone s’affichent bien même sous format international
 
-Mise en place d'une page récapitulatif quand formulaire new hebergement soumis
+Mise en place d'une page récapitulatif quand formulaire new hébergement soumis
 
 Parcours de génération du cerfa:
-    - page récapitulative validée
+    - page récapitulative des informations
     - génération d'un token auprès de la mairie concernée l'incitant à se connecter sur la plateforme
-    - création d'un bouton dans le dashboard de type: "vous avez 5 demande en attente"
-    - quand clic sur ce bouton liste des hébergement en attente
+    - création d'un bouton dans le dashboard de type: "vous avez 5 demandes en attente"
+    - quand clic sur ce bouton liste des hébergements en attente
     - validation de la demande
     - generation d'un token au déclarant
     - génération d'un token à l'Office de Tourisme
@@ -40,21 +42,54 @@ Mettre en place le motif de suppression d'un hébergement:
     - continuer à le louer mais plus en tant que meublé tourisme
     - autre
 
+Suppression de compte :
+Si le déclarant supprime son compte mais qu’il a des meublés sur plusieurs communes. Pour supprimer un compte nécessité de n’avoir aucun hébergement de lié.
+
 Exclure de l'autocomplete les communes qui n'ont pas adhéré (n'autoriser que les codes postaux ou codes insee de la base de données
+AJOUTER UN MEUBLE___________________________________________________________
+Ordre souhaité par pierre - fait
+•	Numéro
+•	adresse
+•	complément adresse
+•	batiment
+•	etage
+•	CP
+•	Ville
+•	carte
+
+Changer placeholder autocomplete et mettre mention pour les bedigas pour changer de place le curseur
+Mettre infobulle sur le classement et y inclure ce lien https://www.classement.atout-france.fr/meubles
+Enlever les labels clévacances et GDF - fait
 
 DASHBOARD MAIRIE___________________________________________________________
+Mettre en 1e colonne état de déclaration
 Ajouter champ Insee dans bdd mairie
 Affichage d'une googlemaps avec plusieurs markers
 Mise en place de la procédure de validation des demandes en cours
+Affichage détaillé  pour demande en cours, rajouter deux boutons :
+-	valider la demande
+-	compléments d’informations à fournir avec petit pavé texte libre pour préciser la demande
+
+Fonction d’export des pdf et des données format tableur
 
 DASHBOARD OFFICE DE TOURISME________________________________________________
-voir les fonctionnalités qui doivent être présente pour ce dashboard
+Voir les fonctionnalités qui doivent être présente pour ce Dashboard
 
 DASHBOARD SUPER ADMINISTRATEUR_________________________________________________
-voir les fonctionnalités qui doivent êtres présentes pour ce dashboard
+voir les fonctionnalités qui doivent être présentes pour ce dashboard
 
 SITE GENERAL____________________________________________________________________
 A faire quand la partie privée est OK
+
+PAGE SPECIFIQUE COMMUNE________________________________________________________
+•	Réduire les hauteurs en général
+PAGE HEBERGEMENT COMMUNE______________________________________________________
+•	mettre descriptif court avec limite affichage pour homogénéité de l’affichage …
+•	classement
+•	Afficher numéro déclaration (mettre sous le nom de l’hébergement)
+•	Changer appellation Réservation pour contact réservation
+•	Affichage de base au moins 20 meublés.
+•	Possibilité affichage carte (anticiper l’intégration sur cette page)
 
 RGPD____________________________________________________________________________
 Mise en place du mécanisme de consultation, modification, suppression des données.

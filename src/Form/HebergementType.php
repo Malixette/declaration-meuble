@@ -36,7 +36,7 @@ class HebergementType extends AbstractType
                 'disabled' => $options['is_edit'],
                 'label'     => "Adresse",
                 'attr'      => [
-                    'placeholder'   => "3 rue des Lilas",
+                    'placeholder'   => "rue des Lilas",
                     'id'            => "autocomplete",
                     'type'          => "input",
                 ]    
@@ -263,7 +263,7 @@ class HebergementType extends AbstractType
 
             ->add('heb_num_voie', NumberType::class, [
                 'required'  => false,
-                'disabled'  => $options['is_new'],
+                // 'disabled'  => $options['is_new'],
                 'label'     => "Numero de voie",
                 'attr'      => [
                     'placeholder'   => "N° de voie",
@@ -271,6 +271,20 @@ class HebergementType extends AbstractType
                 ]    
             ])
             
+            // ->add('classementGdf', RangeType::class, [
+            //     'required'  => false,
+            //     'disabled'  => $options['is_new'],
+            //     'label'     => "Nombre d'épis de votre logement au classement Gîte de France : ",
+            //     'attr'      => [
+            //         'type'      => "range",
+            //         'class'     => "input",
+            //         'class'     => "sliderGdf",
+            //         'min'       => "0",
+            //         'max'       => "5",
+            //         'id'        => "myRangeGdf",
+            //         'empty_data'=> '0'
+            //     ]    
+            // ])
             
             // ->add('heb_date_creation')
             // ->add('heb_statut')

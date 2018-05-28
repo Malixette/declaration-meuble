@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %} 
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block stylesheets %}
+    <style>
+    #map {
+        height: 250px;
+        width: 100%;
+    }
+    #accordion h4 {
+        padding: 10px;
+        color : white;
+        background-color: #5070b5;
+    }
+    #accordion h4:hover{
+        padding: 10px;
+        color : white;
+        background-color: #405990;
+    }
+    </style>
+{% endblock %}
+
+{% block title %}Déclaration{% endblock %}
+
+{% block header %}
+  <div class="container-fluid mt-5 mb-4 p-3" style="background: url({{asset('assets/img/illustration-hebergement/dashboard.jpg')}}) no-repeat fixed">
+    <div class="row justify-content-center">
+       <h1 class="text-center">Vérification des informations fournies</h1>  
+    </div>
+  </div>
+{% endblock %}
+
+{% block body %}
+
+   
+
+    <a href="{{ path('hebergement_new') }}">Modifier mes informations saisies</a>
+    
+{% endblock %}
+
+{% block javascripts %}
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+{% endblock %}
+

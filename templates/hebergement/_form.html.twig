@@ -7,14 +7,13 @@
             <div class="form-group">
             <input class="form-control" type="text" id="autocomplete"></input>
             </div>
-            <div id="map"></div>
             <div class="form-group">
-                {{ form_label(form.heb_lat) }}
-                {{ form_widget(form.heb_lat) }}
+                {{ form_label(form.heb_num_voie) }}
+                {{ form_widget(form.heb_num_voie, { 'id': 'street_number' } ) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_long) }}
-                {{ form_widget(form.heb_long) }}
+                {{ form_label(form.heb_adresse) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
+                {{ form_widget(form.heb_adresse, { 'id': 'route' }) }}
             </div>
             <div class="form-group">
                 {{ form_label(form.heb_adresse_complement) }}
@@ -29,14 +28,6 @@
                 {{ form_widget(form.heb_etage) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_num_voie) }}
-                {{ form_widget(form.heb_num_voie, { 'id': 'street_number' } ) }}
-            </div>
-            <div class="form-group">
-                {{ form_label(form.heb_adresse) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
-                {{ form_widget(form.heb_adresse, { 'id': 'route' }) }}
-            </div>
-            <div class="form-group">
                 {{ form_label(form.heb_code_postal) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_code_postal, { 
                     'id': 'postal_code',
@@ -47,6 +38,16 @@
             <div class="form-group">
                 {{ form_label(form.heb_commune) }}<small style="font-style:italic; color:red;"> - Obligatoire</small>
                 {{ form_widget(form.heb_commune , { 'id': 'locality' } ) }}
+            </div>
+            <p>Merci de vérifier l'emplacement exact de votre location. Si besoin, vous pouvez changer directement l'emplacement sur la carte pour préciser le lieu de votre meublé.</p>
+            <div id="map"></div>
+            <div class="form-group">
+                {{ form_label(form.heb_lat) }}
+                {{ form_widget(form.heb_lat) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_long) }}
+                {{ form_widget(form.heb_long) }}
             </div>
          </div>
     </div>
