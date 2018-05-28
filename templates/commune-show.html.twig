@@ -1,0 +1,400 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Barcelonnette - Déclarer son meublé{% endblock %}
+
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+{% endblock %}
+
+{%block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/commune.css')}}">
+    <style>
+        .full {
+            background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+            height:100%;
+        }  
+        .headercommune {
+            padding: 120px 0px;
+            background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
+            height:400px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .headercommune {
+                height : auto;
+                padding: 5%;
+                background: none;
+            }
+            #section-commune h1 {
+                color : black !important;
+                text-shadow : unset;
+            }
+        }
+    </style>
+{%endblock%}
+{% block nav %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top py-0">
+        <a class="navbar-brand js-scrollTo" href="{{ path('commune_home') }}"><img src="{{asset('assets/img/logo-small.png')}} " style="max-width:70px; height:auto;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commune_listing') }}">Liste des meublés</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-contact">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if not is_granted(expression('"ROLE_USER" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('inscription') }}">Inscription</a>
+            </li>
+            {% endif %}
+            {% if not is_granted(expression('"ROLE_USER" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('connexion') }}">Connexion</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('dashboard_declarant') }}">Tableau de bord</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_MAIRIE" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('dashboard_mairie') }}">Tableau de bord</a>
+            </li>
+            {% endif %}
+            {% if is_granted(expression('"ROLE_DECLARANT" in roles')) or is_granted(expression('"ROLE_MAIRIE" in roles')) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+            </li>
+            {% endif %}
+            
+        </ul>
+    </div>
+</nav>
+{% endblock %} 
+
+{% block header %}
+{# DEBUT MAIN #}
+{#<div class="main full">#}
+    {# DEBUT HEADER #}
+    <div class="container-fluid full section position-relative header" id="index">
+        <div class="row w-100 position-absolute" style="top:35%;">
+            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
+                <h1 class="text-white">Bienvenue sur le site de déclaration de meublés de {{commune.mairieNomTouristique}}</h1>
+            </div>
+            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
+                <h2 class="text-white">Un seul espace pour déclarer tous vos meublés en France</h2>
+            </div>
+            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
+                <a href="{{ path('connexion') }}" class="btn btn-outline-light btn-md-lg p-4 mt-md-4" role="button" id="btn-declaration">Espace déclaration</a>
+            </div>
+        </div>
+    </div>
+    {# FIN HEADER #}
+{% endblock %} 
+{% block main %}
+    {# DEBUT DEMARCHE #}
+    <div class="container-fluid pt-md-5 pb-md-5 section" id="section-demarche">
+        <div class="row"> 
+            <div class="col-12">
+                <h1 class="section-titre text-center pt-3">La démarche</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="carouselExampleControls" class="pt-md-5 pb-md-5 pr-md-5 pl-md-0 carousel slide col-12 col-lg-9" data-ride="carousel">
+                <div class="pl-md-0 carousel-inner">
+                    {# *****************************************SLIDE 1*****************************************  1#}
+                    <div class="row carousel-item active">
+                        <div class="row pl-md-0 d-flex align-items-center justify-content-center">
+                            <div class="slider-img col-12 col-md-4">
+                                <img class="d-block img-fluid" src="{{asset('assets/img/home/demarche-search.jpg')}}" alt="Une recherche sur internet" style="height:500px; object-fit: none;">
+                            </div>
+                            <div class="col-8 d-flex flex-column justify-content-center">
+                                <div class="row mb-3 pt-md-2 pr-md-5">
+                                    <div class="col-10 col-offset-md-1">
+                                        <h3 class="text-center">Pourquoi déclarer son meublé par internet ?</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 pt-md-5 pb-mb-5 pr-md-5">
+                                    <div class="col-2 p-slider-icon d-flex justify-content-end">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2"></i>
+                                    </div>
+                                    <div class="col-10 p-slider">
+                                         C'est d'abord un devoir légal. L’enregistrement du meublé est une obligation d’après L.324-4 du code du tourisme.
+                                    </div>
+                                </div>
+                                <div class="row mb-3 pt-md-5 pb-mb-5 pr-md-5">
+                                    <div class="col-2 p-slider-icon">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                    </div>
+                                    <div class="col-10 p-slider">
+                                         Pour faire des économies : l’absence d’enregistrement est passible d’une amende de 450€
+                                    </div>
+                                </div>
+                                <div class="row mb-3 pt-md-5 pb-mb-5 pr-md-5">
+                                    <div class="col-2 p-slider-icon">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                    </div>
+                                    <div class="col-10 p-slider">
+                                         Déclarer par internet, c'est bon pour vos affaires ! En l'enregistrant sur ce site, vous contribuerez à la visibilité et au référencement de votre meublé de tourisme sur les moteurs de recherche.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# *****************************************END SLIDE 1*****************************************  #}
+                    {# *****************************************SLIDE 2*****************************************  1#}
+                    <div class="row carousel-item">
+                        <div class="row pl-md-0 d-flex align-items-center justify-content-center">
+                            <div class="slider-img col-12 col-md-4">
+                                <img class="d-block img-fluid" src="{{asset('assets/img/home/demarche-puzzle.jpg')}}"  alt="Une recherche sur internet" style="height:500px; object-fit: cover;">
+                            </div>
+                            <div class="col-8 d-flex flex-column justify-content-center">
+                                <div class="row mb-3 pt-md-2 pr-md-5">
+                                    <div class="col-10 col-offset-md-1">
+                                        <h3 class="text-center">Rapide, simple, efficace : une déclaration en quelques étapes</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 pt-md-2 pr-md-5">
+                                    <div class="col-2 p-slider-icon d-flex justify-content-end">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2"></i>
+                                    </div>
+                                    <div class="pt-md-2 col-10 p-slider">
+                                         {#<span class="p-slider-number">1.</span> #}
+                                         Créez votre compte
+                                    </div>
+                                </div>
+                                <div class="row mb-3 pt-md-2 pr-md-5">
+                                    <div class="col-2 p-slider-icon">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                    </div>
+                                    <div class="col-10 p-slider">
+                                         {#<span class="p-slider-number">2.</span>  #}
+                                         Saisissez les informations de votre meublés de tourisme (vous pouvez enregistrer autant de meublés que nécessaire)
+                                    </div>
+                                </div>
+                                <div class="row mb-3 pt-md-2 pr-md-5">
+                                    <div class="col-2 p-slider-icon">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                    </div>
+                                    <div class="col-10 p-slider">
+                                         {#<span class="p-slider-number">3.</span>  #}
+                                         Votre demande est transmise automatiquement à la mairie qui valide votre dossier
+                                    </div>
+                                </div> 
+                                <div class="row mb-3 pt-md-2 pr-md-5">
+                                    <div class="col-2 p-slider-icon">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                    </div>
+                                    <div class="col-10 p-slider">
+                                         {#<span class="p-slider-number">4.</span>  #}
+                                         Vous recevez votre numéro d’enregistrement par email à inclure dans vos annonces et textes de promotion
+                                    </div>
+                                </div> 
+                                <div class="row pt-md-2 pr-md-5">
+                                    <div class="col-2 p-slider-icon">
+                                        <i class="icon-danger far fa-check-circle fa-2x mt-2 d-flex justify-content-end"></i>
+                                    </div>
+                                    <div class="col-10 pt-md-3 p-slider">
+                                        {#<span class="p-slider-number">5.</span>  #}
+                                        Votre (vos) meublé(s) sont automatiquement affichés sur le site
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# *****************************************END SLIDE 2***************************************** #}
+                    {# *****************************************SLIDE 3*****************************************  1#}
+                    <div class="row carousel-item mt-md-4 mb-md-5 pt-md-5 pb-md-5">
+                        <div class="row pl-md-0 d-flex align-items-center">
+                            <div class="col-12 d-flex flex-column justify-content-center">
+                                <p class="p-slider-big text-center">
+                                    Vous êtes prêt(e) ?
+                                </p>
+                                <p class="p-slider text-center pt-0">
+                                    Cliquez sur le bouton pour commencer !
+                                </p>
+                                <p class="text-center">
+                                    <a href="{{ path('connexion') }}" class="btn btn-danger" role="button">Espace déclaration</a>
+                                </p>
+                                <hr style="width: 40%; color: grey; height: 1px;">
+                                <p class="p-slider text-center pt-0">
+                                    Ou bien suivez ces liens pour plus d'informations sur la réglementation
+                                </p>
+                                <p class="text-center">
+                                    <a href="https://www.entreprises.gouv.fr/tourisme/meubles-tourisme" target="_blank" class="btn btn-success" role="button">
+                                        Informations sur les meublés de tourisme
+                                    </a>
+                                </p>
+                                <p class="text-center">
+                                    <a href="https://ubaye.taxesejour.fr/" target="_blank" class="btn btn-info" role="button">
+                                        Informations et déclaration de la taxe de séjour
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {# *****************************************END SLIDE 3*****************************************  #}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 bg-warning p-5">
+                <h2 class="titre-info titre-vignette text-center">Meublé de tourisme ?</h2>
+                <p>
+                    Les meublés de tourisme sont des villas, appartements, ou studios meublés offerts en location à une clientèle de passage qui y effectue un séjour caractérisé par une location à la journée, à la semaine ou au mois, et qui n'y élit pas domicile. Ils se distinguent des autres types d’hébergement en ce qu’ils sont réservés à l’usage exclusif du locataire, ne comportant ni accueil ou hall de réception ni services et équipements communs. Ils se distinguent de la chambre d’hôte où l’habitant est présent pendant la location.
+                </p>
+                <h5 class="mb-4">
+                    La location saisonnière ou touristique se distingue du bail d’habitation selon 2 critères :
+                </h5>
+                <p>
+                    <i class="far icon-info fa-check-circle"></i> <strong> Le locataire n’y élit pas domicile,</strong> il y réside principalement pour les vacances.
+                </p>
+                <p>
+                    <i class="far icon-info fa-check-circle"></i>  La location saisonnière doit être conclue pour <strong>une durée maximale de 90 jours</strong> à la même personne.
+                </p>                
+            </div>
+        </div>
+    </div>
+    {# FIN DEMARCHE #}
+    
+    {# DEBUT COMMUNE #}
+    <div class="container-fluid section pt-1" id="section-commune">
+        <div class="row headercommune">
+            <div class="col-12 d-flex flex-column justify-content-center w-100">
+                <h1 class="section-titre text-center text-white">Barcelonnette</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 bg-warning p-4 text-center">
+                    <img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">
+                    <h3 class="text-center titre-vignette">A votre service</h3>
+                    <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique
+                        : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels
+                        ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou
+                        à vélo !</p>
+                </div>
+                    <div class="col-md-6 bg-white p-4 text-center">
+                        <img src="{{asset('assets/img/vecteurs/signs.png')}}"  class="fixed flaticon img-fluid m-md-3" alt="des panneaux fléchés indiquant plusieurs destinations possibles">
+                        <h3 class="text-center titre-vignette">Une situation idéale</h3>
+                        <p>Barcelonnette est à la croisée des itinéraires de la Vallée de l’Ubaye. Pittoresque, artistique et historique, elle est classée
+                        station de tourisme depuis 1928. Face à des panoramas grandeur nature, elle invite à la détente et à la flânerie, mais appelle
+                        aussi à partir à la rencontre de la Vallée de l'Ubaye Serre-Ponçon.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 bg-white p-4 text-center">
+                    <img src="{{asset('assets/img/vecteurs/backpack.png')}}" alt="un sac à dos" class="fixed flaticon img-fluid m-md-3">                    
+                    <h3 class="text-center titre-vignette">Une destination prisée</h3>
+                    <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble
+                    de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye).
+                    C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape
+                    réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</p>
+                </div>
+                <div class="flipper col-md-6 bg-info p-4 text-center">
+                    <div class="front">
+                        <img src="{{asset('assets/img/vecteurs/house.png')}}" alt="une maison" class="fixed flaticon img-fluid m-md-3">                    
+                        <h3 class="text-center titre-vignette">Classez-vous !</h3>
+                    </div>
+                    <div class="back">
+                        <p>Le classement est volontaire et est attribué pour 5 ans. Pour être classé, le meublé de tourisme doit répondre à certains critères de contrôle (obligatoires et optionnels) fixant les normes en matière d'accueil et de service aux clients, équipements et enfin accessibilité et développement durable.
+                            Le classement est un gage de qualité pour rassurer vos clients : location aux normes nationales, règlement possible en chèques-vacances... Et présente aussi des bénéfices pour vous : une fiscalité avantageuse et une meilleure commercialisation de votre bien.</p>
+                        <p class="text-center">
+                        <a class="btn btn-light" target="_blank" href="https://www.classement.atout-france.fr/meubles" role="button">En savoir plus</a>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# FIN COMMUNE #}
+    
+    {# DEBUT CONTACT #}
+    {#<div class="container-fluid pt-5 mt-2 pr-0 pl-0 section w-100" id="section-contact">#}
+    {#    <div class="row w-100">#}
+    {#        <div class="col-12 pr-0">#}
+    {#            <h1 class="section-titre text-center">Contact</h1>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    <div class="row w-100 justify-content-center mb-4">#}
+    {#        <div class="col-md-7 embed-responsive embed-responsive-16by9">#}
+    {#                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>#}
+    {#        </div>#}
+    {#        <div class="col-md-4">#}
+    {#            <div>#}
+    {#                <p class="p-0 m-1"><strong>Mairie de Barcelonnette</strong></p>#}
+    {#                <p class="p-0 m-1"><i class="fas fa-map-marker-alt m-1"></i>   Place Valle de Bravo, 04400 Barcelonnette</p>#}
+    {#                <p class="p-0 m-1"><i class="fas fa-phone m-1"></i>  04 92 80 79 00 | Fax : 04 92 81 45 82</p>#}
+    {#                <p class="p-0 m-1">#}
+    {#                    <i class="far fa-clock m-1"></i>  La mairie et les services administratifs vous accueillent tous les lundis, mardis, jeudis et vendredis de 8h00 à 12h00 et de 13h30 à 17h00, les mercredis de 8h00 à 12h00.#}
+    {#                </p>#}
+    {#            </div>#}
+    {#            <div class="row m-2 d-flex justify-content-center">#}
+    {#                 {% for label, messages in app.flashes %}#}
+    {#                    <div class="alert alert-{{ label }}">#}
+    {#                        {% for message in messages %}#}
+    {#                            {{ message }}#}
+    {#                        {% endfor %}#}
+    {#                    </div>#}
+    {#                {% endfor %}#}
+    {#            </div>  #}
+    {#            <div class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
+    {#            <h3 class="text-center">Contactez votre mairie</h3>#}
+    {#            <h4 class="text-center">pour en savoir plus sur le service</h4>#}
+    {#                {{ form_start(form)}}#}
+    {#                <div class="row">#}
+    {#                <div class="form-group col-md-6 mb-2">#}
+    {#                    {{ form_label(form.name)}}#}
+    {#                    {{ form_widget(form.name)}}    #}
+    {#                </div>#}
+    {#                <div class="form-group col-md-6 mb-2">#}
+    {#                    {{ form_label(form.email)}}#}
+    {#                    {{ form_widget(form.email)}}#}
+    {#                </div>#}
+    {#                </div>#}
+    {#                <div class="form-group mb-2">#}
+    {#                    {{ form_label(form.subject)}}#}
+    {#                    {{ form_widget(form.subject)}}#}
+    {#                </div>                    #}
+    {#                <div class="form-group mb-2">#}
+    {#                    {{ form_label(form.message)}}#}
+    {#                    {{ form_widget(form.message)}}#}
+    {#                </div>#}
+    {#                <div class="form-group text-center mb-1">#}
+    {#                    {{ form_label(form.valider)}}#}
+    {#                    {{ form_widget(form.valider)}}#}
+    {#                </div>#}
+    {#                    {{ form_end(form)}}#}
+    {#            </div>  #}
+    {#        </div>#}
+    {#    </div>#}
+    {#</div>#}
+{% endblock %}
