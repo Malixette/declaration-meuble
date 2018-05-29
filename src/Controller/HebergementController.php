@@ -54,24 +54,23 @@ class HebergementController extends Controller
             $mairieNom = $hebergement->getHebCommune();
             $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
             $mairie = $repoMairie->findOneBy(['mairie_nom_touristique' => $mairieNom]);
-            
 
-            /////////////////////////////
-            $id = $hebergement->getId();
-            $lastId = 
+        //Génération du numéro de demande////////
+            // $idMax = $repoHeb->findOneBy(array(['id']);
+            // dump($idMax);
+
+            $insee = $mairie->getInsee();
             $date = new \DateTime;
             $dateFormat = $date->format('Ymd');
-            $insee = "CodeInsee";
-            $numCerfa= $insee . "/" . $dateFormat . "/" . $id;
-            /////////////////////////////
-        
+            $numCerfa= $insee . "-" . $dateFormat . "-";
+        //-------------------------------------
 
             $hebergement->setUser($user);
             $hebergement->setHebDateCreation(new \DateTime());
             $hebergement->setHebDateDeclaration(new \DateTime());
             $hebergement->setHebCerfa(123);
             $hebergement->setHebStatut('en cours');
-            $hebergement->setHebNumDeclaration('Mairie321');
+            $hebergement->setHebNumDeclaration($numCerfa);
             $hebergement->setMairie($mairie);
 
             $file1 = $hebergement->getHebPhoto1();

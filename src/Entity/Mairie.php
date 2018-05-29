@@ -203,6 +203,11 @@ class Mairie
      */
     private $hebergement;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $insee;
+
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
@@ -693,5 +698,17 @@ class Mairie
     public function getHebergement(): Collection
     {
         return $this->hebergement;
+    }
+
+    public function getInsee(): ?string
+    {
+        return $this->insee;
+    }
+
+    public function setInsee(string $insee): self
+    {
+        $this->insee = $insee;
+
+        return $this;
     }
 }
