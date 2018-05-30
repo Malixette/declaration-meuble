@@ -22,6 +22,13 @@
         </div>
         <div class="col-md-8 col-lg-6">
             <h2>{{ hebergement.hebName }}</h2> 
+            <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
+            <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
+            {% if hebergement.hebStatut != 'en cours' %}
+                <a href="www.google.fr"><img class="img-fluid my-2" src="{{ asset('assets/img/pdf2.png') }}" alt="cerfa -{{ hebergement.hebName }}"></a>
+                <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
+            {% endif %}
+            
             <p><strong>Descriptif:</strong> {{ hebergement.hebDescriptifCourt }}</p>
             <p><strong>Adresse:</strong> {{ hebergement.hebAdresse }} <br>
             {% if hebergement.hebAdresseComplement != '' %}
@@ -58,10 +65,12 @@
             {% if hebergement.hebTelResa != '' %}
                 <strong>Téléphone de réservation:</strong> {{ hebergement.hebTelResa }}</p>
             {% endif %}
-            <p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>
-            <strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>
-            <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
-            
+            {% if hebergement.hebStatut != 'validée' %}
+                <div>
+                    <a class="btn btn-danger mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">Demande d'informations complémentaires</a><br><br>   
+                    <a class="btn btn-info mr-2" href="{{ path('load_pdf', {'id': hebergement.id}) }}">Valider la demande et générer le cerfa</a><br><br>     
+                </div>
+            {% endif %}
         </div>
         <div id="map" class="col-lg-4 d-flex my-3" style="height: 400px;">
         </div>

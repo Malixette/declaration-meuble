@@ -1,3 +1,4 @@
+{% extends 'admin.html.twig' %}
 
 {% block title %}Vérifications de vos informations<{% endblock %}
 
@@ -11,7 +12,7 @@
 
 {% block body %}
     <div class="row ml-2 mb-4">
-        <a href="{{ path('hebergement_new') }}">< retour à la liste</a>
+        <a href="{{ path('hebergement_new') }}">< retour sur ma déclaration</a>
     </div>
     <div class="row" onload="initialize()">
         <div class="col-md-8 col-lg-6">
@@ -55,7 +56,10 @@
             <strong>Cerfa:</strong> {{ hebergement.hebCerfa }}</p>
             <div class="d-flex flex-column flex-sm-row">
                 <div>
-                    <a class="btn btn-warning mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">modifier les informations</a>     
+                    <a class="btn btn-warning mr-2" href="{{ path(app.request.get('_route')) }}">modifier les informations</a>     
+                </div> 
+                <div>
+                    <a class="btn btn-warning mr-2" href="{{ path('dashboard_declarant', {'id': hebergement.id}) }}">Valider les informations</a>     
                 </div>
             </div>
     </div>
@@ -63,4 +67,5 @@
 {% endblock %}
 {% block javascripts %}
     
+
 {% endblock %}

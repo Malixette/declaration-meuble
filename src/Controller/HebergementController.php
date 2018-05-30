@@ -98,10 +98,10 @@ class HebergementController extends Controller
             
             $this->addFlash(
                 'success',
-                'Votre déclaration a bien été envoyée. Vous recevrez un email de confirmation très prochainement.'
+                'Votre déclaration a bien été envoyée. La mairie va traiter votre demande.'
             );
 
-            return $this->redirectToRoute('dashboard_declarant');
+            return $this->redirectToRoute('verif_info_heb');
         }
 
         return $this->render('hebergement/new.html.twig', [

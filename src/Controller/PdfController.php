@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\Hebergement;
+use App\Entity\User;
+use App\Entity\Mairie;
 
 class PdfController extends Controller
 {
@@ -27,8 +29,12 @@ class PdfController extends Controller
     {
         $pdf = new \FPDF('P','mm','A4');
         
-        $repo = $this->getDoctrine()->getRepository(Hebergement::class);
-
+        $user = $this->getUser();
+        
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
+ 
         // ************************* PAGE 1
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(0);
@@ -53,7 +59,7 @@ $pdf->Cell(175,20,utf8_decode('A - IDENTIFICATION DU DÉCLARANT²'),0,1,'C');
 $pdf->SetFont('Times','',14, 'cp1252');
 $pdf->SetY(95);
 
-$pdf->Cell(0,10,utf8_decode('NOM: '),0,0,'L');
+$pdf->Cell(0,10,utf8_decode('NOM: {{userDeclarant.usernom }}'),0,0,'L');
 $pdf->SetY(105);
 
 $pdf->Cell(0,10,utf8_decode('PRENOM: '),0,0,'L');
@@ -231,6 +237,13 @@ $pdf->Cell(0,10,utf8_decode('[cachet ici]'),0,0,'L');
 
         
        return new Response($pdf->Output(), 200, array(
-            'Content-Type' => 'application/pdf'));
+            'Content-Type' => 'application/pdf',
+            'hebergement'   => $hebergement,
+            'nombre'        => $nombre,
+            'user'          => $user,
+            'mairie'        => $mairie,
+            'url'           => $url,
+            'userDeclarant' => $userDeclarant,
+        ));
     }
 }

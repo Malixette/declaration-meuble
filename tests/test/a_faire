@@ -47,7 +47,7 @@ Si le déclarant supprime son compte mais qu’il a des meublés sur plusieurs c
 
 Exclure de l'autocomplete les communes qui n'ont pas adhéré (n'autoriser que les codes postaux ou codes insee de la base de données
 AJOUTER UN MEUBLE___________________________________________________________
-Ordre souhaité par pierre - fait
+Ordre souhaité par pierre - FAIT
 •	Numéro
 •	adresse
 •	complément adresse
@@ -62,7 +62,7 @@ Mettre infobulle sur le classement et y inclure ce lien https://www.classement.a
 Enlever les labels clévacances et GDF - fait
 
 DASHBOARD MAIRIE___________________________________________________________
-Mettre en 1e colonne état de déclaration
+Mettre en 1e colonne état de déclaration - FAIT
 Ajouter champ Insee dans bdd mairie
 Affichage d'une googlemaps avec plusieurs markers
 Mise en place de la procédure de validation des demandes en cours
