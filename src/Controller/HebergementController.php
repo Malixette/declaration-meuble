@@ -101,7 +101,7 @@ class HebergementController extends Controller
                 'Votre déclaration a bien été envoyée. La mairie va traiter votre demande.'
             );
 
-            return $this->redirectToRoute('verif_info_heb');
+            return $this->redirectToRoute('dashboard_declarant');
         }
 
         return $this->render('hebergement/new.html.twig', [
@@ -180,6 +180,30 @@ class HebergementController extends Controller
             'mairie'        => $mairie,
             'url'           => $url,
             'userDeclarant' => $userDeclarant,
+            ]);
+    }
+    
+    /**
+     * @Route("/verification/information", name="verif_info", methods="GET")
+     */
+    public function verif_info_heb(Request $request, Hebergement $hebergement): Response
+     {
+
+        $url = $_SERVER['REQUEST_URI'];   
+        
+        $user = $this->getUser();
+        
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
+
+        $mairie = $hebergement->getMairie(); 
+        // dump($mairie);
+        $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
+        // dump($mairieHeb);
+        
+        return $this->render('hebergement/verifInfo.html.twig', [
+            'hebergement'   => $hebergement,
             ]);
     }
 

@@ -67,8 +67,8 @@
             {% endif %}
             {% if hebergement.hebStatut != 'validée' %}
                 <div>
-                    <a class="btn btn-danger mr-2" href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">Demande d'informations complémentaires</a><br><br>   
-                    <a class="btn btn-info mr-2" href="{{ path('load_pdf', {'id': hebergement.id}) }}">Valider la demande et générer le cerfa</a><br><br>     
+                    <a class="btn btn-danger mr-2" href="{{ path('') }}">Demande d'informations complémentaires</a><br><br>   
+                    <a class="btn btn-info mr-2" href="{{ path('load_pdf', {'id': hebergement.id}) }}">Valider la demande</a><br><br>     
                 </div>
             {% endif %}
         </div>

@@ -34,6 +34,9 @@ class PdfController extends Controller
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
         $repoUser = $this->getDoctrine()->getRepository(User::class);
+        
+        dump($user);
+        $hebergement->setHebStatut('validée');
  
         // ************************* PAGE 1
 $pdf->AddPage();
@@ -237,13 +240,6 @@ $pdf->Cell(0,10,utf8_decode('[cachet ici]'),0,0,'L');
 
         
        return new Response($pdf->Output(), 200, array(
-            'Content-Type' => 'application/pdf',
-            'hebergement'   => $hebergement,
-            'nombre'        => $nombre,
-            'user'          => $user,
-            'mairie'        => $mairie,
-            'url'           => $url,
-            'userDeclarant' => $userDeclarant,
-        ));
+            'Content-Type' => 'application/pdf'));
     }
 }
