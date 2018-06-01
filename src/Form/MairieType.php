@@ -23,7 +23,7 @@ class MairieType extends AbstractType
     {
         $builder
             ->add('mairie_nom_touristique', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Nom touristique de la commune :',
                 'attr' => [
                     'class' => "form-control form-control-lg mb-3",
@@ -96,7 +96,7 @@ class MairieType extends AbstractType
                 ]
             ])
             ->add('mairie_contact_nom', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Nom du responsable technique des déclarations de meublé:',
                 'attr' => [
                     'placeholder' => "DAVANT",
@@ -105,7 +105,7 @@ class MairieType extends AbstractType
                 ]
             ])            
             ->add('mairie_contact_prenom', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Prénom du responsable technique des déclarations de meublé:',
                 'attr' => [
                     'placeholder' => "Sacha",
@@ -114,7 +114,7 @@ class MairieType extends AbstractType
                 ]
             ])
             ->add('mairie_telephone_contact', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Téléphone du responsable technique :',
                 'attr' => [
                     'placeholder' => "0102030405",
@@ -123,7 +123,7 @@ class MairieType extends AbstractType
                 ]
             ])            
             ->add('mairie_email_contact', EmailType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Email du responsable technique',
                 'attr' => [
                     'placeholder' => "davant-sacha@commune.fr",
@@ -164,7 +164,7 @@ class MairieType extends AbstractType
             ]
             )) 
             ->add('mairie_taxe_sejour_gestionnaire', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Nom de l\'organisme gestionnaire de la taxe de séjour :',
                 'attr' => [
                     'placeholder' => "Communauté de communes de ...",
@@ -173,7 +173,7 @@ class MairieType extends AbstractType
                 ]
             ])            
             ->add('mairie_taxe_sejour_bareme', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Barême de la taxe de séjour',
                 'attr' => [
                     'placeholder' => "faire préciser à Pierre",
@@ -182,8 +182,8 @@ class MairieType extends AbstractType
                 ]
             ]) 
             ->add('mairie_sejour_lien', TextType::class,  [
-                'required' => true,
-                'label' => 'Lien du site internet de paiement de la taxe de séjour pour votre commune',
+                'required' => false,
+                'label' => 'Lien du site internet de paiement de la taxe de séjour',
                 'attr' => [
                     'placeholder' => "www.",
                     'class' => "form-control form-control-lg mb-3",
@@ -191,7 +191,7 @@ class MairieType extends AbstractType
                 ]
             ]) 
             ->add('mairie_contact_nom_prenom', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Nom et prénom de la personne référente de la taxe de séjour',
                 'attr' => [
                     'placeholder' => "",
@@ -200,7 +200,7 @@ class MairieType extends AbstractType
                 ]
             ]) 
             ->add('mairie_de_telephone', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Numéro de téléphone pour la taxe de séjour',
                 'attr' => [
                     'placeholder' => "03 26 75 41 23",
@@ -209,7 +209,7 @@ class MairieType extends AbstractType
                 ]
             ]) 
             ->add('mairie_sejour_email', TextType::class,  [
-                'required' => true,
+                'required' => false,
                 'label' => 'Email de contact pour la taxe de séjour',
                 'attr' => [
                     'placeholder' => "contact@taxedesejour-commune.fr",
@@ -234,7 +234,7 @@ class MairieType extends AbstractType
             ]
             )) 
             ->add('mairie_tampon', FileType::class, array(
-                'required'      => null,
+                'required'      => true,
                 'data_class'    => null,
                 'label'         => 'Tampon officiel de la Mairie',
                 'attr'      => [
@@ -242,7 +242,7 @@ class MairieType extends AbstractType
             ]
             )) 
             ->add('mairie_maire_signature', FileType::class, array(
-                'required'      => null,
+                'required'      => true,
                 'data_class'    => null,
                 'label'         => 'Signature manuscrite du Maire de la commune',
                 'attr'      => [
@@ -258,16 +258,24 @@ class MairieType extends AbstractType
                     'type' => "text"
                 ]
             ]) 
+            // ->add('mairie_rappel_lien', TextType::class,  [
+            //     'required' => true,
+            //     'label' => 'Adresse du site internet de déclaration de la taxe de séjour',
+            //     'attr' => [
+            //         'placeholder' => "www.taxedesejour-commune.fr",
+            //         'class' => "form-control form-control-lg mb-3",
+            //         'type' => "text"
+            //     ]
+            // ]) 
             // ->add('mairie_slug')
             // ->add('mairie_date_inscription')
             // ->add('officeTourisme') null
             // ->add('mairie_rappel_texte')
-            // ->add('mairie_rappel_lien')
             // ->add('mairie_latitude') SETTER
             // ->add('mairie_longitude') SETTER
             
             ->add('valider', SubmitType::class, [
-                'label' => 'Continuer',
+                'label' => 'Allez à l\'étape 2' ,
                 'attr' => [
                     'class' => 'btn btn-lg btn-success'    
                 ]

@@ -129,7 +129,7 @@ class Mairie
     private $mairie_contact_nom_prenom;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="text",  length=255, nullable=true)
      */
     private $mairie_de_telephone;
 
@@ -486,12 +486,12 @@ class Mairie
         return $this;
     }
 
-    public function getMairieDeTelephone(): ?int
+    public function getMairieDeTelephone(): ?string
     {
         return $this->mairie_de_telephone;
     }
 
-    public function setMairieDeTelephone(?int $mairie_de_telephone): self
+    public function setMairieDeTelephone(?string $mairie_de_telephone): self
     {
         $this->mairie_de_telephone = $mairie_de_telephone;
 
