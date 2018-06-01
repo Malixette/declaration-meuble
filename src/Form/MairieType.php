@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class MairieType extends AbstractType
 {
@@ -23,16 +24,41 @@ class MairieType extends AbstractType
         $builder
             ->add('mairie_nom_touristique', TextType::class,  [
                 'required' => true,
-                'label' => 'Nom de la commune :',
+                'label' => 'Nom touristique de la commune :',
                 'attr' => [
-                    'placeholder' => "Barcelonnette",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])
-            // ->add('mairie_descriptif_1') null
-            // ->add('mairie_descriptif_2') null
-            // ->add('mairie_epci_rattachement') null
+            ->add('mairie_descriptif_1',TextareaType::class, [
+                'required'  => false,
+                'label'     => "Descriptif de la commune",
+                'attr'      => [
+                    'placeholder' => "Ex: En plein coeur d'un massif préservé...",
+                    'class' => "form-control form-control-lg mb-3",
+                    'cols'  => '50', 
+                    'rows'  => '3'
+                ]
+            ])
+            ->add('mairie_descriptif_2',TextareaType::class, [
+                'required'  => false,
+                'label'     => "Descriptif détaillé de la commune",
+                'attr'      => [
+                    'placeholder' => "L'histoire de la commune s'est construite autour de la route de ...",
+                    'class' => "form-control form-control-lg mb-3",
+                    'cols'  => '50', 
+                    'rows'  => '3'
+                ]
+            ])
+            ->add('mairie_epci_rattachement', TextType::class,  [
+                'required' => true,
+                'label' => 'Nom du regroupement de communes à laquelle la commune appartient:',
+                'attr' => [
+                    'placeholder' => "Communauté de communes de... ou Communauté d'agglomération de...",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])
             ->add('mairie_maire_nom', TextType::class,  [
                 'required' => true,
                 'label' => 'Nom du Maire :',
@@ -51,29 +77,45 @@ class MairieType extends AbstractType
                     'type' => "text"
                 ]
             ])
-            // ->add('mairie_adjoint_nom') null
-            // ->add('mairie_adjoint_prenom') null
+            ->add('mairie_adjoint_nom', TextType::class,  [
+                'required' => true,
+                'label' => 'Nom du 1er(e) adjoint(e) :',
+                'attr' => [
+                    'placeholder' => "DELARC",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])
+            ->add('mairie_adjoint_prenom', TextType::class,  [
+                'required' => true,
+                'label' => 'Prénom du 1er(e) adjoint(e) :',
+                'attr' => [
+                    'placeholder' => "Dominique",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])
             ->add('mairie_contact_nom', TextType::class,  [
                 'required' => true,
-                'label' => 'Nom du responsable du compte :',
+                'label' => 'Nom du responsable technique des déclarations de meublé:',
                 'attr' => [
-                    'placeholder' => "Germain",
+                    'placeholder' => "DAVANT",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])            
             ->add('mairie_contact_prenom', TextType::class,  [
                 'required' => true,
-                'label' => 'Prénom du responsable du compte :',
+                'label' => 'Prénom du responsable technique des déclarations de meublé:',
                 'attr' => [
-                    'placeholder' => "Vincent",
+                    'placeholder' => "Sacha",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
                 ]
             ])
             ->add('mairie_telephone_contact', TextType::class,  [
                 'required' => true,
-                'label' => 'Téléphone :',
+                'label' => 'Téléphone du responsable technique :',
                 'attr' => [
                     'placeholder' => "0102030405",
                     'class' => "form-control form-control-lg mb-3",
@@ -82,35 +124,148 @@ class MairieType extends AbstractType
             ])            
             ->add('mairie_email_contact', EmailType::class,  [
                 'required' => true,
-                'label' => 'Email ',
+                'label' => 'Email du responsable technique',
                 'attr' => [
-                    'placeholder' => "vgermain@barcelonnette.fr",
+                    'placeholder' => "davant-sacha@commune.fr",
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "email"
                 ]
             ])
+            ->add('mairie_photo_1', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Ajouter des photos de votre maire ou commune',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            ))
+            ->add('mairie_photo_2', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                // 'label'         => 'Ajouter une photo principale',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            ))  
+            ->add('mairie_photo_3', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                // 'label'         => 'Ajouter une photo principale',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            )) 
+            ->add('mairie_photo_4', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                // 'label'         => 'Ajouter une photo principale',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            )) 
+            ->add('mairie_taxe_sejour_gestionnaire', TextType::class,  [
+                'required' => true,
+                'label' => 'Nom de l\'organisme gestionnaire de la taxe de séjour :',
+                'attr' => [
+                    'placeholder' => "Communauté de communes de ...",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])            
+            ->add('mairie_taxe_sejour_bareme', TextType::class,  [
+                'required' => true,
+                'label' => 'Barême de la taxe de séjour',
+                'attr' => [
+                    'placeholder' => "faire préciser à Pierre",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            ->add('mairie_sejour_lien', TextType::class,  [
+                'required' => true,
+                'label' => 'Lien du site internet de paiement de la taxe de séjour pour votre commune',
+                'attr' => [
+                    'placeholder' => "www.",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            ->add('mairie_contact_nom_prenom', TextType::class,  [
+                'required' => true,
+                'label' => 'Nom et prénom de la personne référente de la taxe de séjour',
+                'attr' => [
+                    'placeholder' => "",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            ->add('mairie_de_telephone', TextType::class,  [
+                'required' => true,
+                'label' => 'Numéro de téléphone pour la taxe de séjour',
+                'attr' => [
+                    'placeholder' => "03 26 75 41 23",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            ->add('mairie_sejour_email', TextType::class,  [
+                'required' => true,
+                'label' => 'Email de contact pour la taxe de séjour',
+                'attr' => [
+                    'placeholder' => "contact@taxedesejour-commune.fr",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            ->add('mairie_logo', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Logo de votre commune',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            )) 
+            ->add('mairie_logo_2', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Autre logo',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            )) 
+            ->add('mairie_tampon', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Tampon officiel de la Mairie',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            )) 
+            ->add('mairie_maire_signature', FileType::class, array(
+                'required'      => null,
+                'data_class'    => null,
+                'label'         => 'Signature manuscrite du Maire de la commune',
+                'attr'      => [
+                    'class'         => "form-control form-control-lg mb-3",
+            ]
+            )) 
+            ->add('insee', TextType::class,  [
+                'required' => true,
+                'label' => 'Code insee de la commune',
+                'attr' => [
+                    // 'placeholder' => "",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            // ->add('mairie_slug')
+            // ->add('mairie_date_inscription')
+            // ->add('officeTourisme') null
+            // ->add('mairie_rappel_texte')
+            // ->add('mairie_rappel_lien')
             // ->add('mairie_latitude') SETTER
             // ->add('mairie_longitude') SETTER
-            // ->add('mairie_photo_1') null
-            // ->add('mairie_photo_2') null
-            // ->add('mairie_photo_3') null
-            // ->add('mairie_photo_4') null
-            // ->add('mairie_taxe_sejour_gestionnaire') null
-            // ->add('mairie_taxe_sejour_bareme') null
-            // ->add('mairie_sejour_lien') null
-            // ->add('mairie_contact_nom_prenom') null
-            // ->add('mairie_de_telephone') null
-            // ->add('mairie_sejour_email') null
-            // ->add('mairie_rappel_texte') null
-            // ->add('mairie_rappel_lien') null
-            // ->add('mairie_logo') null
-            // ->add('mairie_logo_2') null
-            // ->add('mairie_date_inscription') SETTER
-            // ->add('mairie_tampon') null
-            // ->add('mairie_maire_signature') null
-            // ->add('mairie_slug') SETTER
-            // ->add('ville') null
-            // ->add('officeTourisme') null
+            
             ->add('valider', SubmitType::class, [
                 'label' => 'Continuer',
                 'attr' => [
