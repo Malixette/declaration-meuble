@@ -1,0 +1,12 @@
+{% extends 'admin-mairie.html.twig' %}
+
+{% block title %}Demande d'informations complémentaires{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    {{ form_start(formInfosComplementaires) }}
+    {{ form_widget(formInfosComplementaires) }}
+    {{ form_end(formInfosComplementaires) }}
+</div>
+{% endblock %}

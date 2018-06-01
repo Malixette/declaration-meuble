@@ -54,8 +54,8 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_adresse', TextType::class, [
-                'required' => false,
-                'label' => 'Adresse :',
+                'required' => true,
+                'label' => 'Adresse de contact:',
                 'attr' => [
                     'placeholder' => "317 chemin des Blés Dorés",
                     'class' => "form-control form-control-lg mb-3",
@@ -72,7 +72,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_postal_code', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Code postal :',
                 'attr' => [
                     'placeholder' => "04400",
@@ -82,7 +82,7 @@ class UserType extends AbstractType
             ]) 
             ->add('user_commune', TextType::class,
             [
-                'required' => false,
+                'required' => true,
                 'label' => 'Commune de résidence :',
                 'attr' => [
                     'placeholder' => "Barcelonnette",
@@ -90,17 +90,26 @@ class UserType extends AbstractType
                     'type' => "text"
                 ]
             ])
-            ->add('user_pays', CountryType::class,
-                [
-                'label' => 'Pays de résidence :',
-                'preferred_choices' => [
-                    'FR', 'CA', 'BE', 'LU', 'CH'
-                ],
-                'required' => false,
-                'attr' => [
-                    'class' => "form-control form-control-lg mb-3",
-                    'type' => "select"
-                    ]   
+            // ->add('user_pays', CountryType::class,
+            //     [
+            //     'label' => 'Pays de résidence :',
+            //     'preferred_choices' => [
+            //         'FR', 'CA', 'BE', 'LU', 'CH'
+            //     ],
+            //     'required' => false,
+            //     'attr' => [
+            //         'class' => "form-control form-control-lg mb-3",
+            //         'type' => "select"
+            //         ]   
+            // ])
+            ->add('user_pays', TextType::class, [
+                'required'  => true,
+                'label'     => "Pays",
+                'attr'      => [
+                    'placeholder'   => "Nom du pays de résidence",
+                    'class'         => "form-control form-control-lg mb-3",
+                    'id'            => "country",
+                ]    
             ])
             ->add('user_telephone', TextType::class, [
                 'required' => false,
@@ -121,19 +130,19 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'disabled'     => $options['is_edit'],
+                'type'      => PasswordType::class,
+                'disabled'  => $options['is_edit'],
                 'invalid_message' => 'Les mots de passe entrés sont différents',
-                'required' => true,
+                'required'  => true,
                 'first_options'  => [
                     'label' => 'Mot de passe :',
-                    'attr' => [
+                    'attr'  => [
                         'class'=> 'form-control form-control mb-3'
                     ]
                 ],
                 'second_options' => [
                     'label' => 'Vérifiez le mot de passe :',
-                    'attr' => [
+                    'attr'  => [
                         'class'=> 'form-control form-control mb-3'
                     ]
                 ]
