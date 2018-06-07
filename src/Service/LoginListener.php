@@ -36,24 +36,32 @@ class LoginListener implements AuthenticationSuccessHandlerInterface
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         $roles = $token->getRoles();
+        $user = $token->getUser();
+        $isActivated = $user->getIsActivated();
 
-        $rolesTab = array_map(function ($role) {
-            return $role->getRole();
-        }, $roles);
+        if ($isActivated == true) {
 
-        if (in_array('ROLE_DECLARANT', $rolesTab, true)) {
-            // DONNER LA ROUTE POUR LES ROLE_MEMBRE
-            $redirection = new RedirectResponse($this->router->generate('dashboard_declarant'));
-        } 
-        elseif (in_array('ROLE_MAIRIE', $rolesTab, true)) {
-            // DONNER LA ROUTE POUR LES ROLE_ADMIN
-            $redirection = new RedirectResponse($this->router->generate('dashboard_mairie'));
+            $rolesTab = array_map(function ($role) {
+                return $role->getRole();
+            }, $roles);
+    
+            if (in_array('ROLE_DECLARANT', $rolesTab, true)) {
+                // DONNER LA ROUTE POUR LES ROLE_MEMBRE
+                $redirection = new RedirectResponse($this->router->generate('dashboard_declarant'));
+            } 
+            elseif (in_array('ROLE_MAIRIE', $rolesTab, true)) {
+                // DONNER LA ROUTE POUR LES ROLE_ADMIN
+                $redirection = new RedirectResponse($this->router->generate('dashboard_mairie'));
+            }
+            
+            else {
+                $redirection = new RedirectResponse($this->router->generate('connexion'));
+            }
+        } else {
+            $redirection = new RedirectResponse($this->router->generate('logout'));
+            
         }
         
-        else {
-            $redirection = new RedirectResponse($this->router->generate('connexion'));
-        }
-
         return $redirection;
     }
 }

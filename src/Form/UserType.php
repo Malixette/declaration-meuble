@@ -27,6 +27,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('user_nom', TextType::class,  [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Nom :',
                 'attr' => [
@@ -36,6 +37,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('username', TextType::class,  [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Nom d\'utilisateur :',
                 'attr' => [
@@ -45,6 +47,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_prenom', TextType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Prénom :',
                 'attr' => [
@@ -54,6 +57,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_adresse', TextType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Adresse de contact:',
                 'attr' => [
@@ -63,6 +67,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_complement_adresse', TextareaType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required' => false,
                 'label' => 'Complément d\'adresse :',
                 'attr' => [
@@ -72,6 +77,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_postal_code', TextType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Code postal :',
                 'attr' => [
@@ -82,6 +88,7 @@ class UserType extends AbstractType
             ]) 
             ->add('user_commune', TextType::class,
             [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Commune de résidence :',
                 'attr' => [
@@ -103,6 +110,7 @@ class UserType extends AbstractType
             //         ]   
             // ])
             ->add('user_pays', TextType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required'  => true,
                 'label'     => "Pays",
                 'attr'      => [
@@ -112,6 +120,7 @@ class UserType extends AbstractType
                 ]    
             ])
             ->add('user_telephone', TextType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required' => false,
                 'label' => 'N° de téléphone :',
                 'attr' => [
@@ -121,6 +130,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('user_email', EmailType::class, [
+                'disabled'  => $options['is_forgot'],
                 'required' => true,
                 'label' => 'Email :',
                 'attr' => [
@@ -160,7 +170,8 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'is_edit'    => false
+            'is_edit'    => false,
+            'is_forgot' => false,
         ]);
     }
 }
