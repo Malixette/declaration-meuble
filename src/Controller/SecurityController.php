@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\User;
 
 class SecurityController 
     extends Controller
@@ -15,6 +16,29 @@ class SecurityController
      */
     public function connexion(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        $userEmail = $request->get('email');
+        dump($userEmail);
+        
+        if($userEmail) {
+            $token = $request->get('token');
+            
+            $userRepo = $this->getDoctrine()->getRepository(User::class);
+            $user = $userRepo->findOneBy(['user_email' => $userEmail]);
+            dump($user);
+            $userToken = $user->getToken();
+            dump($userToken);
+            
+            if ($token == $userToken) {
+                $user->setIsActivated(true);
+                
+                $this->getDoctrine()->getManager()->flush();
+            
+                $this->addFlash(
+                        'success', 
+                        "Votre inscription est validée. Connectez-vous!"
+                        );
+            }
+        }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 

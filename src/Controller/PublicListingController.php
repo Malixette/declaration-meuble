@@ -18,6 +18,15 @@ class PublicListingController extends Controller
      */
     public function index(HebergementRepository $hebergementRepository) : Response
     {
+        
+    // dump($commune);
+    // $commune = null;
+    
+    // dump($commune);
+    
+    // if($commune == null){
+    // //     return $this->redirectToRoute('declarer');
+    // }
         return $this->render('public_listing/index.html.twig', ['hebergements' => $hebergementRepository->findBy(['heb_commune' => 'Barcelonnette'],['heb_date_creation' => 'DESC'])
         ]);
     }

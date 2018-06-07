@@ -102,7 +102,7 @@ class CommuneHomeController extends Controller
             
             $message = (new \Swift_Message('Vous avez une demande de renseignements'))
                 ->setFrom($contactFormData->getEmail())
-                ->setTo($contactFormData->getEmail())
+                ->setTo($contactFormData->getUserEmail())
                 ->setSubject($contactFormData->getSubject())
                 ->setBody($contactFormData->getMessage())
             ;

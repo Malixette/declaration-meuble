@@ -8,15 +8,14 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180529070140 extends AbstractMigration
+class Version20180606092821 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE mairie ADD insee VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE hebergement DROP classement_gdf, DROP classement_clevacances');
+        $this->addSql('ALTER TABLE mairie CHANGE mairie_de_telephone mairie_de_telephone TINYTEXT DEFAULT NULL');
     }
 
     public function down(Schema $schema)
@@ -24,7 +23,6 @@ class Version20180529070140 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE hebergement ADD classement_gdf INT DEFAULT NULL, ADD classement_clevacances INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE mairie DROP insee');
+        $this->addSql('ALTER TABLE mairie CHANGE mairie_de_telephone mairie_de_telephone INT DEFAULT NULL');
     }
 }
