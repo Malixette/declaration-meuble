@@ -93,11 +93,11 @@ class CreationMairieController extends Controller
             return $this->redirectToRoute('connexion');
         }
         return $this->render('creation_mairie/creation-mairie.html.twig', [
-            'mairie' => $mairie,
-            'idMairie' => $idMairie,
-            'user' => $user,
-            'formMairie' => $formMairie->createView(),
-            'formUser' => $formUser->createView()
+            'mairie'    => $mairie,
+            'idMairie'  => $idMairie,
+            'user'      => $user,
+            'formMairie'=> $formMairie->createView(),
+            'formUser'  => $formUser->createView()
         ]);
     }
 }

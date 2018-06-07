@@ -42,12 +42,10 @@
             <p>Merci de vérifier l'emplacement exact de votre location. Si besoin, vous pouvez changer directement l'emplacement sur la carte pour préciser le lieu de votre meublé.</p>
             <div id="map"></div>
             <div class="form-group">
-                {{ form_label(form.heb_lat) }}
-                {{ form_widget(form.heb_lat) }}
+                {{ form_widget(form.heb_lat, { 'attr' : { 'style':'display:none' } } ) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.heb_long) }}
-                {{ form_widget(form.heb_long) }}
+                {{ form_widget(form.heb_long, { 'attr' : { 'style':'display:none' } } ) }}
             </div>
          </div>
     </div>
@@ -135,7 +133,8 @@
         </div>
     </div>
 </div>
-      
+    
+    <input type="hidden" name="idHebergement" value="{{idHebergement}}"></input>
 
     <button class="btn btn-warning mt-3">{{ button_label|default('Valider mes informations') }}</button>
     

@@ -82,13 +82,13 @@
           <th data-orderable="false" scope="col">Photo</th>
           <th data-orderable="true" scope="col">Couchages</th>
           <th data-orderable="true" scope="col">Type</th>
-          <th data-orderable="true" scope="col">Réservation</th>
+          <th data-orderable="true" scope="col">Contact réservation</th>
         </tr>
       </thead>
       <tbody>
         {% for hebergement in hebergements %}
           <tr>
-            <td class="align-middle">{{ hebergement.hebName }}</td>
+            <td class="align-middle">{{ hebergement.hebName }}<br> {{ hebergement.hebNumDeclaration</td>
             <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}"></td>
             <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
             <td class="align-middle">{{ hebergement.hebType }}</td>

@@ -7,6 +7,7 @@ use App\Entity\Mairie;
 use App\Entity\User;
 use App\Form\HebergementType;
 use App\Form\HebergementEditType;
+use App\Form\HebergementVerifType;
 use App\Repository\HebergementRepository;
 use App\Repository\MairieRepository;
 use App\Repository\UserRepository;
@@ -32,9 +33,10 @@ class HebergementController extends Controller
     /**
      * @Route("/new", name="hebergement_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, HebergementRepository $hebergementRepository): Response
     {
         $hebergement = new Hebergement();
+        $idHebergement = 0;
         $user = $this->getUser();
         $user_id = $user->getId();
         $url = $_SERVER['REQUEST_URI'];
@@ -47,30 +49,25 @@ class HebergementController extends Controller
         
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
+        
+        // $formVerif = $this->createForm(HebergementType::class, $hebergement);
+        // $formVerif->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             
+            $idHebergement = $request->get('idHebergement');
+
             $mairieNom = $hebergement->getHebCommune();
             $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
             $mairie = $repoMairie->findOneBy(['mairie_nom_touristique' => $mairieNom]);
 
-        //Génération du numéro de demande////////
-            // $idMax = $repoHeb->findOneBy(array(['id']);
-            // dump($idMax);
-
-            $insee = $mairie->getInsee();
-            $date = new \DateTime;
-            $dateFormat = $date->format('Ymd');
-            $numCerfa= $insee . "-" . $dateFormat . "-";
-        //-------------------------------------
-
             $hebergement->setUser($user);
             $hebergement->setHebDateCreation(new \DateTime());
             $hebergement->setHebDateDeclaration(new \DateTime());
-            $hebergement->setHebCerfa(123);
+            $hebergement->setHebCerfa(0);
             $hebergement->setHebStatut('en cours');
-            $hebergement->setHebNumDeclaration($numCerfa);
+            $hebergement->setHebNumDeclaration(0);
             $hebergement->setMairie($mairie);
 
             $file1 = $hebergement->getHebPhoto1();
@@ -96,21 +93,51 @@ class HebergementController extends Controller
             $em->persist($hebergement);
             $em->flush();
             
+            $idHebergement = $hebergement->getId();
+            dump($idHebergement);
+            
+        }
+        
+        if ($formVerif->isSubmitted() && $formVerif->isValid()) {
+            
+        //Génération du numéro de dossier////////
+            $idHebergement = $request->get('idHebergement');
+            $insee = $mairie->getInsee();
+            $date = new \DateTime;
+            $dateFormat = $date->format('Ymd');
+            $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
+        //-------------------------------------
+
+            // $hebergement->setUser($user);
+            $hebergement->setHebCerfa('ok');
+            $hebergement->setHebStatut('en attente de validation');
+            $hebergement->setHebNumDeclaration($numCerfa);
+            $hebergement->setMairie($mairie);
+
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($hebergement);
+            $em->flush();
+            
+            $idHebergement = $hebergement->getId();
+            
             $this->addFlash(
                 'success',
-                'Votre déclaration a bien été envoyée. La mairie va traiter votre demande.'
+                'Votre demande de CERFA a bien été envoyée. La mairie va l\'examiner dans les plus brefs délais.'
             );
 
-            return $this->redirectToRoute('dashboard_declarant');
         }
+        
 
         return $this->render('hebergement/new.html.twig', [
             'hebergement'   => $hebergement,
             'form'          => $form->createView(),
+            'formVerif'     => $formVerif->createView(),
             'user'          => $user,
             'nombre'        => $nombre,
             'url'           => $url,
             'mairie'        => $mairie,
+            'idHebergement' => $idHebergement,
         ]);
     }
 
@@ -183,29 +210,29 @@ class HebergementController extends Controller
             ]);
     }
     
-    /**
-     * @Route("/verification/information", name="verif_info", methods="GET")
-     */
-    public function verif_info_heb(Request $request, Hebergement $hebergement): Response
-     {
+    // /**
+    //  * @Route("/verification/information", name="verif_info", methods="GET")
+    //  */
+    // public function verif_info_heb(Request $request, Hebergement $hebergement): Response
+    //  {
 
-        $url = $_SERVER['REQUEST_URI'];   
+    //     $url = $_SERVER['REQUEST_URI'];   
         
-        $user = $this->getUser();
+    //     $user = $this->getUser();
         
-        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
-        $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
-        $repoUser = $this->getDoctrine()->getRepository(User::class);
+    //     $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+    //     $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+    //     $repoUser = $this->getDoctrine()->getRepository(User::class);
 
-        $mairie = $hebergement->getMairie(); 
-        // dump($mairie);
-        $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
-        // dump($mairieHeb);
+    //     $mairie = $hebergement->getMairie(); 
+    //     // dump($mairie);
+    //     $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
+    //     // dump($mairieHeb);
         
-        return $this->render('hebergement/verifInfo.html.twig', [
-            'hebergement'   => $hebergement,
-            ]);
-    }
+    //     return $this->render('hebergement/verifInfo.html.twig', [
+    //         'hebergement'   => $hebergement,
+    //         ]);
+    // }
 
     /**
      * @Route("/show/edit/{id}", name="hebergement_edit", methods="GET|POST")
