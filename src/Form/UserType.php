@@ -36,16 +36,16 @@ class UserType extends AbstractType
                     'type' => "text"
                 ]
             ])
-            ->add('username', TextType::class,  [
-                'disabled'  => $options['is_forgot'],
-                'required' => true,
-                'label' => 'Nom d\'utilisateur :',
-                'attr' => [
-                    'placeholder' => "GeraldineDupont93",
-                    'class' => "form-control form-control-lg mb-3",
-                    'type' => "text"
-                ]
-            ])
+            // ->add('username', TextType::class,  [
+            //     'disabled'  => $options['is_forgot'],
+            //     'required' => true,
+            //     'label' => 'Nom d\'utilisateur :',
+            //     'attr' => [
+            //         'placeholder' => "GeraldineDupont93",
+            //         'class' => "form-control form-control-lg mb-3",
+            //         'type' => "text"
+            //     ]
+            // ])
             ->add('user_prenom', TextType::class, [
                 'disabled'  => $options['is_forgot'],
                 'required' => true,

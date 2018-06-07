@@ -36,6 +36,7 @@ class UserController extends Controller
             $email = $user->getUserEmail();
             
             $user->setUserRole(2);
+            $user->setUserName(md5(uniqid(rand())));
             $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());
             $user->setPassword($password);
@@ -67,13 +68,13 @@ class UserController extends Controller
             
             $this->addFlash(
                         'success', 
-                        "Votre inscription est enregistrée."
+                        "Votre inscription est enregistrée. Un email vous a été envoyé avec les instructions pour valider votre compte."
                         );
                         
             dump($message);
             dump($user->getUserEmail());
                         
-            // return $this->redirectToRoute('connexion');
+            return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/inscription.html.twig', [

@@ -27,7 +27,6 @@ class User implements UserInterface, \Serializable
     
     /**
      * @ORM\Column(type="string", length=190,  unique=true)
-     * @Assert\NotBlank()
      * @Assert\Length(
      * min = 3,
      * max = 25,

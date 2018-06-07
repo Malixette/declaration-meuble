@@ -7,7 +7,7 @@ security:
         mon_login:
             entity:
                 class: App\Entity\User
-                property: username
+                property: user_email
     firewalls:
         main:
             security: true

@@ -59,7 +59,10 @@ class LoginListener implements AuthenticationSuccessHandlerInterface
             }
         } else {
             $redirection = new RedirectResponse($this->router->generate('logout'));
-            
+            // $this->addFlash(
+            //             'success', 
+            //             "Votre inscription doit êter validée. Vérifiez vos-emails."
+            //             );
         }
         
         return $redirection;

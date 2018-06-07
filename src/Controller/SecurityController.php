@@ -17,7 +17,6 @@ class SecurityController
     public function connexion(Request $request, AuthenticationUtils $authenticationUtils)
     {
         $userEmail = $request->get('email');
-        dump($userEmail);
         
         if($userEmail) {
             $token = $request->get('token');
