@@ -91,7 +91,7 @@ class Hebergement
     private $heb_date_declaration;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     private $heb_cerfa;
 
@@ -393,7 +393,7 @@ class Hebergement
         return $this->heb_cerfa;
     }
 
-    public function setHebCerfa(int $heb_cerfa): self
+    public function setHebCerfa($heb_cerfa): self
     {
         $this->heb_cerfa = $heb_cerfa;
 

@@ -25,17 +25,29 @@
 {% block header %}
   <div class="container-fluid mt-5 mb-4 p-3" style="background: url({{asset('assets/img/illustration-hebergement/dashboard.jpg')}}) no-repeat fixed">
     <div class="row justify-content-center">
-       <h1 class="text-center">Déclarer un nouvel hébergement</h1>  
+       {% if idHebergement == 0 %}
+         <h1 class="text-center">Déclarer un nouvel hébergement</h1>
+       {% endif %}
+       {% if idHebergement > 0 %}
+          <h1 class="text-center">Vérifications de vos informations</h1>
+       {% endif %}
     </div>
   </div>
 {% endblock %}
 
 {% block body %}
 
+  {% if idHebergement == 0 %}
     {{ include('hebergement/_form.html.twig') }}
+  {% endif %}
 
-    {#<a href="{{ path('hebergement_index') }}">back to list</a>#}
-    
+  {% if idHebergement > 0 %}
+       
+    {{ include('hebergement/_verificationInfo.html.twig') }}
+  
+       
+  {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}

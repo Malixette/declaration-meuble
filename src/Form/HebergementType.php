@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class HebergementType extends AbstractType
@@ -270,22 +271,21 @@ class HebergementType extends AbstractType
                     'class'         => "input"
                 ]    
             ])
-            
-            // ->add('classementGdf', RangeType::class, [
-            //     'required'  => false,
-            //     'disabled'  => $options['is_new'],
-            //     'label'     => "Nombre d'épis de votre logement au classement Gîte de France : ",
-            //     'attr'      => [
-            //         'type'      => "range",
-            //         'class'     => "input",
-            //         'class'     => "sliderGdf",
-            //         'min'       => "0",
-            //         'max'       => "5",
-            //         'id'        => "myRangeGdf",
-            //         'empty_data'=> '0'
-            //     ]    
+
+            // ->add('valider', SubmitType::class, [
+            //     'label' => 'bouton test' ,
+            //     'attr' => [
+            //         'class' => 'btn btn-lg btn-success'    
+            //     ]
             // ])
             
+            ->add('previousStep', SubmitType::class, array(
+                'validation_groups' => false,
+            ))
+            ->add('nextStep', SubmitType::class, array(
+                'validation_groups' => array('Registration'),
+            ))
+                    
             // ->add('heb_date_creation')
             // ->add('heb_statut')
             // ->add('heb_date_suppression')

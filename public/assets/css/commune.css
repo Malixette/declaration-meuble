@@ -7,7 +7,9 @@
     -o-background-size: cover;
     height:100%;
 }
-
+.text-white {
+    font-size : 1.5em!important;
+}
 /* Bouton déclaration */
 .btn-outline-light {
     border-width : 2px !important;
@@ -20,7 +22,7 @@
     box-shadow :0 0 0.4em black !important;
 }
 #btn-declaration {
-    font-size:4em;
+    font-size:1.5em;
 }
 
 /***************************************** SECTION DEMARCHE ***********************************************/
@@ -28,17 +30,17 @@
     background-color:rgba(255, 212, 112, 0.1);
 }
 .carousel-item h3 {
-    font-size : 2.5em;
+    font-size : 1.5em;
 }
 .p-slider{
-    font-size : 1.4em;
+    font-size : 1em;
 }
 .p-slider-big{
-    font-size : 2em;
+    font-size : 1.2em;
     font-family : 'Oswald', sans-serif;
 }
 .p-slider-number{
-    font-size : 2em;
+    font-size : 1.5em;
     font-family : 'Oswald', sans-serif;
     color : #FF9166 !important ;
 }
@@ -84,7 +86,7 @@
 /* tablet */
 @media screen and (max-width: 768px) {
     #btn-declaration {
-        font-size : 2em;
+        font-size : 1em;
     }
     .section-titre {
         font-size : 3em;
@@ -117,14 +119,16 @@
 /* small tablet */
 @media screen and (max-width: 600px) {
     .p-slider-icon{
-    font-size : 0.8em;
+        font-size : 0.8em;
     }
-}
+    .p-slider{
+        font-size : 1em;
+    }
 
 /* large mobile */
 @media screen and (max-width: 414px) {
     #btn-declaration {
-        font-size : 1.4em;
+        font-size : 1em;
     }
     .p-slider-icon {
         font-size : 0.5em;
