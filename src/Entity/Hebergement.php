@@ -215,6 +215,16 @@ class Hebergement
      */
     private $heb_periodes_location;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $numero_appartement;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $classement;
+
     public function getId()
     {
         return $this->id;
@@ -636,6 +646,30 @@ class Hebergement
     public function setHebPeriodesLocation(?array $heb_periodes_location): self
     {
         $this->heb_periodes_location = $heb_periodes_location;
+
+        return $this;
+    }
+
+    public function getNumeroAppartement(): ?string
+    {
+        return $this->numero_appartement;
+    }
+
+    public function setNumeroAppartement(?string $numero_appartement): self
+    {
+        $this->numero_appartement = $numero_appartement;
+
+        return $this;
+    }
+
+    public function getClassement(): ?bool
+    {
+        return $this->classement;
+    }
+
+    public function setClassement(bool $classement): self
+    {
+        $this->classement = $classement;
 
         return $this;
     }

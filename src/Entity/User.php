@@ -132,6 +132,16 @@ class User implements UserInterface, \Serializable
      */
     private $is_activated;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Personne_morale;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $siren_siret;
+
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
@@ -438,6 +448,30 @@ class User implements UserInterface, \Serializable
     public function setIsActivated(bool $is_activated): self
     {
         $this->is_activated = $is_activated;
+
+        return $this;
+    }
+
+    public function getPersonneMorale(): ?string
+    {
+        return $this->Personne_morale;
+    }
+
+    public function setPersonneMorale(?string $Personne_morale): self
+    {
+        $this->Personne_morale = $Personne_morale;
+
+        return $this;
+    }
+
+    public function getSirenSiret(): ?string
+    {
+        return $this->siren_siret;
+    }
+
+    public function setSirenSiret(?string $siren_siret): self
+    {
+        $this->siren_siret = $siren_siret;
 
         return $this;
     }    
