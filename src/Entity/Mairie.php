@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MairieRepository")
@@ -90,21 +91,41 @@ class Mairie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_photo_1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_photo_2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_photo_3;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_photo_4;
 
@@ -150,11 +171,21 @@ class Mairie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_logo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_logo_2;
 
@@ -165,11 +196,21 @@ class Mairie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_tampon;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
     private $mairie_maire_signature;
 
@@ -390,48 +431,48 @@ class Mairie
         return $this;
     }
 
-    public function getMairiePhoto1(): ?string
+    public function getMairiePhoto1()
     {
         return $this->mairie_photo_1;
     }
 
-    public function setMairiePhoto1(?string $mairie_photo_1): self
+    public function setMairiePhoto1($mairie_photo_1): self
     {
         $this->mairie_photo_1 = $mairie_photo_1;
 
         return $this;
     }
 
-    public function getMairiePhoto2(): ?string
+    public function getMairiePhoto2()
     {
         return $this->mairie_photo_2;
     }
 
-    public function setMairiePhoto2(?string $mairie_photo_2): self
+    public function setMairiePhoto2($mairie_photo_2): self
     {
         $this->mairie_photo_2 = $mairie_photo_2;
 
         return $this;
     }
 
-    public function getMairiePhoto3(): ?string
+    public function getMairiePhoto3()
     {
         return $this->mairie_photo_3;
     }
 
-    public function setMairiePhoto3(?string $mairie_photo_3): self
+    public function setMairiePhoto3($mairie_photo_3): self
     {
         $this->mairie_photo_3 = $mairie_photo_3;
 
         return $this;
     }
 
-    public function getMairiePhoto4(): ?string
+    public function getMairiePhoto4()
     {
         return $this->mairie_photo_4;
     }
 
-    public function setMairiePhoto4(?string $mairie_photo_4): self
+    public function setMairiePhoto4($mairie_photo_4): self
     {
         $this->mairie_photo_4 = $mairie_photo_4;
 
@@ -534,24 +575,24 @@ class Mairie
         return $this;
     }
 
-    public function getMairieLogo(): ?string
+    public function getMairieLogo()
     {
         return $this->mairie_logo;
     }
 
-    public function setMairieLogo(?string $mairie_logo): self
+    public function setMairieLogo($mairie_logo): self
     {
         $this->mairie_logo = $mairie_logo;
 
         return $this;
     }
 
-    public function getMairieLogo2(): ?string
+    public function getMairieLogo2()
     {
         return $this->mairie_logo_2;
     }
 
-    public function setMairieLogo2(?string $mairie_logo_2): self
+    public function setMairieLogo2($mairie_logo_2): self
     {
         $this->mairie_logo_2 = $mairie_logo_2;
 
@@ -570,24 +611,24 @@ class Mairie
         return $this;
     }
 
-    public function getMairieTampon(): ?string
+    public function getMairieTampon()
     {
         return $this->mairie_tampon;
     }
 
-    public function setMairieTampon(?string $mairie_tampon): self
+    public function setMairieTampon($mairie_tampon): self
     {
         $this->mairie_tampon = $mairie_tampon;
 
         return $this;
     }
 
-    public function getMairieMaireSignature(): ?string
+    public function getMairieMaireSignature()
     {
         return $this->mairie_maire_signature;
     }
 
-    public function setMairieMaireSignature(?string $mairie_maire_signature): self
+    public function setMairieMaireSignature($mairie_maire_signature): self
     {
         $this->mairie_maire_signature = $mairie_maire_signature;
 

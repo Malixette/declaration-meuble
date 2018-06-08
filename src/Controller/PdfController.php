@@ -235,7 +235,7 @@ $pdf->Cell(0,10,utf8_decode('Cachet de la mairie'),0,1,'L');
 $pdf->SetX(30);
 $pdf->Cell(0,10,utf8_decode( $mairie->getMairieTampon() ),0,0,'L');
 
-
+// $pdf->Image($mairie->getMairieTampon().'jpeg',10,6,30);
         
        return new Response($pdf->Output(), 200, array(
             'Content-Type' => 'application/pdf'));
