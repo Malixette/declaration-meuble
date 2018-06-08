@@ -272,19 +272,19 @@ class HebergementType extends AbstractType
                 ]    
             ])
 
-            // ->add('valider', SubmitType::class, [
-            //     'label' => 'bouton test' ,
-            //     'attr' => [
-            //         'class' => 'btn btn-lg btn-success'    
-            //     ]
-            // ])
+            ->add('valider', SubmitType::class, [
+                'label' => 'bouton test' ,
+                'attr' => [
+                    'class' => 'btn btn-lg btn-success'    
+                ]
+            ])
             
-            ->add('previousStep', SubmitType::class, array(
-                'validation_groups' => false,
-            ))
-            ->add('nextStep', SubmitType::class, array(
-                'validation_groups' => array('Registration'),
-            ))
+            // ->add('previousStep', SubmitType::class, array(
+            //     'validation_groups' => false,
+            // ))
+            // ->add('nextStep', SubmitType::class, array(
+            //     'validation_groups' => array('Registration'),
+            // ))
                     
             // ->add('heb_date_creation')
             // ->add('heb_statut')
