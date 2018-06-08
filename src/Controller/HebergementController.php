@@ -98,41 +98,41 @@ class HebergementController extends Controller
             
         }
         
-        if ($formVerif->isSubmitted() && $formVerif->isValid()) {
+        // if ($formVerif->isSubmitted() && $formVerif->isValid()) {
             
-        //Génération du numéro de dossier////////
-            $idHebergement = $request->get('idHebergement');
-            $insee = $mairie->getInsee();
-            $date = new \DateTime;
-            $dateFormat = $date->format('Ymd');
-            $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
-        //-------------------------------------
+        // //Génération du numéro de dossier////////
+        //     $idHebergement = $request->get('idHebergement');
+        //     $insee = $mairie->getInsee();
+        //     $date = new \DateTime;
+        //     $dateFormat = $date->format('Ymd');
+        //     $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
+        // //-------------------------------------
 
-            // $hebergement->setUser($user);
-            $hebergement->setHebCerfa('ok');
-            $hebergement->setHebStatut('en attente de validation');
-            $hebergement->setHebNumDeclaration($numCerfa);
-            $hebergement->setMairie($mairie);
+        //     // $hebergement->setUser($user);
+        //     $hebergement->setHebCerfa('ok');
+        //     $hebergement->setHebStatut('en attente de validation');
+        //     $hebergement->setHebNumDeclaration($numCerfa);
+        //     $hebergement->setMairie($mairie);
 
             
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($hebergement);
-            $em->flush();
+        //     $em = $this->getDoctrine()->getManager();
+        //     $em->persist($hebergement);
+        //     $em->flush();
             
-            $idHebergement = $hebergement->getId();
+        //     $idHebergement = $hebergement->getId();
             
-            $this->addFlash(
-                'success',
-                'Votre demande de CERFA a bien été envoyée. La mairie va l\'examiner dans les plus brefs délais.'
-            );
+        //     $this->addFlash(
+        //         'success',
+        //         'Votre demande de CERFA a bien été envoyée. La mairie va l\'examiner dans les plus brefs délais.'
+        //     );
 
-        }
+        // }
         
 
         return $this->render('hebergement/new.html.twig', [
             'hebergement'   => $hebergement,
             'form'          => $form->createView(),
-            'formVerif'     => $formVerif->createView(),
+            // 'formVerif'     => $formVerif->createView(),
             'user'          => $user,
             'nombre'        => $nombre,
             'url'           => $url,
