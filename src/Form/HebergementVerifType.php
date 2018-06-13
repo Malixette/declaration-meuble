@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
-class HebergementType extends AbstractType
+class HebergementVerifType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -25,6 +25,7 @@ class HebergementType extends AbstractType
         
             ->add('heb_name', TextType::class, [
                 'required'  => true,
+                'disabled' => $options['is_verif'],
                 'label'     => "Nom de votre hébergement",
                 'attr'      => [
                     'placeholder'   => "Ex: Chalet Bellevue",
@@ -34,7 +35,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_adresse', TextType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'label'     => "Adresse",
                 'attr'      => [
                     'placeholder'   => "rue des Lilas",
@@ -45,7 +46,7 @@ class HebergementType extends AbstractType
 
             ->add('heb_adresse_complement', TextType::class, [
                 'required'  => false,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'label'     => "Complément d'adresse ",
                 'attr'      => [
                     'placeholder'   => "Complément d'adresse",
@@ -55,7 +56,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_batiment', TextType::class, [
                 'required'  => false,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'label'     => "Bâtiment",
                 'attr'      => [
                     'placeholder'   => "Bâtiment",
@@ -64,7 +65,7 @@ class HebergementType extends AbstractType
             ])
             ->add('heb_etage', IntegerType::class, [
                 'required'  => false,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'label'     => "Numéro d'étage",
                 'attr'      => [
                     'placeholder'   => "0 pour un rez-de-chaussée",
@@ -76,7 +77,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_code_postal', TextType::class, [
                 'required'  => true,
-                'disabled'  => $options['is_edit'],
+                'disabled'  => $options['is_verif'],
                 // ||$options['is_new'],
                 'label'     => "Code postal",
                 'attr'      => [
@@ -88,7 +89,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_commune', TextType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 // ||$options['is_new'],
                 'label'     => "Ville",
                 'attr'      => [
@@ -99,19 +100,21 @@ class HebergementType extends AbstractType
             ])
             
             ->add('heb_lat', NumberType::class, [
+            'disabled' => $options['is_verif'],
             'required'  => true,
                 // 'disabled' => $options['is_new'],
                 'label'     => "Latitude"
             ])
             
             ->add('heb_long', NumberType::class, [
+            'disabled' => $options['is_verif'],
             'required'  => true,
                 // 'disabled' => $options['is_new'],
                 'label'     => "Longitude"
             ])
             
             ->add('heb_type', ChoiceType::class, array(
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'choices'  => array(
                     'Maison'        => 'maison',
                     'Appartement'   => 'appartement',
@@ -123,7 +126,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_nbr_pieces', IntegerType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'label'     => 'Nombre de pièces de votre hébergement:',
                 'attr'      => [
                     'min' => 0,
@@ -133,7 +136,7 @@ class HebergementType extends AbstractType
             
             ->add('heb_couchages_max', IntegerType::class, [
                 'required'  => true,
-                'disabled' => $options['is_edit'],
+                'disabled' => $options['is_verif'],
                 'label'     => "Nombre de couchages maximal",
                 'attr'      => [
                     'placeholder'   => "Nombre de couchages maximal",
@@ -152,20 +155,20 @@ class HebergementType extends AbstractType
                 'attr' => [
                     'type' => 'select'
                 ],
-                'disabled'  => $options['is_edit'],
+                'disabled'  => $options['is_verif'],
                 'label'     => 'Votre logement est-il classé?',
                 'required'  => true,
             ])
             
             ->add('heb_date_classement', DateType::class, array(
                 'widget'    => 'choice',
-                'disabled'  => $options['is_edit'],
+                'disabled'  => $options['is_verif'],
                 'label'     => "Si oui, date de classement",
             ))
             
             ->add('heb_periodes_location',ChoiceType::class, [
                 'label'        => "Période de location",
-                'disabled'     => $options['is_edit'],
+                'disabled'     => $options['is_verif'],
                 'multiple'     => true,
                 'expanded'     => true,
                 'choices'      => array(
@@ -181,6 +184,7 @@ class HebergementType extends AbstractType
             // ->add('heb_cerfa')
             
             ->add('heb_descriptif_court',TextareaType::class, [
+                'disabled' => $options['is_verif'],
                 'required'  => false,
                 'label'     => "Descriptif de l'hébergement",
                 'attr'      => [
@@ -191,18 +195,21 @@ class HebergementType extends AbstractType
                 ]
             ])
             ->add('heb_photo_1', FileType::class, array(
+                'disabled' => $options['is_verif'],
                 'required'      => null,
                 'data_class'    => null,
                 'label'         => 'Ajouter une photo principale',   
             ))
             
             ->add('heb_photo_2', FileType::class, array(
+                'disabled' => $options['is_verif'],
                 'required'      => null,
                 'data_class'    => null,
                 'label'         => 'Ajouter une autre photo',   
             ))
             
             ->add('heb_photo_3', FileType::class, array(
+                'disabled' => $options['is_verif'],
                 'required'      => null,
                 'data_class'    => null,
                 'label'         => 'Ajouter une autre photo',   
@@ -210,6 +217,7 @@ class HebergementType extends AbstractType
 
             
             ->add('heb_site_web', TextType::class, [
+                'disabled' => $options['is_verif'],
                 'required'  => false,
                 'label'     => 'Adresse web de votre hébergement',
                 'attr'      => [
@@ -219,6 +227,7 @@ class HebergementType extends AbstractType
             ])
             
             ->add('heb_site_resa', TextType::class, [
+                'disabled' => $options['is_verif'],
                 'required'  => false,
                 'label'     => "Si vous disposez d'une réservation en ligne, renseignez votre lien de réservation",
                 'attr'      => [
@@ -228,6 +237,7 @@ class HebergementType extends AbstractType
             ])
             
             ->add('heb_contact_resa', TextType::class, [
+                'disabled' => $options['is_verif'],
                 'required'  => false,
                 'label'     => "Contact ou nom de l'organisme de gestion de réservation de votre hébergement",
                 'attr'      => [
@@ -237,6 +247,7 @@ class HebergementType extends AbstractType
             ])
             
             ->add('heb_email_resa', TextType::class, [
+                'disabled' => $options['is_verif'],
                 'required'  => false,
                 'label'     => "Email de réservation",
                 'attr'      => [
@@ -246,6 +257,7 @@ class HebergementType extends AbstractType
             ])
             
             ->add('heb_tel_resa', NumberType::class, [
+                'disabled' => $options['is_verif'],
                 'required'  => false,
                 'label'     => "Numéro de téléphone de réservation",
                 'attr'      => [
@@ -262,7 +274,9 @@ class HebergementType extends AbstractType
             //     ]  
             // ])
 
-            ->add('heb_num_voie', NumberType::class, [                'required'  => false,
+            ->add('heb_num_voie', NumberType::class, [
+                'required'  => false,
+                'disabled' => $options['is_verif'],
                 // 'disabled'  => $options['is_new'],
                 'label'     => "Numero de voie",
                 'attr'      => [
@@ -272,20 +286,20 @@ class HebergementType extends AbstractType
             ])
 
             ->add('valider', SubmitType::class, [
-                'label' => 'Valider ma déclaration' ,
+                'label' => 'Valider mes informations' ,
                 'attr' => [
-                    'class' => 'btn btn-lg btn-success'    
+                    'class' => 'btn btn-lg btn-success'
                 ]
             ])
             
-            // ->add('rectifier', SubmitType::class, array(
-            //     'disabled' => $options['is_new'] || $options['is_edit'],
-            //     'label' => 'rectifier mes informations' ,
-            //     'validation_groups' => false,
-            // ))
+            ->add('previous', SubmitType::class, array(
+                'validation_groups' => false,
+                'label' => 'Rectifier ma déclaration' ,
+                'attr' => [
+                    'class' => 'btn btn-lg btn-warning'
+                ]
+            ))
             // ->add('nextStep', SubmitType::class, array(
-            //     // 'disabled' => $options['is_new'] || $options['is_edit'],
-            //     'label' => 'valider mes informations' ,
             //     'validation_groups' => array('Registration'),
             // ))
                     

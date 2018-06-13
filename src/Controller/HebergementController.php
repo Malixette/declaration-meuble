@@ -94,12 +94,132 @@ class HebergementController extends Controller
             $em->flush();
             
             $idHebergement = $hebergement->getId();
+            $hebStatut = $hebergement->getHebStatut();
             dump($idHebergement);
-            
+            dump($hebergement);
+
         }
+        
+        return $this->render('hebergement/new.html.twig', [
+            'hebergement'   => $hebergement,
+            'form'          => $form->createView(),
+            'user'          => $user,
+            'nombre'        => $nombre,
+            'url'           => $url,
+            'mairie'        => $mairie,
+            'idHebergement' => $idHebergement,
+        ]);
+    }
+    
+    /**
+     * @Route("/new/verification/{id}", name="hebergement_verif", methods="GET|POST")
+     */
+     public function verif (Request $request, Hebergement $hebergement) : Response
+     {
+        $user = $this->getUser();
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        
+        $idHebergement = $hebergement->getId();
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        $nombre = count($hebergements);
+        $url = $_SERVER['REQUEST_URI'];  
+        
+        $form = $this->createForm(HebergementEditType::class, $hebergement);
+        
+        // memoriser valeur de la bdd dans variable pour comparer avec l'upload
+        $photo1 = $hebergement->getHebPhoto1();
+        $photo2 = $hebergement->getHebPhoto2();
+        $photo3 = $hebergement->getHebPhoto3();
+        
+        $mairie = $hebergement->getMairie();
+        
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $file1 = $hebergement->getHebPhoto1();
+            $file2 = $hebergement->getHebPhoto2();
+            $file3 = $hebergement->getHebPhoto3();
+            
+            // si on upload photo 1
+            if($file1 != null) {
+                $fileName1 = $this->generateUniqueFileName().'.'.$file1->guessExtension();
+            
+                $file1->move(
+                    $this->getParameter('images_directory'),
+                    $fileName1
+                );
+                
+                $hebergement->setHebPhoto1($fileName1);    
+            } 
+            // si pas d'upload photo 1
+            else
+            {
+                $hebergement->setHebPhoto1($photo1);   
+            }
+            
+            // si on upload photo 2
+            if($file2 != null) {
+                $fileName2 = $this->generateUniqueFileName().'.'.$file2->guessExtension();
+            
+                $file2->move(
+                    $this->getParameter('images_directory'),
+                    $fileName2
+                );
+                
+                $hebergement->setHebPhoto2($fileName2);    
+            } 
+            // si pas d'upload photo 2
+            else
+            {
+                $hebergement->setHebPhoto2($photo2);   
+            }
+            
+            // si on upload photo 3
+            if($file3 != null) {
+                $fileName3 = $this->generateUniqueFileName().'.'.$file3->guessExtension();
+            
+                $file3->move(
+                    $this->getParameter('images_directory'),
+                    $fileName3
+                );
+                
+                $hebergement->setHebPhoto3($fileName3);    
+            } 
+            // si pas d'upload photo 2
+            else
+            {
+                $hebergement->setHebPhoto3($photo3);   
+            }
+
+
+            $this->getDoctrine()->getManager()->flush();
+            
+            $this->addFlash(
+                'success',
+                'Vos modifications ont bien été sauvegardées.'
+            );
+
+            return $this->redirectToRoute('hebergement_edit', ['id' => $hebergement->getId()]);
+           
+        }
+        
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
+        $mairie = $hebergement->getMairie(); 
+        // dump($mairie);
+        $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
+        
+        // $formVerif = $this->createForm(HebergementType::class, $hebergement, array('is_verif' => true));
+        // $formVerif->handleRequest($request);
         
         // if ($formVerif->isSubmitted() && $formVerif->isValid()) {
             
+            
+        //     $em = $this->getDoctrine()->getManager();
+        //     $em->persist($hebergement);
+        //     $em->flush();
+        //     dump($hebergement);
         // //Génération du numéro de dossier////////
         //     $idHebergement = $request->get('idHebergement');
         //     $insee = $mairie->getInsee();
@@ -128,18 +248,16 @@ class HebergementController extends Controller
 
         // }
         
-
         return $this->render('hebergement/new.html.twig', [
             'hebergement'   => $hebergement,
-            'form'          => $form->createView(),
-            // 'formVerif'     => $formVerif->createView(),
+            'form'     => $form->createView(),
             'user'          => $user,
             'nombre'        => $nombre,
             'url'           => $url,
             'mairie'        => $mairie,
-            'idHebergement' => $idHebergement,
+            'idHebergement' => $idHebergement 
         ]);
-    }
+     }
 
     /**
      * @Route("/show/{id}", name="hebergement_show", methods="GET")

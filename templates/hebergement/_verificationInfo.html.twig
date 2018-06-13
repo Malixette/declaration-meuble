@@ -79,7 +79,19 @@
             {#</div>#}
         </div>
     </div>
-
+    {#<div class="container">#}
+    {#    {{form_start(formVerif)}}#}
+        
+        {#{{form_widget(formVerif.previous)}}#}
+        {#{{form_widget(formVerif.valider)}}#}
+        
+    {#    <a href=javascript:history.go(-1)>Retour</a>#}
+        
+    {#    {{form_end(formVerif)}}#}
+    {#</div>#}
+    
+    <a href="{{ path('hebergement_verif', {'id': hebergement.id}) }}">Editer ma déclaration</a>
+    <a href="{{ path('dashboard_declarant') }}">Editer ma déclaration</a>
 
 {% block javascripts %}
     
