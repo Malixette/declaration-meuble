@@ -225,6 +225,11 @@ class Hebergement
      */
     private $classement;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $motif_supp;
+
     public function getId()
     {
         return $this->id;
@@ -670,6 +675,18 @@ class Hebergement
     public function setClassement(bool $classement): self
     {
         $this->classement = $classement;
+
+        return $this;
+    }
+
+    public function getMotifSupp(): ?string
+    {
+        return $this->motif_supp;
+    }
+
+    public function setMotifSupp(?string $motif_supp): self
+    {
+        $this->motif_supp = $motif_supp;
 
         return $this;
     }
