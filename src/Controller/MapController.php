@@ -17,7 +17,7 @@ class MapController extends Controller
     public function index()
     {
         $user = $this->getUser();
-        $repo = $this->getDoctrine()->getRepository(User::class);
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
@@ -30,8 +30,7 @@ class MapController extends Controller
         $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
         $repoDeclarant = $this->getDoctrine()->getRepository(User::class);
         $userDeclarant = $repoDeclarant->findOneBy(['id' => $user_id]);
-        
-        
+
         return $this->render('admin_home/dashboard-mairie.html.twig', [
             'controller_name'   => 'MapController',
             'hebergements'      => $hebergements,
@@ -41,6 +40,20 @@ class MapController extends Controller
             'url'               => $url,
             
         ]);
-        
+    }
+    public function showMaps()
+    {
+        $user    = $this->getUser();
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+ 
+        $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
+        dump($hebergements);
+
+        return $this->render('admin_home/dashboard-mairie.html.twig', [
+            'controller_name'   => 'MapController',
+            'hebergements'      => $hebergements,
+            'user'              => $user,
+            'mairie'            => $mairie,
+        ]);
     }
 }
