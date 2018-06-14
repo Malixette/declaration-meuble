@@ -49,27 +49,59 @@ class CommuneHomeController extends Controller
     /**
      * @Route("/commune/{slug}", name="commune_show")
      */
-    public function showOne($slug)
+    public function showOne($slug, Request $request, \Swift_Mailer $mailer)
     {
         $repoCommune = $this->getDoctrine()->getRepository(Mairie::class);
         $commune = $repoCommune->findOneBy(['mairie_slug' => $slug]);
         
+        $contact = new Contact;
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+        dump($commune);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            
+            $contactFormData = $form->getData();
+            dump($contactFormData);
+            
+            $message = (new \Swift_Message('Vous avez une demande de renseignements'))
+                ->setFrom($contactFormData->getEmail())
+                ->setTo($contactFormData->getUserEmail())
+                ->setSubject($contactFormData->getSubject())
+                ->setBody($contactFormData->getMessage())
+            ;
+                
+            $mailer->send($message);
+            
+            $this->addFlash(
+                        'success', 
+                        "Votre message a bien été envoyé."
+                        );
+
+            return $this->redirectToRoute('commune_show', ['_fragment' => 'section-contact']);
+        }
+
         return $this->render('commune-show.html.twig', [
             'controller_name' => 'CommuneHomeController',
-            'commune' => $commune
+            'form' => $form->createView(),
+            'commune' => $commune,
         ]);
     }
     
-    // PAGE COMMUNE STATIQUE
-    /**
-     * @Route("/commune", name="commune_home")
-     */
-    public function showHome()
-    {
-        return $this->render('commune.html.twig', [
-            'controller_name' => 'CommuneHomeController',
-        ]);
-    }
+    // // PAGE COMMUNE STATIQUE
+    // /**
+    //  * @Route("/commune", name="commune_home")
+    //  */
+    // public function showHome()
+    // {
+    //     return $this->render('commune.html.twig', [
+    //         'controller_name' => 'CommuneHomeController',
+    //     ]);
+    // }
     
     
     /**
@@ -83,9 +115,9 @@ class CommuneHomeController extends Controller
     }
     
     /**
-     * @Route("/commune", name="commune_home", methods="GET|POST")
+     * @Route("/commune/{slug}", name="commune_home", methods="GET|POST")
      */
-    public function contact (Request $request, \Swift_Mailer $mailer): Response
+    public function contact ($slug, Request $request, \Swift_Mailer $mailer): Response
     {
         $contact = new Contact;
         $form = $this->createForm(ContactType::class, $contact);
@@ -114,10 +146,10 @@ class CommuneHomeController extends Controller
                         "Votre message a bien été envoyé."
                         );
 
-            return $this->redirectToRoute('commune_home', ['_fragment' => 'section-contact']);
+            return $this->redirectToRoute('commune_show', ['_fragment' => 'section-contact']);
         }
 
-        return $this->render('commune.html.twig', [
+        return $this->render('commune-show.html.twig', [
             'form' => $form->createView(),
         ]);
     }

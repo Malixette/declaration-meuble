@@ -1,4 +1,4 @@
-{% extends 'commune.html.twig' %}
+{% extends 'commune-show.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
 
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            {{ form_label(form.user_prenom)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
+                            {{ form_label(form.user_prenom)}}
                             {{ form_widget(form.user_prenom)}}
                         </div>
                     </div>

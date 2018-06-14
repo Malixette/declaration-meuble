@@ -16,12 +16,12 @@
             -moz-background-size: cover;
             background-size: cover;
             -o-background-size: cover;
-            height:100%;
+            height:50%;
         }  
         .headercommune {
-            padding: 120px 0px;
+            padding: 60px 0px;
             background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
-            height:400px;
+            height:200px;
         }
         
         @media screen and (max-width: 768px) {
@@ -39,28 +39,30 @@
 {%endblock%}
 {% block nav %}
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top py-0">
-        <a class="navbar-brand js-scrollTo" href="{{ path('commune_home') }}"><img src="{{asset('assets/img/logo-small.png')}} " style="max-width:70px; height:auto;"></a>
+        <a class="navbar-brand js-scrollTo" href="#"><img src="{{asset('assets/img/logo-small.png')}} " style="max-width:70px; height:auto;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            {% if commune is defined %}
             <li class="nav-item">
-                <a class="nav-link data-animate" href="{{ path('commune_home') }}">Accueil</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-demarche">La démarche</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-commune">Barcelonnette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('commune_listing') }}">Liste des meublés</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link data-animate" href="{{ path('commune_home') }}#section-contact">Contact</a>
+                <a class="nav-link data-animate" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-contact">Contact</a>
             </li>
+            {% endif %}
         </ul>
         <ul class="navbar-nav">
             {% if not is_granted(expression('"ROLE_USER" in roles')) %}
@@ -335,66 +337,66 @@
             </div>
         </div>
     </div>
-    {# FIN COMMUNE #}
+     FIN COMMUNE 
     
-    {# DEBUT CONTACT #}
-    {#<div class="container-fluid pt-5 mt-2 pr-0 pl-0 section w-100" id="section-contact">#}
-    {#    <div class="row w-100">#}
-    {#        <div class="col-12 pr-0">#}
-    {#            <h1 class="section-titre text-center">Contact</h1>#}
-    {#        </div>#}
-    {#    </div>#}
-    {#    <div class="row w-100 justify-content-center mb-4">#}
-    {#        <div class="col-md-7 embed-responsive embed-responsive-16by9">#}
-    {#                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>#}
-    {#        </div>#}
-    {#        <div class="col-md-4">#}
-    {#            <div>#}
-    {#                <p class="p-0 m-1"><strong>Mairie de Barcelonnette</strong></p>#}
-    {#                <p class="p-0 m-1"><i class="fas fa-map-marker-alt m-1"></i>   Place Valle de Bravo, 04400 Barcelonnette</p>#}
-    {#                <p class="p-0 m-1"><i class="fas fa-phone m-1"></i>  04 92 80 79 00 | Fax : 04 92 81 45 82</p>#}
-    {#                <p class="p-0 m-1">#}
-    {#                    <i class="far fa-clock m-1"></i>  La mairie et les services administratifs vous accueillent tous les lundis, mardis, jeudis et vendredis de 8h00 à 12h00 et de 13h30 à 17h00, les mercredis de 8h00 à 12h00.#}
-    {#                </p>#}
-    {#            </div>#}
-    {#            <div class="row m-2 d-flex justify-content-center">#}
-    {#                 {% for label, messages in app.flashes %}#}
-    {#                    <div class="alert alert-{{ label }}">#}
-    {#                        {% for message in messages %}#}
-    {#                            {{ message }}#}
-    {#                        {% endfor %}#}
-    {#                    </div>#}
-    {#                {% endfor %}#}
-    {#            </div>  #}
-    {#            <div class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">#}
-    {#            <h3 class="text-center">Contactez votre mairie</h3>#}
-    {#            <h4 class="text-center">pour en savoir plus sur le service</h4>#}
-    {#                {{ form_start(form)}}#}
-    {#                <div class="row">#}
-    {#                <div class="form-group col-md-6 mb-2">#}
-    {#                    {{ form_label(form.name)}}#}
-    {#                    {{ form_widget(form.name)}}    #}
-    {#                </div>#}
-    {#                <div class="form-group col-md-6 mb-2">#}
-    {#                    {{ form_label(form.email)}}#}
-    {#                    {{ form_widget(form.email)}}#}
-    {#                </div>#}
-    {#                </div>#}
-    {#                <div class="form-group mb-2">#}
-    {#                    {{ form_label(form.subject)}}#}
-    {#                    {{ form_widget(form.subject)}}#}
-    {#                </div>                    #}
-    {#                <div class="form-group mb-2">#}
-    {#                    {{ form_label(form.message)}}#}
-    {#                    {{ form_widget(form.message)}}#}
-    {#                </div>#}
-    {#                <div class="form-group text-center mb-1">#}
-    {#                    {{ form_label(form.valider)}}#}
-    {#                    {{ form_widget(form.valider)}}#}
-    {#                </div>#}
-    {#                    {{ form_end(form)}}#}
-    {#            </div>  #}
-    {#        </div>#}
-    {#    </div>#}
-    {#</div>#}
+     DEBUT CONTACT 
+    <div class="container-fluid pt-5 mt-2 pr-0 pl-0 section w-100" id="section-contact">
+        <div class="row w-100">
+            <div class="col-12 pr-0">
+                <h1 class="section-titre text-center">Contact</h1>
+            </div>
+        </div>
+        <div class="row w-100 justify-content-center mb-4">
+            <div class="col-md-7 embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <p class="p-0 m-1"><strong>Mairie de Barcelonnette</strong></p>
+                    <p class="p-0 m-1"><i class="fas fa-map-marker-alt m-1"></i>   Place Valle de Bravo, 04400 Barcelonnette</p>
+                    <p class="p-0 m-1"><i class="fas fa-phone m-1"></i>  04 92 80 79 00 | Fax : 04 92 81 45 82</p>
+                    <p class="p-0 m-1">
+                        <i class="far fa-clock m-1"></i>  La mairie et les services administratifs vous accueillent tous les lundis, mardis, jeudis et vendredis de 8h00 à 12h00 et de 13h30 à 17h00, les mercredis de 8h00 à 12h00.
+                    </p>
+                </div>
+                <div class="row m-2 d-flex justify-content-center">
+                     {% for label, messages in app.flashes %}
+                        <div class="alert alert-{{ label }}">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>  
+                <div class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
+                <h3 class="text-center">Contactez votre mairie</h3>
+                <h4 class="text-center">pour en savoir plus sur le service</h4>
+                    {{ form_start(form)}}
+                    <div class="row">
+                    <div class="form-group col-md-6 mb-2">
+                        {{ form_label(form.name)}}
+                        {{ form_widget(form.name)}}    
+                    </div>
+                    <div class="form-group col-md-6 mb-2">
+                        {{ form_label(form.email)}}
+                        {{ form_widget(form.email)}}
+                    </div>
+                    </div>
+                    <div class="form-group mb-2">
+                        {{ form_label(form.subject)}}
+                        {{ form_widget(form.subject)}}
+                    </div>                    
+                    <div class="form-group mb-2">
+                        {{ form_label(form.message)}}
+                        {{ form_widget(form.message)}}
+                    </div>
+                    <div class="form-group text-center mb-1">
+                        {{ form_label(form.valider)}}
+                        {{ form_widget(form.valider)}}
+                    </div>
+                        {{ form_end(form)}}
+                </div>  
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -29,7 +29,7 @@ class UserType extends AbstractType
             ->add('user_nom', TextType::class,  [
                 'disabled'  => $options['is_forgot'],
                 'required' => true,
-                'label' => 'Nom :',
+                'label' => 'Nom du propriétaire ou personne morale :',
                 'attr' => [
                     'placeholder' => "Dupont",
                     'class' => "form-control form-control-lg mb-3",
