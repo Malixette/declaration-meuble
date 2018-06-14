@@ -16,8 +16,8 @@ class MapController extends Controller
      */
     public function index()
     {
-        $user = $this->getUser();
         $repoUser = $this->getDoctrine()->getRepository(User::class);
+        $user = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
         $hebergements = $repoHeb->findBy(array("user" => $user->getId()));
@@ -41,8 +41,13 @@ class MapController extends Controller
             
         ]);
     }
-    public function showMaps()
+    
+    /**
+     * @Route("/carte", name="carte", methods="GET|POST")
+     */
+    public function showMap()
     {
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
         $user    = $this->getUser();
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
  

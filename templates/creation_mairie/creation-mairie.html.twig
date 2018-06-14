@@ -128,7 +128,7 @@
             </div> 
             <div class="row">
                 <div class="col-12">
-                    {{ form_label(formMairie.mairie_nom_touristique)}} <small>Si différent du nom de la commune</small>
+                    {{ form_label(formMairie.mairie_nom_touristique)}}
                     {{ form_widget(formMairie.mairie_nom_touristique)}}
                 </div>
             </div>
@@ -142,16 +142,16 @@
                     {{ form_widget(formMairie.mairie_descriptif_2) }}
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    {{ form_label(formMairie.mairie_maire_signature)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>
-                    {{ form_widget(formMairie.mairie_maire_signature)}}
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    {{ form_label(formMairie.mairie_tampon)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>
-                    {{ form_widget(formMairie.mairie_tampon)}}
-                </div>
-            </div>
+            {#<div class="row">#}
+            {#    <div class="col-sm-12 col-md-6">#}
+            {#        {{ form_label(formMairie.mairie_maire_signature)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>#}
+            {#        {{ form_widget(formMairie.mairie_maire_signature)}}#}
+            {#    </div>#}
+            {#    <div class="col-sm-12 col-md-6">#}
+            {#        {{ form_label(formMairie.mairie_tampon)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>#}
+            {#        {{ form_widget(formMairie.mairie_tampon)}}#}
+            {#    </div>#}
+            {#</div>#}
         </div>
     </div>
     <div class="row d-flex justify-content-center border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">

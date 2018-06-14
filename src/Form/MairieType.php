@@ -233,22 +233,22 @@ class MairieType extends AbstractType
                     'class'         => "form-control form-control-lg mb-3",
             ]
             )) 
-            ->add('mairie_tampon', FileType::class, array(
-                'required'      => true,
-                'data_class'    => null,
-                'label'         => 'Tampon officiel de la Mairie',
-                'attr'      => [
-                    'class'         => "form-control form-control-lg mb-3",
-            ]
-            )) 
-            ->add('mairie_maire_signature', FileType::class, array(
-                'required'      => true,
-                'data_class'    => null,
-                'label'         => 'Signature manuscrite du Maire de la commune',
-                'attr'      => [
-                    'class'         => "form-control form-control-lg mb-3",
-            ]
-            )) 
+            // ->add('mairie_tampon', FileType::class, array(
+            //     'required'      => false,
+            //     'data_class'    => null,
+            //     'label'         => 'Tampon officiel de la Mairie',
+            //     'attr'      => [
+            //         'class'         => "form-control form-control-lg mb-3",
+            // ]
+            // )) 
+            // ->add('mairie_maire_signature', FileType::class, array(
+            //     'required'      => false,
+            //     'data_class'    => null,
+            //     'label'         => 'Signature manuscrite du Maire de la commune',
+            //     'attr'      => [
+            //         'class'         => "form-control form-control-lg mb-3",
+            // ]
+            // )) 
             ->add('insee', TextType::class,  [
                 'required' => true,
                 'label' => 'Code insee de la commune',

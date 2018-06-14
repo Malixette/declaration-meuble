@@ -46,17 +46,17 @@ class CreationMairieController extends Controller
         
         $tampon = $mairie->getMairieTampon();
             
-            // si on upload, on set avec nouvelle photo
-            if($tampon != null) {
-                $tamponFileName = $this->generateUniqueFileName().'.tampon-'. $nomMairie . $tampon->guessExtension();
+            // // // si on upload, on set avec nouvelle photo
+            // // if($tampon != null) {
+            // //     $tamponFileName = $this->generateUniqueFileName().'.tampon-'. $nomMairie . $tampon->guessExtension();
             
-                $tampon->move(
-                    $this->getParameter('images_directory'),
-                    $tamponFileName
-                );
+            // //     $tampon->move(
+            // //         $this->getParameter('images_directory'),
+            // //         $tamponFileName
+            // //     );
                 
-                $mairie->setMairieTampon($tamponFileName);    
-            } 
+            // //     $mairie->setMairieTampon($tamponFileName);    
+            // } 
         
         if($formMairie->isSubmitted() && $formMairie->isValid())
         {
@@ -95,6 +95,8 @@ class CreationMairieController extends Controller
             $user->setUserTelephone($mairie->getMairieTelephoneContact());
             $user->setUserEmail($mairie->getMairieEmailContact());
             $user->setMairie($mairie);
+            $user->setToken('coucou');
+            $user->setIsActivated(true);
             $user->setUserDateInscription($mairie->getMairieDateInscription());
             $user->setPassword($password);
             
