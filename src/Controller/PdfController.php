@@ -36,6 +36,7 @@ class PdfController extends Controller
         
         $mairie = $hebergement->getMairie();
         $user = $hebergement->getUser();
+        // $nomFileTampon = ;
 
         // ************************* PAGE 1
 $pdf->AddPage();
@@ -233,7 +234,7 @@ $pdf->Cell(0,10,utf8_decode(', le'),0,0,'L');
 $pdf->SetY(215);
 $pdf->Cell(0,10,utf8_decode('Cachet de la mairie'),0,1,'L');
 $pdf->SetX(30);
-$pdf->Cell(0,10,utf8_decode( $mairie->getMairieTampon() ),0,0,'L');
+$pdf->Image('assets/img/signatures/$tampon.png',90,220,30);
 
 // $pdf->Image($mairie->getMairieTampon().'jpeg',10,6,30);
         

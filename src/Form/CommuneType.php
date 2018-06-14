@@ -29,7 +29,7 @@ class CommuneType extends AbstractType
         $builder
             ->add('username', TextType::class,  [
                 'required' => true,
-                'label' => 'Nom d\'utilisateur :',
+                'label' => 'Adresse mail de connexion :',
                 'attr' => [
                     'placeholder' => "MairieBarcelonnette",
                     'class' => "form-control form-control-lg mb-3",
