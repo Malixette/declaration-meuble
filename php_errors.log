@@ -41,3 +41,4 @@
 [12-May-2018 15:17:35 UTC] PHP Warning:  require(phpsqlajax_dbinfo.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 3
 [12-May-2018 15:17:35 UTC] PHP Fatal error:  require(): Failed opening required 'phpsqlajax_dbinfo.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/declaration-meuble/tests/tabcoordonnees.php on line 3
 [08-Jun-2018 11:02:41 UTC] PHP Fatal error:  Cannot declare class App\Form\HebergementType, because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Form/HebergementVerifType.php on line 0
+[14-Jun-2018 14:57:53 UTC] PHP Fatal error:  Cannot use App\Form\MairieType as MairieType because the name is already in use in /home/ubuntu/workspace/declaration-meuble/src/Controller/CreationMairieController.php on line 17

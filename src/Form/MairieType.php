@@ -24,7 +24,7 @@ class MairieType extends AbstractType
         $builder
             ->add('mairie_nom_touristique', TextType::class,  [
                 'required' => false,
-                'label' => 'Nom touristique de la commune :',
+                'label' => 'Nom de la commune :',
                 'attr' => [
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
