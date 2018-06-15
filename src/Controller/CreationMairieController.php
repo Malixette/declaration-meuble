@@ -58,20 +58,19 @@ class CreationMairieController extends Controller
                 
             // //     $mairie->setMairieTampon($tamponFileName);    
             // } 
-        
+
         if($formMairie->isSubmitted() && $formMairie->isValid())
         {
-
             $inseeInput = $mairie->getInsee();
             $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
 
             $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
-            $villeId = $ville->getId();
             $villeSlug = $ville->getVilleSlug();
+            dump($ville);
 
             $mairie->setVilles($ville)
-                   ->setMairieLatitude(22.11)
+                   ->setMairieLatitude('22.11')
                    ->setMairieLongitude('43.3')
                    ->setMairieSlug($villeSlug)
                    ->setMairieDateInscription(new \DateTime());
