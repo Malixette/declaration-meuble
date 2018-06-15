@@ -269,16 +269,6 @@ class Mairie
      */
     private $mairie_commune;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $mairie_lat;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $mairie_long;
-
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
@@ -827,30 +817,6 @@ class Mairie
     public function setMairieCommune(string $mairie_commune): self
     {
         $this->mairie_commune = $mairie_commune;
-
-        return $this;
-    }
-
-    public function getMairieLat(): ?float
-    {
-        return $this->mairie_lat;
-    }
-
-    public function setMairieLat(float $mairie_lat): self
-    {
-        $this->mairie_lat = $mairie_lat;
-
-        return $this;
-    }
-
-    public function getMairieLong(): ?float
-    {
-        return $this->mairie_long;
-    }
-
-    public function setMairieLong(float $mairie_long): self
-    {
-        $this->mairie_long = $mairie_long;
 
         return $this;
     }
