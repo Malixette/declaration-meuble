@@ -230,7 +230,7 @@ class Mairie
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Ville", inversedBy="mairie", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Villes", inversedBy="mairie", cascade={"persist", "remove"})
      */
     private $ville;
 
@@ -248,6 +248,36 @@ class Mairie
      * @ORM\Column(type="string", length=255)
      */
     private $insee;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mairie_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mairie_complement_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $mairie_postal_code;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mairie_commune;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $mairie_lat;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $mairie_long;
 
     public function __construct()
     {
@@ -709,14 +739,14 @@ class Mairie
         return $this;
     }
 
-    public function getVille(): ?Ville
+    public function getVilles(): ?Villes
     {
         return $this->ville;
     }
 
-    public function setVille(?Ville $ville): self
+    public function setVilles(?Villes $villes): self
     {
-        $this->ville = $ville;
+        $this->villes = $villes;
 
         return $this;
     }
@@ -749,6 +779,78 @@ class Mairie
     public function setInsee(string $insee): self
     {
         $this->insee = $insee;
+
+        return $this;
+    }
+
+    public function getMairieAdresse(): ?string
+    {
+        return $this->mairie_adresse;
+    }
+
+    public function setMairieAdresse(string $mairie_adresse): self
+    {
+        $this->mairie_adresse = $mairie_adresse;
+
+        return $this;
+    }
+
+    public function getMairieComplementAdresse(): ?string
+    {
+        return $this->mairie_complement_adresse;
+    }
+
+    public function setMairieComplementAdresse(?string $mairie_complement_adresse): self
+    {
+        $this->mairie_complement_adresse = $mairie_complement_adresse;
+
+        return $this;
+    }
+
+    public function getMairiePostalCode(): ?string
+    {
+        return $this->mairie_postal_code;
+    }
+
+    public function setMairiePostalCode(string $mairie_postal_code): self
+    {
+        $this->mairie_postal_code = $mairie_postal_code;
+
+        return $this;
+    }
+
+    public function getMairieCommune(): ?string
+    {
+        return $this->mairie_commune;
+    }
+
+    public function setMairieCommune(string $mairie_commune): self
+    {
+        $this->mairie_commune = $mairie_commune;
+
+        return $this;
+    }
+
+    public function getMairieLat(): ?float
+    {
+        return $this->mairie_lat;
+    }
+
+    public function setMairieLat(float $mairie_lat): self
+    {
+        $this->mairie_lat = $mairie_lat;
+
+        return $this;
+    }
+
+    public function getMairieLong(): ?float
+    {
+        return $this->mairie_long;
+    }
+
+    public function setMairieLong(float $mairie_long): self
+    {
+        $this->mairie_long = $mairie_long;
 
         return $this;
     }

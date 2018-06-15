@@ -186,14 +186,14 @@ class Hebergement
     private $mairie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="ville")
+     * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="villes")
      */
     private $officeTourisme;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="hebergements")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Villes", inversedBy="hebergements")
      */
-    private $ville;
+    private $villes;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -595,14 +595,14 @@ class Hebergement
         return $this;
     }
 
-    public function getVille(): ?Ville
+    public function getVilles(): ?Villes
     {
-        return $this->ville;
+        return $this->villes;
     }
 
-    public function setVille(?Ville $ville): self
+    public function setVilles(?Villes $villes): self
     {
-        $this->ville = $ville;
+        $this->villes = $villes;
 
         return $this;
     }

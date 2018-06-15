@@ -64,21 +64,13 @@ class CreationMairieController extends Controller
 
             $inseeInput = $mairie->getInsee();
             $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
-            dump($inseeInput);
-            dump($mairie);
-            
+
             $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
-            dump($ville);
-            
-            
             $villeId = $ville->getId();
-            dump($villeId);
-            
             $villeSlug = $ville->getVilleSlug();
-            dump($villeSlug);
-            
-            $mairie->setVille(null)
+
+            $mairie->setVilles($ville)
                    ->setMairieLatitude(22.11)
                    ->setMairieLongitude('43.3')
                    ->setMairieSlug($villeSlug)
@@ -87,9 +79,6 @@ class CreationMairieController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($mairie);
             $em->flush();
-            
-            dump($nomMairie);
-            dump($slugMairie);
             $idMairie = $mairie->getId();
         }
         
