@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Mairie;
+use App\Entity\Villes;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Form\CommuneType;
@@ -39,7 +40,7 @@ class CreationMairieController extends Controller
         $nomMairie = $mairie->getMairieNomTouristique();
         $slugMairie = $mairie->getMairieSlug();
         $formMairie->handleRequest($request);
-
+        
         $user = new User();
         $formUser = $this->createForm(CommuneType::class, $user);
         $formUser->handleRequest($request);
@@ -60,18 +61,24 @@ class CreationMairieController extends Controller
         
         if($formMairie->isSubmitted() && $formMairie->isValid())
         {
-            $mairie->setVille(null)
-                    ->setMairieLatitude(22.11)
-                    ->setMairieLongitude('43.3')
-                    ->setMairieSlug('barcelonnette')
-                    ->setMairieDateInscription(new \DateTime());
+
+            $inseeInput = $mairie->getInsee();
+            $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+
+            $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
+            $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
+            $villeId = $ville->getId();
+            $villeSlug = $ville->getVilleSlug();
+
+            $mairie->setVilles($ville)
+                   ->setMairieLatitude(22.11)
+                   ->setMairieLongitude('43.3')
+                   ->setMairieSlug($villeSlug)
+                   ->setMairieDateInscription(new \DateTime());
                     
             $em = $this->getDoctrine()->getManager();
             $em->persist($mairie);
             $em->flush();
-            
-            dump($nomMairie);
-            dump($slugMairie);
             $idMairie = $mairie->getId();
         }
         

@@ -24,7 +24,7 @@ class MairieType extends AbstractType
         $builder
             ->add('mairie_nom_touristique', TextType::class,  [
                 'required' => false,
-                'label' => 'Nom touristique de la commune :',
+                'label' => 'Nom de la commune :',
                 'attr' => [
                     'class' => "form-control form-control-lg mb-3",
                     'type' => "text"
@@ -233,6 +233,44 @@ class MairieType extends AbstractType
                     'class'         => "form-control form-control-lg mb-3",
             ]
             )) 
+            ->add('mairie_adresse', TextType::class, [
+                'required' => true,
+                'label' => 'Adresse de la mairie:',
+                'attr' => [
+                    'placeholder' => "317 chemin des Blés Dorés",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])
+            ->add('mairie_complement_adresse', TextareaType::class, [
+                'required' => false,
+                'label' => 'Complément d\'adresse :',
+                'attr' => [
+                    'placeholder' => "Bât B, étage 2",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "textarea"
+                ]
+            ])
+            ->add('mairie_postal_code', TextType::class, [
+                'required' => true,
+                'label' => 'Code postal :',
+                'attr' => [
+                    'placeholder' => "04400",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
+            ->add('mairie_commune', TextType::class,
+            [
+                'required' => true,
+                'label' => 'Commune',
+                'attr' => [
+                    'placeholder' => "Marseille",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ])
+            
             // ->add('mairie_tampon', FileType::class, array(
             //     'required'      => false,
             //     'data_class'    => null,
