@@ -89,25 +89,27 @@ h1, h2, h3, h4, h5, h6 {
 {%endblock%}
 {% block nav %}
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top">
-        <a class="navbar-brand" href="{{ path('commune_home') }}">Accueil</a>
+        <a class="navbar-brand" href="#">Accueil</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            {% if commune is defined %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_home') }}#section-demarche">La démarche</a>
+                <a class="nav-link" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-demarche">La démarche</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_home') }}#section-commune">Barcelonnette</a>
+                <a class="nav-link" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-commune">Barcelonnette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('commune_listing') }}">Les meublés</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('commune_home') }}#section-contact">Contact</a>
+                <a class="nav-link" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-contact">Contact</a>
             </li>
+            {% endif %}
         </ul>
         <ul class="navbar-nav">
             {% if not is_granted(expression('"ROLE_DECLARANT" in roles')) %}
@@ -160,6 +162,8 @@ h1, h2, h3, h4, h5, h6 {
                     <h3>Logo, charte graphique</h3>
                     <p>Le logo, et la charte graphique de ce site sont propriété du Syndicat de la Montagne Ardéchoise. Toute reproduction totale ou partielle de cette marque sans autorisation préalable et écrite est prohibée. Toute modification des proportions, couleurs, éléments et constituants est strictement interdite.
                     </p>
+                    <h3>Base de données</h3>
+                    <p>Ce site utilise une base de données de 36700 villes de France éditée par <a href="http://sql.sh">sql.sh</a></p>
                     <h3>Données personnelles</h3>
                     <p>
                         Lors de la consultation de notre site, des informations relatives à la navigation de votre ordinateur sur notre site sont susceptibles d'être enregistrées dans des fichiers dits "cookies" installés sur votre terminal (ordinateur, tablette, smartphone, etc.), sous réserve bien sûr que vous les ayez acceptés, et que vous pouvez modifier à tout moment.

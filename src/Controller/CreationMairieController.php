@@ -84,6 +84,7 @@ class CreationMairieController extends Controller
             
             $mairieRepository = $this->getDoctrine()->getRepository(Mairie::class);
             $mairie = $mairieRepository->find($idMairie);
+            $username = $user->getUsername();
             
             $user->setMairie($mairie);
             $user->setUserRole(3);
@@ -93,7 +94,7 @@ class CreationMairieController extends Controller
             $user->setUserPays('FR');
             $user->setUserPostalCode('04400');
             $user->setUserTelephone($mairie->getMairieTelephoneContact());
-            $user->setUserEmail($mairie->getMairieEmailContact());
+            $user->setUserEmail($username);
             $user->setMairie($mairie);
             $user->setToken('coucou');
             $user->setIsActivated(true);

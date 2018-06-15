@@ -63,7 +63,13 @@
                 <a class="nav-link data-animate" href="{{ path('commune_home', {'slug' : commune.mairieSlug}) }}#section-contact">Contact</a>
             </li>
             {% endif %}
-        </ul>
+            <li class="nav-item">
+                        <a class="nav-link" href="{{ path('declarer') }}">Choix commune</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('creation_mairie') }}">Creation Mairie</a>
+                    </li>
+            </ul>
         <ul class="navbar-nav">
             {% if not is_granted(expression('"ROLE_USER" in roles')) %}
             <li class="nav-item">

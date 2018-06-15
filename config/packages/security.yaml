@@ -1,6 +1,7 @@
 # config/packages/security.yaml
 security:
     access_control:
+        - { path: ^/admin, roles: ROLE_ACTIF }
         - { path: ^/admin/proprietaire, roles: ROLE_DECLARANT }
         - { path: ^/admin/mairie, roles: ROLE_MAIRIE }
     providers:

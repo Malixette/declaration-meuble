@@ -35,7 +35,7 @@ class UserController extends Controller
             $token = md5(uniqid(rand()));
             $email = $user->getUserEmail();
             
-            $user->setUserRole(2);
+            $user->setUserRole(1);
             $user->setUserName(md5(uniqid(rand())));
             $user->setMairie(null);
             $user->setUserDateInscription(new \DateTime());

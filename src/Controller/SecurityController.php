@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\User;
+use App\Repository\UserRepository;
 
 class SecurityController 
     extends Controller
@@ -16,8 +17,8 @@ class SecurityController
      */
     public function connexion(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        // Token d'activation
         $userEmail = $request->get('email');
-        
         if($userEmail) {
             $token = $request->get('token');
             
@@ -29,6 +30,7 @@ class SecurityController
             
             if ($token == $userToken) {
                 $user->setIsActivated(true);
+                $user->setUserRole(2);
                 
                 $this->getDoctrine()->getManager()->flush();
             
@@ -38,11 +40,36 @@ class SecurityController
                         );
             }
         }
+        
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
+    
+        if ($error) {
+            
+            $lastUsername = $authenticationUtils->getLastUsername();
+            $userRepo = $this->getDoctrine()->getRepository(User::class);
+            $user = $userRepo->findOneBy(['user_email' => $lastUsername]);
+            
+            if ($user) {
+                $this->addFlash(
+                        'danger', 
+                        "Mot de passe erronné."
+                        );
+            } else {
+                $this->addFlash(
+                        'danger', 
+                        "Cette adresse email n'est pas enregistrée."
+                        );
+            }
+        }
+        // // $this->addFlash(
+        //                 'danger', 
+        //                 "Votre compte n'est pas activé. Un email vous a été envoyé avec les instructions pour valider votre compte."
+        //                 );
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
+        dump($lastUsername);
         $user = $this->getUser();
         
         return $this->render('security/connexion.html.twig', array(

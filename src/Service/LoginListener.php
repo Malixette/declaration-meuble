@@ -37,9 +37,6 @@ class LoginListener implements AuthenticationSuccessHandlerInterface
     {
         $roles = $token->getRoles();
         $user = $token->getUser();
-        $isActivated = $user->getIsActivated();
-
-        if ($isActivated == true) {
 
             $rolesTab = array_map(function ($role) {
                 return $role->getRole();
@@ -53,17 +50,13 @@ class LoginListener implements AuthenticationSuccessHandlerInterface
                 // DONNER LA ROUTE POUR LES ROLE_ADMIN
                 $redirection = new RedirectResponse($this->router->generate('dashboard_mairie'));
             }
-            
-            else {
-                $redirection = new RedirectResponse($this->router->generate('connexion'));
+            elseif (in_array('ROLE_INACTIF', $rolesTab, true)) {
+                // DONNER LA ROUTE POUR LES ROLE_ADMIN
+                $redirection = new RedirectResponse($this->router->generate('logout'));
             }
-        } else {
-            $redirection = new RedirectResponse($this->router->generate('logout'));
-            // $this->addFlash(
-            //             'success', 
-            //             "Votre inscription doit êter validée. Vérifiez vos-emails."
-            //             );
-        }
+            else {
+                $redirection = new RedirectResponse($this->router->generate('inscription'));
+            }
         
         return $redirection;
     }
