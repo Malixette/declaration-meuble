@@ -124,7 +124,7 @@
                 </div> 
                 <div class="row">
                     <div class="col-12">
-                        {#{{ form_errors(form.user_email) }}#}
+                        {{ form_errors(form.user_email) }}
                         {{ form_label(form.user_email)}} <small style="font-style:italic; color:red;"> Obligatoire</small>
                         {{ form_widget(form.user_email)}}
                     </div>

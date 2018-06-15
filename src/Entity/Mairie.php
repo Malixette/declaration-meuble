@@ -80,7 +80,7 @@ class Mairie
     private $mairie_email_contact;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      */
     private $mairie_latitude;
 
