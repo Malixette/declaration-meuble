@@ -70,12 +70,12 @@ class Mairie
     private $mairie_contact_prenom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $mairie_telephone_contact;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mairie_email_contact;
 
