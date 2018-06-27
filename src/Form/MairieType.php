@@ -270,6 +270,15 @@ class MairieType extends AbstractType
                     'type' => "text"
                 ]
             ])
+            ->add('mairie_telephone_general', TextType::class,  [
+                'required' => true,
+                'label' => 'Numéro de téléphone de la mairie:',
+                'attr' => [
+                    'placeholder' => "01 02 03 04 05",
+                    'class' => "form-control form-control-lg mb-3",
+                    'type' => "text"
+                ]
+            ]) 
             
             // ->add('mairie_tampon', FileType::class, array(
             //     'required'      => false,

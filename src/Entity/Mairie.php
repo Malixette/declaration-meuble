@@ -269,6 +269,11 @@ class Mairie
      */
     private $mairie_commune;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mairie_telephone_general;
+
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
@@ -817,6 +822,18 @@ class Mairie
     public function setMairieCommune(string $mairie_commune): self
     {
         $this->mairie_commune = $mairie_commune;
+
+        return $this;
+    }
+
+    public function getMairieTelephoneGeneral(): ?string
+    {
+        return $this->mairie_telephone_general;
+    }
+
+    public function setMairieTelephoneGeneral(string $mairie_telephone_general): self
+    {
+        $this->mairie_telephone_general = $mairie_telephone_general;
 
         return $this;
     }

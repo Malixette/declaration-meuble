@@ -7,7 +7,7 @@ use App\Entity\Mairie;
 use App\Entity\Villes;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Form\CommuneType;
+use App\Form\CreationMairieType;
 use App\Form\MairieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +42,7 @@ class CreationMairieController extends Controller
         $formMairie->handleRequest($request);
         
         $user = new User();
-        $formUser = $this->createForm(CommuneType::class, $user);
+        $formUser = $this->createForm(CreationMairieType::class, $user);
         $formUser->handleRequest($request);
         
         $tampon = $mairie->getMairieTampon();
@@ -66,6 +66,13 @@ class CreationMairieController extends Controller
 
             $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
+            
+            $mairies = $repoMairie->findAll();
+            $inseeMairies = $mairie['insee'];
+            dump($inseeMairies);
+            dump($tabInseeExistants);
+            $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
+            dump($InseeExist);
             $villeSlug = $ville->getVilleSlug();
             dump($ville);
 
@@ -94,12 +101,14 @@ class CreationMairieController extends Controller
             
             $user->setMairie($mairie);
             $user->setUserRole(3);
-            $user->setUserNom($mairie->getMairieContactNom());
+            // $user->setUserNom($mairie->getMairieContactNom());
             $user->setUserPrenom($mairie->getMairieContactPrenom());
             $user->setUserCommune($mairie->getMairieNomTouristique());
             $user->setUserPays('FR');
-            $user->setUserPostalCode('04400');
-            $user->setUserTelephone($mairie->getMairieTelephoneContact());
+            $user->setUserAdresse($mairie->getMairieAdresse());
+            $user->setUserPostalCode($mairie->getMairiePostalCode());
+            $user->setUserCommune($mairie->getMairieCommune());
+            $user->setUserTelephone($mairie->getMairieTelephoneGeneral());
             $user->setUserEmail($username);
             $user->setMairie($mairie);
             $user->setToken('coucou');
@@ -118,7 +127,7 @@ class CreationMairieController extends Controller
             
             return $this->redirectToRoute('connexion');
         }
-        return $this->render('creation_mairie/creation-mairie.html.twig', [
+        return $this->render('mairie/creation-mairie.html.twig', [
             'mairie'    => $mairie,
             'idMairie'  => $idMairie,
             'user'      => $user,
