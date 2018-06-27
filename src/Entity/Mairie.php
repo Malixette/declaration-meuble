@@ -2,309 +2,279 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
- * Mairie
- *
- * @ORM\Table(name="mairie", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_3946A254A73F0036", columns={"ville_id"})}, indexes={@ORM\Index(name="IDX_3946A254CF94313", columns={"office_tourisme_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MairieRepository")
  */
 class Mairie
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_nom_touristique", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieNomTouristique;
+    private $mairie_nom_touristique;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_descriptif_1", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieDescriptif1;
+    private $mairie_descriptif_1;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_descriptif_2", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieDescriptif2;
+    private $mairie_descriptif_2;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_epci_rattachement", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieEpciRattachement;
+    private $mairie_epci_rattachement;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_maire_nom", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $mairieMaireNom;
+    private $mairie_maire_nom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_maire_prenom", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $mairieMairePrenom;
+    private $mairie_maire_prenom;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_adjoint_nom", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieAdjointNom;
+    private $mairie_adjoint_nom;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_adjoint_prenom", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieAdjointPrenom;
+    private $mairie_adjoint_prenom;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_contact_nom", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieContactNom;
+    private $mairie_contact_nom;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_contact_prenom", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieContactPrenom;
+    private $mairie_contact_prenom;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="mairie_telephone_contact", type="string", nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $mairieTelephoneContact;
+    private $mairie_telephone_contact;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_email_contact", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieEmailContact;
+    private $mairie_email_contact;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_latitude", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $mairieLatitude;
+    private $mairie_latitude;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_longitude", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $mairieLongitude;
+    private $mairie_longitude;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_photo_1", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairiePhoto1;
+    private $mairie_photo_1;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_photo_2", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairiePhoto2;
+    private $mairie_photo_2;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_photo_3", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairiePhoto3;
+    private $mairie_photo_3;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_photo_4", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairiePhoto4;
+    private $mairie_photo_4;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_taxe_sejour_gestionnaire", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieTaxeSejourGestionnaire;
+    private $mairie_taxe_sejour_gestionnaire;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_taxe_sejour_bareme", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieTaxeSejourBareme;
+    private $mairie_taxe_sejour_bareme;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_sejour_lien", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieSejourLien;
+    private $mairie_sejour_lien;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_contact_nom_prenom", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieContactNomPrenom;
+    private $mairie_contact_nom_prenom;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_de_telephone", type="text", length=255, nullable=true)
+     * @ORM\Column(type="text",  length=255, nullable=true)
      */
-    private $mairieDeTelephone;
+    private $mairie_de_telephone;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_sejour_email", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieSejourEmail;
+    private $mairie_sejour_email;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_rappel_texte", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieRappelTexte;
+    private $mairie_rappel_texte;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_rappel_lien", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mairieRappelLien;
+    private $mairie_rappel_lien;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_logo", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairieLogo;
+    private $mairie_logo;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_logo_2", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairieLogo2;
+    private $mairie_logo_2;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="mairie_date_inscription", type="datetime", nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $mairieDateInscription;
+    private $mairie_date_inscription;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_tampon", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairieTampon;
+    private $mairie_tampon;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_maire_signature", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * * @Assert\File(
+     *      maxSize = "1M",
+     *      mimeTypes = {"image/jpeg", "image/png"},
+     *      mimeTypesMessage = "Merci de télécharger un format valide: jpeg ou png."
+     * )
      */
-    private $mairieMaireSignature;
+    private $mairie_maire_signature;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_slug", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $mairieSlug;
+    private $mairie_slug;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="insee", type="string", length=255, nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="mairie")
      */
-    private $insee;
+    private $hebergements;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_adresse", type="string", length=255, nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="mairie")
      */
-    private $mairieAdresse;
+    private $user;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mairie_complement_adresse", type="string", length=255, nullable=true)
-     */
-    private $mairieComplementAdresse;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_postal_code", type="string", length=10, nullable=false)
-     */
-    private $mairiePostalCode;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mairie_commune", type="string", length=255, nullable=false)
-     */
-    private $mairieCommune;
-
-    /**
-     * @var \Villes
-     *
-     * @ORM\ManyToOne(targetEntity="Villes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ville_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToOne(targetEntity="App\Entity\Villes", inversedBy="mairie", cascade={"persist", "remove"})
      */
     private $ville;
 
     /**
-     * @var \OfficeTourisme
-     *
-     * @ORM\ManyToOne(targetEntity="OfficeTourisme")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="office_tourisme_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="App\Entity\OfficeTourisme", inversedBy="mairies")
      */
     private $officeTourisme;
 
-public function __construct()
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="hebergement")
+     */
+    private $hebergement;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $insee;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mairie_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mairie_complement_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $mairie_postal_code;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mairie_commune;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mairie_telephone_general;
+
+    public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
         $this->hebergements = new ArrayCollection();
@@ -312,298 +282,396 @@ public function __construct()
         $this->user = new ArrayCollection();
         $this->hebergement = new ArrayCollection();
     }
+
     public function getId()
     {
         return $this->id;
     }
+
     public function getMairieNomTouristique(): ?string
     {
-        return $this->mairieNomTouristique;
+        return $this->mairie_nom_touristique;
     }
-    public function setMairieNomTouristique(?string $mairieNomTouristique): self
+
+    public function setMairieNomTouristique(?string $mairie_nom_touristique): self
     {
-        $this->mairieNomTouristique = $mairieNomTouristique;
+        $this->mairie_nom_touristique = $mairie_nom_touristique;
+
         return $this;
     }
+
     public function getMairieDescriptif1(): ?string
     {
-        return $this->mairieDescriptif1;
+        return $this->mairie_descriptif_1;
     }
-    public function setMairieDescriptif1(?string $mairieDescriptif1): self
+
+    public function setMairieDescriptif1(?string $mairie_descriptif_1): self
     {
-        $this->mairieDescriptif1 = $mairieDescriptif1;
+        $this->mairie_descriptif_1 = $mairie_descriptif_1;
+
         return $this;
     }
+
     public function getMairieDescriptif2(): ?string
     {
-        return $this->mairieDescriptif2;
+        return $this->mairie_descriptif_2;
     }
-    public function setMairieDescriptif2(?string $mairieDescriptif2): self
+
+    public function setMairieDescriptif2(?string $mairie_descriptif_2): self
     {
-        $this->mairieDescriptif2 = $mairieDescriptif2;
+        $this->mairie_descriptif_2 = $mairie_descriptif_2;
+
         return $this;
     }
+
     public function getMairieEpciRattachement(): ?string
     {
-        return $this->mairieEpciRattachement;
+        return $this->mairie_epci_rattachement;
     }
-    public function setMairieEpciRattachement(?string $mairieEpciRattachement): self
+
+    public function setMairieEpciRattachement(?string $mairie_epci_rattachement): self
     {
-        $this->mairieEpciRattachement = $mairieEpciRattachement;
+        $this->mairie_epci_rattachement = $mairie_epci_rattachement;
+
         return $this;
     }
+
     public function getMairieMaireNom(): ?string
     {
-        return $this->mairieMaireNom;
+        return $this->mairie_maire_nom;
     }
-    public function setMairieMaireNom(string $mairieMaireNom): self
+
+    public function setMairieMaireNom(string $mairie_maire_nom): self
     {
-        $this->mairieMaireNom = $mairieMaireNom;
+        $this->mairie_maire_nom = $mairie_maire_nom;
+
         return $this;
     }
+
     public function getMairieMairePrenom(): ?string
     {
-        return $this->mairieMairePrenom;
+        return $this->mairie_maire_prenom;
     }
-    public function setMairieMairePrenom(string $mairieMairePrenom): self
+
+    public function setMairieMairePrenom(string $mairie_maire_prenom): self
     {
-        $this->mairieMairePrenom = $mairieMairePrenom;
+        $this->mairie_maire_prenom = $mairie_maire_prenom;
+
         return $this;
     }
+
     public function getMairieAdjointNom(): ?string
     {
-        return $this->mairieAdjointNom;
+        return $this->mairie_adjoint_nom;
     }
-    public function setMairieAdjointNom(?string $mairieAdjointNom): self
+
+    public function setMairieAdjointNom(?string $mairie_adjoint_nom): self
     {
-        $this->mairieAdjointNom = $mairieAdjointNom;
+        $this->mairie_adjoint_nom = $mairie_adjoint_nom;
+
         return $this;
     }
+
     public function getMairieAdjointPrenom(): ?string
     {
-        return $this->mairieAdjointPrenom;
+        return $this->mairie_adjoint_prenom;
     }
-    public function setMairieAdjointPrenom(?string $mairieAdjointPrenom): self
+
+    public function setMairieAdjointPrenom(?string $mairie_adjoint_prenom): self
     {
-        $this->mairieAdjointPrenom = $mairieAdjointPrenom;
+        $this->mairie_adjoint_prenom = $mairie_adjoint_prenom;
+
         return $this;
     }
+
     public function getMairieContactNom(): ?string
     {
-        return $this->mairieContactNom;
+        return $this->mairie_contact_nom;
     }
-    public function setMairieContactNom(?string $mairieContactNom): self
+
+    public function setMairieContactNom(?string $mairie_contact_nom): self
     {
-        $this->mairieContactNom = $mairieContactNom;
+        $this->mairie_contact_nom = $mairie_contact_nom;
+
         return $this;
     }
+
     public function getMairieContactPrenom(): ?string
     {
-        return $this->mairieContactPrenom;
+        return $this->mairie_contact_prenom;
     }
-    public function setMairieContactPrenom(?string $mairieContactPrenom): self
+
+    public function setMairieContactPrenom(?string $mairie_contact_prenom): self
     {
-        $this->mairieContactPrenom = $mairieContactPrenom;
+        $this->mairie_contact_prenom = $mairie_contact_prenom;
+
         return $this;
     }
-    public function getMairieTelephoneContact(): ?string
+
+    public function getMairieTelephoneContact(): ?int
     {
-        return $this->mairieTelephoneContact;
+        return $this->mairie_telephone_contact;
     }
-    public function setMairieTelephoneContact(string $mairieTelephoneContact): self
+
+    public function setMairieTelephoneContact(int $mairie_telephone_contact): self
     {
-        $this->mairieTelephoneContact = $mairieTelephoneContact;
+        $this->mairie_telephone_contact = $mairie_telephone_contact;
+
         return $this;
     }
+
     public function getMairieEmailContact(): ?string
     {
-        return $this->mairieEmailContact;
+        return $this->mairie_email_contact;
     }
-    public function setMairieEmailContact(string $mairieEmailContact): self
+
+    public function setMairieEmailContact(string $mairie_email_contact): self
     {
-        $this->mairieEmailContact = $mairieEmailContact;
+        $this->mairie_email_contact = $mairie_email_contact;
+
         return $this;
     }
+
     public function getMairieLatitude(): ?float
     {
-        return $this->mairieLatitude;
+        return $this->mairie_latitude;
     }
-    public function setMairieLatitude(float $mairieLatitude): self
+
+    public function setMairieLatitude(float $mairie_latitude): self
     {
-        $this->mairieLatitude = $mairieLatitude;
+        $this->mairie_latitude = $mairie_latitude;
+
         return $this;
     }
+
     public function getMairieLongitude(): ?string
     {
-        return $this->mairieLongitude;
+        return $this->mairie_longitude;
     }
-    public function setMairieLongitude(string $mairieLongitude): self
+
+    public function setMairieLongitude(string $mairie_longitude): self
     {
-        $this->mairieLongitude = $mairieLongitude;
+        $this->mairie_longitude = $mairie_longitude;
+
         return $this;
     }
+
     public function getMairiePhoto1()
     {
-        return $this->mairiePhoto1;
+        return $this->mairie_photo_1;
     }
-    public function setMairiePhoto1($mairiePhoto1): self
+
+    public function setMairiePhoto1($mairie_photo_1): self
     {
-        $this->mairiePhoto1 = $mairiePhoto1;
+        $this->mairie_photo_1 = $mairie_photo_1;
+
         return $this;
     }
+
     public function getMairiePhoto2()
     {
-        return $this->mairiePhoto2;
+        return $this->mairie_photo_2;
     }
-    public function setMairiePhoto2($mairiePhoto2): self
+
+    public function setMairiePhoto2($mairie_photo_2): self
     {
-        $this->mairiePhoto2 = $mairiePhoto2;
+        $this->mairie_photo_2 = $mairie_photo_2;
+
         return $this;
     }
+
     public function getMairiePhoto3()
     {
-        return $this->mairiePhoto3;
+        return $this->mairie_photo_3;
     }
-    public function setMairiePhoto3($mairiePhoto3): self
+
+    public function setMairiePhoto3($mairie_photo_3): self
     {
-        $this->mairiePhoto3 = $mairiePhoto3;
+        $this->mairie_photo_3 = $mairie_photo_3;
+
         return $this;
     }
+
     public function getMairiePhoto4()
     {
-        return $this->mairiePhoto4;
+        return $this->mairie_photo_4;
     }
-    public function setMairiePhoto4($mairiePhoto4): self
+
+    public function setMairiePhoto4($mairie_photo_4): self
     {
-        $this->mairiePhoto4 = $mairiePhoto4;
+        $this->mairie_photo_4 = $mairie_photo_4;
+
         return $this;
     }
+
     public function getMairieTaxeSejourGestionnaire(): ?string
     {
-        return $this->mairieTaxeSejourGestionnaire;
+        return $this->mairie_taxe_sejour_gestionnaire;
     }
-    public function setMairieTaxeSejourGestionnaire(?string $mairieTaxeSejourGestionnaire): self
+
+    public function setMairieTaxeSejourGestionnaire(?string $mairie_taxe_sejour_gestionnaire): self
     {
-        $this->mairieTaxeSejourGestionnaire = $mairieTaxeSejourGestionnaire;
+        $this->mairie_taxe_sejour_gestionnaire = $mairie_taxe_sejour_gestionnaire;
+
         return $this;
     }
+
     public function getMairieTaxeSejourBareme(): ?string
     {
-        return $this->mairieTaxeSejourBareme;
+        return $this->mairie_taxe_sejour_bareme;
     }
-    public function setMairieTaxeSejourBareme(?string $mairieTaxeSejourBareme): self
+
+    public function setMairieTaxeSejourBareme(?string $mairie_taxe_sejour_bareme): self
     {
-        $this->mairieTaxeSejourBareme = $mairieTaxeSejourBareme;
+        $this->mairie_taxe_sejour_bareme = $mairie_taxe_sejour_bareme;
+
         return $this;
     }
+
     public function getMairieSejourLien(): ?string
     {
-        return $this->mairieSejourLien;
+        return $this->mairie_sejour_lien;
     }
-    public function setMairieSejourLien(?string $mairieSejourLien): self
+
+    public function setMairieSejourLien(?string $mairie_sejour_lien): self
     {
-        $this->mairieSejourLien = $mairieSejourLien;
+        $this->mairie_sejour_lien = $mairie_sejour_lien;
+
         return $this;
     }
+
     public function getMairieContactNomPrenom(): ?string
     {
-        return $this->mairieContactNomPrenom;
+        return $this->mairie_contact_nom_prenom;
     }
-    public function setMairieContactNomPrenom(?string $mairieContactNomPrenom): self
+
+    public function setMairieContactNomPrenom(?string $mairie_contact_nom_prenom): self
     {
-        $this->mairieContactNomPrenom = $mairieContactNomPrenom;
+        $this->mairie_contact_nom_prenom = $mairie_contact_nom_prenom;
+
         return $this;
     }
+
     public function getMairieDeTelephone(): ?string
     {
-        return $this->mairieDeTelephone;
+        return $this->mairie_de_telephone;
     }
-    public function setMairieDeTelephone(?string $mairieDeTelephone): self
+
+    public function setMairieDeTelephone(?string $mairie_de_telephone): self
     {
-        $this->mairieDeTelephone = $mairieDeTelephone;
+        $this->mairie_de_telephone = $mairie_de_telephone;
+
         return $this;
     }
+
     public function getMairieSejourEmail(): ?string
     {
-        return $this->mairieSejourEmail;
+        return $this->mairie_sejour_email;
     }
-    public function setMairieSejourEmail(?string $mairieSejourEmail): self
+
+    public function setMairieSejourEmail(?string $mairie_sejour_email): self
     {
-        $this->mairieSejourEmail = $mairieSejourEmail;
+        $this->mairie_sejour_email = $mairie_sejour_email;
+
         return $this;
     }
+
     public function getMairieRappelTexte(): ?string
     {
-        return $this->mairieRappelTexte;
+        return $this->mairie_rappel_texte;
     }
-    public function setMairieRappelTexte(?string $mairieRappelTexte): self
+
+    public function setMairieRappelTexte(?string $mairie_rappel_texte): self
     {
-        $this->mairieRappelTexte = $mairieRappelTexte;
+        $this->mairie_rappel_texte = $mairie_rappel_texte;
+
         return $this;
     }
+
     public function getMairieRappelLien(): ?string
     {
-        return $this->mairieRappelLien;
+        return $this->mairie_rappel_lien;
     }
-    public function setMairieRappelLien(?string $mairieRappelLien): self
+
+    public function setMairieRappelLien(?string $mairie_rappel_lien): self
     {
-        $this->mairieRappelLien = $mairieRappelLien;
+        $this->mairie_rappel_lien = $mairie_rappel_lien;
+
         return $this;
     }
+
     public function getMairieLogo()
     {
-        return $this->mairieLogo;
+        return $this->mairie_logo;
     }
-    public function setMairieLogo($mairieLogo): self
+
+    public function setMairieLogo($mairie_logo): self
     {
-        $this->mairieLogo = $mairieLogo;
+        $this->mairie_logo = $mairie_logo;
+
         return $this;
     }
+
     public function getMairieLogo2()
     {
-        return $this->mairieLogo2;
+        return $this->mairie_logo_2;
     }
-    public function setMairieLogo2($mairieLogo2): self
+
+    public function setMairieLogo2($mairie_logo_2): self
     {
-        $this->mairieLogo2 = $mairieLogo2;
+        $this->mairie_logo_2 = $mairie_logo_2;
+
         return $this;
     }
+
     public function getMairieDateInscription(): ?\DateTimeInterface
     {
-        return $this->mairieDateInscription;
+        return $this->mairie_date_inscription;
     }
-    public function setMairieDateInscription(\DateTimeInterface $mairieDateInscription): self
+
+    public function setMairieDateInscription(\DateTimeInterface $mairie_date_inscription): self
     {
-        $this->mairieDateInscription = $mairieDateInscription;
+        $this->mairie_date_inscription = $mairie_date_inscription;
+
         return $this;
     }
+
     public function getMairieTampon()
     {
-        return $this->mairieTampon;
+        return $this->mairie_tampon;
     }
-    public function setMairieTampon($mairieTampon): self
+
+    public function setMairieTampon($mairie_tampon): self
     {
-        $this->mairieTampon = $mairieTampon;
+        $this->mairie_tampon = $mairie_tampon;
+
         return $this;
     }
+
     public function getMairieMaireSignature()
     {
-        return $this->mairieMaireSignature;
+        return $this->mairie_maire_signature;
     }
-    public function setMairieMaireSignature($mairieMaireSignature): self
+
+    public function setMairieMaireSignature($mairie_maire_signature): self
     {
-        $this->mairieMaireSignature = $mairieMaireSignature;
+        $this->mairie_maire_signature = $mairie_maire_signature;
+
         return $this;
     }
+
     public function getMairieSlug(): ?string
     {
-        return $this->mairieSlug;
+        return $this->mairie_slug;
     }
-    public function setMairieSlug(string $mairieSlug): self
+
+    public function setMairieSlug(string $mairie_slug): self
     {
-        $this->mairieSlug = $mairieSlug;
+        $this->mairie_slug = $mairie_slug;
+
         return $this;
     }
+
     /**
      * @return Collection|Hebergement[]
      */
@@ -611,14 +679,17 @@ public function __construct()
     {
         return $this->hebergements;
     }
+
     public function addHebergement(Hebergement $hebergement): self
     {
         if (!$this->hebergements->contains($hebergement)) {
             $this->hebergements[] = $hebergement;
             $hebergement->setMairie($this);
         }
+
         return $this;
     }
+
     public function removeHebergement(Hebergement $hebergement): self
     {
         if ($this->hebergements->contains($hebergement)) {
@@ -628,8 +699,10 @@ public function __construct()
                 $hebergement->setMairie(null);
             }
         }
+
         return $this;
     }
+
     /**
      * @return Collection|User[]
      */
@@ -637,14 +710,17 @@ public function __construct()
     {
         return $this->user;
     }
+
     public function addUser(User $user): self
     {
         if (!$this->user->contains($user)) {
             $this->user[] = $user;
             $user->setMairie($this);
         }
+
         return $this;
     }
+
     public function removeUser(User $user): self
     {
         if ($this->user->contains($user)) {
@@ -654,26 +730,34 @@ public function __construct()
                 $user->setMairie(null);
             }
         }
+
         return $this;
     }
+
     public function getVilles(): ?Villes
     {
         return $this->ville;
     }
+
     public function setVilles(?Villes $villes): self
     {
         $this->ville = $villes;
+
         return $this;
     }
+
     public function getOfficeTourisme(): ?OfficeTourisme
     {
         return $this->officeTourisme;
     }
+
     public function setOfficeTourisme(?OfficeTourisme $officeTourisme): self
     {
         $this->officeTourisme = $officeTourisme;
+
         return $this;
     }
+
     /**
      * @return Collection|Hebergement[]
      */
@@ -681,50 +765,76 @@ public function __construct()
     {
         return $this->hebergement;
     }
+
     public function getInsee(): ?string
     {
         return $this->insee;
     }
+
     public function setInsee(string $insee): self
     {
         $this->insee = $insee;
-        return $this;
-    }
-    public function getMairieAdresse(): ?string
-    {
-        return $this->mairieAdresse;
-    }
-    public function setMairieAdresse(string $mairieAdresse): self
-    {
-        $this->mairieAdresse = $mairieAdresse;
-        return $this;
-    }
-    public function getMairieComplementAdresse(): ?string
-    {
-        return $this->mairieComplementAdresse;
-    }
-    public function setMairieComplementAdresse(?string $mairieComplementAdresse): self
-    {
-        $this->mairieComplementAdresse = $mairieComplementAdresse;
-        return $this;
-    }
-    public function getMairiePostalCode(): ?string
-    {
-        return $this->mairiePostalCode;
-    }
-    public function setMairiePostalCode(string $mairiePostalCode): self
-    {
-        $this->mairiePostalCode = $mairiePostalCode;
-        return $this;
-    }
-    public function getMairieCommune(): ?string
-    {
-        return $this->mairieCommune;
-    }
-    public function setMairieCommune(string $mairieCommune): self
-    {
-        $this->mairieCommune = $mairieCommune;
+
         return $this;
     }
 
+    public function getMairieAdresse(): ?string
+    {
+        return $this->mairie_adresse;
+    }
+
+    public function setMairieAdresse(string $mairie_adresse): self
+    {
+        $this->mairie_adresse = $mairie_adresse;
+
+        return $this;
+    }
+
+    public function getMairieComplementAdresse(): ?string
+    {
+        return $this->mairie_complement_adresse;
+    }
+
+    public function setMairieComplementAdresse(?string $mairie_complement_adresse): self
+    {
+        $this->mairie_complement_adresse = $mairie_complement_adresse;
+
+        return $this;
+    }
+
+    public function getMairiePostalCode(): ?string
+    {
+        return $this->mairie_postal_code;
+    }
+
+    public function setMairiePostalCode(string $mairie_postal_code): self
+    {
+        $this->mairie_postal_code = $mairie_postal_code;
+
+        return $this;
+    }
+
+    public function getMairieCommune(): ?string
+    {
+        return $this->mairie_commune;
+    }
+
+    public function setMairieCommune(string $mairie_commune): self
+    {
+        $this->mairie_commune = $mairie_commune;
+
+        return $this;
+    }
+
+    public function getMairieTelephoneGeneral(): ?string
+    {
+        return $this->mairie_telephone_general;
+    }
+
+    public function setMairieTelephoneGeneral(string $mairie_telephone_general): self
+    {
+        $this->mairie_telephone_general = $mairie_telephone_general;
+
+        return $this;
+    }
 }
