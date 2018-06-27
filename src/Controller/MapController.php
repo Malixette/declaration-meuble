@@ -45,7 +45,7 @@ class MapController extends Controller
     /**
      * @Route("/carte", name="carte", methods="GET|POST")
      */
-    public function showMap()
+    public function showMapCommune()
     {
         $repoUser = $this->getDoctrine()->getRepository(User::class);
         $user    = $this->getUser();
