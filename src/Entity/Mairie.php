@@ -741,7 +741,7 @@ class Mairie
 
     public function setVilles(?Villes $villes): self
     {
-        $this->villes = $villes;
+        $this->ville = $villes;
 
         return $this;
     }

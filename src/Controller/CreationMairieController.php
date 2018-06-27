@@ -75,13 +75,16 @@ class CreationMairieController extends Controller
             dump($InseeExist);
             $villeSlug = $ville->getVilleSlug();
             dump($ville);
-
+            
             $mairie->setVilles($ville)
-                   ->setMairieLatitude('22.11')
-                   ->setMairieLongitude('43.3')
+                   ->setMairieLongitude(43)
+                   ->setMairieLatitude(22)
                    ->setMairieSlug($villeSlug)
                    ->setMairieDateInscription(new \DateTime());
                     
+            $mairieVille = $mairie->getVilles();
+            dump($mairieVille);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($mairie);
             $em->flush();
