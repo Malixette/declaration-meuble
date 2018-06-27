@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
@@ -35,47 +32,38 @@ class User implements UserInterface, \Serializable
      * )
      */
     private $username;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $user_nom;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user_prenom;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $user_adresse;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user_complement_adresse;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $user_postal_code;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $user_commune;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user_pays;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user_telephone;
-
     /**
      * @ORM\Column(type="string", length=123)
      * @ORM\Column(name="user_email", type="string", length=255, unique=true)
@@ -85,17 +73,14 @@ class User implements UserInterface, \Serializable
      * )
      */
     private $user_email;
-
     /**
      * @ORM\Column(type="datetime")
      */
     private $user_date_inscription;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $user_role;
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Hebergement", mappedBy="user")
      */
@@ -105,12 +90,10 @@ class User implements UserInterface, \Serializable
      * @ORM\ManyToMany(targetEntity="App\Entity\User")
      */
     private $MairieToDeclarant;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Mairie", inversedBy="user")
      */
     private $mairie;
-
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
@@ -121,34 +104,28 @@ class User implements UserInterface, \Serializable
      * )
      */
     private $password;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $token;
-
     /**
      * @ORM\Column(type="boolean")
      */
     private $is_activated;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Personne_morale;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $siren_siret;
-
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
         $this->hebergements = new ArrayCollection();
         $this->MairieToDeclarant = new ArrayCollection();
     }
-
     public function getId()
     {
         return $this->id;
@@ -158,146 +135,110 @@ class User implements UserInterface, \Serializable
     {
         return $this->username;
     }
-
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
         return $this;
     }
-
     public function getUserNom(): ?string
     {
         return $this->user_nom;
     }
-
     public function setUserNom(string $user_nom): self
     {
         $this->user_nom = $user_nom;
-
         return $this;
     }
-
     public function getUserPrenom(): ?string
     {
         return $this->user_prenom;
     }
-
     public function setUserPrenom(?string $user_prenom): self
     {
         $this->user_prenom = $user_prenom;
-
         return $this;
     }
-
     public function getUserAdresse(): ?string
     {
         return $this->user_adresse;
     }
-
     public function setUserAdresse(string $user_adresse): self
     {
         $this->user_adresse = $user_adresse;
-
         return $this;
     }
-
     public function getUserComplementAdresse(): ?string
     {
         return $this->user_complement_adresse;
     }
-
     public function setUserComplementAdresse(?string $user_complement_adresse): self
     {
         $this->user_complement_adresse = $user_complement_adresse;
-
         return $this;
     }
-
     public function getUserPostalCode(): ?string
     {
         return $this->user_postal_code;
     }
-
     public function setUserPostalCode(string $user_postal_code): self
     {
         $this->user_postal_code = $user_postal_code;
-
         return $this;
     }
-
     public function getUserCommune(): ?string
     {
         return $this->user_commune;
     }
-
     public function setUserCommune(string $user_commune): self
     {
         $this->user_commune = $user_commune;
-
         return $this;
     }
-
     public function getUserPays(): ?string
     {
         return $this->user_pays;
     }
-
     public function setUserPays(string $user_pays): self
     {
         $this->user_pays = $user_pays;
-
         return $this;
     }
-
     public function getUserTelephone(): ?string
     {
         return $this->user_telephone;
     }
-
     public function setUserTelephone(string $user_telephone): self
     {
         $this->user_telephone = $user_telephone;
-
         return $this;
     }
-
     public function getUserEmail(): ?string
     {
         return $this->user_email;
     }
-
     public function setUserEmail(string $user_email): self
     {
         $this->user_email = $user_email;
-
         return $this;
     }
-
     public function getUserDateInscription(): ?\DateTimeInterface
     {
         return $this->user_date_inscription;
     }
-
     public function setUserDateInscription(\DateTimeInterface $user_date_inscription): self
     {
         $this->user_date_inscription = $user_date_inscription;
-
         return $this;
     }
-
     public function getUserRole(): ?string
     {
         return $this->user_role;
     }
-
     public function setUserRole(string $user_role): self
     {
         $this->user_role = $user_role;
-
         return $this;
     }
-
     /**
      * @return Collection|Hebergement[]
      */
@@ -305,17 +246,14 @@ class User implements UserInterface, \Serializable
     {
         return $this->hebergements;
     }
-
     public function addHebergement(Hebergement $hebergement): self
     {
         if (!$this->hebergements->contains($hebergement)) {
             $this->hebergements[] = $hebergement;
             $hebergement->setUser($this);
         }
-
         return $this;
     }
-
     public function removeHebergement(Hebergement $hebergement): self
     {
         if ($this->hebergements->contains($hebergement)) {
@@ -325,7 +263,6 @@ class User implements UserInterface, \Serializable
                 $hebergement->setUser(null);
             }
         }
-
         return $this;
     }
     
@@ -336,49 +273,38 @@ class User implements UserInterface, \Serializable
     {
         return $this->MairieToDeclarant;
     }
-
     public function addMairieToDeclarant(User $mairieToDeclarant): self
     {
         if (!$this->MairieToDeclarant->contains($mairieToDeclarant)) {
             $this->MairieToDeclarant[] = $mairieToDeclarant;
         }
-
         return $this;
     }
-
     public function removeMairieToDeclarant(User $mairieToDeclarant): self
     {
         if ($this->MairieToDeclarant->contains($mairieToDeclarant)) {
             $this->MairieToDeclarant->removeElement($mairieToDeclarant);
         }
-
         return $this;
     }    
-
     public function getMairie(): ?Mairie
     {
         return $this->mairie;
     }
-
     public function setMairie(?Mairie $mairie): self
     {
         $this->mairie = $mairie;
-
         return $this;
     }
-
     public function getPassword(): ?string
     {
         return $this->password;
     }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
-
     public function getRoles()
     {
         if ($this->user_role == 1)
@@ -399,7 +325,6 @@ class User implements UserInterface, \Serializable
     public function eraseCredentials()
     {
     }
-
     public function getSalt()
     {
         // The bcrypt and argon2i algorithms don't require a separate salt.
@@ -417,7 +342,6 @@ class User implements UserInterface, \Serializable
             // $this->salt,
         ));
     }
-
     /** @see Serializable::unserialize() */
     public function unserialize($serialized)
     {
@@ -429,52 +353,40 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized);
     }
-
     public function getToken(): ?string
     {
         return $this->token;
     }
-
     public function setToken(string $token): self
     {
         $this->token = $token;
-
         return $this;
     }
-
     public function getIsActivated(): ?bool
     {
         return $this->is_activated;
     }
-
     public function setIsActivated(bool $is_activated): self
     {
         $this->is_activated = $is_activated;
-
         return $this;
     }
-
     public function getPersonneMorale(): ?string
     {
         return $this->Personne_morale;
     }
-
     public function setPersonneMorale(?string $Personne_morale): self
     {
         $this->Personne_morale = $Personne_morale;
-
         return $this;
     }
-
     public function getSirenSiret(): ?string
     {
         return $this->siren_siret;
     }
-
     public function setSirenSiret(?string $siren_siret): self
     {
         $this->siren_siret = $siren_siret;
-
         return $this;
     }    
 }
