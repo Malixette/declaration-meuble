@@ -230,7 +230,7 @@ class Mairie
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Villes", inversedBy="mairie", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Villes", inversedBy="mairie_id", cascade={"persist", "remove"})
      */
     private $ville;
 

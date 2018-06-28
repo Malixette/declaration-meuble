@@ -7,7 +7,7 @@ use App\Entity\Mairie;
 use App\Entity\Villes;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Form\UserType;
+use App\Form\CreationMairieType;
 use App\Form\MairieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +42,7 @@ class CreationMairieController extends Controller
         $formMairie->handleRequest($request);
         
         $user = new User();
-        $formUser = $this->createForm(UserType::class, $user);
+        $formUser = $this->createForm(CreationMairieType::class, $user);
         $formUser->handleRequest($request);
         
         $tampon = $mairie->getMairieTampon();
@@ -67,10 +67,12 @@ class CreationMairieController extends Controller
             $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
             
-            $mairies = $repoMairie->findAll();
-
-            $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
-            dump($InseeExist);
+            // $mairies = $repoMairie->findAll();
+            // $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
+            // dump($InseeExist);
+            // $villeRepository = $this->getDoctrine()->getRepository(Mairie::class);
+            // $ville = $villeRepository->find($idMairie);
+            
             $villeSlug = $ville->getVilleSlug();
             dump($ville);
             
@@ -98,19 +100,18 @@ class CreationMairieController extends Controller
             
             $mairieRepository = $this->getDoctrine()->getRepository(Mairie::class);
             $mairie = $mairieRepository->find($idMairie);
-            $username = $user->getUsername();
-            
+
             $user->setMairie($mairie);
+            $user->setUserName(md5(uniqid(rand())));            
             $user->setUserRole(3);
-            // $user->setUserNom($mairie->getMairieContactNom());
             $user->setUserPrenom($mairie->getMairieContactPrenom());
+            $user->setUserNom($mairie->getMairieContactNom());
             $user->setUserCommune($mairie->getMairieNomTouristique());
             $user->setUserPays('FR');
             $user->setUserAdresse($mairie->getMairieAdresse());
             $user->setUserPostalCode($mairie->getMairiePostalCode());
             $user->setUserCommune($mairie->getMairieCommune());
             $user->setUserTelephone($mairie->getMairieTelephoneGeneral());
-            $user->setUserEmail($username);
             $user->setMairie($mairie);
             $user->setToken('coucou');
             $user->setIsActivated(true);
