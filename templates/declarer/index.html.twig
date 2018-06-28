@@ -2,12 +2,12 @@
 
 {% block main %}
     <h2>Choisissez une commune ayant souscrit au service</h2>
-    {{ form_start(form)}}
-    {{ form_end(form)}}
+    {#{{ form_start(form)}}#}
+    {#{{ form_end(form)}}#}
     
-    {% if idCommune > 0 %}
-        Le service de déclaration en ligne de {{nomCommune}} est opérationnel.
-        <a href="{{ path('commune_show', {'slug': slugCommune}) }}">Aller sur son espace</a>
-    {% endif %}
+    {#{% if idCommune > 0 %}#}
+    {#    Le service de déclaration en ligne de {{nomCommune}} est opérationnel.#}
+    {#    <a href="{{ path('commune_show', {'slug': slugCommune}) }}">Aller sur son espace</a>#}
+    {#{% endif %}#}
     
 {% endblock %}

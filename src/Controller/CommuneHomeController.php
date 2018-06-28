@@ -19,26 +19,27 @@ class CommuneHomeController extends Controller
      */
     public function index(Request $request)
     {
-        $form = $this->createForm(ChoixCommuneType::class);
-        $form->handleRequest($request);
         $idCommune = 0;
         $SlugCommune = '';
         $nomCommune = '';
         
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            // si on récupère bien une commune (astuce pour que le placeholder ne fasse pas planter)
-            if ($form->get('commune')->getData())
-            {
-                $SlugCommune = $form->get('commune')->getData()->getMairieSlug();
-                $idCommune = $form->get('commune')->getData()->getId();
-                $nomCommune = $form->get('commune')->getData()->getMairieNomTouristique();
-            }
-        }
+        // $form = $this->createForm(ChoixCommuneType::class);
+        // $form->handleRequest($request);
+        
+        // if ($form->isSubmitted() && $form->isValid())
+        // {
+        //     // si on récupère bien une commune (astuce pour que le placeholder ne fasse pas planter)
+        //     if ($form->get('commune')->getData())
+        //     {
+        //         $SlugCommune = $form->get('commune')->getData()->getMairieSlug();
+        //         $idCommune = $form->get('commune')->getData()->getId();
+        //         $nomCommune = $form->get('commune')->getData()->getMairieNomTouristique();
+        //     }
+        // }
         
         return $this->render('declarer/index.html.twig', [
             'controller_name' => 'CommuneHomeController',
-            'form' => $form->createView(),
+            // 'form' => $form->createView(),
             'idCommune' => $idCommune,
             'nomCommune' => $nomCommune,
             'slugCommune' => $SlugCommune

@@ -7,7 +7,7 @@ use App\Entity\Mairie;
 use App\Entity\Villes;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Form\CreationMairieType;
+use App\Form\UserType;
 use App\Form\MairieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +42,7 @@ class CreationMairieController extends Controller
         $formMairie->handleRequest($request);
         
         $user = new User();
-        $formUser = $this->createForm(CreationMairieType::class, $user);
+        $formUser = $this->createForm(UserType::class, $user);
         $formUser->handleRequest($request);
         
         $tampon = $mairie->getMairieTampon();
