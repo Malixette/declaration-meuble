@@ -68,9 +68,7 @@ class CreationMairieController extends Controller
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
             
             $mairies = $repoMairie->findAll();
-            $inseeMairies = $mairie['insee'];
-            dump($inseeMairies);
-            dump($tabInseeExistants);
+
             $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
             dump($InseeExist);
             $villeSlug = $ville->getVilleSlug();
