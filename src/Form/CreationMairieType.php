@@ -36,15 +36,15 @@ class CreationMairieType extends AbstractType
                     'type' => "text"
                 ]
             ])
-            ->add('user_telephone', TextType::class, [
-                'required' => true,
-                'label' => 'N° de téléphone de la mairie :',
-                'attr' => [
-                    'placeholder' => "04 05 06 07 08",
-                    'class' => "form-control form-control-lg mb-3",
-                    'type' => "text"
-                ]
-            ])
+            // ->add('user_telephone', TextType::class, [
+            //     'required' => true,
+            //     'label' => 'N° de téléphone de la mairie :',
+            //     'attr' => [
+            //         'placeholder' => "04 05 06 07 08",
+            //         'class' => "form-control form-control-lg mb-3",
+            //         'type' => "text"
+            //     ]
+            // ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe entrés sont différents',

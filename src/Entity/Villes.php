@@ -210,6 +210,11 @@ class Villes
      */
     private $ville_zmax;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Mairie", cascade={"persist", "remove"})
+     */
+    private $mairie;
+
 public function getId()
     {
         return $this->id;
@@ -455,6 +460,18 @@ public function getId()
     public function setVilleZmax(?int $ville_zmax): self
     {
         $this->ville_zmax = $ville_zmax;
+        return $this;
+    }
+
+    public function getMairieId(): ?Mairie
+    {
+        return $this->mairie_id;
+    }
+
+    public function setMairieId(?Mairie $mairie_id): self
+    {
+        $this->mairie_id = $mairie_id;
+
         return $this;
     }
 }
