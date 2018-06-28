@@ -43,7 +43,7 @@ class MapController extends Controller
     }
     
     /**
-     * @Route("/carte", name="carte", methods="GET|POST")
+     * @Route("/carte/hebergements", name="carte", methods="GET|POST")
      */
     public function showMapCommune()
     {

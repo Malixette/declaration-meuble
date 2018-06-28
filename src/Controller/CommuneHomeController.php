@@ -19,8 +19,8 @@ class CommuneHomeController extends Controller
      */
     public function index(Request $request)
     {
-        $form = $this->createForm(ChoixCommuneType::class);
-        $form->handleRequest($request);
+        // $form = $this->createForm(ChoixCommuneType::class);
+        // $form->handleRequest($request);
         $idCommune = 0;
         $SlugCommune = '';
         $nomCommune = '';
@@ -38,7 +38,7 @@ class CommuneHomeController extends Controller
         
         return $this->render('declarer/index.html.twig', [
             'controller_name' => 'CommuneHomeController',
-            'form' => $form->createView(),
+            // 'form' => $form->createView(),
             'idCommune' => $idCommune,
             'nomCommune' => $nomCommune,
             'slugCommune' => $SlugCommune
