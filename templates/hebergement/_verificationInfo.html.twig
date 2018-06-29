@@ -1,74 +1,74 @@
-<div class="row" onload="initialize()">
-    <div class="col-md-8 col-lg-6">
-        <h3>Dernière étape avant envoi de votre déclaration</h3>
-        <p>Vérifiez les informations transmises jusqu'à présent et modifiez-les en cas de besoin. Ces informations permettent à la Mairie de générer le document officiel (CERFA). En cliquant sur le bouton "Valider les informations", vous certifiez l'exactitude des informations renseignées.</p>
-        <p><strong>Nom de l'hébergement:</strong> {{ hebergement.hebName }}</p>
+{#<div class="row" onload="initialize()">#}
+{#    <div class="col-md-8 col-lg-6">#}
+{#        <h3>Dernière étape avant envoi de votre déclaration</h3>#}
+{#        <p>Vérifiez les informations transmises jusqu'à présent et modifiez-les en cas de besoin. Ces informations permettent à la Mairie de générer le document officiel (CERFA). En cliquant sur le bouton "Valider les informations", vous certifiez l'exactitude des informations renseignées.</p>#}
+{#        <p><strong>Nom de l'hébergement:</strong> {{ hebergement.hebName }}</p>#}
         
-        {% if hebergement.hebDescriptifCourt %}
-        <p><strong>Descriptif:</strong> {{ hebergement.hebDescriptifCourt }}</p>
-        {% endif %}
+{#        {% if hebergement.hebDescriptifCourt %}#}
+{#        <p><strong>Descriptif:</strong> {{ hebergement.hebDescriptifCourt }}</p>#}
+{#        {% endif %}#}
         
-        <p><strong>Adresse:</strong> {{ hebergement.hebAdresse }} <br>
+{#        <p><strong>Adresse:</strong> {{ hebergement.hebAdresse }} <br>#}
         
-        {% if hebergement.hebAdresseComplement != '' %}
-            <strong>Complément d'adresse:</strong> {{ hebergement.hebAdresseComplement }} <br>
-        {% endif %}
+{#        {% if hebergement.hebAdresseComplement != '' %}#}
+{#            <strong>Complément d'adresse:</strong> {{ hebergement.hebAdresseComplement }} <br>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebType == 'appartement' %}
-            <strong>Bâtiment:</strong> {{ hebergement.hebBatiment }}<br>
-        {% endif %}
+{#        {% if hebergement.hebType == 'appartement' %}#}
+{#            <strong>Bâtiment:</strong> {{ hebergement.hebBatiment }}<br>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebEtage %}
-            <strong>Etage:</strong> {{ hebergement.hebEtage }}<br>
-        {% endif %}
+{#        {% if hebergement.hebEtage %}#}
+{#            <strong>Etage:</strong> {{ hebergement.hebEtage }}<br>#}
+{#        {% endif %}#}
         
-        <strong>Code Postal:</strong> {{ hebergement.hebCodePostal }}<br>
+{#        <strong>Code Postal:</strong> {{ hebergement.hebCodePostal }}<br>#}
         
-        <strong>Ville:</strong> {{ hebergement.hebCommune }}</p>
+{#        <strong>Ville:</strong> {{ hebergement.hebCommune }}</p>#}
         
-        <p><strong>Nombre de pièces:</strong> {{ hebergement.hebNbrPieces }}</p>
+{#        <p><strong>Nombre de pièces:</strong> {{ hebergement.hebNbrPieces }}</p>#}
         
-        <p><strong>Capacité maximale:</strong> {{ hebergement.hebCouchagesMax }}</p>
+{#        <p><strong>Capacité maximale:</strong> {{ hebergement.hebCouchagesMax }}</p>#}
         
-        {% if hebergement.hebClassement %}
-            <p><strong>Classement:</strong> {{ hebergement.hebClassement }} <br>
-        {% endif %}
+{#        {% if hebergement.hebClassement %}#}
+{#            <p><strong>Classement:</strong> {{ hebergement.hebClassement }} <br>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebClassement == 'oui' %}
-            <strong>Date de classement:</strong> {{ hebergement.hebDateClassement | date('d-m-Y') }}</p>
-        {% endif %}
+{#        {% if hebergement.hebClassement == 'oui' %}#}
+{#            <strong>Date de classement:</strong> {{ hebergement.hebDateClassement | date('d-m-Y') }}</p>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebPeriodesLocation %}
-            <p><strong>Saisons d'ouverture:</strong> 
-                {% for periode in hebergement.hebPeriodesLocation %}
-                    <span>
-                        <i class="far fa-check-square"></i> {{ periode }}
-                    </span>
-                {% endfor %}
-            </p>
-        {% endif %}
+{#        {% if hebergement.hebPeriodesLocation %}#}
+{#            <p><strong>Saisons d'ouverture:</strong> #}
+{#                {% for periode in hebergement.hebPeriodesLocation %}#}
+{#                    <span>#}
+{#                        <i class="far fa-check-square"></i> {{ periode }}#}
+{#                    </span>#}
+{#                {% endfor %}#}
+{#            </p>#}
+{#        {% endif %}#}
         
-        <p><strong>Nombre de couchages maximum:</strong> {{ hebergement.hebCouchagesMax }}</p>
+{#        <p><strong>Nombre de couchages maximum:</strong> {{ hebergement.hebCouchagesMax }}</p>#}
         
-        {% if hebergement.hebSiteWeb != '' %}
-            <p><strong>Site web:</strong> <a href="{{ hebergement.hebSiteWeb }}">{{ hebergement.hebName }}</a></p>
-        {% endif %}
+{#        {% if hebergement.hebSiteWeb != '' %}#}
+{#            <p><strong>Site web:</strong> <a href="{{ hebergement.hebSiteWeb }}">{{ hebergement.hebName }}</a></p>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebSiteResa != '' %}
-            <p><strong>Site web de réservation:</strong> <a href="{{ hebergement.hebSiteResa }}">Réservation {{ hebergement.hebName }}</a><br>
-        {% endif %}
+{#        {% if hebergement.hebSiteResa != '' %}#}
+{#            <p><strong>Site web de réservation:</strong> <a href="{{ hebergement.hebSiteResa }}">Réservation {{ hebergement.hebName }}</a><br>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebContactResa != '' %}
-            <strong>Contact de réservation:</strong> {{ hebergement.hebContactResa }}<br>
-        {% endif %}
+{#        {% if hebergement.hebContactResa != '' %}#}
+{#            <strong>Contact de réservation:</strong> {{ hebergement.hebContactResa }}<br>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebEmailResa != '' %}
-            <strong>Email de réservation:</strong> {{ hebergement.hebEmailResa }}<br>
-        {% endif %}
+{#        {% if hebergement.hebEmailResa != '' %}#}
+{#            <strong>Email de réservation:</strong> {{ hebergement.hebEmailResa }}<br>#}
+{#        {% endif %}#}
         
-        {% if hebergement.hebTelResa != '' %}
-            <strong>Téléphone de réservation:</strong> {{ hebergement.hebTelResa }}</p>
-        {% endif %}
+{#        {% if hebergement.hebTelResa != '' %}#}
+{#            <strong>Téléphone de réservation:</strong> {{ hebergement.hebTelResa }}</p>#}
+{#        {% endif %}#}
         {#<p><strong>Date de la déclaration:</strong> {{ hebergement.hebDateDeclaration | date('d-m-Y à H:i') }} <br>#}
         {#<strong>Statut de la déclaration:</strong> {{ hebergement.hebStatut }}<br>#}
         {#<strong>Numéro de la déclaration:</strong> {{ hebergement.hebNumDeclaration }}<br>#}
@@ -77,8 +77,8 @@
             {#<div>#}
             {#    <a class="btn btn-warning mr-2" href="{{ path('dashboard_declarant') }}">Valider les informations</a>     #}
             {#</div>#}
-        </div>
-    </div>
+{#        </div>#}
+{#    </div>#}
     {#<div class="container">#}
     {#    {{form_start(formVerif)}}#}
         
@@ -90,8 +90,11 @@
     {#    {{form_end(formVerif)}}#}
     {#</div>#}
     
-    <a href="{{ path('hebergement_verif', {'id': hebergement.id}) }}">Editer ma déclaration</a>
-    <a href="{{ path('dashboard_declarant') }}">Editer ma déclaration</a>
+{#    <a href="{{ path('hebergement_verif', {'id': hebergement.id}) }}">Editer ma déclaration</a>#}
+{#    <a href="{{ path('dashboard_declarant') }}">Editer ma déclaration</a>#}
+
+{#<a href="{{ path('hebergement_modif', {'id': hebergement.id}) }}">Rectifier ma déclaration</a>#}
+
 
 {% block javascripts %}
     
