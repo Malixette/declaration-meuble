@@ -127,7 +127,7 @@ class Hebergement
      */
     private $heb_email_resa;
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $heb_tel_resa;
     /**
@@ -399,11 +399,11 @@ class Hebergement
         $this->heb_email_resa = $heb_email_resa;
         return $this;
     }
-    public function getHebTelResa(): ?int
+    public function getHebTelResa(): ?string
     {
         return $this->heb_tel_resa;
     }
-    public function setHebTelResa(?int $heb_tel_resa): self
+    public function setHebTelResa(?string $heb_tel_resa): self
     {
         $this->heb_tel_resa = $heb_tel_resa;
         return $this;

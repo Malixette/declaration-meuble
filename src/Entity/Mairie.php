@@ -70,7 +70,7 @@ class Mairie
     private $mairie_contact_prenom;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $mairie_telephone_contact;
 
@@ -418,12 +418,12 @@ class Mairie
         return $this;
     }
 
-    public function getMairieTelephoneContact(): ?int
+    public function getMairieTelephoneContact(): ?string
     {
         return $this->mairie_telephone_contact;
     }
 
-    public function setMairieTelephoneContact(int $mairie_telephone_contact): self
+    public function setMairieTelephoneContact(string $mairie_telephone_contact): self
     {
         $this->mairie_telephone_contact = $mairie_telephone_contact;
 
