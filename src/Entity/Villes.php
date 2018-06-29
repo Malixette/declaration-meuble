@@ -463,14 +463,14 @@ public function getId()
         return $this;
     }
 
-    public function getMairieId(): ?Mairie
+    public function getMairie(): ?Mairie
     {
-        return $this->mairie_id;
+        return $this->mairie;
     }
 
-    public function setMairieId(?Mairie $mairie_id): self
+    public function setMairie(?Mairie $mairie): self
     {
-        $this->mairie_id = $mairie_id;
+        $this->mairie = $mairie;
 
         return $this;
     }

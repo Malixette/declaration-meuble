@@ -109,11 +109,11 @@
     <div class="container-fluid full section position-relative header" id="index">
         <div class="row w-100 position-absolute" style="top:35%;">
             <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
-                <h1 class="text-white">Bienvenue sur le site de déclaration de meublés de XXX</h1>
+                <h1 class="text-white">Bienvenue sur l'espace de déclaration de meublés de {{commune.mairieNomTouristique}}</h1>
             </div>
-            <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
-                <h2 class="text-white">Un seul espace pour déclarer tous vos meublés en France</h2>
-            </div>
+            {#<div class="col-12 w-100 d-inline-flex justify-content-center text-center">#}
+            {#    <h2 class="text-white">Un seul espace pour déclarer tous vos meublés en France</h2>#}
+            {#</div>#}
             <div class="col-12 w-100 d-inline-flex justify-content-center text-center">
                 <a href="{{ path('connexion') }}" class="btn btn-outline-light btn-md-lg p-4 mt-md-4" role="button" id="btn-declaration">Espace déclaration</a>
             </div>
@@ -297,7 +297,7 @@
     <div class="container-fluid section pt-1" id="section-commune">
         <div class="row headercommune">
             <div class="col-12 d-flex flex-column justify-content-center w-100">
-                <h1 class="section-titre text-center text-white">Barcelonnette</h1>
+                <h1 class="section-titre text-center text-white">{{commune.mairieNomTouristique}}</h1>
             </div>
         </div>
         <div class="container">
@@ -305,10 +305,7 @@
                 <div class="col-md-6 bg-warning p-4 text-center">
                     <img src="{{asset('assets/img/vecteurs/cityhall.png')}}" alt="un bâtiment administratif" class="fixed flaticon img-fluid m-md-3">
                     <h3 class="text-center titre-vignette">A votre service</h3>
-                    <p>Petite capitale, Barcelonnette concentre un grand nombre de services indispensables à la réussite d’un séjour touristique
-                        : pôle d’hébergements, pôle commercial avec ses rues typiques bordées de commerces, pôle de loisirs et d’événements culturels
-                        ou patrimoniaux, Barcelonnette est un véritable camp de base pour découvrir la Vallée, été comme hiver, à pied, à moto ou
-                        à vélo !</p>
+                    <p>{{commune.mairieDescriptif1}}</p>
                 </div>
                     <div class="col-md-6 bg-white p-4 text-center">
                         <img src="{{asset('assets/img/vecteurs/signs.png')}}"  class="fixed flaticon img-fluid m-md-3" alt="des panneaux fléchés indiquant plusieurs destinations possibles">
@@ -322,10 +319,7 @@
                 <div class="col-md-6 bg-white p-4 text-center">
                     <img src="{{asset('assets/img/vecteurs/backpack.png')}}" alt="un sac à dos" class="fixed flaticon img-fluid m-md-3">                    
                     <h3 class="text-center titre-vignette">Une destination prisée</h3>
-                    <p>Elle accueille ainsi, été comme hiver, des visiteurs en séjour sur le territoire qui rayonnent depuis Barcelonnette sur l’ensemble
-                    de la Vallée (la commune est par exemple le camp de base des groupes de cyclistes venus faire l’ascension des 7 cols de l’Ubaye).
-                    C’est également une ville étape pour les clientèles en itinérance, notamment à moto. Barcelonnette est également une étape
-                    réputée de la Route des Grandes Alpes du Léman à la Méditerranée.</p>
+                    <p>{{commune.mairieDescriptif2}}</p>
                 </div>
                 <div class="flipper col-md-6 bg-info p-4 text-center">
                     <div class="front">
@@ -343,9 +337,9 @@
             </div>
         </div>
     </div>
-     FIN COMMUNE 
+     {#FIN COMMUNE #}
     
-     DEBUT CONTACT 
+     {#DEBUT CONTACT #}
     <div class="container-fluid pt-5 mt-2 pr-0 pl-0 section w-100" id="section-contact">
         <div class="row w-100">
             <div class="col-12 pr-0">
@@ -353,8 +347,9 @@
             </div>
         </div>
         <div class="row w-100 justify-content-center mb-4">
-            <div class="col-md-7 embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>
+            
+            <div id="map" class="col-md-7 embed-responsive embed-responsive-16by9">
+                    {#<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4032.3657106060896!2d6.649212476506693!3d44.385693335404255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x269b44424badb42!2sMairie!5e0!3m2!1sfr!2sfr!4v1525626301040"></iframe>#}
             </div>
             <div class="col-md-4">
                 <div>
@@ -365,44 +360,84 @@
                         <i class="far fa-clock m-1"></i>  La mairie et les services administratifs vous accueillent tous les lundis, mardis, jeudis et vendredis de 8h00 à 12h00 et de 13h30 à 17h00, les mercredis de 8h00 à 12h00.
                     </p>
                 </div>
-                <div class="row m-2 d-flex justify-content-center">
-                     {% for label, messages in app.flashes %}
-                        <div class="alert alert-{{ label }}">
-                            {% for message in messages %}
-                                {{ message }}
-                            {% endfor %}
+                {% if commune.mairieEmailContact %}
+                    <div class="row m-2 d-flex justify-content-center">
+                         {% for label, messages in app.flashes %}
+                            <div class="alert alert-{{ label }}">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>  
+                    <div class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
+                    <h3 class="text-center">Contactez votre mairie</h3>
+                    <h4 class="text-center">pour en savoir plus sur le service</h4>
+                        {{ form_start(form)}}
+                        <div class="row">
+                        <div class="form-group col-md-6 mb-2">
+                            {{ form_label(form.name)}}
+                            {{ form_widget(form.name)}}    
                         </div>
-                    {% endfor %}
-                </div>  
-                <div class="border border-secondary border-2 rounded pt-4 pl-4 pr-4 pb-2 mb-4">
-                <h3 class="text-center">Contactez votre mairie</h3>
-                <h4 class="text-center">pour en savoir plus sur le service</h4>
-                    {{ form_start(form)}}
-                    <div class="row">
-                    <div class="form-group col-md-6 mb-2">
-                        {{ form_label(form.name)}}
-                        {{ form_widget(form.name)}}    
-                    </div>
-                    <div class="form-group col-md-6 mb-2">
-                        {{ form_label(form.email)}}
-                        {{ form_widget(form.email)}}
-                    </div>
-                    </div>
-                    <div class="form-group mb-2">
-                        {{ form_label(form.subject)}}
-                        {{ form_widget(form.subject)}}
-                    </div>                    
-                    <div class="form-group mb-2">
-                        {{ form_label(form.message)}}
-                        {{ form_widget(form.message)}}
-                    </div>
-                    <div class="form-group text-center mb-1">
-                        {{ form_label(form.valider)}}
-                        {{ form_widget(form.valider)}}
-                    </div>
-                        {{ form_end(form)}}
-                </div>  
+                        <div class="form-group col-md-6 mb-2">
+                            {{ form_label(form.email)}}
+                            {{ form_widget(form.email)}}
+                        </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            {{ form_label(form.subject)}}
+                            {{ form_widget(form.subject)}}
+                        </div>                    
+                        <div class="form-group mb-2">
+                            {{ form_label(form.message)}}
+                            {{ form_widget(form.message)}}
+                        </div>
+                        <div class="form-group text-center mb-1">
+                            {{ form_label(form.valider)}}
+                            {{ form_widget(form.valider)}}
+                        </div>
+                            {{ form_end(form)}}
+                    </div> 
+                {% endif %}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+    
+        var longitude = "{{ ville.villeLongitudeDeg }}";
+        var latitude = "{{ ville.villeLatitudeDeg }}";
+        
+        function initMap() {
+            var adresse = {lat: {{ ville.villeLatitudeDeg }}, lng: {{ ville.villeLongitudeDeg }}};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 14,
+              center: adresse
+            });
+            var marker = new google.maps.Marker({
+              position: adresse,
+              map: map
+            });
+            var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h4 id="firstHeading" class="firstHeading">{{ commune.mairieNomTouristique }}</h4>'+
+              '<div id="bodyContent">'+
+              '<p>{{ commune.mairieAdresse }}</p>'+
+              '</div>'+
+              '</div>';
+    
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+  
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">
+    </script>
 {% endblock %}

@@ -266,7 +266,6 @@ class HebergementController extends Controller
     {
         $latitude = $hebergement->getHebLat();
         $longitude = $hebergement->getHebLong();
-        
     
         $url = $_SERVER['REQUEST_URI'];   
         

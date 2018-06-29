@@ -74,19 +74,19 @@ class CreationMairieController extends Controller
             // $ville = $villeRepository->find($idMairie);
             
             $villeSlug = $ville->getVilleSlug();
-            dump($ville);
-            
+
             $mairie->setVilles($ville)
                    ->setMairieLongitude(43)
                    ->setMairieLatitude(22)
                    ->setMairieSlug($villeSlug)
                    ->setMairieDateInscription(new \DateTime());
-                    
-            $mairieVille = $mairie->getVilles();
-            dump($mairieVille);
+            
+            $ville->setMairie($mairie);
+            $villeMairieId = $ville->getMairie();
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($mairie);
+            $em->persist($ville);
             $em->flush();
             $idMairie = $mairie->getId();
         }
@@ -100,12 +100,21 @@ class CreationMairieController extends Controller
             
             $mairieRepository = $this->getDoctrine()->getRepository(Mairie::class);
             $mairie = $mairieRepository->find($idMairie);
+            
+            // CONTACT MAIRIE = USER_NOM
+            // SI NULL : USER_NOM = MAIRE
+            $mairieNomContact = $mairie->getMairieContactNom();
+            
+            if ($mairieNomContact == null)
+            {
+                $mairieNomContact = $mairie->getMairieMaireNom();
+            }
 
             $user->setMairie($mairie);
             $user->setUserName(md5(uniqid(rand())));            
             $user->setUserRole(3);
             $user->setUserPrenom($mairie->getMairieContactPrenom());
-            $user->setUserNom($mairie->getMairieContactNom());
+            $user->setUserNom($mairieNomContact);
             $user->setUserCommune($mairie->getMairieNomTouristique());
             $user->setUserPays('FR');
             $user->setUserAdresse($mairie->getMairieAdresse());
