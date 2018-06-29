@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %} 
+
+{% block main %}
+{#{% if idHebergement > 0 %}#}
+{#    {{ include('hebergement/_verificationInfo.html.twig') }}#}
+{#{% endif %}#}
+
+<a href="{{ path('hebergement_modif', {'id': hebergement.id}) }}">Modifier mes informations</a>
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+
+{% endblock %}
