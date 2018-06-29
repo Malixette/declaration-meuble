@@ -102,7 +102,6 @@
           anchorPoint: new google.maps.Point(0, -29)
         });
 
-
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
           marker.setVisible(false);
@@ -172,7 +171,22 @@
             autocomplete.setTypes(types);
           });
         }
-
+      function handleEvent(event) {
+          document.getElementById('lat').value = event.latLng.lat();
+          document.getElementById('lng').value = event.latLng.lng();
+      }
+      
+      function addMarker(latlng,title,map) {
+          var marker = new google.maps.Marker({
+                  position: latlng,
+                  map: map,
+                  title: title,
+                  draggable:true
+          });
+      
+          marker.addListener('drag', handleEvent);
+          marker.addListener('dragend', handleEvent);
+      }
       }
  
 </script>

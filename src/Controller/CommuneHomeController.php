@@ -27,6 +27,9 @@ class CommuneHomeController extends Controller
      */
     public function index(Request $request)
     {
+        // $form = $this->createForm(ChoixCommuneType::class);
+        // $form->handleRequest($request);
+
         $idCommune = 0;
         $SlugCommune = '';
         $nomCommune = '';

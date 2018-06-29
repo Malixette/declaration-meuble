@@ -68,5 +68,32 @@ class AdminHomeController extends Controller
         ]);
     }
     
+    /**
+     * @Route("/admin/office-tourisme/", name="dashboard_ot")
+     */
+    public function indexOt()
+    {
+        $url = $_SERVER['REQUEST_URI'];
+
+        $user = $this->getUser();
+        
+        $officeTourisme = 
+        
+        $mairie = $user->getMairie();
+        
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+        $hebergements = $repoHeb->findBy(array("mairie" => $mairie->getId()));
+        $nombre = count($hebergements);
+
+        return $this->render('admin_home/dashboard-mairie.html.twig', [
+            'hebergements'  => $hebergements,
+            'user'          => $user,
+            'mairie'        => $mairie,
+            'nombre'        => $nombre,
+            'url'           => $url,
+        ]);
+    }
     
 }
