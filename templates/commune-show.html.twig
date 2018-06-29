@@ -404,40 +404,40 @@
     </div>
 {% endblock %}
 
-{% block javascripts %}
-    <script>
+{#{% block javascripts %}#}
+{#    <script>#}
     
-        var longitude = "{{ ville.villeLongitudeDeg }}";
-        var latitude = "{{ ville.villeLatitudeDeg }}";
+{#        var longitude = "{{ ville.villeLongitudeDeg }}";#}
+{#        var latitude = "{{ ville.villeLatitudeDeg }}";#}
         
-        function initMap() {
-            var adresse = {lat: {{ ville.villeLatitudeDeg }}, lng: {{ ville.villeLongitudeDeg }}};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 14,
-              center: adresse
-            });
-            var marker = new google.maps.Marker({
-              position: adresse,
-              map: map
-            });
-            var contentString = '<div id="content">'+
-              '<div id="siteNotice">'+
-              '</div>'+
-              '<h4 id="firstHeading" class="firstHeading">{{ commune.mairieNomTouristique }}</h4>'+
-              '<div id="bodyContent">'+
-              '<p>{{ commune.mairieAdresse }}</p>'+
-              '</div>'+
-              '</div>';
+{#        function initMap() {#}
+{#            var adresse = {lat: {{ ville.villeLatitudeDeg }}, lng: {{ ville.villeLongitudeDeg }}};#}
+{#            var map = new google.maps.Map(document.getElementById('map'), {#}
+{#              zoom: 14,#}
+{#              center: adresse#}
+{#            });#}
+{#            var marker = new google.maps.Marker({#}
+{#              position: adresse,#}
+{#              map: map#}
+{#            });#}
+{#            var contentString = '<div id="content">'+#}
+{#              '<div id="siteNotice">'+#}
+{#              '</div>'+#}
+{#              '<h4 id="firstHeading" class="firstHeading">{{ commune.mairieNomTouristique }}</h4>'+#}
+{#              '<div id="bodyContent">'+#}
+{#              '<p>{{ commune.mairieAdresse }}</p>'+#}
+{#              '</div>'+#}
+{#              '</div>';#}
     
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
+{#            var infowindow = new google.maps.InfoWindow({#}
+{#                content: contentString#}
+{#            });#}
+{#            marker.addListener('click', function() {#}
+{#                infowindow.open(map, marker);#}
+{#            });#}
   
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">
-    </script>
-{% endblock %}
+{#        }#}
+{#    </script>#}
+{#    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&libraries=places&callback=initMap">#}
+{#    </script>#}
+{#{% endblock %}#}
