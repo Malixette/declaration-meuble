@@ -264,8 +264,8 @@ class HebergementController extends Controller
      */
     public function show(Hebergement $hebergement): Response
     {
-        $latitude = $hebergement->getHebLat();
-        $longitude = $hebergement->getHebLong();
+        // $latitude = $hebergement->getHebLat();
+        // $longitude = $hebergement->getHebLong();
         
     
         $url = $_SERVER['REQUEST_URI'];   

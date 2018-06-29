@@ -31,6 +31,7 @@ class OfficeTourismeController extends Controller
         $officeTourisme = new OfficeTourisme();
         $form = $this->createForm(OfficeTourismeType::class, $officeTourisme);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

@@ -68,17 +68,14 @@ class CreationMairieController extends Controller
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
             
             // $mairies = $repoMairie->findAll();
-<<<<<<< HEAD
 
             $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
             dump($InseeExist);
-=======
             // $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
             // dump($InseeExist);
             // $villeRepository = $this->getDoctrine()->getRepository(Mairie::class);
             // $ville = $villeRepository->find($idMairie);
             
->>>>>>> c9ef06c208a3a43a21b639660f56ee2c26a8a18d
             $villeSlug = $ville->getVilleSlug();
             dump($ville);
             

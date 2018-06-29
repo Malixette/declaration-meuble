@@ -1,48 +1,85 @@
-{% extends 'admin-mairie.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block stylesheets %}
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css"/>
+  <style>
+    #map {
+        height: 250px;
+        width: 100%;
+    }
+  </style>
 {% endblock %}
 
 {% block header %}
-    <h1 class="mt-5 mb-4 p-3 text-center">Tableau de bord Mairie</h1>
+    <h1 class="mt-5 mb-4 p-3 text-center">Carte des hébergements déclarés sur la plaeforme</h1>
 {% endblock %}
 
-{% block body %}
-  <h2>Google Maps</h2>
-  <div class="row">
-    <table id="listeHebergement" class="listeHebergement table table-sm table-striped table-bordered text-center dt-responsive nowrap" style="width:100%">
-      <thead>
-        <tr>
-          <th data-orderable="true" scope="col">Nom hébergement</th>
-          <th data-orderable="false" scope="col">Photo</th>
-          <th data-orderable="true" scope="col">Commune</th>
-          <th data-orderable="true" scope="col">Couchages</th>
-          <th data-orderable="true" scope="col">Classement</th>
-          <th data-orderable="true" scope="col">Etat déclaration</th>
-          <th data-orderable="false" scope="col">Détails</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for hebergement in hebergements %}
-          <tr>
-            <td class="align-middle">{{ hebergement.hebName }}</td>
-            <td class="align-middle"><img class="img-fluid" style="max-width:150px;" src="{{ asset('assets/img/uploads/' ~ hebergement.hebPhoto1) }}" alt="{{ hebergement.hebName }}"></td>
-            <td class="align-middle">{{ hebergement.hebCommune }}</td>
-            <td class="align-middle">{{ hebergement.hebCouchagesMax }}</td>
-            <td class="align-middle">{{ hebergement.hebClassement }}</td>
-            <td class="align-middle">{{ hebergement.hebStatut }}</td>
-            <td class="align-middle"><a href="{{ path('mairie_hebergement_show', {'id': hebergement.id}) }}"><i class="fas fa-search"></i></a></td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+{% block main %}
+  
+  <div id="map"></div>
 
 {% endblock %}
 
 {% block javascripts %}
-    <script></script>
+<script>
+  function initMap(){
+    myLatLng = {lat: -25.363, lng: 131.044};
+    
+    tabLatLng = Array(
+			{
+				lat: 47.325371, 
+				lon: 1.044195,
+				nomHebergement: "chalet1",
+				coucou : "saucisse"
+			},
+			{
+				lat: 47.345627, 
+				lon: 0.894806,
+				nomHebergement: "chalet2",
+				coucou : "saucisse"
+			},
+			{
+				lat: 47.334488, 
+				lon: 0.944717,
+				nomHebergement: "chalet3",
+				coucou : "saucisse"
+			}
+    );
+
+    var optionsCarte = {
+				zoom: 4,
+				center: myLatLng
+			};
+			
+    var map = new google.maps.Map(document.getElementById('map'), optionsCarte);
+
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+      map: map,
+      position: myLatLng,
+      title: 'Hello World!'
+    });
+    
+    tabLatLng.forEach(function(tabLatLng) {
+      console.log(tabLatLng);
+      var latitude = tabLatLng['lat'];
+		  var longitude = tabLatLng['lon'];
+		  var optionsMarqueur = {
+				map: maCarte,
+				position: new google.maps.LatLng(latitude, longitude),
+			   };
+			var marqueur = new google.maps.Marker(optionsMarqueur);
+			zoneMarqueurs.extend(marqueur.getPosition());
+    });     
+		maCarte.fitBounds(zoneMarqueurs);
+  }
+	</script>
+	<script <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVfWyyAMgiYTPmk9RiIolGbPTFNzGdslk&callback=initMap">
+	  
+	</script>
+	<script>
+      
+    </script>
 {% endblock %}
 
