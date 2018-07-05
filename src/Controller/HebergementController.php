@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Hebergement;
 use App\Entity\Mairie;
+use App\Entity\Villes;
 use App\Entity\User;
 use App\Form\HebergementType;
 use App\Form\HebergementEditType;
@@ -40,6 +41,7 @@ class HebergementController extends Controller
         // Repositories
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
         $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+        $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
         
         // Valeurs par défaut pour l'affichage différent selon les étapes de déclaration 
         $idHebergement = 0;
@@ -135,15 +137,26 @@ class HebergementController extends Controller
      public function recap (Request $request, Hebergement $hebergement) : Response
      {
         $repoHeb = $this->getDoctrine()->getRepository(Hebergement::class);
+        $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
         $user = $this->getUser();
         
-        dump($hebergement);
-        
+    ////Numéro de Cerfa
+        $idHebergement = $hebergement->getId();
+        $mairie = $hebergement->getMairie();
+        $idMairie = $mairie->getId();
+        $insee = $repoVilles->findOneBy(['ville_code_commune' => $idMairie]);
+        dump($insee);
+        $date = new \DateTime;
+        $dateFormat = $date->format('Ymd');
+        $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
+        dump($numCerfa);
+    ////    
         $form = $this->createForm(HebergementValidationType::class);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $hebergement->setHebStatut('déclaré');
+            $hebergement->setHebCerfa($numCerfa);
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
             $em->flush();
@@ -283,15 +296,10 @@ class HebergementController extends Controller
 
         // }
         
-        return $this->render('hebergement/recap.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('hebergement/new_recap.html.twig', [
+            'form'          => $form->createView(),
             'hebergement'   => $hebergement,
-            // 'form'     => $form->createView(),
-            // 'user'          => $user,
-            // 'nombre'        => $nombre,
-            // 'url'           => $url,
-            // 'mairie'        => $mairie,
-            // 'idHebergement' => $idHebergement 
+            'numCerfa'      => $numCerfa,
         ]);
      }
 
