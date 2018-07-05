@@ -11,8 +11,9 @@
 {% endblock %}
 
 {% block main %}
-
-{% if hebergement.hebName %}
+  <div class="container-fluid mt-5 mb-4 p-3">
+    <div>
+    {% if hebergement.hebName %}
         <strong>Nom du bien: </strong>
         {{ hebergement.hebName }} <br>
     {% else %}
@@ -109,8 +110,9 @@
         {{ hebergement.hebTelResa }} <br>
     {% else %}
         <strong>Téléphone de réservation du bien: </strong> non renseigné <br>
-    {% endif %}  
-
+    {% endif %}
+    </div>
+  </div>
 
 <a href="{{ path('hebergement_modif', {'id': hebergement.id}) }}">Modifier mes informations</a>
 
