@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Récapitulatif{% endblock %}
+
+{% block header %}
+  <div class="container-fluid mt-5 mb-4 p-3" style="background: url({{asset('assets/img/illustration-hebergement/dashboard.jpg')}}) no-repeat fixed">
+    <div class="row justify-content-center">
+        <h1 class="text-center">Récapitulatif de votre bien</h1>
+    </div>
+  </div>
+{% endblock %}
+
+{% block main %}
+
+{% if hebergement.hebName %}
+        <strong>Nom du bien: </strong>
+        {{ hebergement.hebName }} <br>
+    {% else %}
+        <strong>Nom du bien: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebNumVoie %}
+        <strong>Numéro de la voie: </strong>
+        {{ hebergement.hebNumVoie }} <br>
+    {% else %}
+        <strong>Numéro de la voie: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebAdresse %}
+        <strong>Adresse: </strong>
+        {{ hebergement.hebAdresse }} <br>
+    {% endif %}
+    {% if hebergement.hebAdresseComplement %}
+        <strong>Complement d'adresse: </strong>
+        {{ hebergement.hebAdresseComplement }} <br>
+    {% else %}
+        <strong>Complement d'adresse: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebBatiment %}
+        <strong>Bâtiment: </strong>
+        {{ hebergement.hebBatiment }} <br>
+    {% else %}
+        <strong>Bâtiment: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebEtage %}
+        <strong>Numéro d'étage: </strong>
+        {{ hebergement.hebEtage }} <br>
+    {% else %}
+        <strong>Numéro d'étage: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebCodePostal %}
+        <strong>Code postal: </strong>
+        {{ hebergement.hebCodePostal }} <br>
+    {% endif %}
+    {% if hebergement.hebCommune %}
+        <strong>Commune: </strong>
+        {{ hebergement.hebCommune }} <br>
+    {% endif %}
+    {% if hebergement.hebType %}
+        <strong>Type de bien: </strong>
+        {{ hebergement.hebType }} <br>
+    {% else %}
+        <strong>Type de bien: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebNbrPieces > 1 %}
+        <strong>Nombre de pièces: </strong>
+        {{ hebergement.hebNbrPieces }} <br>
+    {% else %}
+        <strong>Nombre de pièce: </strong>
+        {{ hebergement.hebNbrPieces }} <br>
+    {% endif %}
+    {% if hebergement.hebCouchagesMax %}
+        <strong>Nombre de couchages maximal: </strong>
+        {{ hebergement.hebCouchagesMax }} <br>
+    {% endif %}
+    {% if hebergement.hebClassement %}
+        <strong>Hébergement classé </strong> le {{ hebergement.hebDateClassement|date("m/d/Y") }} <br>
+    {% endif %}
+    {% if hebergement.hebPeriodesLocation %}
+        <strong>Périodes de location: </strong>
+        {{ hebergement.hebPeriodesLocation }} <br>
+    {% else %}
+        <strong>Périodes de location: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebSiteWeb %}
+        <strong>Site web de votre bien: </strong>
+        {{ hebergement.hebSiteWeb }} <br>
+    {% else %}
+        <strong>Site web de votre bien: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebSiteResa %}
+        <strong>Site web de réservation de votre bien: </strong>
+        {{ hebergement.hebSiteResa }} <br>
+    {% else %}
+        <strong>Site web de réservation de votre bien: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebContactResa %}
+        <strong>Nom du contact de réservation: </strong>
+        {{ hebergement.hebContactResa }} <br>
+    {% else %}
+        <strong>Nom du contact de réservation: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebEmailResa %}
+        <strong>Email de réservation du bien: </strong>
+        {{ hebergement.hebEmailResa }} <br>
+    {% else %}
+        <strong>Email de réservation du bien: </strong> non renseigné <br>
+    {% endif %}
+    {% if hebergement.hebTelResa %}
+        <strong>Téléphone de réservation du bien: </strong>
+        {{ hebergement.hebTelResa }} <br>
+    {% else %}
+        <strong>Téléphone de réservation du bien: </strong> non renseigné <br>
+    {% endif %}  
+
+
+<a href="{{ path('hebergement_modif', {'id': hebergement.id}) }}">Modifier mes informations</a>
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+{% endblock %}
