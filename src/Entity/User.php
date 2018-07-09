@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  *     fields={"user_email"},
- *     message="Cette adresse email est déjà enregistrée"
+ *     message="Cette adresse email est déjà associée à un compte."
  * )
  */
 class User implements UserInterface, \Serializable
@@ -68,7 +68,7 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=123)
      * @ORM\Column(name="user_email", type="string", length=255, unique=true)
      * @Assert\Email(
-     *   message = "The email '{{ value }}' is not a valid email.",
+     *   message = "L'adresse {{ value }}' n'est pas valide.",
      *   checkMX = true
      * )
      */
@@ -99,7 +99,7 @@ class User implements UserInterface, \Serializable
      * @Assert\Length(
      * min = 8,
      * max = 255,
-     * minMessage = "Le mot de passe choisi est trop court.",
+     * minMessage = "Le mot de passe choisi est trop court (8 caractères minimum).",
      * maxMessage = "Le mot de passe choisi est trop long."
      * )
      */

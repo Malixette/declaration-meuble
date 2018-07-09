@@ -77,7 +77,9 @@ class CreationMairieController extends Controller
 
             $mairie->setVilles($ville)
                    ->setMairieLongitude(43)
+                   ->setMairieLong(43)
                    ->setMairieLatitude(22)
+                   ->setMairieLat(22)
                    ->setMairieSlug($villeSlug)
                    ->setMairieDateInscription(new \DateTime());
             

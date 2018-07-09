@@ -121,7 +121,7 @@ class UserType extends AbstractType
             ])
             ->add('user_telephone', TextType::class, [
                 'disabled'  => $options['is_forgot'],
-                'required' => true,
+                'required' => false,
                 'label' => 'N° de téléphone :',
                 'attr' => [
                     'placeholder' => "0611223344",
@@ -135,7 +135,7 @@ class UserType extends AbstractType
                 'label' => 'Email :',
                 'attr' => [
                     'placeholder' => "votre@email.com",
-                    'class' => "form-control form-control-lg mb-3",
+                    'class' => "form-control form-control-lg",
                     'type' => "email"
                 ]
             ])
