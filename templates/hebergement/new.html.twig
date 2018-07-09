@@ -45,19 +45,9 @@
     {{ include('hebergement/_form.html.twig') }}
   {% endif %} 
   
-  {% if idHebergement > 0 %}
-    {{ include('hebergement/_verificationInfo.html.twig') }}
-  {% endif %}
-
-{#  {% if hebStatut == 'en cours' %}#}
-{#       <style>#}
-{#    input[disabled], label[for="heb_name"], label[for="heb_adresse"], label[for="heb_adresse_complement"], label[for="heb_batiment"], label[for="heb_etage"], label[for="heb_lat"], label[for="heb_long"], label[for="heb_commune"], label[for="heb_type"], label[for="heb_couchages_max"], label[for="heb_classement"], label[for="heb_date_classement"], label[for="heb_periodes_location"], label[for="heb_descriptif_court"], label[for="heb_nbr_pieces"], label[for="heb_photo_1"], label[for="heb_photo_2"], label[for="heb_photo_3"], label[for="heb_site_web"], label[for="heb_site_resa"], label[for="heb_contact_resa"], label[for="heb_tel_resa"], label[for="heb_email_resa"], label[for="heb_num_voie"], label[for="heb_code_postal"] {#}
-{#            display: none;#}
-{#        }#}
-{#</style>#}
-  
-       
-{#  {% endif %}#}
+  {#{% if idHebergement > 0 %}#}
+  {#  {{ include('hebergement/_verificationInfo.html.twig') }}#}
+  {#{% endif %}#}
 
 {% endblock %}
 
