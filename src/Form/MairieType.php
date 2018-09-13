@@ -124,7 +124,7 @@ class MairieType extends AbstractType
             ])            
             ->add('mairie_email_contact', EmailType::class,  [
                 'required' => false,
-                'label' => 'Email du responsable technique',
+                'label' => 'Email de contact général de la mairie',
                 'attr' => [
                     'placeholder' => "davant-sacha@commune.fr",
                     'class' => "form-control form-control-lg mb-3",
@@ -302,7 +302,8 @@ class MairieType extends AbstractType
                 'attr' => [
                     // 'placeholder' => "",
                     'class' => "form-control form-control-lg mb-3",
-                    'type' => "text"
+                    'type' => "text",
+                    'onkeyup' => "inseeRequest();"
                 ]
             ]) 
             // ->add('mairie_rappel_lien', TextType::class,  [

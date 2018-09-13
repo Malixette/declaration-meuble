@@ -77,7 +77,9 @@ class CreationMairieController extends Controller
 
             $mairie->setVilles($ville)
                    ->setMairieLongitude(43)
+                   ->setMairieLong(43)
                    ->setMairieLatitude(22)
+                   ->setMairieLat(22)
                    ->setMairieSlug($villeSlug)
                    ->setMairieDateInscription(new \DateTime());
             
@@ -145,6 +147,39 @@ class CreationMairieController extends Controller
             'formMairie'=> $formMairie->createView(),
             'formUser'  => $formUser->createView()
         ]);
+    }
+    
+    // Envoi des requêtes ajax pour vérifier le code INSEE mairie unique
+    /**
+     * @Route("/checkinsee", name="checkInsee")
+     */
+    public function checkInsee(){
+        
+        // if(isset($_POST['codeInsee'])) {
+    
+        //     $codeInsee = $_POST['codeInsee'];
+        //     dump($codeInsee);
+            
+        //     $host = 'localhost';
+        //     $user = 'root';
+        //     $pass = ' ';
+            
+        //     mysql_connect($host, $user, $pass);
+            
+        //     mysql_select_db('declaration-meuble');
+            
+        //     $selectdata = " SELECT * FROM villes WHERE name LIKE '$codeInsee' ";
+            
+        //     $query = mysql_query($selectdata);
+            
+        //     while($row = mysql_fetch_array($query))
+        //     {
+        //      echo $codeInsee;
+        //     }
+        
+        // }
+        
+        // $data = $request->getContent();
     }
     
     private function generateUniqueFileName()
