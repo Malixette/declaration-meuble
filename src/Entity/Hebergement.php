@@ -181,13 +181,14 @@ class Hebergement
      */
     private $numero_appartement;
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string")
      */
     private $heb_etoiles;
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $motif_supp;
+    
     public function getId()
     {
         return $this->id;
