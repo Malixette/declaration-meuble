@@ -18,6 +18,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 
 /**
  * @Route("/admin/hebergement")
@@ -63,6 +66,18 @@ class HebergementController extends Controller
         // Formulaire de déclaration
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
+        
+    ////////////////////FICHIERS
+        //$fileSystem = new Filesystem();
+          //  try {
+            //    $fileSystem->mkdir(sys_get_temp_dir().'/'.random_int(0, 1000));
+            //} catch (IOExceptionInterface $exception) {
+              //  echo "An error occurred while creating your directory at ".$exception->getPath();
+            //}
+
+        //$fileSystem->mkdir('/tmp/coucou', 0700);
+    //////////////////////////////    
+        
         
         // Formulaire de validation
         // $formVerif = $this->createForm(HebergementType::class, $hebergement);

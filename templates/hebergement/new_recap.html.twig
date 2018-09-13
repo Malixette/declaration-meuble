@@ -75,12 +75,6 @@
     {% if hebergement.hebClassement %}
         <strong>Hébergement classé </strong> le {{ hebergement.hebDateClassement|date("m/d/Y") }} <br>
     {% endif %}
-    {% if hebergement.hebPeriodesLocation %}
-        <strong>Périodes de location: </strong>
-        {{ hebergement.hebPeriodesLocation }} <br>
-    {% else %}
-        <strong>Périodes de location: </strong> non renseigné <br>
-    {% endif %}
     {% if hebergement.hebSiteWeb %}
         <strong>Site web de votre bien: </strong>
         {{ hebergement.hebSiteWeb }} <br>
