@@ -183,7 +183,7 @@ class Hebergement
     /**
      * @ORM\Column(type="boolean")
      */
-    private $classement;
+    private $heb_etoiles;
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -516,13 +516,13 @@ class Hebergement
         $this->numero_appartement = $numero_appartement;
         return $this;
     }
-    public function getClassement(): ?bool
+    public function getHebEtoiles(): ?string
     {
         return $this->classement;
     }
-    public function setClassement(bool $classement): self
+    public function setHebEtoiles(?string $hebEtoiles): self
     {
-        $this->classement = $classement;
+        $this->classement = $hebEtoiles;
         return $this;
     }
     public function getMotifSupp(): ?string
