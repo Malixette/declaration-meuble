@@ -519,7 +519,7 @@ class Hebergement
     }
     public function getHebEtoiles(): ?string
     {
-        return $this->classement;
+        return $this->heb_etoiles;
     }
     public function setHebEtoiles(?string $hebEtoiles): self
     {

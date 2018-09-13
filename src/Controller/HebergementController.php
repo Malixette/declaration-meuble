@@ -67,6 +67,7 @@ class HebergementController extends Controller
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
         
+        
     ////////////////////FICHIERS
         //$fileSystem = new Filesystem();
           //  try {
@@ -104,7 +105,7 @@ class HebergementController extends Controller
             $hebergement->setHebStatut('en cours');
             $hebergement->setHebNumDeclaration(0);
             $hebergement->setMairie($mairie);
-            $hebergement->setClassement(1);
+            $hebergement->setHebEtoiles($hebEtoiles);
             
             //debug
             // $mairieHeb = $hebergement->getMairie();

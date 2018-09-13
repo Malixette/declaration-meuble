@@ -157,7 +157,7 @@ class HebergementType extends AbstractType
                 'required'  => true,
             ])
             
-            ->add('classement',  TextType::class, [
+            ->add('hebEtoiles',  TextType::class, [
                 'required'  => false,
                 'label'     => 'Si oui, nombre d\'étoiles de votre hébergement',
                 'attr'      => [
