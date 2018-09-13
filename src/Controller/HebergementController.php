@@ -48,6 +48,7 @@ class HebergementController extends Controller
         
         // Valeurs par défaut pour l'affichage différent selon les étapes de déclaration 
         $idHebergement = 0;
+        $hebEtoiles = 0;
         $mairie = null;
         $url = $_SERVER['REQUEST_URI'];
         
@@ -66,7 +67,6 @@ class HebergementController extends Controller
         // Formulaire de déclaration
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
-        
         
     ////////////////////FICHIERS
         //$fileSystem = new Filesystem();
@@ -96,6 +96,9 @@ class HebergementController extends Controller
 
             $mairieNom = $hebergement->getHebCommune();
             $mairie = $repoMairie->findOneBy(['mairie_nom_touristique' => $mairieNom]);
+            
+            // $hebEtoiles = $hebergement->getHebEtoiles();
+            // dump($hebEtoiles);
             
             // setter les infos qui ne sont pas gérées par User
             $hebergement->setUser($user);
@@ -132,6 +135,7 @@ class HebergementController extends Controller
             }
             // ************** UPLOAD PHOTOS *************** //
             
+            
             // enregistrer hebergement en bdd
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
@@ -150,6 +154,7 @@ class HebergementController extends Controller
             'url'           => $url,
             'mairie'        => $mairie,
             'idHebergement' => $idHebergement,
+            'hebEtoiles'    => $hebEtoiles,
         ]);
     }
     

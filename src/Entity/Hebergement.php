@@ -523,7 +523,7 @@ class Hebergement
     }
     public function setHebEtoiles(?string $hebEtoiles): self
     {
-        $this->classement = $hebEtoiles;
+        $this->heb_etoiles = $hebEtoiles;
         return $this;
     }
     public function getMotifSupp(): ?string
