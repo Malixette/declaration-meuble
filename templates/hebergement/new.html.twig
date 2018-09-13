@@ -4,23 +4,69 @@
 {% block stylesheets %}
     <style>
     #map {
-        height: 250px;
-        width: 100%;
+      height: 250px;
+      width: 100%;
     }
     #accordion h4 {
-        padding: 10px;
-        color : white;
-        background-color: #5070b5;
+      padding: 10px;
+      color : white;
+      background-color: #5070b5;
     }
     #accordion h4:hover{
-        padding: 10px;
-        color : white;
-        background-color: #405990;
+      padding: 10px;
+      color : white;
+      background-color: #405990;
+    }
+    button[disabled] {
+      display: none;
+    }
+    .popup-link-mandatory{
+      background-color: rgba(0,0,0,0);
+      border-radius: 2px;
+      border: 0px solid rgba(0,0,0,0.1);
+      font-size:0.8rem;
+      font-weight: lighter;
+      color: red;
+      padding: 1px 4px;
+      margin-left: 3px;
+    }
+    .popup-link-info{
+      background-color: rgba(0,0,0,0);
+      border-radius: 2px;
+      border: 0px solid rgba(0,0,0,0.1);
+      font-size:1rem;
+      font-weight: lighter;
+      color: rgba(0,114,114,1);
+      padding: 1px 4px;
+      margin-left: 3px;
+    }
+    a span.popup{
+      font-size: 1rem;
+    	position:absolute;
+    	margin-top:23px;
+    	margin-left:-35px;
+    	font-weight: normal;
+    	color:whitesmoke;
+    	background:rgba(0,0,0,.8);
+    	padding:15px;
+    	border-radius:3px;
+    	box-shadow:1px 1px 2px rgba(0,0,0,0.5);
+    	opacity:0;
+    	max-width: 500px;
+    	min-width: 200px;
+    	transition: all .15s ease-in;
+    	transform: scale(0) rotate(-12deg);
+    	z-index: 100;
     }
     
-    button[disabled] {
-            display: none;
-        }
+    a:hover span.popup, a:focus span.popup{
+    	transform:scale(1) rotate(0);
+    	opacity:1;
+    }
+    
+    #ex1Slider .slider-selection {
+    	background: #BABABA;
+    }
     </style>
 {% endblock %}
 
@@ -61,126 +107,135 @@
       heightStyle: "content"
     });
   } );
+
+  $('#ex1').slider({
+  	formatter: function(value) {
+  		return 'Current value: ' + value;
+  	}
+  });
+
+
+
 </script>
 
 
 <script>
 
-     function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 46.3333, lng: 2.6},
-            zoom: 4
-        });
-        var input = document.getElementById('autocomplete');
+ function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 46.3333, lng: 2.6},
+        zoom: 4
+    });
+    var input = document.getElementById('autocomplete');
+    
+    var options = { componentRestrictions: {country: "fr"} };
+    
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        postal_code: 'short_name'
+        };
+
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.bindTo('bounds', map);
+
+    var infowindow = new google.maps.InfoWindow();
+    var marker = new google.maps.Marker({
+      map: map,
+      draggable:true,
+      anchorPoint: new google.maps.Point(0, -29)
+    });
+
+    autocomplete.addListener('place_changed', function() {
+      infowindow.close();
+      marker.setVisible(false);
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+      }
+       
+      var lat = place.geometry.location.lat();
+      var lng = place.geometry.location.lng();
+      var placeId = place.place_id;
+
+      document.getElementById("hebergement_heb_lat").value = lat;
+      document.getElementById("hebergement_heb_long").value = lng;          
+
+
+      for (var component in componentForm) {
         
-        var options = { componentRestrictions: {country: "fr"} };
-        
-        var componentForm = {
-            street_number: 'short_name',
-            route: 'long_name',
-            locality: 'long_name',
-            postal_code: 'short_name'
-            };
+        console.log(component);
+        //faire if pour sécuriser
+        document.getElementById(component).value = '';
+        document.getElementById(component).disabled = false;
+      }
 
-        var autocomplete = new google.maps.places.Autocomplete(input, options);
-        autocomplete.bindTo('bounds', map);
-
-        var infowindow = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-          map: map,
-          draggable:true,
-          anchorPoint: new google.maps.Point(0, -29)
-        });
-
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-          }
-           
-          var lat = place.geometry.location.lat();
-          var lng = place.geometry.location.lng();
-          var placeId = place.place_id;
-
-          document.getElementById("hebergement_heb_lat").value = lat;
-          document.getElementById("hebergement_heb_long").value = lng;          
-
-
-          for (var component in componentForm) {
-            
-            console.log(component);
-            //faire if pour sécuriser
-            document.getElementById(component).value = '';
-            document.getElementById(component).disabled = false;
-          }
-
-          for (var i = 0; i < place.address_components.length; i++) {
-            var addressType = place.address_components[i].types[0];
-            if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-            }
-          }
-
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);
-          }
-          marker.setIcon(/** @type {google.maps.Icon} */({
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(35, 35)
-          }));
-          marker.setPosition(place.geometry.location);
-          marker.setVisible(true);
-
-          var address = '';
-          if (place.address_components) {
-            address = [
-              (place.address_components[0] && place.address_components[0].short_name || ''),
-              (place.address_components[1] && place.address_components[1].short_name || ''),
-              (place.address_components[6] && place.address_components[6].short_name || ''),
-              (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-          }
-
-          infowindow.setContent('<div><strong>' + address + '</strong><br>');
-          infowindow.open(map, marker);
-        });
-
-        function setupClickListener(id, types) {
-          var radioButton = document.getElementById(id);
-          radioButton.addEventListener('click', function() {
-            autocomplete.setTypes(types);
-          });
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
         }
-      function handleEvent(event) {
-          document.getElementById('lat').value = event.latLng.lat();
-          document.getElementById('lng').value = event.latLng.lng();
       }
-      
-      function addMarker(latlng,title,map) {
-          var marker = new google.maps.Marker({
-                  position: latlng,
-                  map: map,
-                  title: title,
-                  draggable:true
-          });
-      
-          marker.addListener('drag', handleEvent);
-          marker.addListener('dragend', handleEvent);
+
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
       }
+      marker.setIcon(/** @type {google.maps.Icon} */({
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(35, 35)
+      }));
+      marker.setPosition(place.geometry.location);
+      marker.setVisible(true);
+
+      var address = '';
+      if (place.address_components) {
+        address = [
+          (place.address_components[0] && place.address_components[0].short_name || ''),
+          (place.address_components[1] && place.address_components[1].short_name || ''),
+          (place.address_components[6] && place.address_components[6].short_name || ''),
+          (place.address_components[2] && place.address_components[2].short_name || '')
+        ].join(' ');
       }
+
+      infowindow.setContent('<div><strong>' + address + '</strong><br>');
+      infowindow.open(map, marker);
+    });
+
+    function setupClickListener(id, types) {
+      var radioButton = document.getElementById(id);
+      radioButton.addEventListener('click', function() {
+        autocomplete.setTypes(types);
+      });
+    }
+  function handleEvent(event) {
+      document.getElementById('lat').value = event.latLng.lat();
+      document.getElementById('lng').value = event.latLng.lng();
+  }
+  
+  function addMarker(latlng,title,map) {
+      var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              title: title,
+              draggable:true
+      });
+  
+      marker.addListener('drag', handleEvent);
+      marker.addListener('dragend', handleEvent);
+  }
+  }
  
 </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&signed_in=true&libraries=places&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&signed_in=true&libraries=places&callback=initMap"
         async defer>
 </script>
 

@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %} 
-
+{% block stylesheets %}
+    <style>
+        h1 {
+            color : white;
+        }
+    </style>
+{% endblock %}
 {% block title %}Récapitulatif{% endblock %}
 
 {% block header %}
@@ -11,7 +17,8 @@
 {% endblock %}
 
 {% block main %}
-  <div class="container-fluid mt-5 mb-4 p-3">
+  <h3 class="text-center">Veuillez vérifier vos informations avant de valider votre hébergement</h3>
+  <div class="container-fluid mt-5 mb-4 p-10">
     <div>
     {% if hebergement.hebName %}
         <strong>Nom du bien: </strong>
@@ -107,8 +114,8 @@
     {% endif %}
     </div>
   </div>
-
 <a href="{{ path('hebergement_modif', {'id': hebergement.id}) }}">Modifier mes informations</a>
+
 
 {{form_start(form)}}
 {{form_widget(form)}}

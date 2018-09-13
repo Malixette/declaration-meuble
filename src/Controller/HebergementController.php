@@ -170,15 +170,15 @@ class HebergementController extends Controller
         dump($insee);
         $date = new \DateTime;
         $dateFormat = $date->format('Ymd');
-        $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
-        dump($numCerfa);
+        // $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
+        // dump($numCerfa);
     ////    
         $form = $this->createForm(HebergementValidationType::class);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $hebergement->setHebStatut('déclaré');
-            $hebergement->setHebCerfa($numCerfa);
+            // $hebergement->setHebCerfa($numCerfa);
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
             $em->flush();
@@ -193,7 +193,7 @@ class HebergementController extends Controller
         return $this->render('hebergement/new_recap.html.twig', [
             'form'          => $form->createView(),
             'hebergement'   => $hebergement,
-            'numCerfa'      => $numCerfa,
+            // 'numCerfa'      => $numCerfa,
         ]);
      }
 

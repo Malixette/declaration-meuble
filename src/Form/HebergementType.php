@@ -157,12 +157,20 @@ class HebergementType extends AbstractType
                 'required'  => true,
             ])
             
+            ->add('classement',  TextType::class, [
+                'required'  => false,
+                'label'     => 'Si oui, nombre d\'étoiles de votre hébergement',
+                'attr'      => [
+                    'placeholder'   => "Entrez un chiffre entre 1 et 5",
+                    'class'         => "input"
+                ]    
+            ])
+            
             ->add('heb_date_classement', DateType::class, array(
                 'widget'    => 'choice',
                 'disabled'  => $options['is_edit'],
-                'label'     => "Si oui, date de classement",
+                'label'     => "Date de classement",
             ))
-            
             ->add('heb_periodes_location',ChoiceType::class, [
                 'label'        => "Période de location",
                 'disabled'     => $options['is_edit'],
