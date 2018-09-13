@@ -201,7 +201,7 @@ class UserController extends Controller
                 $em->flush();
                 
                 $message = (new \Swift_Message('Réinitialiser votre mot de passe'))
-                    ->setFrom('declaration.meubles@gmail.com')
+                    ->setFrom('mayerma91@gmail.com')
                     ->setTo($email)
                     ->setSubject('Réinitialiser le mot de passe')
                     ->setBody(

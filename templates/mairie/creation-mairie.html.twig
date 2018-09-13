@@ -79,6 +79,7 @@
 {% endblock %}
 
 {% block header %}
+{#{% include 'mairie/api.php' %}#}
 {% endblock %}
 
 {% block main %}
@@ -106,13 +107,16 @@
             </div>
             <div class="row">
                 <div class="col-4">
-                    {{ form_label(formMairie.insee)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>
+                    {{ form_label(formMairie.insee) }} <small style="font-style:italic; color:red;"> - Obligatoire</small>
                     {{ form_widget(formMairie.insee)}}
                 </div>
                 <div class="col-8">
                     {{ form_label(formMairie.mairie_epci_rattachement) }} 
                     {{ form_widget(formMairie.mairie_epci_rattachement) }}
                 </div>
+            </div>
+            <div class="row" id="inseeMsg">
+                
             </div>
             <div class="row">
                 <div class="col-12">
@@ -291,9 +295,11 @@
                 </p>
                 <div class="row">
                     <div class="col-12">
-                        {{ form_errors(formUser.user_email) }}
                         {{ form_label(formUser.user_email)}} 
                         {{ form_widget(formUser.user_email)}}
+                        {% if form_errors(formUser.user_email) %}
+                            <div class="alert alert-danger mt-1">{{ form_errors(form.user_email) }}</div>
+                        {%endif%}
                     </div>
                 </div>
                 <div class="row">
@@ -322,7 +328,7 @@
 {% endblock %}
 
 {% block javascripts %}
-<script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -427,16 +433,55 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ryzwJCu-r-gIFduP2Nb5hmu75Iix2Dg&signed_in=true&libraries=places&callback=initMap"
         async defer>
 </script>
+<script>
 
+//   $(function () 
+//   {
+//     //-----------------------------------------------------------------------
+//     // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
+//     //-----------------------------------------------------------------------
+//     $.ajax({                                      
+//       url: 'api.php',                  //the script to call to get data          
+//       data: "",                        //you can insert url argumnets here to pass to api.php
+//                                       //for example "id=5&parent=6"
+//       dataType: 'json',                //data format      
+//       success: function(data)          //on recieve of reply
+//       {
+//         var id = data[0];              //get id
+//         var vname = data[1];           //get name
+//         //--------------------------------------------------------------------
+//         // 3) Update html content
+//         //--------------------------------------------------------------------
+//         // $('#output').html("<b>id: </b>"+id+"<b> name: </b>"+vname); //Set output element html
+//         //recommend reading up on jquery selectors they are awesome 
+//         // http://api.jquery.com/category/selectors/
+        
+//         console.log(id);
+//       } 
+//     });
+//   }); 
+
+function inseeRequest(){
+    var codeInsee = document.getElementById("mairie_insee").value;
+    console.log(codeInsee);
+    
+    // req Ajax pour vérification du code INSEE entré par l'utilisateur
+    if(codeInsee) {
+        $.ajax({
+            type: 'post',
+            url: {{ path('checkInsee')}},
+            data: {
+            code_insee:codeInsee,
+        },
+            success: function (response) {
+                $('#inseeMsg').html(response);
+            }
+        });
+    } else { 
+        $('#inseeMsg').html("Code INSEE validé.");
+    console.log('hi');
+    }
+}
+
+  </script>
 {% endblock %}
-
-            {#<div class="row">#}
-            {#    <div class="col-sm-12 col-md-6">#}
-            {#        {{ form_label(formMairie.mairie_maire_signature)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>#}
-            {#        {{ form_widget(formMairie.mairie_maire_signature)}}#}
-            {#    </div>#}
-            {#    <div class="col-sm-12 col-md-6">#}
-            {#        {{ form_label(formMairie.mairie_tampon)}} <small style="font-style:italic; color:red;"> - Obligatoire</small>#}
-            {#        {{ form_widget(formMairie.mairie_tampon)}}#}
-            {#    </div>#}
-            {#</div>#}

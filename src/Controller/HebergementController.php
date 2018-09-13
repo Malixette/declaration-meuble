@@ -72,6 +72,7 @@ class HebergementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             
+            dump($hebergement);
             // stockage de l'id hébergement par l'input hidden
             // $idHebergement = $request->get('idHebergement');
             // $idHebergement = $hebergement->getId();
@@ -79,7 +80,7 @@ class HebergementController extends Controller
 
             $mairieNom = $hebergement->getHebCommune();
             $mairie = $repoMairie->findOneBy(['mairie_nom_touristique' => $mairieNom]);
-
+            
             // setter les infos qui ne sont pas gérées par User
             $hebergement->setUser($user);
             $hebergement->setHebDateCreation(new \DateTime());
@@ -89,7 +90,12 @@ class HebergementController extends Controller
             $hebergement->setHebNumDeclaration(0);
             $hebergement->setMairie($mairie);
             $hebergement->setClassement(1);
-
+            
+            //debug
+            // $mairieHeb = $hebergement->getMairie();
+            // dump($mairieHeb);
+            // dump($hebergement);
+            
             // ************** UPLOAD PHOTOS *************** //
             $file1 = $hebergement->getHebPhoto1();
             // si on upload, on set avec nouvelle photo
@@ -141,7 +147,8 @@ class HebergementController extends Controller
         $user = $this->getUser();
         
     ////Numéro de Cerfa
-        $idHebergement = $hebergement->getId();
+        dump($hebergement);
+        // $idHebergement = $hebergement->getId();
         $mairie = $hebergement->getMairie();
         $idMairie = $mairie->getId();
         $insee = $repoVilles->findOneBy(['ville_code_commune' => $idMairie]);
@@ -224,9 +231,9 @@ class HebergementController extends Controller
         
         $nombre = count($hebergements);
         
-        
+        dump($hebergement);
         $mairie = $hebergement->getMairie(); 
-        // dump($mairie);
+        dump($mairie);
         $mairieHeb = $repoUser->findOneBy(['mairie' => $mairie->getId()]);
         // dump($mairieHeb);
         
