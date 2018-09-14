@@ -288,17 +288,50 @@ class Mairie
      * @ORM\Column(type="float")
      */
     private $mairie_long;
+    
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="mairie_signature_upload", fileNameProperty="signatureFileName")
+     * 
+     * @var File
+     */
+    private $signature;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $image;
-    
+    private $signatureFileName;
+
     /**
-     * @Vich\UploadableField(mapping="mairie_upload", fileNameProperty="image")
-     * @var File
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $imageFile;
+    private $tamponFileName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cerfaFileName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logoFileName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo1FileName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo2FileName;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastUpload;
 
     public function __construct()
     {
@@ -887,34 +920,101 @@ class Mairie
 
         return $this;
     }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
     
-     public function setImageFile(File $image = null)
+     public function setSignature(File $signature = null)
     {
-        $this->imageFile = $image;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        if ($image) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->image = 'oui';
+        $this->imageFile = $signature;
+        if ($signature) {
+            $this->lastUpload = new \DateTimeImmutable();
         }
     }
 
-    public function getImageFile()
+    public function getSignature(): ?File
     {
-        return $this->imageFile;
+        return $this->signature;
+    }
+
+    public function getSignatureFileName(): ?string
+    {
+        return $this->signatureFileName;
+    }
+
+    public function setSignatureFileName(?string $signatureFileName): self
+    {
+        $this->signatureFileName = $signatureFileName;
+
+        return $this;
+    }
+
+    public function getTamponFileName(): ?string
+    {
+        return $this->tamponFileName;
+    }
+
+    public function setTamponFileName(?string $tamponFileName): self
+    {
+        $this->tamponFileName = $tamponFileName;
+
+        return $this;
+    }
+
+    public function getCerfaFileName(): ?string
+    {
+        return $this->cerfaFileName;
+    }
+
+    public function setCerfaFileName(?string $cerfaFileName): self
+    {
+        $this->cerfaFileName = $cerfaFileName;
+
+        return $this;
+    }
+
+    public function getLogoFileName(): ?string
+    {
+        return $this->logoFileName;
+    }
+
+    public function setLogoFileName(string $logoFileName): self
+    {
+        $this->logoFileName = $logoFileName;
+
+        return $this;
+    }
+
+    public function getPhoto1FileName(): ?string
+    {
+        return $this->photo1FileName;
+    }
+
+    public function setPhoto1FileName(?string $photo1FileName): self
+    {
+        $this->photo1FileName = $photo1FileName;
+
+        return $this;
+    }
+
+    public function getPhoto2FileName(): ?string
+    {
+        return $this->photo2FileName;
+    }
+
+    public function setPhoto2FileName(?string $photo2FileName): self
+    {
+        $this->photo2FileName = $photo2FileName;
+
+        return $this;
+    }
+
+    public function getLastUpload(): ?\DateTimeInterface
+    {
+        return $this->lastUpload;
+    }
+
+    public function setLastUpload(?\DateTimeInterface $lastUpload): self
+    {
+        $this->lastUpload = $lastUpload;
+
+        return $this;
     }
 }

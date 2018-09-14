@@ -2,12 +2,73 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        user_upload:
-            uri_prefix: /images/user
-            upload_destination: '%kernel.project_dir%/public/assets/img/uploads/user'
-        mairie_upload:
-            uri_prefix: /images/mairie
-            upload_destination: '%kernel.project_dir%/src/public/assets/img/uploads/mairie'
-        ot_upload:
-            uri_prefix: /images/ot
-            upload_destination: '%kernel.project_dir%/public/assets/img/uploads/ot'
+    #### uploads déclarant
+        user_photo_1_upload:
+            uri_prefix: /images/user/photo1
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/user-photo1'
+            namer: 
+                service : Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'photo1'}
+        user_photo_2_upload:
+            uri_prefix: /images/user/photo2
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/user-photo2'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'photo2'}
+        user_photo_3_upload:
+            uri_prefix: /images/user/photo3
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/user-photo3'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'photo3'}
+        user_photo_4_upload:
+            uri_prefix: /images/user/photo1
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/user-photo4'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'photo4'}
+    #### uploads mairie
+        mairie_signature_upload:
+            uri_prefix: /images/mairie/signature
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/mairie-signature'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'signature'}
+        mairie_tampon_upload:
+            uri_prefix: /images/mairie/tampon
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/mairie-tampon'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'tampon'}
+        mairie_cerfa_upload:
+            uri_prefix: /images/mairie/cerfa
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/mairie-cerfa'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'cerfa'}
+        mairie_logo_upload:
+            uri_prefix: /images/mairie/logo
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/mairie-logo'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'logo'}
+        mairie_photo1_upload:
+            uri_prefix: /images/mairie/photo1
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/mairie-photo1'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'photo1'} 
+        mairie_photo2_upload:
+            uri_prefix: /images/mairie/photo2
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/mairie-photo2'
+            namer: 
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'photo2'}
+    #### uploads office de tourisme
+        ot_logo_upload:
+            uri_prefix: /images/ot/logo
+            upload_destination: '%kernel.project_dir%/src/uploadsUser/ot-logo'
+            namer: 
+                service : Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'logo'}
+        

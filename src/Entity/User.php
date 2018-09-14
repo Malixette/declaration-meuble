@@ -120,6 +120,31 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $siren_siret;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo1File;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo2File;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo3File;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo4File;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastUpload;
     public function __construct()
     {
         $this->user_id_heb = new ArrayCollection();
@@ -387,6 +412,66 @@ class User implements UserInterface, \Serializable
     public function setSirenSiret(?string $siren_siret): self
     {
         $this->siren_siret = $siren_siret;
+        return $this;
+    }
+
+    public function getPhoto1File(): ?string
+    {
+        return $this->photo1File;
+    }
+
+    public function setPhoto1File(?string $photo1File): self
+    {
+        $this->photo1File = $photo1File;
+
+        return $this;
+    }
+
+    public function getPhoto2File(): ?string
+    {
+        return $this->photo2File;
+    }
+
+    public function setPhoto2File(?string $photo2File): self
+    {
+        $this->photo2File = $photo2File;
+
+        return $this;
+    }
+
+    public function getPhoto3File(): ?string
+    {
+        return $this->photo3File;
+    }
+
+    public function setPhoto3File(?string $photo3File): self
+    {
+        $this->photo3File = $photo3File;
+
+        return $this;
+    }
+
+    public function getPhoto4File(): ?string
+    {
+        return $this->photo4File;
+    }
+
+    public function setPhoto4File(?string $photo4File): self
+    {
+        $this->photo4File = $photo4File;
+
+        return $this;
+    }
+
+    public function getLastUpload(): ?\DateTimeInterface
+    {
+        return $this->lastUpload;
+    }
+
+    public function setLastUpload(?\DateTimeInterface $lastUpload): self
+    {
+        $this->lastUpload = $lastUpload;
+
         return $this;
     }    
 }
