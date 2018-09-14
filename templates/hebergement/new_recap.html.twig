@@ -20,6 +20,7 @@
   <h3 class="text-center">Veuillez vérifier vos informations avant de valider votre hébergement</h3>
   <div class="container-fluid mt-5 mb-4 p-10">
     <div>
+
     {% if hebergement.hebName %}
         <strong>Nom du bien: </strong>
         {{ hebergement.hebName }} <br>
@@ -119,6 +120,6 @@
 
 
 {{form_start(form)}}
-{{form_widget(form)}}
+
 {{form_end(form)}}
 {% endblock %}

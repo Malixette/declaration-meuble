@@ -10,6 +10,7 @@ use App\Form\HebergementType;
 use App\Form\HebergementEditType;
 use App\Form\HebergementVerifType;
 use App\Form\HebergementValidationType;
+use App\Form\HebergementNewModifType;
 use App\Repository\HebergementRepository;
 use App\Repository\MairieRepository;
 use App\Repository\UserRepository;
@@ -168,16 +169,13 @@ class HebergementController extends Controller
         $user = $this->getUser();
         
     ////Numéro de Cerfa
-        dump($hebergement);
         $idHebergement = $hebergement->getId();
         $mairie = $hebergement->getMairie();
         $idMairie = $mairie->getId();
         $insee = $repoVilles->findOneBy(['ville_code_commune' => $idMairie]);
-        dump($insee);
         $date = new \DateTime;
         $dateFormat = $date->format('Ymd');
         $numCerfa= $insee . "-" . $dateFormat . "-" . $idHebergement;
-        dump($numCerfa);
     ////    
         $form = $this->createForm(HebergementValidationType::class);
         $form->handleRequest($request);
@@ -208,7 +206,8 @@ class HebergementController extends Controller
      */
     public function modif (Request $request, Hebergement $hebergement) : Response
     {
-        $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
+        // $form = $this->createForm(HebergementType::class, $hebergement);
+        $form = $this->createForm(HebergementNewModifType::class, $hebergement);
         $form->handleRequest($request);
         
         $url = $_SERVER['REQUEST_URI'];
@@ -225,13 +224,6 @@ class HebergementController extends Controller
         return $this->render('hebergement/new_modif.html.twig', [
             'form'          => $form->createView(),
             'url'           => $url,
-            // 'hebergement'    => $hebergement,
-            // 'form'           => $form->createView(),
-            // 'user'           => $user,
-            // 'nombre'         => $nombre,
-            // 'url'            => $url,
-            // 'mairie'         => $mairie,
-            // 'idHebergement'  => $idHebergement 
         ]);
     }
 

@@ -1,5 +1,55 @@
 {% extends 'admin.html.twig' %}
-
+{% block stylesheets %}
+    <style>
+    .popup-link-mandatory{
+      background-color: rgba(0,0,0,0);
+      border-radius: 2px;
+      border: 0px solid rgba(0,0,0,0.1);
+      font-size:0.8rem;
+      font-weight: lighter;
+      color: red;
+      padding: 1px 4px;
+      margin-left: 3px;
+    }
+    .popup-link-info{
+      background-color: rgba(0,0,0,0);
+      border-radius: 2px;
+      border: 0px solid rgba(0,0,0,0.1);
+      font-size:1rem;
+      font-weight: lighter;
+      color: rgba(0,114,114,1);
+      padding: 1px 4px;
+      margin-left: 3px;
+    }
+    a span.popup{
+      font-size: 1rem;
+    	position:absolute;
+    	margin-top:23px;
+    	margin-left:-35px;
+    	font-weight: normal;
+    	color:whitesmoke;
+    	background:rgba(0,0,0,.8);
+    	padding:15px;
+    	border-radius:3px;
+    	box-shadow:1px 1px 2px rgba(0,0,0,0.5);
+    	opacity:0;
+    	max-width: 500px;
+    	min-width: 200px;
+    	transition: all .15s ease-in;
+    	transform: scale(0) rotate(-12deg);
+    	z-index: 100;
+    }
+    
+    a:hover span.popup, a:focus span.popup{
+    	transform:scale(1) rotate(0);
+    	opacity:1;
+    }
+    
+    #ex1Slider .slider-selection {
+    	background: #BABABA;
+    }
+    </style>
+{% endblock %}
 {% block title %}Modifier les informations de votre hébergement{% endblock %}
 
 {% block header %}
@@ -14,14 +64,123 @@
 
 {% block body %}
 
-
-{% endblock %}
-{% block main %}
-{#{% if idHebergement > 0 %}#}
-{#    {{ include('hebergement/_verificationInfo.html.twig') }}#}
-{#{% endif %}#}
-
 {{form_start(form)}}
+
+             <div class="form-group">
+                {{ form_label(form.heb_num_voie) }}
+                {{ form_widget(form.heb_num_voie, { 'id': 'street_number' } ) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_adresse) }} <a href="#" class="popup-link-mandatory"><i class="fas fa-info-circle"></i><span class='popup'>Obligatoire</span></a>
+                {{ form_widget(form.heb_adresse, { 'id': 'route' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_adresse_complement) }}
+                {{ form_widget(form.heb_adresse_complement) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_batiment) }}
+                {{ form_widget(form.heb_batiment) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_etage) }}
+                {{ form_widget(form.heb_etage) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_code_postal) }}<a href="#" class=popup-link-mandatory><i class="fas fa-info-circle"></i><span class='popup'>Obligatoire</span></a>
+                {{ form_widget(form.heb_code_postal, { 
+                    'id': 'postal_code',
+                    'name': 'postal_code',
+                } ) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_commune) }}<a href="#" class="popup-link-mandatory"><i class="fas fa-info-circle"></i><span class='popup'>Obligatoire</span></a>
+                {{ form_widget(form.heb_commune , { 'id': 'locality' } ) }}
+            </div>
+            <p>Merci de vérifier l'emplacement exact de votre location. Si besoin, vous pouvez changer directement l'emplacement sur la carte pour préciser le lieu de votre meublé.</p>
+            <div id="map"></div>
+            <div class="form-group">
+                {{ form_widget(form.heb_lat) }}
+                {#{{ form_widget(form.heb_lat, { 'attr' : { 'style':'display:none' } } ) }}#}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.heb_long) }}
+                {#{{ form_widget(form.heb_long, { 'attr' : { 'style':'display:none' } } ) }}#}
+            </div>
+            
+            <div class="form-group">
+                {{ form_label(form.heb_name) }} <a href="#" class="popup-link-mandatory"><i class="fas fa-info-circle"></i><span class='popup'>Obligatoire</span></a>
+                {{ form_widget(form.heb_name) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_type) }}
+                {{ form_widget(form.heb_type) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_couchages_max) }} <a href="#" class="popup-link-mandatory"><i class="fas fa-info-circle"></i><span class='popup'>Obligatoire</span></a>
+                {{ form_widget(form.heb_couchages_max) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_nbr_pieces) }} <a href="#" class="popup-link-mandatory"><i class="fas fa-info-circle"></i><span class='popup'>Obligatoire</span></a>
+                {{ form_widget(form.heb_nbr_pieces) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_classement) }} <a href="https://www.classement.atout-france.fr/meubles" target="_blank"class="popup-link-info"><i class="fas fa-info-circle"></i><span class='popup'>Uniquement le classement préfectoral. Les classements Gîtes de France et Clévacances ne sont pas pris en compte. Plus d'info ici</span></a>
+                {{ form_widget(form.heb_classement) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.hebEtoiles) }} <a href="#" class="popup-link-info"><i class="fas fa-info-circle"></i><span class='popup'>Uniquement le classement en étoiles</span></a>
+                {{ form_widget(form.hebEtoiles) }}
+            </div>
+               
+            <div class="form-group">
+                {{ form_label(form.heb_date_classement) }}
+                {{ form_widget(form.heb_date_classement) }}
+            </div>
+            <div class="form-group">
+                {{form_label(form.heb_periodes_location) }}
+                {{form_widget(form.heb_periodes_location) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_descriptif_court) }}
+                {{ form_widget(form.heb_descriptif_court) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_photo_1) }}
+                {{ form_widget(form.heb_photo_1) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_photo_2) }}
+                {{ form_widget(form.heb_photo_2) }}
+            </div>
+                <div class="form-group">
+                {{ form_label(form.heb_photo_3) }}
+                {{ form_widget(form.heb_photo_3) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_site_web) }}
+                {{ form_widget(form.heb_site_web) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_contact_resa) }}
+                {{ form_widget(form.heb_contact_resa) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_site_resa) }}
+                {{ form_widget(form.heb_site_resa) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_tel_resa) }}
+                {{ form_widget(form.heb_tel_resa) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.heb_email_resa) }}
+                {{ form_widget(form.heb_email_resa) }}
+            </div>
+
+
+
 {{form_end(form)}}
 
 {% endblock %}
