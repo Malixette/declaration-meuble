@@ -80,6 +80,7 @@
         {{ hebergement.hebCouchagesMax }} <br>
     {% endif %}
     {% if hebergement.hebClassement %}
+        <strong>Nombre d'étoiles :</strong> {{ hebergement.hebEtoiles }} <br>
         <strong>Hébergement classé </strong> le {{ hebergement.hebDateClassement|date("m/d/Y") }} <br>
     {% endif %}
     {% if hebergement.hebSiteWeb %}
