@@ -793,12 +793,12 @@ class Mairie
         return $this;
     }
 
-    public function getVilles(): ?Villes
+    public function getVille(): ?Villes
     {
         return $this->ville;
     }
 
-    public function setVilles(?Villes $ville): self
+    public function setVille(?Villes $ville): self
     {
         $this->ville = $ville;
 
