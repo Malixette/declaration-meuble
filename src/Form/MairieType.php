@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 class MairieType extends AbstractType
 {
@@ -321,7 +323,13 @@ class MairieType extends AbstractType
             // ->add('mairie_rappel_texte')
             // ->add('mairie_latitude') SETTER
             // ->add('mairie_longitude') SETTER
-            
+            ->add('imageFile', VichImageType::class, [
+            'required' => false,
+            'allow_delete' => true,
+            'download_label' => '...',
+            'download_uri' => true,
+            'image_uri' => true,
+            ])
             ->add('valider', SubmitType::class, [
                 'label' => 'Allez à l\'étape 2' ,
                 'attr' => [

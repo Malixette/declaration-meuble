@@ -1,0 +1,147 @@
+/* full screen header -- implemented via <style> in the template */
+.full {
+    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette.jpg')}}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
+.text-white {
+    font-size : 1.5em!important;
+}
+/* Bouton déclaration */
+.btn-outline-light {
+    border-width : 2px !important;
+    border-radius: 10px;
+}
+.btn-outline-light:hover {
+    background-color: rgba(255,255,255,0) !important;
+    color:white !important;
+    border-color:white !important;
+    box-shadow :0 0 0.4em black !important;
+}
+#btn-declaration {
+    font-size:1.5em;
+}
+
+/***************************************** SECTION DEMARCHE ***********************************************/
+#carouselExampleControls{
+    background-color:rgba(255, 212, 112, 0.1);
+}
+.carousel-item h3 {
+    font-size : 1.5em;
+}
+.p-slider{
+    font-size : 1em;
+}
+.p-slider-big{
+    font-size : 1.2em;
+    font-family : 'Oswald', sans-serif;
+}
+.p-slider-number{
+    font-size : 1.5em;
+    font-family : 'Oswald', sans-serif;
+    color : #FF9166 !important ;
+}
+.p-slider-icon{
+    font-size : 1.5em;
+    color: #FF9166;
+}
+.carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-prev-icon:after {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+.carousel-control-next-icon:after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+/***************************************** SECTION COMMUNE ***********************************************/
+
+/* implemented via <style> in the template*/
+.headercommune {
+    padding: 120px 0px;
+    background: url({{asset('assets/img/communes/barcelonnette/barcelonnette2.jpg')}}) no-repeat center center fixed;
+}
+/* Vignettes commune */
+.flaticon {
+    width: 20%;
+    height: auto;
+}
+.titre-vignette {
+    font-size : 2.5em;
+}
+
+/******************************************** MEDIAQUERIES **********************************************/
+
+/* small desktop*/
+
+/* tablet */
+@media screen and (max-width: 768px) {
+    #btn-declaration {
+        font-size : 1em;
+    }
+    .section-titre {
+        font-size : 3em;
+    }
+    .titre-vignette {
+        font-size : 1.8em;
+    }
+    .headercommune {
+        padding: 5%;
+        background: none;
+    }
+    #section-commune h1 {
+        color : black !important;
+        text-shadow : unset;
+    }
+    .p-slider {
+        font-size : 1em;
+    }
+    .p-slider-icon{
+        font-size : 1em;
+    }
+    .slider-img{
+        display: none !important;
+    }
+    .carousel-item h3 {
+        font-size : 1.5em;
+    }
+}
+
+/* small tablet */
+@media screen and (max-width: 600px) {
+    .p-slider-icon{
+        font-size : 0.8em;
+    }
+    .p-slider{
+        font-size : 1em;
+    }
+
+/* large mobile */
+@media screen and (max-width: 414px) {
+    #btn-declaration {
+        font-size : 1em;
+    }
+    .p-slider-icon {
+        font-size : 0.5em;
+    }
+    .carousel-item h3, .titre-vignette {
+        font-size : 1.2em;
+    }
+}
+
+/* mobile */
+@media screen and (max-width: 320px) {
+  #btn-declaration {
+    font-size : 1em;
+  }
+
+}

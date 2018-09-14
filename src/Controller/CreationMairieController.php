@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Controller\SessionInterface;
 use App\Repository\MairieRepository;
+use Symfony\Component\Filesystem\Filesystem;
 
 class CreationMairieController extends Controller
 {
@@ -35,6 +36,7 @@ class CreationMairieController extends Controller
   public function new(Request $request, MairieRepository $mairieRepository): Response
     {
         $mairie = new Mairie();
+        $fileSystem = new Filesystem();
         $formMairie = $this->createForm(MairieType::class, $mairie);
         $idMairie = 0;
         $nomMairie = $mairie->getMairieNomTouristique();
@@ -45,22 +47,10 @@ class CreationMairieController extends Controller
         $formUser = $this->createForm(CreationMairieType::class, $user);
         $formUser->handleRequest($request);
         
-        $tampon = $mairie->getMairieTampon();
-            
-            // // // si on upload, on set avec nouvelle photo
-            // // if($tampon != null) {
-            // //     $tamponFileName = $this->generateUniqueFileName().'.tampon-'. $nomMairie . $tampon->guessExtension();
-            
-            // //     $tampon->move(
-            // //         $this->getParameter('images_directory'),
-            // //         $tamponFileName
-            // //     );
-                
-            // //     $mairie->setMairieTampon($tamponFileName);    
-            // } 
 
         if($formMairie->isSubmitted() && $formMairie->isValid())
         {
+            
             $inseeInput = $mairie->getInsee();
             $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
 
@@ -73,7 +63,24 @@ class CreationMairieController extends Controller
             // $villeRepository = $this->getDoctrine()->getRepository(Mairie::class);
             // $ville = $villeRepository->find($idMairie);
             
+            // dump($inseeInput);
+            // dump($mairie);
+            // dump($ville);
             $villeSlug = $ville->getVilleSlug();
+            
+            // gestion des uploads
+            $tampon = $mairie->getMairieTampon();
+            if($tampon != null) {
+                $tamponFileName = $this->generateUniqueFileName().'.tampon-'. $nomMairie . $tampon->guessExtension();
+            
+                $tampon->move(
+                    $this->getParameter('images_directory'),
+                    $tamponFileName
+                );
+                
+                $mairie->setMairieTampon($tamponFileName);    
+            } 
+            // end gestion des uploads
 
             $mairie->setVilles($ville)
                    ->setMairieLongitude(43)
@@ -85,6 +92,9 @@ class CreationMairieController extends Controller
             
             $ville->setMairie($mairie);
             $villeMairieId = $ville->getMairie();
+            
+            // créer un dossier par mairie pour les uploads de fichiers
+            // $fileSystem->mkdir("../src/assets/uploads/mairie/".$villeSlug);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($mairie);
