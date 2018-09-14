@@ -310,10 +310,10 @@ class HebergementType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Hebergement::class,
-            'is_edit' => false,
-            'is_new' => false,
-            'is_verif' => false,
+            'data_class'    => Hebergement::class,
+            'is_edit'       => false,
+            'is_new'        => false,
+            'is_verif'      => false,
         ]);
     }
 }
