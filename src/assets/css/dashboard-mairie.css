@@ -1,0 +1,102 @@
+/* 
+vert: #58ccb6
+bleu : #5070b5
+jaune : #ffd470
+pêche :#ff9166 
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.section-titre {
+    font-size:3em !important;
+    color: white !important;
+    background : linear-gradient(#6486c5, #4CC4D5) center center no-repeat !important;
+    /* en fonction de la taille de la navbar, adapter le margin-top pour corriger le dégradé*/
+    margin-top:1.46rem;
+}
+
+header nav{
+    background-color: #6486c5;
+    /*height: 5.36vh;*/
+}
+
+header nav ul li a{
+    color: white!important;
+}
+
+/* button colors */
+.bg-warning {
+    background-color: #EF3C25 !important;
+    color: white;
+}
+.bg-info {
+    background-color: #6486C5 !important;
+}
+.bg-danger {
+    background-color: #DC2075 !important;
+}
+.btn-danger {
+    background-color: #DC2075 !important;
+    border-color: #DC2075 !important;
+}
+.btn-success {
+    background-color: #47B749 !important;
+    border-color: #47B749 !important;
+}
+.btn-warning {
+    background-color: #EF3C25 !important;
+    border-color: #EF3C25 !important;
+    color: white;
+}
+
+.nav-link{
+    color:white;
+}
+
+footer {
+    background: linear-gradient(#4CC4D5, #6486C5) center center no-repeat;
+
+}
+
+.encartDeclarant, .encartMairie, .encartOffice {
+    box-shadow: 3px 3px 8px #adadad;
+}
+
+.listeHebergement td, .listeHebergement th {
+    border: none; 
+}
+
+/*.page-item.active .page-link {*/
+/*    background-color: #5070b5;*/
+/*    border-color: #5070b5;*/
+/*}*/
+
+a {
+    color: #5070b5;
+}
+
+/*a:hover {*/
+/*    color: #58ccb6;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.btn {*/
+/*    background: #58ccb6;*/
+/*    color:black;*/
+/*}*/
+
+/*.btn:hover {*/
+/*    background-color: #ff9166;*/
+/*    color:black;*/
+
+/*}*/

@@ -1,0 +1,117 @@
+/*********************************************** OVERALL ***********************************************/
+
+html, body {
+    height: 100%;
+    width:100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.scrolling-box {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+input[disabled], label[for="user_password_first"], label[for="user_password_second"] {
+            display: none;
+        }
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+.header h1, .main h2, #section-commune h1 {
+    text-shadow: 1px 1px 1px black;
+}
+.section-titre {
+    font-size:4em !important;
+}
+.titre-info {
+    color: #5070B5;
+}
+
+/* navbar */
+.navbar-light .navbar-nav .nav-link {
+    color: #444;
+    border-bottom: 2px solid #fff;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    border-bottom: 2px solid #5070B5;
+}
+
+.activelink {
+    border-bottom: 2px solid #5070B5 !important;
+}
+
+/* button colors */
+.bg-warning {
+    background-color: #EF3C25 !important;
+    color: white;
+}
+.bg-info {
+    background-color: #6486C5 !important;
+    color: white;
+}
+.bg-danger {
+    background-color: #DC2075 !important;
+    color: white;
+}
+.btn-danger {
+    background-color: #DC2075 !important;
+    border-color: #DC2075 !important;
+}
+.btn-success {
+    background-color: #47B749 !important;
+    border-color: #47B749 !important;
+}
+.btn-warning {
+    background-color: #EF3C25 !important;
+    border-color: #EF3C25 !important;
+    color: white;
+}
+
+/* icon colors */
+.icon-info {
+    color: #5070B5;
+}
+.icon-danger {
+    color: #FF9166;
+}
+
+/* light placeholders*/
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: Gainsboro !important;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: Gainsboro !important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: Gainsboro !important;
+}
+
+/* footer */
+
+footer {
+    height : 4vh;
+}
+        
+/***************************************** MEDIAQUERIES ***********************************************/
+
+    /* small desktop*/
+    @media screen and (max-width: 1200px) {
+      .section-titre {
+          font-size : 4em;
+      }
+    } 
+    
+    /* tablet */
+    @media screen and (max-width: 768px) {
+        .section-titre {
+            font-size : 3em;
+        }
+        footer {
+            font-size : 0.8rem;
+            height: 10vh;
+        }
+    }

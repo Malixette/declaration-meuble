@@ -1,0 +1,30 @@
+html {
+    height : 100%;
+}
+body, main{
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+#titrelisting {
+    /*position : static;*/
+    /*background-color : white;*/
+    height: 350px;
+    background: url(../img/illustration-public/farmhouse.jpeg) fixed; 
+    padding-top : 10%;
+    text-shadow : 0.2px 0.2px 0.2px black;
+}
+
+.navbar {
+    background:rgba(255,255,255, 1);
+}
+
