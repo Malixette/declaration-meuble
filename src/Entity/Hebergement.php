@@ -181,7 +181,7 @@ class Hebergement
      */
     private $numero_appartement;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $heb_etoiles;
     /**

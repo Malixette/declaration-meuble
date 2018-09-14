@@ -160,6 +160,15 @@ class HebergementVerifType extends AbstractType
                 'required'  => true,
             ])
             
+            ->add('hebEtoiles',  TextType::class, [
+                'required'  => false,
+                'label'     => 'Nombre d\'étoiles',
+                'attr'      => [
+                    'placeholder'   => "Entrez un chiffre entre 1 et 5",
+                    'class'         => "input"
+                ]    
+            ])
+            
             ->add('heb_date_classement', DateType::class, array(
                 'widget'    => 'choice',
                 'disabled'  => $options['is_verif'],

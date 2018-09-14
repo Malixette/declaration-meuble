@@ -48,7 +48,7 @@ class HebergementController extends Controller
         
         // Valeurs par défaut pour l'affichage différent selon les étapes de déclaration 
         $idHebergement = 0;
-        $hebEtoiles = 0;
+        // $hebEtoiles = 0;
         $mairie = null;
         $url = $_SERVER['REQUEST_URI'];
         
@@ -108,7 +108,7 @@ class HebergementController extends Controller
             $hebergement->setHebStatut('en cours');
             $hebergement->setHebNumDeclaration(0);
             $hebergement->setMairie($mairie);
-            $hebergement->setHebEtoiles($hebEtoiles);
+            // $hebergement->setHebEtoiles($hebEtoiles);
             
             //debug
             // $mairieHeb = $hebergement->getMairie();
@@ -154,7 +154,7 @@ class HebergementController extends Controller
             'url'           => $url,
             'mairie'        => $mairie,
             'idHebergement' => $idHebergement,
-            'hebEtoiles'    => $hebEtoiles,
+            // 'hebEtoiles'    => $hebEtoiles,
         ]);
     }
     
@@ -211,6 +211,8 @@ class HebergementController extends Controller
         $form = $this->createForm(HebergementType::class, $hebergement, array('is_new' => true));
         $form->handleRequest($request);
         
+        $url = $_SERVER['REQUEST_URI'];
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($hebergement);
@@ -221,7 +223,8 @@ class HebergementController extends Controller
             return $this->redirectToRoute('hebergement_recap', ['id' => $idHebergement ]);
         }
         return $this->render('hebergement/new_modif.html.twig', [
-            'form' => $form->createView(),
+            'form'          => $form->createView(),
+            'url'           => $url,
             // 'hebergement'    => $hebergement,
             // 'form'           => $form->createView(),
             // 'user'           => $user,
