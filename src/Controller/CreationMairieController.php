@@ -50,22 +50,11 @@ class CreationMairieController extends Controller
 
         if($formMairie->isSubmitted() && $formMairie->isValid())
         {
+            $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
+            $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
             
             $inseeInput = $mairie->getInsee();
-            $repoMairie = $this->getDoctrine()->getRepository(Mairie::class);
-
-            $repoVilles = $this->getDoctrine()->getRepository(Villes::class);
             $ville = $repoVilles->findOneBy(array("ville_code_commune" => $inseeInput));
-            
-            // $mairies = $repoMairie->findAll();
-            // $InseeExist = $repoMairie->findOneBy(array("insee" => $inseeInput));
-            // dump($InseeExist);
-            // $villeRepository = $this->getDoctrine()->getRepository(Mairie::class);
-            // $ville = $villeRepository->find($idMairie);
-            
-            // dump($inseeInput);
-            // dump($mairie);
-            // dump($ville);
             $villeSlug = $ville->getVilleSlug();
             
             // gestion des uploads
@@ -80,9 +69,13 @@ class CreationMairieController extends Controller
                 
                 $mairie->setMairieTampon($tamponFileName);    
             } 
+            
+            $signatureFileName = 'signature'.md5(rand());
+            dump($signatureFileName);
             // end gestion des uploads
 
             $mairie->setVilles($ville)
+                   ->setSignatureFileName($signatureFileName)
                    ->setMairieLongitude(43)
                    ->setMairieLong(43)
                    ->setMairieLatitude(22)

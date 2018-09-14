@@ -308,27 +308,12 @@ class MairieType extends AbstractType
                     'onkeyup' => "inseeRequest();"
                 ]
             ]) 
-            // ->add('mairie_rappel_lien', TextType::class,  [
-            //     'required' => true,
-            //     'label' => 'Adresse du site internet de déclaration de la taxe de séjour',
-            //     'attr' => [
-            //         'placeholder' => "www.taxedesejour-commune.fr",
-            //         'class' => "form-control form-control-lg mb-3",
-            //         'type' => "text"
-            //     ]
-            // ]) 
-            // ->add('mairie_slug')
-            // ->add('mairie_date_inscription')
-            // ->add('officeTourisme') null
-            // ->add('mairie_rappel_texte')
-            // ->add('mairie_latitude') SETTER
-            // ->add('mairie_longitude') SETTER
-            ->add('imageFile', VichImageType::class, [
-            'required' => false,
-            'allow_delete' => true,
-            'download_label' => '...',
-            'download_uri' => true,
-            'image_uri' => true,
+            ->add('signature', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'download_label' => '...',
+                'download_uri' => true,
+                'image_uri' => true,
             ])
             ->add('valider', SubmitType::class, [
                 'label' => 'Allez à l\'étape 2' ,

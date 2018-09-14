@@ -290,8 +290,6 @@ class Mairie
     private $mairie_long;
     
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
      * @Vich\UploadableField(mapping="mairie_signature_upload", fileNameProperty="signatureFileName")
      * 
      * @var File
@@ -793,12 +791,12 @@ class Mairie
         return $this;
     }
 
-    public function getVille(): ?Villes
+    public function getVilles(): ?Villes
     {
         return $this->ville;
     }
 
-    public function setVille(?Villes $ville): self
+    public function setVilles(?Villes $ville): self
     {
         $this->ville = $ville;
 

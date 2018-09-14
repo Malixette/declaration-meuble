@@ -169,10 +169,9 @@ class HebergementController extends Controller
         
     ////Numéro de Cerfa
         dump($hebergement);
-        // $idHebergement = $hebergement->getId();
+        $idHebergement = $hebergement->getId();
         $mairie = $hebergement->getMairie();
         $idMairie = $mairie->getId();
-        dump($idMairie);
         $insee = $repoVilles->findOneBy(['ville_code_commune' => $idMairie]);
         dump($insee);
         $date = new \DateTime;
