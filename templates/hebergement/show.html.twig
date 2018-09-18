@@ -38,6 +38,7 @@
             <strong>Ville:</strong> {{ hebergement.hebCommune }}</p>
             <p><strong>Nombre de pièces:</strong> {{ hebergement.hebNbrPieces }}</p>
             <p><strong>Classement:</strong> {{ hebergement.hebClassement }} <br>
+            <strong>Nombre d'étoiles: </strong> {{ hebergement.hebEtoiles }} <br>
             <strong>Date de classement:</strong> {{ hebergement.hebDateClassement | date('d-m-Y') }}</p>
             <p><strong>Saisons d'ouverture:</strong> 
                 {% for periode in hebergement.hebPeriodesLocation %}
