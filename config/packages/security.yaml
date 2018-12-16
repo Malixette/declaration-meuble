@@ -4,6 +4,8 @@ security:
         - { path: ^/admin, roles: ROLE_ACTIF }
         - { path: ^/admin/proprietaire, roles: ROLE_DECLARANT }
         - { path: ^/admin/mairie, roles: ROLE_MAIRIE }
+        - { path: ^/admin/officetourisme, roles: ROLE_OT }
+        - { path: ^/admin-home, roles: ROLE_ADMIN }
     providers:
         mon_login:
             entity:

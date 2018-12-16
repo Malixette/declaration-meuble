@@ -31,7 +31,6 @@ class UserController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $password = password_hash($user->getPassword(), PASSWORD_BCRYPT);
-            // $token = base64_encode(random_bytes(30));
             $token = md5(uniqid(rand()));
             $email = $user->getUserEmail();
             
@@ -74,7 +73,7 @@ class UserController extends Controller
             dump($message);
             dump($user->getUserEmail());
                         
-            return $this->redirectToRoute('connexion');
+            // return $this->redirectToRoute('connexion');
         }
 
         return $this->render('user/inscription.html.twig', [

@@ -50,8 +50,11 @@ class LoginListener implements AuthenticationSuccessHandlerInterface
                 // DONNER LA ROUTE POUR LES ROLE_ADMIN
                 $redirection = new RedirectResponse($this->router->generate('dashboard_mairie'));
             }
-            elseif (in_array('ROLE_INACTIF', $rolesTab, true)) {
+            elseif (in_array('ROLE_ADMIN', $rolesTab, true)) {
                 // DONNER LA ROUTE POUR LES ROLE_ADMIN
+                $redirection = new RedirectResponse($this->router->generate('website-admin'));
+            }
+            elseif (in_array('ROLE_INACTIF', $rolesTab, true)) {
                 $redirection = new RedirectResponse($this->router->generate('logout'));
             }
             else {

@@ -144,7 +144,7 @@ class HebergementController extends Controller
             
             $idHebergement = $hebergement->getId();
             
-            return $this->redirectToRoute('hebergement_recap', ['id' => $idHebergement ]);
+            // return $this->redirectToRoute('hebergement_recap', ['id' => $idHebergement ]);
         }
         
         return $this->render('hebergement/new.html.twig', [
@@ -169,6 +169,7 @@ class HebergementController extends Controller
         $user = $this->getUser();
         
     ////Numéro de Cerfa
+        dump($hebergement);
         $idHebergement = $hebergement->getId();
         $mairie = $hebergement->getMairie();
         $idMairie = $mairie->getId();
